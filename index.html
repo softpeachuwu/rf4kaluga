@@ -7,18 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1117;
-    --surface: #181c25;
-    --surface2: #1e2330;
-    --border: #2a3044;
-    --accent: #4ade80;
-    --accent2: #22c55e;
-    --text: #e8eaf0;
-    --muted: #7a8299;
-    --tag-bg: #1e2330;
-    --spinning: #38bdf8;
-    --bottom: #fb923c;
-    --float: #a78bfa;
+    --bg: #12100e;
+    --surface: #1c1814;
+    --surface2: #24201a;
+    --border: #3a3228;
+    --accent: #c9a96e;
+    --accent2: #b8924f;
+    --text: #ede8df;
+    --muted: #8a7d6a;
+    --tag-bg: #24201a;
+    --spinning: #7eb8c9;
+    --bottom: #c97a4a;
+    --float: #9d8fc4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -195,7 +195,7 @@
   .fish-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
   .fish-tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
   .modal-footer { display: flex; align-items: center; gap: 10px; padding-top: 1rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
-  .total-cost { font-size: 15px; font-weight: 700; padding: 7px 18px; border-radius: 10px; background: #071510; border: 1px solid #166534; color: var(--accent); }
+  .total-cost { font-size: 15px; font-weight: 700; padding: 7px 18px; border-radius: 10px; background: #1c1608; border: 1px solid #8a6830; color: var(--accent); }
   .copper-badge { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #1c1508; border: 1px solid #b45309; color: #f59e0b; }
 
   /* SIDEBAR */
@@ -324,7 +324,7 @@
     color: var(--muted);
   }
   .tag.copper { border-color: #b45309; color: #f59e0b; background: #1c1508; }
-  .tag.budget { border-color: #166534; color: #4ade80; background: #071510; }
+  .tag.budget { border-color: #8a6830; color: #c9a96e; background: #1c1608; }
 
 
   .no-results {
@@ -651,7 +651,7 @@ function selectBuild(id) {
       <span class="modal-badge">${b.levelLabel}</span>
       <span class="modal-badge">${b.type.charAt(0).toUpperCase() + b.type.slice(1)} fishing</span>
       ${b.copperLegal ? '<span class="modal-badge" style="border-color:#b45309;color:#f59e0b;background:#1c1508;">⚡ Copper Legal</span>' : ''}
-      ${b.budget ? '<span class="modal-badge" style="border-color:#166534;color:#4ade80;background:#071510;">Budget</span>' : ''}
+      ${b.budget ? '<span class="modal-badge" style="border-color:#8a6830;color:#c9a96e;background:#1c1608;">Budget</span>' : ''}
     </div>
 
     <div class="gear-cards">

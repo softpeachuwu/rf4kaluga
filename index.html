@@ -59,18 +59,19 @@
 
   /* HERO STRIP */
 .hero {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 1.25rem; /* Small, sleek vertical height */
+    background: transparent; 
+    border-bottom: none;     
+    padding: 20px 1.25rem 10px; /* Adds a little breathing room from the top nav */
 }
 
 .hero h1 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px; /* Noticeable but compact */
+    font-size: 16px;          /* Smaller, more like a label */
     font-weight: 700;
-    letter-spacing: 0.04em;
-    margin-bottom: 0; /* Removes gap since paragraph is gone */
+    letter-spacing: 0.08em;   /* Spaced out slightly for a modern look */
+    margin-bottom: 0;
     text-transform: uppercase;
+    opacity: 0.5;             /* Makes it subtle so the builds stand out */
 }
 
 .hero h1 span {
@@ -78,7 +79,7 @@
 }
 
 .hero p {
-    display: none; /* Removes the long description entirely */
+    display: none; 
 }
 
   /* LAYOUT */

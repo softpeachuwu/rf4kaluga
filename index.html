@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RF4 Kaluga — Gear Builds</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181c25;
+    --surface2: #1e2330;
+    --border: #2a3044;
+    --accent: #4ade80;
+    --accent2: #22c55e;
+    --text: #e8eaf0;
+    --muted: #7a8299;
+    --tag-bg: #1e2330;
+    --spinning: #38bdf8;
+    --bottom: #fb923c;
+    --float: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* NAV */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+  .nav-links a.active { color: var(--accent); }
+  .nav-links a.soon { opacity: 0.35; cursor: default; pointer-events: none; }
+  .nav-links a:hover:not(.soon) { color: var(--text); }
+
+  /* HERO STRIP */
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2rem 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 14px; color: var(--muted); max-width: 520px; line-height: 1.6; }
+
+  /* LAYOUT */
+  .container { display: grid; grid-template-columns: 260px 1fr 300px; gap: 0; min-height: calc(100vh - 120px); }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .sidebar-section { margin-bottom: 1.5rem; }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+  .filter-group { display: flex; flex-direction: column; gap: 2px; }
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    width: 100%;
+  }
+  .filter-btn:hover { background: var(--surface2); color: var(--text); }
+  .filter-btn.active { background: var(--surface2); color: var(--text); }
+  .filter-btn .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-all { background: var(--accent); }
+  .dot-spinning { background: var(--spinning); }
+  .dot-bottom { background: var(--bottom); }
+  .dot-float { background: var(--float); }
+  .filter-btn .count {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+  .sub-filters { margin-left: 18px; margin-top: 2px; }
+
+  /* SEARCH */
+  .search-wrap { padding: 1rem 1rem 0; }
+  .search-wrap input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-wrap input:focus { border-color: var(--accent); }
+
+  /* BUILDS LIST */
+  .builds-area { padding: 1rem; overflow-y: auto; }
+  .builds-grid { display: flex; flex-direction: column; gap: 8px; }
+  .build-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .build-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+  .build-card.type-spinning::before { background: var(--spinning); }
+  .build-card.type-bottom::before { background: var(--bottom); }
+  .build-card.type-float::before { background: var(--float); }
+  .build-card:hover { border-color: #3a4060; background: var(--surface2); }
+  .build-card.selected { border-color: var(--accent); background: var(--surface2); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .card-name { font-size: 15px; font-weight: 600; color: var(--text); }
+  .card-level {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--surface2);
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  .card-gear { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+  .card-gear strong { color: #a0aabe; font-weight: 500; }
+  .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .tag.copper { border-color: #b45309; color: #f59e0b; background: #1c1508; }
+  .tag.budget { border-color: #166534; color: #4ade80; background: #071510; }
+
+  /* DETAIL PANEL */
+  .detail-panel {
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    padding: 1.5rem;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .detail-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+  }
+  .detail-empty .icon { font-size: 32px; opacity: 0.3; margin-bottom: 4px; }
+  .detail-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .detail-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
+  .detail-section { margin-bottom: 1.25rem; }
+  .detail-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #1e2330;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: var(--muted); }
+  .stat-val { font-weight: 500; color: var(--text); }
+  .detail-desc {
+    font-size: 13px;
+    color: #9aa3b8;
+    line-height: 1.7;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .detail-fish { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .fish-tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .cost-row { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+  .cost-pill {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 8px;
+    background: #071510;
+    border: 1px solid #166534;
+    color: var(--accent);
+  }
+  .copper-pill {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 8px;
+    background: #1c1508;
+    border: 1px solid #b45309;
+    color: #f59e0b;
+  }
+  .no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .detail-panel { position: static; height: auto; border-left: none; border-top: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">RF4<span>Kaluga</span></div>
+  <div class="nav-links">
+    <a href="#" class="active">Builds</a>
+    <a href="#" class="soon">Maps</a>
+    <a href="#" class="soon">Gear DB</a>
+    <a href="#" class="soon">Knowledge</a>
+    <a href="#" class="soon">Blog</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Gear <span>Builds</span></h1>
+  <p>Researched and tested setups for every playstyle and level. Click a build to see full stats and recommended use.</p>
+</div>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="search-wrap" style="padding: 0 0 1.25rem;">
+      <input type="text" id="searchInput" placeholder="Search builds..." oninput="filterBuilds()" />
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Fishing Type</div>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('all', this)">
+          <span class="dot dot-all"></span> All Builds
+          <span class="count" id="count-all">0</span>
+        </button>
+        <button class="filter-btn" onclick="setFilter('spinning', this)">
+          <span class="dot dot-spinning"></span> Spinning
+          <span class="count" id="count-spinning">0</span>
+        </button>
+        <div class="sub-filters filter-group" id="sub-spinning" style="display:none;">
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-universal', this)"><span style="width:8px;height:8px;"></span> Universal</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-trolling', this)"><span style="width:8px;height:8px;"></span> Trolling</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-jigging', this)"><span style="width:8px;height:8px;"></span> Jigging</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-casting', this)"><span style="width:8px;height:8px;"></span> Casting</button>
+        </div>
+        <button class="filter-btn" onclick="setFilter('bottom', this)">
+          <span class="dot dot-bottom"></span> Bottom
+          <span class="count" id="count-bottom">0</span>
+        </button>
+        <div class="sub-filters filter-group" id="sub-bottom" style="display:none;">
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-feeder', this)"><span style="width:8px;height:8px;"></span> Feeder / Picker</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-carp', this)"><span style="width:8px;height:8px;"></span> Carp</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-copper', this)"><span style="width:8px;height:8px;"></span> ⚡ Copper Legal</button>
+        </div>
+        <button class="filter-btn" onclick="setFilter('float', this)">
+          <span class="dot dot-float"></span> Float
+          <span class="count" id="count-float">0</span>
+        </button>
+        <div class="sub-filters filter-group" id="sub-float" style="display:none;">
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-telescopic', this)"><span style="width:8px;height:8px;"></span> Telescopic</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-match', this)"><span style="width:8px;height:8px;"></span> Match</button>
+          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-bolognese', this)"><span style="width:8px;height:8px;"></span> Bolognese</button>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Player Level</div>
+      <div class="filter-group">
+        <button class="filter-btn" onclick="setLevelFilter('all-levels', this)"><span class="dot" style="background:var(--muted)"></span> All Levels</button>
+        <button class="filter-btn" onclick="setLevelFilter('beginner', this)"><span class="dot" style="background:#4ade80"></span> Beginner (1–19)</button>
+        <button class="filter-btn" onclick="setLevelFilter('intermediate', this)"><span class="dot" style="background:#38bdf8"></span> Intermediate (20–39)</button>
+        <button class="filter-btn" onclick="setLevelFilter('advanced', this)"><span class="dot" style="background:#f59e0b"></span> Advanced (40+)</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- BUILDS LIST -->
+  <main class="builds-area">
+    <div class="builds-grid" id="buildsGrid"></div>
+  </main>
+
+  <!-- DETAIL PANEL -->
+  <aside class="detail-panel" id="detailPanel">
+    <div class="detail-empty">
+      <div class="icon">🎣</div>
+      <div>Select a build to see full details</div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+// ============================================================
+// BUILDS DATABASE
+// To add a new build, copy one of the objects below and fill
+// in the details. Save the file and push to GitHub.
+// ============================================================
+const builds = [
+  {
+    id: 1,
+    name: "Universal Spinning Starter",
+    type: "spinning",
+    subtype: "spinning-universal",
+    minLevel: 20,
+    levelLabel: "Lvl 20+",
+    rod: { name: "Aeros SP68MH", testMin: 7, testMax: 28, length: "2.1m", action: "Fast" },
+    reel: { name: "Caliber HSV 80 SLC", ratio: "4.7:1", friction: "15.4kg", size: 8000 },
+    line: { name: "Mono Original 55LB", diameter: "0.6mm", breakingLoad: "25kg" },
+    tags: ["Universal", "Trolling", "Castable"],
+    copperLegal: false,
+    budget: true,
+    cost: 4800,
+    fish: ["Pike", "Perch", "Asp", "Chub"],
+    description: "A solid all-round spinning setup for medium and large predators. Works well for both trolling and casting wobblers. Good price-to-performance ratio for players just hitting level 20. The MH action handles a wide test range so you're not locked into one lure type."
+  },
+  {
+    id: 2,
+    name: "Light Spinning — UL/L Universal",
+    type: "spinning",
+    subtype: "spinning-universal",
+    minLevel: 10,
+    levelLabel: "Lvl 10+",
+    rod: { name: "Salmo Elite 602UL", testMin: 1, testMax: 7, length: "1.8m", action: "Extra Fast" },
+    reel: { name: "Ryobi Eccs 2000", ratio: "5.1:1", friction: "4kg", size: 2000 },
+    line: { name: "Fluorocarbon 0.18mm", diameter: "0.18mm", breakingLoad: "3.2kg" },
+    tags: ["Light lures", "Small predators", "Rivers"],
+    copperLegal: false,
+    budget: true,
+    cost: 1200,
+    fish: ["Perch", "Ruffe", "Bleak", "Roach"],
+    description: "Entry-level ultralight setup for small predators and rivers. The UL action paired with a 2000 size reel gives great sensitivity on light lures. Best used with spinners and small jig heads. Not suited for trolling or heavy wobblers."
+  },
+  {
+    id: 3,
+    name: "Trolling / Kuori Setup",
+    type: "spinning",
+    subtype: "spinning-trolling",
+    minLevel: 25,
+    levelLabel: "Lvl 25+",
+    rod: { name: "Surf Master Rondine MH", testMin: 10, testMax: 40, length: "2.4m", action: "Moderate Fast" },
+    reel: { name: "Stinger Deep Sea 5000", ratio: "4.3:1", friction: "18kg", size: 5000 },
+    line: { name: "Braid PE 0.3mm", diameter: "0.3mm", breakingLoad: "22kg" },
+    tags: ["Trolling", "Kuori", "Large predators"],
+    copperLegal: false,
+    budget: false,
+    cost: 7400,
+    fish: ["Pike", "Taimen", "Huchen", "Large Perch"],
+    description: "Built for trolling large lures at Kuori and similar open water maps. The moderate-fast action absorbs the constant drag of trolling lures better than a fast action rod. Braid is strongly recommended here for sensitivity and thin diameter to reduce drag at depth. Good for large wobblers in the 15–30g range."
+  },
+  {
+    id: 4,
+    name: "Feeder Starter — Copper Legal",
+    type: "bottom",
+    subtype: "bottom-feeder",
+    minLevel: 15,
+    levelLabel: "Lvl 15+",
+    rod: { name: "Feeder Concept X 390", testMin: 0, testMax: 120, length: "3.9m", action: "Moderate" },
+    reel: { name: "Shimano Catana 4000", ratio: "5.0:1", friction: "8kg", size: 4000 },
+    line: { name: "Mono Original 0.28mm", diameter: "0.28mm", breakingLoad: "8kg" },
+    tags: ["Feeder", "Carp", "River"],
+    copperLegal: true,
+    budget: true,
+    cost: 3200,
+    fish: ["Bream", "Carp", "Tench", "Crucian Carp"],
+    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. The 4000 reel is intentional — Copper prohibits reels above 6000. Slightly underpowered for large open water carp but perfectly viable for Copper and early carp lakes. A smart investment since you'll use this for a long time before upgrading."
+  },
+  {
+    id: 5,
+    name: "Carp Open Water — Intermediate",
+    type: "bottom",
+    subtype: "bottom-carp",
+    minLevel: 35,
+    levelLabel: "Lvl 35+",
+    rod: { name: "Carp Master Pro 390", testMin: 0, testMax: 150, length: "3.9m", action: "Slow" },
+    reel: { name: "Strega 8000", ratio: "4.6:1", friction: "14kg", size: 8000 },
+    line: { name: "Mono Carp 0.35mm", diameter: "0.35mm", breakingLoad: "12kg" },
+    tags: ["Carp", "Open water", "Amber Lake"],
+    copperLegal: false,
+    budget: false,
+    cost: 9800,
+    fish: ["Common Carp", "Mirror Carp", "Grass Carp"],
+    description: "Proper carp rod and reel combo for open water maps like Amber Lake where big carp demand more power. The 8000 reel is prohibited at Copper Lake — this setup is NOT Copper legal. The slow action handles prolonged fights much better than feeder rods. Significant upgrade over feeder setups in terms of casting distance and fish-fighting ability."
+  },
+  {
+    id: 6,
+    name: "Match Float — All-Round",
+    type: "float",
+    subtype: "float-match",
+    minLevel: 5,
+    levelLabel: "Lvl 5+",
+    rod: { name: "Salmo Elite Match 600", testMin: 5, testMax: 20, length: "6.0m", action: "Moderate" },
+    reel: { name: "Ryobi Eccs 3000", ratio: "5.1:1", friction: "6kg", size: 3000 },
+    line: { name: "Mono Original 0.22mm", diameter: "0.22mm", breakingLoad: "5.5kg" },
+    tags: ["Match", "Rivers", "Lakes", "Beginner friendly"],
+    copperLegal: true,
+    budget: true,
+    cost: 1800,
+    fish: ["Roach", "Bream", "Tench", "Rudd", "Chub"],
+    description: "A clean match setup that works on both rivers and lakes. The 6m length gives good reach without being unwieldy. Match rods offer better sensitivity and casting accuracy over telescopic for most scenarios. Good starter float setup that won't need replacing for a long time. Works well with maggots, worms and bread."
+  },
+  {
+    id: 7,
+    name: "Telescopic Float — Budget Beginner",
+    type: "float",
+    subtype: "float-telescopic",
+    minLevel: 1,
+    levelLabel: "Lvl 1+",
+    rod: { name: "Salmo Sniper Tele 600", testMin: 5, testMax: 15, length: "6.0m", action: "Moderate" },
+    reel: { name: "Ryobi Eccs 2000", ratio: "5.1:1", friction: "4kg", size: 2000 },
+    line: { name: "Mono Original 0.18mm", diameter: "0.18mm", breakingLoad: "3.5kg" },
+    tags: ["Telescopic", "Beginner", "Budget"],
+    copperLegal: true,
+    budget: true,
+    cost: 600,
+    fish: ["Roach", "Rudd", "Bleak", "Perch"],
+    description: "The cheapest viable float setup in the game. Telescopic rods are less sensitive than match but perfectly usable for small fish and learning the game. Ideal for the very first days of play before you know what direction you want to take. Upgrade to a match rod when you can — but this will do the job in the meantime."
+  }
+];
+
+// ============================================================
+// APP LOGIC — no need to edit below this line
+// ============================================================
+let activeFilter = 'all';
+let activeLevelFilter = 'all-levels';
+let selectedId = null;
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = builds.length;
+  document.getElementById('count-spinning').textContent = builds.filter(b => b.type === 'spinning').length;
+  document.getElementById('count-bottom').textContent = builds.filter(b => b.type === 'bottom').length;
+  document.getElementById('count-float').textContent = builds.filter(b => b.type === 'float').length;
+}
+
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['spinning','bottom','float'].forEach(t => {
+    const sub = document.getElementById('sub-' + t);
+    if (sub) sub.style.display = (filter === t || filter.startsWith(t + '-')) ? 'flex' : 'none';
+  });
+  renderBuilds();
+}
+
+function setLevelFilter(level, btn) {
+  activeLevelFilter = level;
+  document.querySelectorAll('.sidebar-section:last-child .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBuilds();
+}
+
+function filterBuilds() { renderBuilds(); }
+
+function getFilteredBuilds() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  return builds.filter(b => {
+    const typeMatch = activeFilter === 'all' ||
+      b.type === activeFilter ||
+      b.subtype === activeFilter ||
+      (activeFilter === 'bottom-copper' && b.copperLegal && b.type === 'bottom');
+    const levelMatch = activeLevelFilter === 'all-levels' ||
+      (activeLevelFilter === 'beginner' && b.minLevel < 20) ||
+      (activeLevelFilter === 'intermediate' && b.minLevel >= 20 && b.minLevel < 40) ||
+      (activeLevelFilter === 'advanced' && b.minLevel >= 40);
+    const searchMatch = !search ||
+      b.name.toLowerCase().includes(search) ||
+      b.rod.name.toLowerCase().includes(search) ||
+      b.reel.name.toLowerCase().includes(search) ||
+      b.fish.some(f => f.toLowerCase().includes(search)) ||
+      b.tags.some(t => t.toLowerCase().includes(search));
+    return typeMatch && levelMatch && searchMatch;
+  });
+}
+
+function renderBuilds() {
+  const grid = document.getElementById('buildsGrid');
+  const filtered = getFilteredBuilds();
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results">No builds found for this filter.<br>More builds coming soon.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(b => `
+    <div class="build-card type-${b.type} ${selectedId === b.id ? 'selected' : ''}" onclick="selectBuild(${b.id})">
+      <div class="card-top">
+        <div class="card-name">${b.name}</div>
+        <div class="card-level">${b.levelLabel}</div>
+      </div>
+      <div class="card-gear">
+        <strong>Rod:</strong> ${b.rod.name} &nbsp;·&nbsp; <strong>Reel:</strong> ${b.reel.name}
+      </div>
+      <div class="card-tags">
+        ${b.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        ${b.copperLegal ? '<span class="tag copper">⚡ Copper Legal</span>' : ''}
+        ${b.budget ? '<span class="tag budget">Budget</span>' : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectBuild(id) {
+  selectedId = id;
+  const b = builds.find(x => x.id === id);
+  renderBuilds();
+  const panel = document.getElementById('detailPanel');
+  panel.innerHTML = `
+    <div class="detail-name">${b.name}</div>
+    <div class="detail-sub">Min level ${b.minLevel} &nbsp;·&nbsp; ${b.type.charAt(0).toUpperCase() + b.type.slice(1)} fishing</div>
+
+    <div class="detail-desc">${b.description}</div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Rod</div>
+      <div class="stat-row"><span class="stat-label">Name</span><span class="stat-val">${b.rod.name}</span></div>
+      <div class="stat-row"><span class="stat-label">Test weight</span><span class="stat-val">${b.rod.testMin}–${b.rod.testMax}g</span></div>
+      <div class="stat-row"><span class="stat-label">Length</span><span class="stat-val">${b.rod.length}</span></div>
+      <div class="stat-row"><span class="stat-label">Action</span><span class="stat-val">${b.rod.action}</span></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Reel</div>
+      <div class="stat-row"><span class="stat-label">Name</span><span class="stat-val">${b.reel.name}</span></div>
+      <div class="stat-row"><span class="stat-label">Gear ratio</span><span class="stat-val">${b.reel.ratio}</span></div>
+      <div class="stat-row"><span class="stat-label">Friction</span><span class="stat-val">${b.reel.friction}</span></div>
+      <div class="stat-row"><span class="stat-label">Reel size</span><span class="stat-val">${b.reel.size}</span></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Line</div>
+      <div class="stat-row"><span class="stat-label">Name</span><span class="stat-val">${b.line.name}</span></div>
+      <div class="stat-row"><span class="stat-label">Diameter</span><span class="stat-val">${b.line.diameter}</span></div>
+      <div class="stat-row"><span class="stat-label">Breaking load</span><span class="stat-val">${b.line.breakingLoad}</span></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Target fish</div>
+      <div class="detail-fish">
+        ${b.fish.map(f => `<span class="fish-tag">${f}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="cost-row">
+      <span class="cost-pill">~${b.cost.toLocaleString()} silver</span>
+      ${b.copperLegal ? '<span class="copper-pill">⚡ Copper Legal</span>' : ''}
+    </div>
+  `;
+}
+
+updateCounts();
+renderBuilds();
+</script>
+</body>
+</html>

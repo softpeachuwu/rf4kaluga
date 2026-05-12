@@ -427,7 +427,7 @@ const builds = [
   },
   {
     id: 2,
-    name: "Light Spinning — UL/L Universal",
+    name: "Light Spinning - UL/L Universal",
     type: "spinning",
     subtype: "spinning-universal",
     minLevel: 10,
@@ -461,7 +461,7 @@ const builds = [
   },
   {
     id: 4,
-    name: "Feeder Starter — Copper Legal",
+    name: "Feeder Starter - Copper Legal",
     type: "bottom",
     subtype: "bottom-feeder",
     minLevel: 15,
@@ -474,11 +474,11 @@ const builds = [
     budget: true,
     cost: 3200,
     fish: ["Bream", "Carp", "Tench", "Crucian Carp"],
-    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. The 4000 reel is intentional — Copper prohibits reels above 6000. Slightly underpowered for large open water carp but perfectly viable for Copper and early carp lakes. A smart investment since you'll use this for a long time before upgrading."
+    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. The 4000 reel is intentional - Copper prohibits reels above 6000. Slightly underpowered for large open water carp but perfectly viable for Copper and early carp lakes. A smart investment since you'll use this for a long time before upgrading."
   },
   {
     id: 5,
-    name: "Carp Open Water — Intermediate",
+    name: "Carp Open Water - Intermediate",
     type: "bottom",
     subtype: "bottom-carp",
     minLevel: 35,
@@ -491,11 +491,11 @@ const builds = [
     budget: false,
     cost: 9800,
     fish: ["Common Carp", "Mirror Carp", "Grass Carp"],
-    description: "Proper carp rod and reel combo for open water maps like Amber Lake where big carp demand more power. The 8000 reel is prohibited at Copper Lake — this setup is NOT Copper legal. The slow action handles prolonged fights much better than feeder rods. Significant upgrade over feeder setups in terms of casting distance and fish-fighting ability."
+    description: "Proper carp rod and reel combo for open water maps like Amber Lake where big carp demand more power. The 8000 reel is prohibited at Copper Lake - this setup is NOT Copper legal. The slow action handles prolonged fights much better than feeder rods. Significant upgrade over feeder setups in terms of casting distance and fish-fighting ability."
   },
   {
     id: 6,
-    name: "Match Float — All-Round",
+    name: "Match Float - All-Round",
     type: "float",
     subtype: "float-match",
     minLevel: 5,
@@ -512,7 +512,7 @@ const builds = [
   },
   {
     id: 7,
-    name: "Telescopic Float — Budget Beginner",
+    name: "Telescopic Float - Budget Beginner",
     type: "float",
     subtype: "float-telescopic",
     minLevel: 1,
@@ -526,6 +526,23 @@ const builds = [
     cost: 600,
     fish: ["Roach", "Rudd", "Bleak", "Perch"],
     description: "The cheapest viable float setup in the game. Telescopic rods are less sensitive than match but perfectly usable for small fish and learning the game. Ideal for the very first days of play before you know what direction you want to take. Upgrade to a match rod when you can — but this will do the job in the meantime."
+  },
+  {
+    id: 8,
+    name: "Light Spinning - ML Starter",
+    type: "spinning",
+    subtype: "spinning-universal",
+    minLevel: 13,
+    levelLabel: "Lvl 13+",
+    rod: { name: "Linear S68ML", testMin: 3, testMax: 15, length: "2.1m", action: "Medium" },
+    reel: { name: "Meteor 30s", ratio: "6.0:1", friction: "7.7kg", size: 3000 },
+    line: { name: "Braid up to 11kg + Fluorocarbon leader up to 11kg", diameter: "0.24mm", breakingLoad: "11kg" },
+    tags: ["Light spinning", "ML", "Early game"],
+    copperLegal: true,
+    budget: true,
+    cost: 1210,
+    fish: ["Perch", "Chub", "Asp", "Roach", "Small Pike"],
+    description: "A solid early game ML spinning setup available from level 13. The Linear S68ML has a medium action which makes it forgiving for beginners while still handling light lures well in the 3-15g range. Pairs naturally with a braid mainline and fluorocarbon leader for better sensitivity and abrasion resistance. Copper legal due to the 3000 size reel. Good all-rounder before you specialise into heavier setups."
   }
 ];
 

@@ -316,7 +316,7 @@
 <body>
 
 <nav>
-  <div class="logo">RF4<span>Kaluga</span></div>
+  <div class="logo">RF4<span>KALUGA</span></div>
   <div class="nav-links">
     <a href="#" class="active">Builds</a>
     <a href="#" class="soon">Maps</a>
@@ -541,6 +541,8 @@ const builds = [
     copperLegal: true,
     budget: true,
     cost: 1210,
+    rodImage: "images/linear68ML.png",
+    reelImage: "images/meteor-30s.png",
     fish: ["Perch", "Chub", "Asp", "Roach", "Small Pike"],
     description: "A solid early game ML spinning setup available from level 13. The Linear S68ML has a medium action which makes it forgiving for beginners while still handling light lures well in the 3-15g range. Pairs naturally with a braid mainline and fluorocarbon leader for better sensitivity and abrasion resistance. Copper legal due to the 3000 size reel. Good all-rounder before you specialise into heavier setups."
   }
@@ -632,6 +634,11 @@ function selectBuild(id) {
   renderBuilds();
   const panel = document.getElementById('detailPanel');
   panel.innerHTML = `
+  ${b.rodImage || b.reelImage ? `
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.25rem; justify-content:center;">
+      ${b.rodImage ? `<img src="${b.rodImage}" style="height:100px; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));">` : ''}
+      ${b.reelImage ? `<img src="${b.reelImage}" style="height:100px; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));">` : ''}
+    </div>` : ''}
     <div class="detail-name">${b.name}</div>
     <div class="detail-sub">Min level ${b.minLevel} &nbsp;·&nbsp; ${b.type.charAt(0).toUpperCase() + b.type.slice(1)} fishing</div>
 

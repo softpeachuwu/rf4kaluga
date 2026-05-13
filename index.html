@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+3<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: 45px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -46,13 +46,11 @@
     align-items: flex-start;
     gap: 0px;
     line-height: 1;
-    position: relative;
   }
   .logo-wordmark {
-    font-size: 20px;
+    font-size: 30px;
     line-height: 1;
     color: var(--text);
-    margin-bottom: -2px;
   }
   .logo-accent {
     color: var(--accent);
@@ -61,9 +59,10 @@
   .logo-fish {
     height: 36px;
     width: auto;
+    object-fit: fill;
     filter: brightness(0) saturate(100%) invert(72%) sepia(38%) saturate(500%) hue-rotate(10deg) brightness(95%);
     opacity: 0.88;
-    margin-top: -4px;
+    margin-top: 2px;
     display: block;
   }
   .nav-links { display: flex; gap: 2rem; align-items: center; }

@@ -38,12 +38,33 @@
   }
   .logo {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+    line-height: 1;
   }
-  .logo span { color: var(--accent); }
+  .logo-wordmark {
+    font-size: 20px;
+    line-height: 1;
+    color: var(--text);
+  }
+  .logo-accent {
+    color: var(--accent);
+  }
+  .logo-accent { color: var(--accent); }
+  .logo-fish {
+    height: 22px;
+    width: 100%;
+    object-fit: fill;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(38%) saturate(500%) hue-rotate(10deg) brightness(95%);
+    opacity: 0.88;
+    margin-top: 2px;
+    display: block;
+  }
   .nav-links { display: flex; gap: 2rem; align-items: center; }
   .nav-links a {
     font-size: 14px;
@@ -358,7 +379,10 @@
 <body>
 
 <nav>
-  <div class="logo">RF4<span>Kaluga</span></div>
+  <div class="logo">
+    <span class="logo-wordmark">RF4<span class="logo-accent">Kaluga</span></span>
+    <img src="data:image/png;base64,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" alt="Kaluga" class="logo-fish" />
+  </div>
   <div class="nav-links">
     <a href="#" class="active">Builds</a>
     <a href="#" class="soon">Maps</a>

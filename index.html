@@ -3,329 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RF4 Kaluga — Gear Builds</title>
+<title>RF4Kaluga — Gear Builds</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #12100e;
-    --surface: #1c1814;
-    --surface2: #24201a;
-    --border: #3a3228;
-    --accent: #c9a96e;
-    --accent2: #b8924f;
-    --text: #ede8df;
-    --muted: #8a7d6a;
-    --tag-bg: #24201a;
-    --spinning: #7eb8c9;
-    --bottom: #c97a4a;
-    --float: #9d8fc4;
+    --bg: #12100e; --surface: #1c1814; --surface2: #24201a; --border: #3a3228;
+    --accent: #c9a96e; --accent2: #b8924f; --text: #ede8df; --muted: #8a7d6a;
+    --tag-bg: #24201a; --spinning: #7eb8c9; --bottom: #c97a4a; --float: #9d8fc4;
+    --green: #4ade80; --red: #f87171; --blue: #38bdf8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   /* NAV */
-  nav {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0px;
-    line-height: 1;
-    position: relative;
-    padding-top: 12px;
-  }
-  .logo-wordmark {
-    font-size: 20px;
-    line-height: 1;
-    color: var(--text);
-    margin-bottom: -2px;
-  }
-  .logo-accent {
-    color: var(--accent);
-  }
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 50px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 0.05em; color: var(--text); display: flex; flex-direction: column; align-items: flex-start; gap: 0; line-height: 1; position: relative; padding-top: 12px; }
+  .logo-wordmark { font-size: 20px; line-height: 1; color: var(--text); margin-bottom: -2px; }
   .logo-accent { color: var(--accent); }
-  .logo-fish {
-    height: 36px;
-    width: auto;
-    filter: brightness(0) saturate(100%) invert(72%) sepia(38%) saturate(500%) hue-rotate(10deg) brightness(95%);
-    opacity: 0.88;
-    margin-top: -4px;
-    display: block;
-  }
+  .logo-fish { height: 36px; width: auto; filter: brightness(0) saturate(100%) invert(72%) sepia(38%) saturate(500%) hue-rotate(10deg) brightness(95%); opacity: 0.88; margin-top: -4px; display: block; }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
   .nav-links { display: flex; gap: 2rem; align-items: center; }
-  .nav-links a {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: color 0.15s;
-  }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.15s; cursor: pointer; }
   .nav-links a.active { color: var(--accent); }
   .nav-links a.soon { opacity: 0.35; cursor: default; pointer-events: none; }
-  .nav-links a:hover:not(.soon) { color: var(--text); }
+  .nav-links a:hover:not(.soon):not(.active) { color: var(--text); }
+  .lang-switcher { display: flex; align-items: center; gap: 2px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 3px; }
+  .lang-btn { font-size: 18px; padding: 2px 5px; border-radius: 5px; border: none; background: transparent; cursor: pointer; transition: all 0.15s; opacity: 0.5; line-height: 1; }
+  .lang-btn:hover { opacity: 0.85; }
+  .lang-btn.active { background: var(--border); opacity: 1; }
 
-  /* HERO STRIP */
-.hero {
-    background: transparent; 
-    border-bottom: none;     
-    padding: 8px 1.25rem 6px; /* Adds a little breathing room from the top nav */
-}
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
 
-.hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;          /* Smaller, more like a label */
-    font-weight: 700;
-    letter-spacing: 0.08em;   /* Spaced out slightly for a modern look */
-    margin-bottom: 0;
-    text-transform: uppercase;
-    opacity: 0.5;             /* Makes it subtle so the builds stand out */
-}
-
-.hero h1 span {
-    color: var(--accent);
-}
-
-.hero p {
-    display: none; 
-}
+  /* HERO */
+  .hero { padding: 8px 1.5rem 6px; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+  .hero h1 span { color: var(--accent); }
 
   /* LAYOUT */
-  .container { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: calc(100vh - 120px); }
-
-  /* MODAL OVERLAY */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    width: 100%;
-    max-width: 860px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 2rem;
-    position: relative;
-    animation: modalIn 0.2s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(16px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .modal-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    border-radius: 8px;
-    width: 32px; height: 32px;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-  }
-  .modal-close:hover { color: var(--text); border-color: var(--accent); }
-  .modal-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    margin-bottom: 6px;
-    padding-right: 2.5rem;
-  }
-  .modal-sub { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .modal-badge {
-    padding: 2px 10px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .gear-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
-  .gear-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .gear-card-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .gear-card-img {
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  .gear-card-img img {
-    max-height: 140px;
-    max-width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.7));
-  }
-  .gear-card-img .no-img { font-size: 48px; opacity: 0.12; }
-  .gear-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
-  .gear-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid var(--bg); }
-  .gear-stat:last-of-type { border-bottom: none; }
-  .gear-stat-label { color: var(--muted); }
-  .gear-stat-val { font-weight: 500; color: var(--text); }
-  .gear-card-cost { margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent); }
-  .modal-section { margin-bottom: 1.25rem; }
-  .modal-section-title {
-    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted);
-    margin-bottom: 8px; padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .modal-desc {
-    font-size: 14px; color: #9aa3b8; line-height: 1.75;
-    background: var(--surface2); border-radius: 8px;
-    padding: 14px 16px; border: 1px solid var(--border);
-  }
-  .modal-stat { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid #1e2330; }
-  .modal-stat:last-child { border-bottom: none; }
-  .modal-stat-label { color: var(--muted); }
-  .modal-stat-val { font-weight: 500; color: var(--text); }
-  .fish-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .fish-tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
-  .modal-footer { display: flex; align-items: center; gap: 10px; padding-top: 1rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
-  .total-cost { font-size: 15px; font-weight: 700; padding: 7px 18px; border-radius: 10px; background: #1c1608; border: 1px solid #8a6830; color: var(--accent); }
-  .copper-badge { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #1c1508; border: 1px solid #b45309; color: #f59e0b; }
-
-  /* SIDEBAR */
-  .sidebar {
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    padding: 1.5rem 1rem;
-    position: sticky;
-    top: 60px;
-    height: calc(100vh - 60px);
-    overflow-y: auto;
-  }
+  .layout { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 80px); }
+  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 1.25rem 1rem; position: sticky; top: 50px; height: calc(100vh - 50px); overflow-y: auto; }
   .sidebar-section { margin-bottom: 1.5rem; }
-  .sidebar-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    padding-left: 4px;
-  }
+  .sidebar-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; padding-left: 4px; }
   .filter-group { display: flex; flex-direction: column; gap: 2px; }
-  .filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-    width: 100%;
-  }
+  .filter-btn { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; border: none; background: transparent; color: var(--muted); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; text-align: left; width: 100%; }
   .filter-btn:hover { background: var(--surface2); color: var(--text); }
   .filter-btn.active { background: var(--surface2); color: var(--text); }
-  .filter-btn .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot-all { background: var(--accent); }
-  .dot-spinning { background: var(--spinning); }
-  .dot-bottom { background: var(--bottom); }
-  .dot-float { background: var(--float); }
-  .filter-btn .count {
-    margin-left: auto;
-    font-size: 11px;
-    color: var(--muted);
-    background: var(--bg);
-    padding: 1px 6px;
-    border-radius: 10px;
-  }
+  .filter-btn .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-all { background: var(--accent); } .dot-spinning { background: var(--spinning); } .dot-bottom { background: var(--bottom); } .dot-float { background: var(--float); }
+  .filter-btn .count { margin-left: auto; font-size: 11px; color: var(--muted); background: var(--bg); padding: 1px 6px; border-radius: 10px; }
   .sub-filters { margin-left: 18px; margin-top: 2px; }
-
-  /* SEARCH */
-  .search-wrap { padding: 1rem 1rem 0; }
-  .search-wrap input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 9px 14px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.15s;
-  }
+  .search-wrap { margin-bottom: 1.25rem; }
+  .search-wrap input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
   .search-wrap input::placeholder { color: var(--muted); }
   .search-wrap input:focus { border-color: var(--accent); }
+  .main-area { padding: 1rem; overflow-y: auto; }
 
-  /* BUILDS LIST */
-  .builds-area { padding: 1rem; overflow-y: auto; }
+  /* BUILD CARDS */
   .builds-grid { display: flex; flex-direction: column; gap: 8px; }
-  .build-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    cursor: pointer;
-    transition: all 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-  .build-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    border-radius: 3px 0 0 3px;
-  }
+  .build-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; cursor: pointer; transition: all 0.15s; position: relative; overflow: hidden; }
+  .build-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 3px 0 0 3px; }
   .build-card.type-spinning::before { background: var(--spinning); }
   .build-card.type-bottom::before { background: var(--bottom); }
   .build-card.type-float::before { background: var(--float); }
@@ -333,48 +71,116 @@
   .build-card.selected { border-color: var(--accent); background: var(--surface2); }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
   .card-name { font-size: 15px; font-weight: 600; color: var(--text); }
-  .card-level {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: var(--surface2);
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-left: 8px;
-  }
+  .card-level { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--surface2); color: var(--muted); white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
   .card-gear { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
   .card-gear strong { color: #a0aabe; font-weight: 500; }
   .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .tag {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
   .tag.copper { border-color: #b45309; color: #f59e0b; background: #1c1508; }
   .tag.budget { border-color: #8a6830; color: #c9a96e; background: #1c1608; }
+  .tag.cost { border-color: #166534; color: #4ade80; background: #0a1f10; margin-left: auto; }
+  .no-results { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 14px; }
 
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(4px); }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 860px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; animation: modalIn 0.2s ease; }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); border-radius: 8px; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .modal-close:hover { color: var(--text); border-color: var(--accent); }
+  .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 6px; padding-right: 2.5rem; }
+  .modal-sub { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .modal-badge { padding: 2px 10px; border-radius: 10px; font-size: 12px; font-weight: 600; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); }
+  .gear-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .gear-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; }
+  .gear-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .gear-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+  .gear-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid var(--bg); }
+  .gear-stat:last-of-type { border-bottom: none; }
+  .gear-stat-label { color: var(--muted); } .gear-stat-val { font-weight: 500; color: var(--text); }
+  .gear-card-cost { margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  .modal-section { margin-bottom: 1.25rem; }
+  .modal-section-title { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .modal-desc { font-size: 14px; color: #9aa3b8; line-height: 1.75; background: var(--surface2); border-radius: 8px; padding: 14px 16px; border: 1px solid var(--border); }
+  .modal-stat { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px solid #1e2330; }
+  .modal-stat:last-child { border-bottom: none; }
+  .modal-stat-label { color: var(--muted); } .modal-stat-val { font-weight: 500; color: var(--text); }
+  .fish-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .fish-tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
+  .modal-footer { display: flex; align-items: center; gap: 10px; padding-top: 1rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .total-cost { font-size: 15px; font-weight: 700; padding: 7px 18px; border-radius: 10px; background: #1c1608; border: 1px solid #8a6830; color: var(--accent); }
+  .copper-badge { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #1c1508; border: 1px solid #b45309; color: #f59e0b; }
 
-  .no-results {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--muted);
-    font-size: 14px;
-  }
+  /* GEAR DB PAGE */
+  .gear-db-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 80px); }
+  .gear-db-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 1.25rem 1rem; position: sticky; top: 50px; height: calc(100vh - 50px); overflow-y: auto; }
+  .gear-type-btn { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; border: none; background: transparent; color: var(--muted); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; width: 100%; text-align: left; transition: all 0.15s; margin-bottom: 2px; }
+  .gear-type-btn:hover { background: var(--surface2); color: var(--text); }
+  .gear-type-btn.active { background: var(--surface2); color: var(--accent); }
+  .gear-type-btn .gear-icon { font-size: 16px; width: 20px; text-align: center; }
+  .gear-main { padding: 1.25rem; }
+  .gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .gear-item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; transition: all 0.15s; cursor: pointer; }
+  .gear-item-card:hover { border-color: var(--accent); background: var(--surface2); }
+  .gear-item-name { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .gear-item-stats { display: flex; flex-direction: column; gap: 3px; }
+  .gear-item-stat { display: flex; justify-content: space-between; font-size: 12px; }
+  .gear-item-stat-label { color: var(--muted); }
+  .gear-item-stat-val { color: var(--text); font-weight: 500; }
+  .gear-item-cost { font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .gear-search { margin-bottom: 1.25rem; }
+  .gear-search input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
+  .gear-search input::placeholder { color: var(--muted); }
+  .gear-search input:focus { border-color: var(--accent); }
+
+  /* COMPARE PAGE */
+  .compare-page { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .compare-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .compare-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+  .compare-section-title span { color: var(--accent); }
+  .slot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+  .slot { background: var(--surface); border: 2px dashed var(--border); border-radius: 12px; padding: 1rem; min-height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; position: relative; min-width: 0; }
+  .slot:hover { border-color: var(--accent); }
+  .slot.filled { border-style: solid; border-color: var(--border); background: var(--surface2); align-items: flex-start; flex-direction: column; justify-content: flex-start; }
+  .slot-img { width: 100%; height: 110px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+  .slot-img img { max-height: 100px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
+  .slot-img .no-img { font-size: 40px; opacity: 0.15; }
+  .slot.filled:hover { border-color: var(--accent); }
+  .slot-placeholder { font-size: 13px; color: var(--muted); text-align: center; }
+  .slot-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .slot-sub { font-size: 12px; color: var(--muted); }
+  .slot-clear { position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; background: var(--border); border: none; border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .slot-clear:hover { background: var(--red); color: white; }
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  .compare-table th.gear-col { color: var(--accent); font-size: 14px; text-transform: none; letter-spacing: 0; }
+  .compare-table td { font-size: 14px; padding: 9px 12px; border-bottom: 1px solid var(--surface2); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td.stat-label { color: var(--muted); }
+  .compare-table td.better { color: var(--green); font-weight: 600; }
+  .compare-table td.worse { color: var(--muted); }
+  .compare-table td.equal { color: var(--text); }
+  .compare-empty { text-align: center; padding: 2rem; color: var(--muted); font-size: 14px; }
+
+  /* PICKER MODAL */
+  .picker-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 1.5rem; position: relative; animation: modalIn 0.2s ease; }
+  .picker-search { margin-bottom: 1rem; }
+  .picker-search input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text); outline: none; }
+  .picker-search input:focus { border-color: var(--accent); }
+  .picker-list { display: flex; flex-direction: column; gap: 6px; }
+  .picker-item { padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+  .picker-item:hover { border-color: var(--accent); }
+  .picker-item-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .picker-item-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
   /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
   @media (max-width: 900px) {
-    .container { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-    .detail-panel { position: static; height: auto; border-left: none; border-top: 1px solid var(--border); }
+    .layout, .gear-db-layout { grid-template-columns: 1fr; }
+    .sidebar, .gear-db-sidebar { position: static; height: auto; }
+    .compare-sections { grid-template-columns: 1fr; }
+    .slot-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -385,221 +191,395 @@
     <span class="logo-wordmark">RF4<span class="logo-accent">Kaluga</span></span>
     <img src="data:image/png;base64,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" alt="Kaluga" class="logo-fish" />
   </div>
-  <div class="nav-links">
-    <a href="#" class="active">Builds</a>
-    <a href="#" class="soon">Maps</a>
-    <a href="#" class="soon">Gear DB</a>
-    <a href="#" class="soon">Knowledge</a>
-    <a href="#" class="soon">Blog</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a onclick="showPage('builds')" class="active" id="nav-builds" data-i18n="nav_builds">Builds</a>
+      <a onclick="showPage('geardb')" id="nav-geardb" data-i18n="nav_geardb">Gear DB</a>
+      <a onclick="showPage('compare')" id="nav-compare" data-i18n="nav_compare">Compare</a>
+      <a class="soon" data-i18n="nav_maps">Maps</a>
+      <a class="soon" data-i18n="nav_knowledge">Knowledge</a>
+      <a class="soon" data-i18n="nav_blog">Blog</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">🇬🇧</button>
+      <button class="lang-btn" onclick="setLang('ru')">🇷🇺</button>
+      <button class="lang-btn" onclick="setLang('pl')">🇵🇱</button>
+      <button class="lang-btn" onclick="setLang('fr')">🇫🇷</button>
+      <button class="lang-btn" onclick="setLang('zh')">🇨🇳</button>
+    </div>
   </div>
 </nav>
 
-<div class="hero">
-  <h1>Gear <span>Builds</span></h1>
-  <p>Researched and tested setups for every playstyle and level. Click a build to see full stats and recommended use.</p>
-</div>
-
-<div class="container">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="search-wrap" style="padding: 0 0 1.25rem;">
-      <input type="text" id="searchInput" placeholder="Search builds..." oninput="filterBuilds()" />
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Fishing Type</div>
-      <div class="filter-group">
-        <button class="filter-btn active" onclick="setFilter('all', this)">
-          <span class="dot dot-all"></span> All Builds
-          <span class="count" id="count-all">0</span>
-        </button>
-        <button class="filter-btn" onclick="setFilter('spinning', this)">
-          <span class="dot dot-spinning"></span> Spinning
-          <span class="count" id="count-spinning">0</span>
-        </button>
-        <div class="sub-filters filter-group" id="sub-spinning" style="display:none;">
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-universal', this)"><span style="width:8px;height:8px;"></span> Universal</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-trolling', this)"><span style="width:8px;height:8px;"></span> Trolling</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-jigging', this)"><span style="width:8px;height:8px;"></span> Jigging</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('spinning-casting', this)"><span style="width:8px;height:8px;"></span> Casting</button>
-        </div>
-        <button class="filter-btn" onclick="setFilter('bottom', this)">
-          <span class="dot dot-bottom"></span> Bottom
-          <span class="count" id="count-bottom">0</span>
-        </button>
-        <div class="sub-filters filter-group" id="sub-bottom" style="display:none;">
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-feeder', this)"><span style="width:8px;height:8px;"></span> Feeder / Picker</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-carp', this)"><span style="width:8px;height:8px;"></span> Carp</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('bottom-copper', this)"><span style="width:8px;height:8px;"></span> ⚡ Copper Legal</button>
-        </div>
-        <button class="filter-btn" onclick="setFilter('float', this)">
-          <span class="dot dot-float"></span> Float
-          <span class="count" id="count-float">0</span>
-        </button>
-        <div class="sub-filters filter-group" id="sub-float" style="display:none;">
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-telescopic', this)"><span style="width:8px;height:8px;"></span> Telescopic</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-match', this)"><span style="width:8px;height:8px;"></span> Match</button>
-          <button class="filter-btn" style="font-size:13px;" onclick="setFilter('float-bolognese', this)"><span style="width:8px;height:8px;"></span> Bolognese</button>
+<!-- BUILDS PAGE -->
+<div class="page active" id="page-builds">
+  <div class="hero"><h1 data-i18n="hero_title_gear">Gear <span data-i18n="hero_title_builds">Builds</span></h1></div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="search-wrap">
+        <input type="text" id="buildSearch" data-i18n-placeholder="search_placeholder" placeholder="Search builds..." oninput="renderBuilds()" />
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label" data-i18n="filter_fishing_type">Fishing Type</div>
+        <div class="filter-group">
+          <button class="filter-btn active" onclick="setBuildFilter('all',this)"><span class="dot dot-all"></span><span data-i18n="filter_all">All Builds</span><span class="count" id="count-all">0</span></button>
+          <button class="filter-btn" onclick="setBuildFilter('spinning',this)"><span class="dot dot-spinning"></span><span data-i18n="filter_spinning">Spinning</span><span class="count" id="count-spinning">0</span></button>
+          <div class="sub-filters filter-group" id="sub-spinning" style="display:none;">
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('spinning-universal',this)"><span style="width:8px"></span><span data-i18n="sub_universal">Universal</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('spinning-trolling',this)"><span style="width:8px"></span><span data-i18n="sub_trolling">Trolling</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('spinning-jigging',this)"><span style="width:8px"></span><span data-i18n="sub_jigging">Jigging</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('spinning-casting',this)"><span style="width:8px"></span><span data-i18n="sub_casting">Casting</span></button>
+          </div>
+          <button class="filter-btn" onclick="setBuildFilter('bottom',this)"><span class="dot dot-bottom"></span><span data-i18n="filter_bottom">Bottom</span><span class="count" id="count-bottom">0</span></button>
+          <div class="sub-filters filter-group" id="sub-bottom" style="display:none;">
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-feeder',this)"><span style="width:8px"></span><span data-i18n="sub_feeder">Feeder / Picker</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-carp',this)"><span style="width:8px"></span><span data-i18n="sub_carp">Carp</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-copper',this)"><span style="width:8px"></span><span data-i18n="sub_copper">⚡ Copper Legal</span></button>
+          </div>
+          <button class="filter-btn" onclick="setBuildFilter('float',this)"><span class="dot dot-float"></span><span data-i18n="filter_float">Float</span><span class="count" id="count-float">0</span></button>
+          <div class="sub-filters filter-group" id="sub-float" style="display:none;">
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-telescopic',this)"><span style="width:8px"></span><span data-i18n="sub_telescopic">Telescopic</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-match',this)"><span style="width:8px"></span><span data-i18n="sub_match">Match</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-bolognese',this)"><span style="width:8px"></span><span data-i18n="sub_bolognese">Bolognese</span></button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Player Level</div>
-      <div class="filter-group">
-        <button class="filter-btn" onclick="setLevelFilter('all-levels', this)"><span class="dot" style="background:var(--muted)"></span> All Levels</button>
-        <button class="filter-btn" onclick="setLevelFilter('beginner', this)"><span class="dot" style="background:#4ade80"></span> Beginner (1–19)</button>
-        <button class="filter-btn" onclick="setLevelFilter('intermediate', this)"><span class="dot" style="background:#38bdf8"></span> Intermediate (20–39)</button>
-        <button class="filter-btn" onclick="setLevelFilter('advanced', this)"><span class="dot" style="background:#f59e0b"></span> Advanced (40+)</button>
+      <div class="sidebar-section">
+        <div class="sidebar-label" data-i18n="filter_player_level">Player Level</div>
+        <div class="filter-group">
+          <button class="filter-btn active" onclick="setLevelFilter('all-levels',this)"><span class="dot" style="background:var(--muted)"></span><span data-i18n="level_all">All Levels</span></button>
+          <button class="filter-btn" onclick="setLevelFilter('beginner',this)"><span class="dot" style="background:#4ade80"></span><span data-i18n="level_beginner">Beginner (1–19)</span></button>
+          <button class="filter-btn" onclick="setLevelFilter('intermediate',this)"><span class="dot" style="background:#38bdf8"></span><span data-i18n="level_intermediate">Intermediate (20–39)</span></button>
+          <button class="filter-btn" onclick="setLevelFilter('advanced',this)"><span class="dot" style="background:#f59e0b"></span><span data-i18n="level_advanced">Advanced (40+)</span></button>
+        </div>
       </div>
-    </div>
-  </aside>
-
-  <!-- BUILDS LIST -->
-  <main class="builds-area">
-    <div class="builds-grid" id="buildsGrid"></div>
-  </main>
-
+    </aside>
+    <main class="main-area"><div class="builds-grid" id="buildsGrid"></div></main>
+  </div>
 </div>
 
-<!-- MODAL OVERLAY -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+<!-- GEAR DB PAGE -->
+<div class="page" id="page-geardb">
+  <div class="hero"><h1><span data-i18n="nav_geardb">Gear DB</span></h1></div>
+  <div class="gear-db-layout">
+    <aside class="gear-db-sidebar">
+      <div class="sidebar-label" data-i18n="gear_category">Category</div>
+      <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px;">
+        <button class="gear-type-btn active" onclick="setGearType('reels',this)"><span class="gear-icon">🎣</span><span data-i18n="gear_reels">Reels</span></button>
+        <button class="gear-type-btn" onclick="setGearType('rods',this)"><span class="gear-icon">🪄</span><span data-i18n="gear_rods">Rods</span></button>
+        <button class="gear-type-btn" onclick="setGearType('lines',this)"><span class="gear-icon">〰️</span><span data-i18n="gear_lines">Lines</span></button>
+      </div>
+    </aside>
+    <main class="gear-main">
+      <div class="gear-search"><input type="text" id="gearSearch" placeholder="Search gear..." data-i18n-placeholder="search_gear" oninput="renderGearDB()" /></div>
+      <div class="gear-grid" id="gearGrid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- COMPARE PAGE -->
+<div class="page" id="page-compare">
+  <div class="hero"><h1><span data-i18n="nav_compare">Compare</span></h1></div>
+  <div class="compare-page">
+    <div class="compare-sections">
+
+      <!-- REELS COMPARE -->
+      <div>
+        <div class="compare-section-title">🎣 <span data-i18n="gear_reels">Reels</span></div>
+        <div class="slot-row">
+          <div class="slot" id="reel-slot-0" onclick="openPicker('reels',0)">
+            <div class="slot-placeholder" data-i18n="compare_select_reel">Click to select a reel</div>
+          </div>
+          <div class="slot" id="reel-slot-1" onclick="openPicker('reels',1)">
+            <div class="slot-placeholder" data-i18n="compare_select_reel">Click to select a reel</div>
+          </div>
+        </div>
+        <div id="reels-compare-table"></div>
+      </div>
+
+      <!-- RODS COMPARE -->
+      <div>
+        <div class="compare-section-title">🪄 <span data-i18n="gear_rods">Rods</span></div>
+        <div class="slot-row">
+          <div class="slot" id="rod-slot-0" onclick="openPicker('rods',0)">
+            <div class="slot-placeholder" data-i18n="compare_select_rod">Click to select a rod</div>
+          </div>
+          <div class="slot" id="rod-slot-1" onclick="openPicker('rods',1)">
+            <div class="slot-placeholder" data-i18n="compare_select_rod">Click to select a rod</div>
+          </div>
+        </div>
+        <div id="rods-compare-table"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BUILD MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeBuildModal(event)">
   <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- PICKER MODAL -->
+<div class="modal-overlay" id="pickerOverlay" onclick="closePicker(event)">
+  <div class="picker-modal">
+    <button class="modal-close" onclick="closePicker()">✕</button>
+    <div class="modal-title" id="pickerTitle" style="font-size:20px;margin-bottom:1rem;"></div>
+    <div class="picker-search"><input type="text" id="pickerSearch" placeholder="Search..." oninput="renderPickerList()" /></div>
+    <div class="picker-list" id="pickerList"></div>
+  </div>
 </div>
 
 <script>
 // ============================================================
-// BUILDS DATABASE
-// To add a new build, copy one of the objects below and fill
-// in the details. Save the file and push to GitHub.
+// GEAR DATABASE — edit here to add/remove gear
+// ============================================================
+
+const reels = [
+  // --- SPINNING ---
+  // Fields: name, image, type, size, drag(kg), mechanism(kg), test(g range as string), spoolCap, ratio, level, saltwater(bool), copperLegal(bool), cost
+  { name: "Ryobi Eccs 2000", image: null, type: "spinning", size: 2000, drag: 4, mechanism: 4, test: "3–12", spoolCap: 150, ratio: "5.1:1", level: 1, saltwater: false, copperLegal: true, cost: 320 },
+  { name: "Ryobi Eccs 3000", image: null, type: "spinning", size: 3000, drag: 6, mechanism: 6, test: "5–18", spoolCap: 200, ratio: "5.1:1", level: 5, saltwater: false, copperLegal: true, cost: 480 },
+  { name: "Shimano Catana 4000", image: null, type: "spinning", size: 4000, drag: 8, mechanism: 8, test: "8–25", spoolCap: 280, ratio: "5.0:1", level: 12, saltwater: false, copperLegal: true, cost: 1100 },
+  { name: "Stinger Deep Sea 5000", image: null, type: "spinning", size: 5000, drag: 18, mechanism: 18, test: "15–50", spoolCap: 350, ratio: "4.3:1", level: 20, saltwater: true, copperLegal: true, cost: 3200 },
+  { name: "Caliber HSV 80 SLC", image: null, type: "spinning", size: 8000, drag: 15.4, mechanism: 15.4, test: "20–60", spoolCap: 420, ratio: "4.7:1", level: 25, saltwater: false, copperLegal: false, cost: 2800 },
+  { name: "Strega 8000", image: null, type: "spinning", size: 8000, drag: 14, mechanism: 16, test: "18–55", spoolCap: 400, ratio: "4.6:1", level: 30, saltwater: true, copperLegal: false, cost: 4100 },
+  // --- ADD MORE REELS BELOW ---
+];
+
+const rods = [
+  // Fields: name, image, type, subtype, loadCap(kg), testMin, testMax, bonus, action, stiffness(x/10), sensitivity(x/10 — null for feeder/picker), power, level, cost
+  // --- SPINNING ---
+  { name: "Salmo Elite 602UL", image: null, type: "spinning", subtype: "ultralight", loadCap: 3, testMin: 1, testMax: 7, bonus: null, action: "Light", stiffness: "8/10", sensitivity: "9/10", power: "Light", level: 1, copperLegal: true, cost: 420 },
+  { name: "Aeros SP68MH", image: null, type: "spinning", subtype: "universal", loadCap: 12, testMin: 7, testMax: 28, bonus: null, action: "Medium", stiffness: "6/10", sensitivity: "7/10", power: "Medium", level: 15, copperLegal: false, cost: 1800 },
+  { name: "Surf Master Rondine MH", image: null, type: "spinning", subtype: "trolling", loadCap: 22, testMin: 10, testMax: 40, bonus: "Trolling +2", action: "Medium", stiffness: "5/10", sensitivity: "6/10", power: "Heavy", level: 20, copperLegal: false, cost: 2600 },
+  // --- BOTTOM ---
+  { name: "Feeder Concept X 390", image: null, type: "bottom", subtype: "feeder", loadCap: 15, testMin: 0, testMax: 120, bonus: "Feeder rig +3", action: "Medium", stiffness: "4/10", sensitivity: null, power: "Medium", level: 10, copperLegal: true, cost: 1400 },
+  { name: "Carp Master Pro 390", image: null, type: "bottom", subtype: "carp", loadCap: 25, testMin: 0, testMax: 150, bonus: "Carp rig +4", action: "Heavy", stiffness: "3/10", sensitivity: null, power: "Heavy", level: 25, copperLegal: false, cost: 4200 },
+  // --- FLOAT ---
+  { name: "Salmo Elite Match 600", image: null, type: "float", subtype: "match", loadCap: 8, testMin: 5, testMax: 20, bonus: null, action: "Light", stiffness: "7/10", sensitivity: "8/10", power: "Light", level: 5, copperLegal: true, cost: 980 },
+  { name: "Salmo Sniper Tele 600", image: null, type: "float", subtype: "telescopic", loadCap: 5, testMin: 5, testMax: 15, bonus: null, action: "Light", stiffness: "6/10", sensitivity: "7/10", power: "Light", level: 1, copperLegal: true, cost: 320 },
+  // --- ADD MORE RODS BELOW ---
+];
+
+const lines = [
+  { name: "Mono Original 0.18mm", type: "mono", diameter: 0.18, breakingLoad: 3.2, color: "Clear", cost: 120 },
+  { name: "Mono Original 0.22mm", type: "mono", diameter: 0.22, breakingLoad: 5.5, color: "Clear", cost: 160 },
+  { name: "Mono Original 0.28mm", type: "mono", diameter: 0.28, breakingLoad: 8, color: "Clear", cost: 210 },
+  { name: "Mono Original 0.35mm", type: "mono", diameter: 0.35, breakingLoad: 12, color: "Clear", cost: 280 },
+  { name: "Mono Carp 0.35mm", type: "mono", diameter: 0.35, breakingLoad: 12, color: "Brown", cost: 340 },
+  { name: "Mono Original 55LB", type: "mono", diameter: 0.6, breakingLoad: 25, color: "Clear", cost: 480 },
+  { name: "Fluorocarbon 0.18mm", type: "fluoro", diameter: 0.18, breakingLoad: 3.2, color: "Clear", cost: 280 },
+  { name: "Braid PE 0.3mm", type: "braid", diameter: 0.3, breakingLoad: 22, color: "Green", cost: 620 },
+  // --- ADD MORE LINES BELOW ---
+];
+
+// ============================================================
+// BUILDS — reference gear by name
 // ============================================================
 const builds = [
   {
-    id: 1,
-    name: "Universal Spinning Starter",
-    type: "spinning",
-    subtype: "spinning-universal",
-    minLevel: 20,
-    levelLabel: "Lvl 20+",
-    rod: { name: "Aeros SP68MH", testMin: 7, testMax: 28, length: "2.1m", action: "Fast" },
-    reel: { name: "Caliber HSV 80 SLC", ratio: "4.7:1", friction: "15.4kg", size: 8000 },
-    line: { name: "Mono Original 55LB", diameter: "0.6mm", breakingLoad: "25kg" },
-    tags: ["Universal", "Trolling", "Castable"],
-    copperLegal: false,
-    budget: true,
-    cost: 4800,
+    id: 1, name: "Universal Spinning Starter", type: "spinning", subtype: "spinning-universal",
+    minLevel: 20, levelLabel: "Lvl 20+",
+    rodName: "Aeros SP68MH", reelName: "Caliber HSV 80 SLC", lineName: "Mono Original 55LB",
+    tags: ["Universal", "Trolling", "Castable"], copperLegal: false, budget: true, cost: 4800,
     fish: ["Pike", "Perch", "Asp", "Chub"],
-    description: "A solid all-round spinning setup for medium and large predators. Works well for both trolling and casting wobblers. Good price-to-performance ratio for players just hitting level 20. The MH action handles a wide test range so you're not locked into one lure type."
+    description: "A solid all-round spinning setup for medium and large predators. Works well for both trolling and casting wobblers. Good price-to-performance ratio for players just hitting level 20."
   },
   {
-    id: 2,
-    name: "Light Spinning — UL/L Universal",
-    type: "spinning",
-    subtype: "spinning-universal",
-    minLevel: 10,
-    levelLabel: "Lvl 10+",
-    rod: { name: "Salmo Elite 602UL", testMin: 1, testMax: 7, length: "1.8m", action: "Extra Fast" },
-    reel: { name: "Ryobi Eccs 2000", ratio: "5.1:1", friction: "4kg", size: 2000 },
-    line: { name: "Fluorocarbon 0.18mm", diameter: "0.18mm", breakingLoad: "3.2kg" },
-    tags: ["Light lures", "Small predators", "Rivers"],
-    copperLegal: false,
-    budget: true,
-    cost: 1200,
+    id: 2, name: "Light Spinning — UL/L Universal", type: "spinning", subtype: "spinning-universal",
+    minLevel: 10, levelLabel: "Lvl 10+",
+    rodName: "Salmo Elite 602UL", reelName: "Ryobi Eccs 2000", lineName: "Fluorocarbon 0.18mm",
+    tags: ["Light lures", "Small predators", "Rivers"], copperLegal: false, budget: true, cost: 1200,
     fish: ["Perch", "Ruffe", "Bleak", "Roach"],
-    description: "Entry-level ultralight setup for small predators and rivers. The UL action paired with a 2000 size reel gives great sensitivity on light lures. Best used with spinners and small jig heads. Not suited for trolling or heavy wobblers."
+    description: "Entry-level ultralight setup for small predators and rivers. The UL action paired with a 2000 size reel gives great sensitivity on light lures."
   },
   {
-    id: 3,
-    name: "Trolling / Kuori Setup",
-    type: "spinning",
-    subtype: "spinning-trolling",
-    minLevel: 25,
-    levelLabel: "Lvl 25+",
-    rod: { name: "Surf Master Rondine MH", testMin: 10, testMax: 40, length: "2.4m", action: "Moderate Fast" },
-    reel: { name: "Stinger Deep Sea 5000", ratio: "4.3:1", friction: "18kg", size: 5000 },
-    line: { name: "Braid PE 0.3mm", diameter: "0.3mm", breakingLoad: "22kg" },
-    tags: ["Trolling", "Kuori", "Large predators"],
-    copperLegal: false,
-    budget: false,
-    cost: 7400,
+    id: 3, name: "Trolling / Kuori Setup", type: "spinning", subtype: "spinning-trolling",
+    minLevel: 25, levelLabel: "Lvl 25+",
+    rodName: "Surf Master Rondine MH", reelName: "Stinger Deep Sea 5000", lineName: "Braid PE 0.3mm",
+    tags: ["Trolling", "Kuori", "Large predators"], copperLegal: false, budget: false, cost: 7400,
     fish: ["Pike", "Taimen", "Huchen", "Large Perch"],
-    description: "Built for trolling large lures at Kuori and similar open water maps. The moderate-fast action absorbs the constant drag of trolling lures better than a fast action rod. Braid is strongly recommended here for sensitivity and thin diameter to reduce drag at depth. Good for large wobblers in the 15–30g range."
+    description: "Built for trolling large lures at Kuori and similar open water maps. Braid is strongly recommended for sensitivity and thin diameter to reduce drag at depth."
   },
   {
-    id: 4,
-    name: "Feeder Starter — Copper Legal",
-    type: "bottom",
-    subtype: "bottom-feeder",
-    minLevel: 15,
-    levelLabel: "Lvl 15+",
-    rod: { name: "Feeder Concept X 390", testMin: 0, testMax: 120, length: "3.9m", action: "Moderate" },
-    reel: { name: "Shimano Catana 4000", ratio: "5.0:1", friction: "8kg", size: 4000 },
-    line: { name: "Mono Original 0.28mm", diameter: "0.28mm", breakingLoad: "8kg" },
-    tags: ["Feeder", "Carp", "River"],
-    copperLegal: true,
-    budget: true,
-    cost: 3200,
+    id: 4, name: "Feeder Starter — Copper Legal", type: "bottom", subtype: "bottom-feeder",
+    minLevel: 15, levelLabel: "Lvl 15+",
+    rodName: "Feeder Concept X 390", reelName: "Shimano Catana 4000", lineName: "Mono Original 0.28mm",
+    tags: ["Feeder", "Carp", "River"], copperLegal: true, budget: true, cost: 3200,
     fish: ["Bream", "Carp", "Tench", "Crucian Carp"],
-    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. The 4000 reel is intentional — Copper prohibits reels above 6000. Slightly underpowered for large open water carp but perfectly viable for Copper and early carp lakes. A smart investment since you'll use this for a long time before upgrading."
+    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. A smart investment since you'll use this for a long time before upgrading."
   },
   {
-    id: 5,
-    name: "Carp Open Water — Intermediate",
-    type: "bottom",
-    subtype: "bottom-carp",
-    minLevel: 35,
-    levelLabel: "Lvl 35+",
-    rod: { name: "Carp Master Pro 390", testMin: 0, testMax: 150, length: "3.9m", action: "Slow" },
-    reel: { name: "Strega 8000", ratio: "4.6:1", friction: "14kg", size: 8000 },
-    line: { name: "Mono Carp 0.35mm", diameter: "0.35mm", breakingLoad: "12kg" },
-    tags: ["Carp", "Open water", "Amber Lake"],
-    copperLegal: false,
-    budget: false,
-    cost: 9800,
+    id: 5, name: "Carp Open Water — Intermediate", type: "bottom", subtype: "bottom-carp",
+    minLevel: 35, levelLabel: "Lvl 35+",
+    rodName: "Carp Master Pro 390", reelName: "Strega 8000", lineName: "Mono Carp 0.35mm",
+    tags: ["Carp", "Open water", "Amber Lake"], copperLegal: false, budget: false, cost: 9800,
     fish: ["Common Carp", "Mirror Carp", "Grass Carp"],
-    description: "Proper carp rod and reel combo for open water maps like Amber Lake where big carp demand more power. The 8000 reel is prohibited at Copper Lake — this setup is NOT Copper legal. The slow action handles prolonged fights much better than feeder rods. Significant upgrade over feeder setups in terms of casting distance and fish-fighting ability."
+    description: "Proper carp rod and reel combo for open water maps like Amber Lake. The slow action handles prolonged fights much better than feeder rods."
   },
   {
-    id: 6,
-    name: "Match Float — All-Round",
-    type: "float",
-    subtype: "float-match",
-    minLevel: 5,
-    levelLabel: "Lvl 5+",
-    rod: { name: "Salmo Elite Match 600", testMin: 5, testMax: 20, length: "6.0m", action: "Moderate" },
-    reel: { name: "Ryobi Eccs 3000", ratio: "5.1:1", friction: "6kg", size: 3000 },
-    line: { name: "Mono Original 0.22mm", diameter: "0.22mm", breakingLoad: "5.5kg" },
-    tags: ["Match", "Rivers", "Lakes", "Beginner friendly"],
-    copperLegal: true,
-    budget: true,
-    cost: 1800,
+    id: 6, name: "Match Float — All-Round", type: "float", subtype: "float-match",
+    minLevel: 5, levelLabel: "Lvl 5+",
+    rodName: "Salmo Elite Match 600", reelName: "Ryobi Eccs 3000", lineName: "Mono Original 0.22mm",
+    tags: ["Match", "Rivers", "Lakes", "Beginner friendly"], copperLegal: true, budget: true, cost: 1800,
     fish: ["Roach", "Bream", "Tench", "Rudd", "Chub"],
-    description: "A clean match setup that works on both rivers and lakes. The 6m length gives good reach without being unwieldy. Match rods offer better sensitivity and casting accuracy over telescopic for most scenarios. Good starter float setup that won't need replacing for a long time. Works well with maggots, worms and bread."
+    description: "A clean match setup that works on both rivers and lakes. Good starter float setup that won't need replacing for a long time."
   },
   {
-    id: 7,
-    name: "Telescopic Float — Budget Beginner",
-    type: "float",
-    subtype: "float-telescopic",
-    minLevel: 1,
-    levelLabel: "Lvl 1+",
-    rod: { name: "Salmo Sniper Tele 600", testMin: 5, testMax: 15, length: "6.0m", action: "Moderate" },
-    reel: { name: "Ryobi Eccs 2000", ratio: "5.1:1", friction: "4kg", size: 2000 },
-    line: { name: "Mono Original 0.18mm", diameter: "0.18mm", breakingLoad: "3.5kg" },
-    tags: ["Telescopic", "Beginner", "Budget"],
-    copperLegal: true,
-    budget: true,
-    cost: 600,
+    id: 7, name: "Telescopic Float — Budget Beginner", type: "float", subtype: "float-telescopic",
+    minLevel: 1, levelLabel: "Lvl 1+",
+    rodName: "Salmo Sniper Tele 600", reelName: "Ryobi Eccs 2000", lineName: "Mono Original 0.18mm",
+    tags: ["Telescopic", "Beginner", "Budget"], copperLegal: true, budget: true, cost: 600,
     fish: ["Roach", "Rudd", "Bleak", "Perch"],
-    description: "The cheapest viable float setup in the game. Telescopic rods are less sensitive than match but perfectly usable for small fish and learning the game. Ideal for the very first days of play before you know what direction you want to take. Upgrade to a match rod when you can — but this will do the job in the meantime."
+    description: "The cheapest viable float setup in the game. Ideal for the very first days of play."
   }
 ];
 
 // ============================================================
-// APP LOGIC — no need to edit below this line
+// TRANSLATIONS
 // ============================================================
-let activeFilter = 'all';
-let activeLevelFilter = 'all-levels';
-let selectedId = null;
+const translations = {
+  en: {
+    nav_builds: "Builds", nav_maps: "Maps", nav_geardb: "Gear DB", nav_knowledge: "Knowledge", nav_blog: "Blog", nav_compare: "Compare",
+    hero_title_gear: "Gear", hero_title_builds: "Builds",
+    filter_fishing_type: "Fishing Type", filter_all: "All Builds", filter_spinning: "Spinning", filter_bottom: "Bottom", filter_float: "Float",
+    filter_player_level: "Player Level", sub_universal: "Universal", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
+    sub_feeder: "Feeder / Picker", sub_carp: "Carp", sub_copper: "⚡ Copper Legal",
+    sub_telescopic: "Telescopic", sub_match: "Match", sub_bolognese: "Bolognese",
+    level_all: "All Levels", level_beginner: "Beginner (1–19)", level_intermediate: "Intermediate (20–39)", level_advanced: "Advanced (40+)",
+    search_placeholder: "Search builds...", search_gear: "Search gear...", no_results: "No builds found.\nMore coming soon.",
+    modal_rod: "Rod", modal_reel: "Reel", modal_line: "Line", modal_description: "Description", modal_target_fish: "Target fish",
+    modal_test: "Test weight", modal_length: "Length", modal_action: "Action", modal_ratio: "Gear ratio", modal_drag: "Max drag",
+    modal_reel_size: "Reel size", modal_diameter: "Diameter", modal_breaking: "Breaking load", modal_total: "Total",
+    modal_fishing: "fishing", tag_budget: "Budget", gear_category: "Category", gear_reels: "Reels", gear_rods: "Rods", gear_lines: "Lines",
+    compare_select_reel: "Click to select a reel", compare_select_rod: "Click to select a rod",
+    stat_size: "Size", stat_ratio: "Gear ratio", stat_drag: "Max drag (kg)", stat_cost: "Cost (silver)",
+    stat_test: "Test", stat_length: "Length (m)", stat_action: "Action",
+    stat_type: "Type", stat_diameter: "Diameter (mm)", stat_breaking: "Breaking load (kg)",
+    stat_mechanism: "Mechanism (kg)", stat_spool_cap: "Spool capacity", stat_level: "Level", stat_saltwater: "Saltwater protection",
+    stat_load_cap: "Load capacity", stat_bonus: "Bonus", stat_stiffness: "Stiffness", stat_sensitivity: "Sensitivity", stat_power: "Power",
+
+    copper_legal: "Copper Legal", not_copper: "Not Copper Legal",
+  },
+  ru: {
+    nav_builds: "Сборки", nav_maps: "Карты", nav_geardb: "База снаряжения", nav_knowledge: "Гайды", nav_blog: "Блог", nav_compare: "Сравнение",
+    hero_title_gear: "Сборки", hero_title_builds: "снаряжения",
+    filter_fishing_type: "Тип ловли", filter_all: "Все сборки", filter_spinning: "Спиннинг", filter_bottom: "Донная", filter_float: "Поплавок",
+    filter_player_level: "Уровень игрока", sub_universal: "Универсальный", sub_trolling: "Троллинг", sub_jigging: "Джиг", sub_casting: "Кастинг",
+    sub_feeder: "Фидер / Пикер", sub_carp: "Карп", sub_copper: "⚡ Медное озеро",
+    sub_telescopic: "Телескоп", sub_match: "Матч", sub_bolognese: "Болонез",
+    level_all: "Все уровни", level_beginner: "Новичок (1–19)", level_intermediate: "Средний (20–39)", level_advanced: "Опытный (40+)",
+    search_placeholder: "Поиск сборок...", search_gear: "Поиск снаряжения...", no_results: "Сборки не найдены.\nСкоро появятся новые.",
+    modal_rod: "Удилище", modal_reel: "Катушка", modal_line: "Леска", modal_description: "Описание", modal_target_fish: "Целевая рыба",
+    modal_test: "Тест", modal_length: "Длина", modal_action: "Строй", modal_ratio: "Передаточное число", modal_drag: "Макс. тормоз",
+    modal_reel_size: "Размер катушки", modal_diameter: "Диаметр", modal_breaking: "Разрывная нагрузка", modal_total: "Итого",
+    modal_fishing: "ловля", tag_budget: "Бюджет", gear_category: "Категория", gear_reels: "Катушки", gear_rods: "Удилища", gear_lines: "Лески",
+    compare_select_reel: "Выберите катушку", compare_select_rod: "Выберите удилище",
+    stat_size: "Размер", stat_ratio: "Передаточное число", stat_drag: "Макс. тормоз (кг)", stat_cost: "Цена (серебро)",
+    stat_test: "Тест", stat_length: "Длина (м)", stat_action: "Строй",
+    stat_type: "Тип", stat_diameter: "Диаметр (мм)", stat_breaking: "Разрывная нагрузка (кг)",
+    stat_mechanism: "Механизм (кг)", stat_spool_cap: "Ёмкость шпули", stat_level: "Уровень", stat_saltwater: "Защита от соли",
+    stat_load_cap: "Грузоподъёмность", stat_bonus: "Бонус", stat_stiffness: "Жёсткость", stat_sensitivity: "Чувствительность", stat_power: "Мощность",
+
+    copper_legal: "Медное озеро", not_copper: "Не для Медного",
+  },
+  pl: {
+    nav_builds: "Zestawy", nav_maps: "Mapy", nav_geardb: "Baza sprzętu", nav_knowledge: "Poradniki", nav_blog: "Blog", nav_compare: "Porównaj",
+    hero_title_gear: "Zestawy", hero_title_builds: "sprzętu",
+    filter_fishing_type: "Typ połowu", filter_all: "Wszystkie zestawy", filter_spinning: "Spinning", filter_bottom: "Grunt", filter_float: "Spławik",
+    filter_player_level: "Poziom gracza", sub_universal: "Uniwersalny", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
+    sub_feeder: "Feeder / Picker", sub_carp: "Karp", sub_copper: "⚡ Copper Legal",
+    sub_telescopic: "Teleskop", sub_match: "Match", sub_bolognese: "Bolognese",
+    level_all: "Wszystkie poziomy", level_beginner: "Początkujący (1–19)", level_intermediate: "Średni (20–39)", level_advanced: "Zaawansowany (40+)",
+    search_placeholder: "Szukaj zestawów...", search_gear: "Szukaj sprzętu...", no_results: "Brak zestawów.\nWkrótce pojawią się nowe.",
+    modal_rod: "Wędka", modal_reel: "Kołowrotek", modal_line: "Żyłka", modal_description: "Opis", modal_target_fish: "Docelowe ryby",
+    modal_test: "Test", modal_length: "Długość", modal_action: "Akcja", modal_ratio: "Przełożenie", modal_drag: "Maks. hamulec",
+    modal_reel_size: "Rozmiar", modal_diameter: "Średnica", modal_breaking: "Wytrzymałość", modal_total: "Łącznie",
+    modal_fishing: "wędkarstwo", tag_budget: "Budżet", gear_category: "Kategoria", gear_reels: "Kołowrotki", gear_rods: "Wędki", gear_lines: "Żyłki",
+    compare_select_reel: "Wybierz kołowrotek", compare_select_rod: "Wybierz wędkę",
+    stat_size: "Rozmiar", stat_ratio: "Przełożenie", stat_drag: "Maks. hamulec (kg)", stat_cost: "Cena (srebro)",
+    stat_test: "Test", stat_length: "Długość (m)", stat_action: "Akcja",
+    stat_type: "Typ", stat_diameter: "Średnica (mm)", stat_breaking: "Wytrzymałość (kg)",
+    stat_mechanism: "Mechanizm (kg)", stat_spool_cap: "Pojemność szpuli", stat_level: "Poziom", stat_saltwater: "Ochrona słona woda",
+    stat_load_cap: "Nośność", stat_bonus: "Bonus", stat_stiffness: "Sztywność", stat_sensitivity: "Czułość", stat_power: "Moc",
+
+    copper_legal: "Copper Legal", not_copper: "Nie Copper Legal",
+  },
+  fr: {
+    nav_builds: "Montages", nav_maps: "Cartes", nav_geardb: "Base équipement", nav_knowledge: "Guides", nav_blog: "Blog", nav_compare: "Comparer",
+    hero_title_gear: "Montages", hero_title_builds: "d'équipement",
+    filter_fishing_type: "Type de pêche", filter_all: "Tous les montages", filter_spinning: "Spinning", filter_bottom: "Fond", filter_float: "Flotteur",
+    filter_player_level: "Niveau du joueur", sub_universal: "Universel", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
+    sub_feeder: "Feeder / Picker", sub_carp: "Carpe", sub_copper: "⚡ Copper Légal",
+    sub_telescopic: "Télescopique", sub_match: "Match", sub_bolognese: "Bolognaise",
+    level_all: "Tous niveaux", level_beginner: "Débutant (1–19)", level_intermediate: "Intermédiaire (20–39)", level_advanced: "Avancé (40+)",
+    search_placeholder: "Rechercher...", search_gear: "Rechercher équipement...", no_results: "Aucun montage trouvé.\nD'autres arrivent bientôt.",
+    modal_rod: "Canne", modal_reel: "Moulinet", modal_line: "Fil", modal_description: "Description", modal_target_fish: "Poissons ciblés",
+    modal_test: "Test", modal_length: "Longueur", modal_action: "Action", modal_ratio: "Transmission", modal_drag: "Frein max",
+    modal_reel_size: "Taille", modal_diameter: "Diamètre", modal_breaking: "Résistance", modal_total: "Total",
+    modal_fishing: "pêche", tag_budget: "Budget", gear_category: "Catégorie", gear_reels: "Moulinets", gear_rods: "Cannes", gear_lines: "Fils",
+    compare_select_reel: "Sélectionner un moulinet", compare_select_rod: "Sélectionner une canne",
+
+    copper_legal: "Copper Légal", not_copper: "Non Copper Légal",
+  },
+  zh: {
+    nav_builds: "装备配置", nav_maps: "地图", nav_geardb: "装备库", nav_knowledge: "攻略", nav_blog: "博客", nav_compare: "对比",
+    hero_title_gear: "装备", hero_title_builds: "配置方案",
+    filter_fishing_type: "钓鱼类型", filter_all: "全部配置", filter_spinning: "路亚", filter_bottom: "底钓", filter_float: "浮漂",
+    filter_player_level: "玩家等级", sub_universal: "通用", sub_trolling: "拖钓", sub_jigging: "铁板", sub_casting: "抛竿",
+    sub_feeder: "喂食器 / 短竿", sub_carp: "鲤鱼", sub_copper: "⚡ 铜湖合规",
+    sub_telescopic: "伸缩竿", sub_match: "比赛竿", sub_bolognese: "博洛尼亚竿",
+    level_all: "全部等级", level_beginner: "新手 (1–19)", level_intermediate: "中级 (20–39)", level_advanced: "高级 (40+)",
+    search_placeholder: "搜索配置...", search_gear: "搜索装备...", no_results: "未找到配置。\n更多配置即将上线。",
+    modal_rod: "鱼竿", modal_reel: "渔轮", modal_line: "鱼线", modal_description: "描述", modal_target_fish: "目标鱼种",
+    modal_test: "测试重量", modal_length: "长度", modal_action: "调性", modal_ratio: "传动比", modal_drag: "最大曳力",
+    modal_reel_size: "型号", modal_diameter: "直径", modal_breaking: "断裂负荷", modal_total: "总计",
+    modal_fishing: "钓鱼", tag_budget: "经济型", gear_category: "分类", gear_reels: "渔轮", gear_rods: "鱼竿", gear_lines: "鱼线",
+    compare_select_reel: "点击选择渔轮", compare_select_rod: "点击选择鱼竿",
+    stat_size: "型号", stat_ratio: "传动比", stat_drag: "最大曳力 (kg)", stat_cost: "价格 (银币)",
+    stat_test: "测试重量", stat_length: "长度 (m)", stat_action: "调性",
+    stat_type: "类型", stat_diameter: "直径 (mm)", stat_breaking: "断裂负荷 (kg)",
+    stat_mechanism: "制动机构 (kg)", stat_spool_cap: "线轴容量", stat_level: "等级", stat_saltwater: "防盐水保护",
+    stat_load_cap: "负载能力", stat_bonus: "加成", stat_stiffness: "硬度", stat_sensitivity: "灵敏度", stat_power: "强度",
+
+    copper_legal: "铜湖合规", not_copper: "不适用铜湖",
+  }
+};
+
+// ============================================================
+// I18N
+// ============================================================
+let currentLang = 'en';
+function t(key) { return translations[currentLang][key] || translations['en'][key] || key; }
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick').includes("'" + lang + "'"));
+  });
+  applyTranslations();
+  renderBuilds(); renderGearDB(); renderCompare();
+}
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.getAttribute('data-i18n')));
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => el.placeholder = t(el.getAttribute('data-i18n-placeholder')));
+}
+
+// ============================================================
+// PAGE NAVIGATION
+// ============================================================
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  if (page === 'geardb') renderGearDB();
+  if (page === 'compare') renderCompare();
+}
+
+// ============================================================
+// BUILDS PAGE
+// ============================================================
+let buildFilter = 'all', levelFilter = 'all-levels', selectedBuildId = null;
 
 function updateCounts() {
   document.getElementById('count-all').textContent = builds.length;
@@ -608,133 +588,108 @@ function updateCounts() {
   document.getElementById('count-float').textContent = builds.filter(b => b.type === 'float').length;
 }
 
-function setFilter(filter, btn) {
-  activeFilter = filter;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+function setBuildFilter(filter, btn) {
+  buildFilter = filter;
+  document.querySelectorAll('#page-builds .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  ['spinning','bottom','float'].forEach(t => {
-    const sub = document.getElementById('sub-' + t);
-    if (sub) sub.style.display = (filter === t || filter.startsWith(t + '-')) ? 'flex' : 'none';
+  ['spinning','bottom','float'].forEach(type => {
+    const sub = document.getElementById('sub-' + type);
+    if (sub) sub.style.display = (filter === type || filter.startsWith(type + '-')) ? 'flex' : 'none';
   });
   renderBuilds();
 }
 
 function setLevelFilter(level, btn) {
-  activeLevelFilter = level;
-  document.querySelectorAll('.sidebar-section:last-child .filter-btn').forEach(b => b.classList.remove('active'));
+  levelFilter = level;
+  document.querySelectorAll('#page-builds .sidebar-section:last-child .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderBuilds();
 }
 
-function filterBuilds() { renderBuilds(); }
-
 function getFilteredBuilds() {
-  const search = document.getElementById('searchInput').value.toLowerCase();
+  const search = document.getElementById('buildSearch').value.toLowerCase();
   return builds.filter(b => {
-    const typeMatch = activeFilter === 'all' ||
-      b.type === activeFilter ||
-      b.subtype === activeFilter ||
-      (activeFilter === 'bottom-copper' && b.copperLegal && b.type === 'bottom');
-    const levelMatch = activeLevelFilter === 'all-levels' ||
-      (activeLevelFilter === 'beginner' && b.minLevel < 20) ||
-      (activeLevelFilter === 'intermediate' && b.minLevel >= 20 && b.minLevel < 40) ||
-      (activeLevelFilter === 'advanced' && b.minLevel >= 40);
-    const searchMatch = !search ||
-      b.name.toLowerCase().includes(search) ||
-      b.rod.name.toLowerCase().includes(search) ||
-      b.reel.name.toLowerCase().includes(search) ||
-      b.fish.some(f => f.toLowerCase().includes(search)) ||
-      b.tags.some(t => t.toLowerCase().includes(search));
-    return typeMatch && levelMatch && searchMatch;
+    const typeMatch = buildFilter === 'all' || b.type === buildFilter || b.subtype === buildFilter ||
+      (buildFilter === 'bottom-copper' && b.copperLegal && b.type === 'bottom');
+    const lvlMatch = levelFilter === 'all-levels' ||
+      (levelFilter === 'beginner' && b.minLevel < 20) ||
+      (levelFilter === 'intermediate' && b.minLevel >= 20 && b.minLevel < 40) ||
+      (levelFilter === 'advanced' && b.minLevel >= 40);
+    const srch = !search || b.name.toLowerCase().includes(search) || b.rodName.toLowerCase().includes(search) ||
+      b.reelName.toLowerCase().includes(search) || b.fish.some(f => f.toLowerCase().includes(search)) ||
+      b.tags.some(tag => tag.toLowerCase().includes(search));
+    return typeMatch && lvlMatch && srch;
   });
 }
 
 function renderBuilds() {
   const grid = document.getElementById('buildsGrid');
   const filtered = getFilteredBuilds();
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="no-results">No builds found for this filter.<br>More builds coming soon.</div>';
-    return;
-  }
-  grid.innerHTML = filtered.map(b => `
-    <div class="build-card type-${b.type} ${selectedId === b.id ? 'selected' : ''}" onclick="selectBuild(${b.id})">
-      <div class="card-top">
-        <div class="card-name">${b.name}</div>
-        <div class="card-level">${b.levelLabel}</div>
-      </div>
-      <div class="card-gear">
-        <strong>Rod:</strong> ${b.rod.name} &nbsp;·&nbsp; <strong>Reel:</strong> ${b.reel.name}
-      </div>
+  if (!filtered.length) { grid.innerHTML = `<div class="no-results">${t('no_results').replace('\n','<br>')}</div>`; return; }
+  const sorted = [...filtered].sort((a, b) => a.cost - b.cost);
+  grid.innerHTML = sorted.map(b => `
+    <div class="build-card type-${b.type} ${selectedBuildId === b.id ? 'selected' : ''}" onclick="openBuildModal(${b.id})">
+      <div class="card-top"><div class="card-name">${b.name}</div><div class="card-level">${b.levelLabel}</div></div>
+      <div class="card-gear"><strong>${t('modal_rod')}:</strong> ${b.rodName} &nbsp;·&nbsp; <strong>${t('modal_reel')}:</strong> ${b.reelName}</div>
       <div class="card-tags">
-        ${b.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        ${b.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         ${b.copperLegal ? '<span class="tag copper">⚡ Copper Legal</span>' : ''}
-        ${b.budget ? '<span class="tag budget">Budget</span>' : ''}
+        ${b.budget ? `<span class="tag budget">${t('tag_budget')}</span>` : ''}
+        <span class="tag cost">~${b.cost.toLocaleString()} silver</span>
       </div>
     </div>
   `).join('');
 }
 
-function selectBuild(id) {
-  selectedId = id;
+function openBuildModal(id) {
+  selectedBuildId = id;
   const b = builds.find(x => x.id === id);
+  const rod = rods.find(r => r.name === b.rodName) || {};
+  const reel = reels.find(r => r.name === b.reelName) || {};
+  const line = lines.find(l => l.name === b.lineName) || {};
   renderBuilds();
-  const modal = document.getElementById('modalContent');
-  modal.innerHTML = `
-    <button class="modal-close" onclick="closeModal()">✕</button>
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeBuildModal()">✕</button>
     <div class="modal-title">${b.name}</div>
     <div class="modal-sub">
       <span class="modal-badge">${b.levelLabel}</span>
-      <span class="modal-badge">${b.type.charAt(0).toUpperCase() + b.type.slice(1)} fishing</span>
+      <span class="modal-badge">${b.type} ${t('modal_fishing')}</span>
       ${b.copperLegal ? '<span class="modal-badge" style="border-color:#b45309;color:#f59e0b;background:#1c1508;">⚡ Copper Legal</span>' : ''}
-      ${b.budget ? '<span class="modal-badge" style="border-color:#8a6830;color:#c9a96e;background:#1c1608;">Budget</span>' : ''}
+      ${b.budget ? `<span class="modal-badge" style="border-color:#8a6830;color:#c9a96e;background:#1c1608;">${t('tag_budget')}</span>` : ''}
     </div>
-
     <div class="gear-cards">
       <div class="gear-card">
-        <div class="gear-card-label">Rod</div>
-        <div class="gear-card-img">
-          ${b.rodImage ? `<img src="${b.rodImage}" alt="${b.rod.name}">` : '<div class="no-img">🎣</div>'}
-        </div>
-        <div class="gear-card-name">${b.rod.name}</div>
-        <div class="gear-stat"><span class="gear-stat-label">Test weight</span><span class="gear-stat-val">${b.rod.testMin}–${b.rod.testMax}g</span></div>
-        <div class="gear-stat"><span class="gear-stat-label">Length</span><span class="gear-stat-val">${b.rod.length}</span></div>
-        <div class="gear-stat"><span class="gear-stat-label">Action</span><span class="gear-stat-val">${b.rod.action}</span></div>
-        ${b.rod.cost ? `<div class="gear-card-cost">~${b.rod.cost.toLocaleString()} silver</div>` : ''}
+        <div class="gear-card-label">${t('modal_rod')}</div>
+        <div class="gear-card-name">${b.rodName}</div>
+        ${rod.testMin !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_test')}</span><span class="gear-stat-val">${rod.testMin}–${rod.testMax}g</span></div>` : ''}
+        ${rod.length ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_length')}</span><span class="gear-stat-val">${rod.length}m</span></div>` : ''}
+        ${rod.action ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_action')}</span><span class="gear-stat-val">${rod.action}</span></div>` : ''}
+        ${rod.cost ? `<div class="gear-card-cost">~${rod.cost.toLocaleString()} silver</div>` : ''}
       </div>
       <div class="gear-card">
-        <div class="gear-card-label">Reel</div>
-        <div class="gear-card-img">
-          ${b.reelImage ? `<img src="${b.reelImage}" alt="${b.reel.name}">` : '<div class="no-img">🎣</div>'}
-        </div>
-        <div class="gear-card-name">${b.reel.name}</div>
-        <div class="gear-stat"><span class="gear-stat-label">Gear ratio</span><span class="gear-stat-val">${b.reel.ratio}</span></div>
-        <div class="gear-stat"><span class="gear-stat-label">Max drag</span><span class="gear-stat-val">${b.reel.friction}</span></div>
-        <div class="gear-stat"><span class="gear-stat-label">Reel size</span><span class="gear-stat-val">${b.reel.size}</span></div>
-        ${b.reel.cost ? `<div class="gear-card-cost">~${b.reel.cost.toLocaleString()} silver</div>` : ''}
+        <div class="gear-card-label">${t('modal_reel')}</div>
+        <div class="gear-card-name">${b.reelName}</div>
+        ${reel.ratio ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_ratio')}</span><span class="gear-stat-val">${reel.ratio}</span></div>` : ''}
+        ${reel.drag ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_drag')}</span><span class="gear-stat-val">${reel.drag}kg</span></div>` : ''}
+        ${reel.size ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_reel_size')}</span><span class="gear-stat-val">${reel.size}</span></div>` : ''}
+        ${reel.cost ? `<div class="gear-card-cost">~${reel.cost.toLocaleString()} silver</div>` : ''}
       </div>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title">Line</div>
-      <div class="modal-stat"><span class="modal-stat-label">Recommended</span><span class="modal-stat-val">${b.line.name}</span></div>
-      <div class="modal-stat"><span class="modal-stat-label">Diameter</span><span class="modal-stat-val">${b.line.diameter}</span></div>
-      <div class="modal-stat"><span class="modal-stat-label">Breaking load</span><span class="modal-stat-val">${b.line.breakingLoad}</span></div>
+      <div class="modal-section-title">${t('modal_line')}</div>
+      <div class="modal-stat"><span class="modal-stat-label">${b.lineName}</span><span class="modal-stat-val">${line.diameter ? line.diameter + 'mm' : ''}</span></div>
+      ${line.breakingLoad ? `<div class="modal-stat"><span class="modal-stat-label">${t('modal_breaking')}</span><span class="modal-stat-val">${line.breakingLoad}kg</span></div>` : ''}
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title">Description</div>
+      <div class="modal-section-title">${t('modal_description')}</div>
       <div class="modal-desc">${b.description}</div>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title">Target fish</div>
-      <div class="fish-tags">
-        ${b.fish.map(f => `<span class="fish-tag">${f}</span>`).join('')}
-      </div>
+      <div class="modal-section-title">${t('modal_target_fish')}</div>
+      <div class="fish-tags">${b.fish.map(f => `<span class="fish-tag">${f}</span>`).join('')}</div>
     </div>
-
     <div class="modal-footer">
-      <span class="total-cost">Total: ~${b.cost.toLocaleString()} silver</span>
+      <span class="total-cost">${t('modal_total')}: ~${b.cost.toLocaleString()} silver</span>
       ${b.copperLegal ? '<span class="copper-badge">⚡ Copper Legal</span>' : ''}
     </div>
   `;
@@ -742,18 +697,210 @@ function selectBuild(id) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal(e) {
+function closeBuildModal(e) {
   if (e && e.target !== document.getElementById('modalOverlay')) return;
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
-  selectedId = null;
+  selectedBuildId = null;
   renderBuilds();
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+// ============================================================
+// GEAR DB PAGE
+// ============================================================
+let currentGearType = 'reels';
+function setGearType(type, btn) {
+  currentGearType = type;
+  document.querySelectorAll('.gear-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGearDB();
+}
 
+function renderGearDB() {
+  const search = (document.getElementById('gearSearch')?.value || '').toLowerCase();
+  const grid = document.getElementById('gearGrid');
+  if (!grid) return;
+  let items = [...(currentGearType === 'reels' ? reels : currentGearType === 'rods' ? rods : lines)];
+  if (search) items = items.filter(i => i.name.toLowerCase().includes(search));
+  items.sort((a, b) => (a.cost || 0) - (b.cost || 0));
+
+  if (currentGearType === 'reels') {
+    grid.innerHTML = items.map(r => `
+      <div class="gear-item-card">
+        <div class="gear-item-name">${r.name}</div>
+        <div class="gear-item-stats">
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_size')}</span><span class="gear-item-stat-val">${r.size}</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_ratio')}</span><span class="gear-item-stat-val">${r.ratio}</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_drag')}</span><span class="gear-item-stat-val">${r.drag} kg</span></div>
+          ${r.copperLegal ? '<div class="gear-item-stat"><span class="gear-item-stat-val" style="color:#f59e0b;">⚡ Copper Legal</span></div>' : ''}
+        </div>
+        ${r.cost ? `<div class="gear-item-cost">~${r.cost.toLocaleString()} silver</div>` : ''}
+      </div>
+    `).join('');
+  } else if (currentGearType === 'rods') {
+    grid.innerHTML = items.map(r => `
+      <div class="gear-item-card">
+        <div class="gear-item-name">${r.name}</div>
+        <div class="gear-item-stats">
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_test')}</span><span class="gear-item-stat-val">${r.testMin}–${r.testMax}g</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_length')}</span><span class="gear-item-stat-val">${r.length}m</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_action')}</span><span class="gear-item-stat-val">${r.action}</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_sections')}</span><span class="gear-item-stat-val">${r.sections}</span></div>
+          ${r.copperLegal ? '<div class="gear-item-stat"><span class="gear-item-stat-val" style="color:#f59e0b;">⚡ Copper Legal</span></div>' : ''}
+        </div>
+        ${r.cost ? `<div class="gear-item-cost">~${r.cost.toLocaleString()} silver</div>` : ''}
+      </div>
+    `).join('');
+  } else {
+    grid.innerHTML = items.map(l => `
+      <div class="gear-item-card">
+        <div class="gear-item-name">${l.name}</div>
+        <div class="gear-item-stats">
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_type')}</span><span class="gear-item-stat-val">${l.type}</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_diameter')}</span><span class="gear-item-stat-val">${l.diameter}mm</span></div>
+          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_breaking')}</span><span class="gear-item-stat-val">${l.breakingLoad}kg</span></div>
+        </div>
+        ${l.cost ? `<div class="gear-item-cost">~${l.cost.toLocaleString()} silver</div>` : ''}
+      </div>
+    `).join('');
+  }
+}
+
+// ============================================================
+// COMPARE PAGE
+// ============================================================
+let compareSlots = { reels: [null, null], rods: [null, null] };
+let pickerContext = { type: null, slot: null };
+
+function renderCompare() {
+  renderCompareSlots('reels');
+  renderCompareSlots('rods');
+  renderCompareTable('reels');
+  renderCompareTable('rods');
+}
+
+function renderCompareSlots(type) {
+  compareSlots[type].forEach((item, i) => {
+    const slot = document.getElementById(`${type.slice(0,-1)}-slot-${i}`);
+    if (!slot) return;
+    if (item) {
+      slot.className = 'slot filled';
+      slot.onclick = null;
+      slot.innerHTML = `
+        <button class="slot-clear" onclick="clearSlot('${type}',${i})">×</button>
+        <div class="slot-name">${item.name}</div>
+        <div class="slot-sub">${type === 'reels' ? 'Size ' + item.size + ' · ' + item.ratio : item.length + 'm · ' + item.action}</div>
+      `;
+    } else {
+      slot.className = 'slot';
+      slot.onclick = () => openPicker(type, i);
+      slot.innerHTML = `<div class="slot-placeholder">${t(type === 'reels' ? 'compare_select_reel' : 'compare_select_rod')}</div>`;
+    }
+  });
+}
+
+function renderCompareTable(type) {
+  const container = document.getElementById(`${type}-compare-table`);
+  const [a, b] = compareSlots[type];
+  if (!a && !b) { container.innerHTML = ''; return; }
+  if (!a || !b) { container.innerHTML = `<div class="compare-empty">Select both items to compare</div>`; return; }
+
+  const stats = type === 'reels'
+    ? [
+    ['stat_size',      r => r.size,             null],
+    ['stat_drag',      r => r.drag + ' kg',     'higher'],
+    ['stat_mechanism', r => r.mechanism + ' kg','higher'],
+    ['stat_test',      r => r.test + 'g',       null],
+    ['stat_spool_cap', r => r.spoolCap,         'higher'],
+    ['stat_ratio',     r => r.ratio,            null],
+    ['stat_level',     r => r.level,            'lower'],
+    ['stat_saltwater', r => r.saltwater ? '✔️' : '✖️', null],
+    ['stat_cost',      r => r.cost ? r.cost.toLocaleString() + ' silver' : '—', 'lower'],
+  ]
+    : [
+    ['stat_load_cap',    r => r.loadCap + ' kg',  'higher'],
+    ['stat_test',        r => r.testMin + '–' + r.testMax + 'g', null],
+    ['stat_bonus',       r => r.bonus || '—',     null],
+    ['stat_action',      r => r.action,           null],
+    ['stat_stiffness',   r => r.stiffness,        null],
+    ['stat_sensitivity', r => r.sensitivity !== null && r.sensitivity !== undefined ? r.sensitivity : '—', null],
+    ['stat_power',       r => r.power,            null],
+    ['stat_level',       r => r.level,            'lower'],
+    ['stat_cost',        r => r.cost ? r.cost.toLocaleString() + ' silver' : '—', 'lower'],
+  ];
+
+  const rows = stats.map(([key, prop, higherBetter]) => {
+    const va = a[prop], vb = b[prop];
+    let ca = 'equal', cb = 'equal';
+    if (typeof va === 'number' && typeof vb === 'number' && va !== vb) {
+      if (higherBetter) { ca = va > vb ? 'better' : 'worse'; cb = vb > va ? 'better' : 'worse'; }
+      else { ca = va < vb ? 'better' : 'worse'; cb = vb < va ? 'better' : 'worse'; }
+    }
+    return `<tr>
+      <td class="stat-label">${t(key)}</td>
+      <td class="${ca}">${va ?? '—'}</td>
+      <td class="${cb}">${vb ?? '—'}</td>
+    </tr>`;
+  }).join('');
+
+  container.innerHTML = `<table class="compare-table">
+    <thead><tr><th></th><th class="gear-col">${a.name}</th><th class="gear-col">${b.name}</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function openPicker(type, slot) {
+  pickerContext = { type, slot };
+  document.getElementById('pickerTitle').textContent = t(type === 'reels' ? 'gear_reels' : 'gear_rods');
+  document.getElementById('pickerSearch').value = '';
+  renderPickerList();
+  document.getElementById('pickerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderPickerList() {
+  const search = document.getElementById('pickerSearch').value.toLowerCase();
+  const items = pickerContext.type === 'reels' ? reels : rods;
+  const filtered = search ? items.filter(i => i.name.toLowerCase().includes(search)) : items;
+  document.getElementById('pickerList').innerHTML = filtered.map(item => `
+    <div class="picker-item" onclick="selectPickerItem('${item.name.replace(/'/g,"\\'")}')">
+      <div class="picker-item-name">${item.name}</div>
+      <div class="picker-item-sub">${pickerContext.type === 'reels' ? 'Size ' + item.size + ' · ' + item.ratio + ' · ' + item.drag + 'kg drag' : item.length + 'm · ' + item.action + ' · ' + item.testMin + '–' + item.testMax + 'g'}</div>
+    </div>
+  `).join('');
+}
+
+function selectPickerItem(name) {
+  const { type, slot } = pickerContext;
+  const items = type === 'reels' ? reels : rods;
+  compareSlots[type][slot] = items.find(i => i.name === name);
+  closePicker();
+  renderCompareSlots(type);
+  renderCompareTable(type);
+}
+
+function clearSlot(type, slot) {
+  compareSlots[type][slot] = null;
+  renderCompareSlots(type);
+  renderCompareTable(type);
+}
+
+function closePicker(e) {
+  if (e && e.target !== document.getElementById('pickerOverlay')) return;
+  document.getElementById('pickerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeBuildModal(); closePicker(); }
+});
+
+// ============================================================
+// INIT
+// ============================================================
 updateCounts();
 renderBuilds();
+applyTranslations();
 </script>
 </body>
 </html>

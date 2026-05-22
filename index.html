@@ -9,7 +9,7 @@
   :root {
     --bg: #12100e; --surface: #1c1814; --surface2: #24201a; --border: #3a3228;
     --accent: #c9a96e; --accent2: #b8924f; --text: #ede8df; --muted: #8a7d6a;
-    --tag-bg: #24201a; --spinning: #7eb8c9; --bottom: #c97a4a; --float: #9d8fc4;
+    --tag-bg: #24201a; --spinning: #7eb8c9; --bottom: #c97a4a; --float: #9d8fc4; --sea: #0891b2;
     --green: #4ade80; --red: #f87171; --blue: #38bdf8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,6 +67,8 @@
   .build-card.type-spinning::before { background: var(--spinning); }
   .build-card.type-bottom::before { background: var(--bottom); }
   .build-card.type-float::before { background: var(--float); }
+  .build-card.type-sea::before { background: var(--sea); }
+  .dot-sea { background: var(--sea); }
   .build-card:hover { border-color: #3a4060; background: var(--surface2); }
   .build-card.selected { border-color: var(--accent); background: var(--surface2); }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
@@ -76,7 +78,8 @@
   .card-gear strong { color: #a0aabe; font-weight: 500; }
   .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
   .tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
-  .tag.copper { border-color: #b45309; color: #f59e0b; background: #1c1508; }
+  .tag.copper-yes { border-color: #166534; color: #4ade80; background: #0a1f10; }
+  .tag.copper-no  { border-color: #7f1d1d; color: #f87171; background: #1a0a0a; }
   .tag.budget { border-color: #8a6830; color: #c9a96e; background: #1c1608; }
   .tag.cost { border-color: #166534; color: #4ade80; background: #0a1f10; margin-left: auto; }
   .no-results { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 14px; }
@@ -94,11 +97,20 @@
   .gear-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
   .gear-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; }
   .gear-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .gear-card-img { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+  .gear-card-img img { max-height: 108px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
+  .gear-card-img .no-img { font-size: 36px; opacity: 0.12; }
   .gear-card-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
   .gear-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid var(--bg); }
   .gear-stat:last-of-type { border-bottom: none; }
   .gear-stat-label { color: var(--muted); } .gear-stat-val { font-weight: 500; color: var(--text); }
   .gear-card-cost { margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  .line-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .line-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; }
+  .line-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+  .line-card-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+  .line-card.no-leader { opacity: 0.35; }
+  .line-card.no-leader .line-card-name { color: var(--muted); font-style: italic; font-weight: 400; }
   .modal-section { margin-bottom: 1.25rem; }
   .modal-section-title { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
   .modal-desc { font-size: 14px; color: #9aa3b8; line-height: 1.75; background: var(--surface2); border-radius: 8px; padding: 14px 16px; border: 1px solid var(--border); }
@@ -109,7 +121,8 @@
   .fish-tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); }
   .modal-footer { display: flex; align-items: center; gap: 10px; padding-top: 1rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
   .total-cost { font-size: 15px; font-weight: 700; padding: 7px 18px; border-radius: 10px; background: #1c1608; border: 1px solid #8a6830; color: var(--accent); }
-  .copper-badge { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #1c1508; border: 1px solid #b45309; color: #f59e0b; }
+  .copper-badge-yes { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #0a1f10; border: 1px solid #166534; color: #4ade80; }
+  .copper-badge-no  { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 10px; background: #1a0a0a; border: 1px solid #7f1d1d; color: #f87171; }
 
   /* GEAR DB PAGE */
   .gear-db-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 80px); }
@@ -119,19 +132,53 @@
   .gear-type-btn.active { background: var(--surface2); color: var(--accent); }
   .gear-type-btn .gear-icon { font-size: 16px; width: 20px; text-align: center; }
   .gear-main { padding: 1.25rem; }
-  .gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-  .gear-item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; transition: all 0.15s; cursor: pointer; }
-  .gear-item-card:hover { border-color: var(--accent); background: var(--surface2); }
-  .gear-item-name { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
-  .gear-item-stats { display: flex; flex-direction: column; gap: 3px; }
-  .gear-item-stat { display: flex; justify-content: space-between; font-size: 12px; }
-  .gear-item-stat-label { color: var(--muted); }
-  .gear-item-stat-val { color: var(--text); font-weight: 500; }
-  .gear-item-cost { font-size: 13px; font-weight: 600; color: var(--accent); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .gear-search { margin-bottom: 1.25rem; }
   .gear-search input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
   .gear-search input::placeholder { color: var(--muted); }
   .gear-search input:focus { border-color: var(--accent); }
+
+  /* MODEL CARDS */
+  .model-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.18s; display: flex; flex-direction: column; }
+  .model-card:hover { border-color: var(--accent); background: var(--surface2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+  .model-card-img { width: 100%; height: 130px; background: var(--bg); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .model-card-img img { max-height: 110px; max-width: 90%; object-fit: contain; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.7)); }
+  .model-card-img .no-img { font-size: 48px; opacity: 0.08; }
+  .model-card-body { padding: 0.9rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .model-card-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .model-card-meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .model-card-tag { font-size: 11px; padding: 2px 7px; border-radius: 8px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
+  .model-card-tag.copper { border-color: #166534; color: #4ade80; background: #0a1f10; }
+  .model-card-tag.no-copper { border-color: #7f1d1d; color: #f87171; background: #1a0a0a; }
+  .model-card-tag.upgradeable { border-color: #92400e; color: #fb923c; background: #1c0f00; }
+  .model-card-variants { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .model-card-footer { font-size: 13px; color: var(--text); font-weight: 700; padding-top: 8px; margin-top: auto; border-top: 1px solid var(--border); }
+
+  /* GEAR VARIANT MODAL */
+  .gear-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 960px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; animation: modalIn 0.2s ease; }
+  .gear-modal-header { margin-bottom: 1.5rem; padding-right: 2.5rem; }
+  .gear-modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 2px; }
+  .gear-modal-manufacturer { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  .gear-modal-type { font-size: 13px; color: #7a8fa6; font-weight: 500; margin-bottom: 10px; }
+  .gear-modal-sub { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .variants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .variant-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .variant-card-img { width: 100%; height: 110px; background: var(--bg); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
+  .variant-card-img img { max-height: 94px; max-width: 88%; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
+  .variant-card-img .no-img { font-size: 36px; opacity: 0.1; }
+  .variant-card-body { padding: 0.85rem; flex: 1; }
+  .variant-card-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 0.65rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .variant-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .variant-stat:last-of-type { border-bottom: none; }
+  .variant-stat-label { color: var(--muted); }
+  .variant-stat-val { font-weight: 500; color: var(--text); }
+  .variant-card-footer { padding: 0.6rem 0.85rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+  .variant-cost { font-weight: 700; color: var(--text); font-size: 14px; }
+  .variant-copper { font-size: 11px; padding: 2px 7px; border-radius: 8px; }
+  .variant-copper.yes { border: 1px solid #166534; color: #4ade80; background: #0a1f10; }
+  .variant-copper.no  { border: 1px solid #7f1d1d; color: #f87171; background: #1a0a0a; }
+  .variant-features { display: flex; gap: 5px; flex-wrap: wrap; padding: 0 0.85rem 0.7rem; }
+  .variant-feature { font-size: 11px; padding: 2px 7px; border-radius: 8px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
 
   /* COMPARE PAGE */
   .compare-page { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
@@ -158,7 +205,7 @@
   .compare-table tr:last-child td { border-bottom: none; }
   .compare-table td.stat-label { color: var(--muted); }
   .compare-table td.better { color: var(--green); font-weight: 600; }
-  .compare-table td.worse { color: var(--muted); }
+  .compare-table td.worse { color: var(--muted); font-weight: 600; }
   .compare-table td.equal { color: var(--text); }
   .compare-empty { text-align: center; padding: 2rem; color: var(--muted); font-size: 14px; }
 
@@ -198,7 +245,6 @@
       <a onclick="showPage('compare')" id="nav-compare" data-i18n="nav_compare">Compare</a>
       <a class="soon" data-i18n="nav_maps">Maps</a>
       <a class="soon" data-i18n="nav_knowledge">Knowledge</a>
-      <a class="soon" data-i18n="nav_blog">Blog</a>
     </div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('en')">🇬🇧</button>
@@ -233,13 +279,18 @@
           <div class="sub-filters filter-group" id="sub-bottom" style="display:none;">
             <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-feeder',this)"><span style="width:8px"></span><span data-i18n="sub_feeder">Feeder / Picker</span></button>
             <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-carp',this)"><span style="width:8px"></span><span data-i18n="sub_carp">Carp</span></button>
-            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-copper',this)"><span style="width:8px"></span><span data-i18n="sub_copper">⚡ Copper Legal</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('bottom-copper',this)"><span style="width:8px"></span><span data-i18n="sub_copper">Copper</span></button>
           </div>
           <button class="filter-btn" onclick="setBuildFilter('float',this)"><span class="dot dot-float"></span><span data-i18n="filter_float">Float</span><span class="count" id="count-float">0</span></button>
           <div class="sub-filters filter-group" id="sub-float" style="display:none;">
             <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-telescopic',this)"><span style="width:8px"></span><span data-i18n="sub_telescopic">Telescopic</span></button>
             <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-match',this)"><span style="width:8px"></span><span data-i18n="sub_match">Match</span></button>
             <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('float-bolognese',this)"><span style="width:8px"></span><span data-i18n="sub_bolognese">Bolognese</span></button>
+          </div>
+          <button class="filter-btn" onclick="setBuildFilter('sea',this)"><span class="dot dot-sea"></span><span data-i18n="filter_sea">Sea</span><span class="count" id="count-sea">0</span></button>
+          <div class="sub-filters filter-group" id="sub-sea" style="display:none;">
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('sea-pirking',this)"><span style="width:8px"></span><span data-i18n="sub_pirking">Pirking</span></button>
+            <button class="filter-btn" style="font-size:13px;" onclick="setBuildFilter('sea-deepsea',this)"><span style="width:8px"></span><span data-i18n="sub_deepsea">Deep Sea</span></button>
           </div>
         </div>
       </div>
@@ -264,8 +315,8 @@
     <aside class="gear-db-sidebar">
       <div class="sidebar-label" data-i18n="gear_category">Category</div>
       <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px;">
-        <button class="gear-type-btn active" onclick="setGearType('reels',this)"><span class="gear-icon">🎣</span><span data-i18n="gear_reels">Reels</span></button>
-        <button class="gear-type-btn" onclick="setGearType('rods',this)"><span class="gear-icon">🪄</span><span data-i18n="gear_rods">Rods</span></button>
+        <button class="gear-type-btn active" onclick="setGearType('reels',this)"><span class="gear-icon">⚙️</span><span data-i18n="gear_reels">Reels</span></button>
+        <button class="gear-type-btn" onclick="setGearType('rods',this)"><span class="gear-icon">🎣</span><span data-i18n="gear_rods">Rods</span></button>
         <button class="gear-type-btn" onclick="setGearType('lines',this)"><span class="gear-icon">〰️</span><span data-i18n="gear_lines">Lines</span></button>
       </div>
     </aside>
@@ -284,7 +335,7 @@
 
       <!-- REELS COMPARE -->
       <div>
-        <div class="compare-section-title">🎣 <span data-i18n="gear_reels">Reels</span></div>
+        <div class="compare-section-title">⚙️ <span data-i18n="gear_reels">Reels</span></div>
         <div class="slot-row">
           <div class="slot" id="reel-slot-0" onclick="openPicker('reels',0)">
             <div class="slot-placeholder" data-i18n="compare_select_reel">Click to select a reel</div>
@@ -298,7 +349,7 @@
 
       <!-- RODS COMPARE -->
       <div>
-        <div class="compare-section-title">🪄 <span data-i18n="gear_rods">Rods</span></div>
+        <div class="compare-section-title">🎣 <span data-i18n="gear_rods">Rods</span></div>
         <div class="slot-row">
           <div class="slot" id="rod-slot-0" onclick="openPicker('rods',0)">
             <div class="slot-placeholder" data-i18n="compare_select_rod">Click to select a rod</div>
@@ -319,6 +370,11 @@
   <div class="modal" id="modalContent"></div>
 </div>
 
+<!-- GEAR VARIANT MODAL -->
+<div class="modal-overlay" id="gearModalOverlay" onclick="closeGearModal(event)">
+  <div class="gear-modal" id="gearModalContent"></div>
+</div>
+
 <!-- PICKER MODAL -->
 <div class="modal-overlay" id="pickerOverlay" onclick="closePicker(event)">
   <div class="picker-modal">
@@ -334,32 +390,101 @@
 // GEAR DATABASE — edit here to add/remove gear
 // ============================================================
 
-const reels = [
-  // --- SPINNING ---
-  // Fields: name, image, type, size, drag(kg), mechanism(kg), test(g range as string), spoolCap, ratio, level, saltwater(bool), copperLegal(bool), cost
-  { name: "Ryobi Eccs 2000", image: null, type: "spinning", size: 2000, drag: 4, mechanism: 4, test: "3–12", spoolCap: 150, ratio: "5.1:1", level: 1, saltwater: false, copperLegal: true, cost: 320 },
-  { name: "Ryobi Eccs 3000", image: null, type: "spinning", size: 3000, drag: 6, mechanism: 6, test: "5–18", spoolCap: 200, ratio: "5.1:1", level: 5, saltwater: false, copperLegal: true, cost: 480 },
-  { name: "Shimano Catana 4000", image: null, type: "spinning", size: 4000, drag: 8, mechanism: 8, test: "8–25", spoolCap: 280, ratio: "5.0:1", level: 12, saltwater: false, copperLegal: true, cost: 1100 },
-  { name: "Stinger Deep Sea 5000", image: null, type: "spinning", size: 5000, drag: 18, mechanism: 18, test: "15–50", spoolCap: 350, ratio: "4.3:1", level: 20, saltwater: true, copperLegal: true, cost: 3200 },
-  { name: "Caliber HSV 80 SLC", image: null, type: "spinning", size: 8000, drag: 15.4, mechanism: 15.4, test: "20–60", spoolCap: 420, ratio: "4.7:1", level: 25, saltwater: false, copperLegal: false, cost: 2800 },
-  { name: "Strega 8000", image: null, type: "spinning", size: 8000, drag: 14, mechanism: 16, test: "18–55", spoolCap: 400, ratio: "4.6:1", level: 30, saltwater: true, copperLegal: false, cost: 4100 },
-  // --- ADD MORE REELS BELOW ---
+// ============================================================
+// REEL MODELS — each model has variants per size
+// Fields per variant: size, image, drag(kg), mechanism(kg), lineDia(mm), lineLen(m), ratio, level, saltwater, copperLegal, cost, features[]
+// image on variant overrides model-level image. null = placeholder.
+// ============================================================
+const reelModels = [
+  {
+    model: "Spark 2", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.2,  mechanism: 3.4,  lineDia: 0.14, lineLen: 234, ratio: "5.4:1", level: 1, saltwater: false, copperLegal: true, cost: 8.50, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 3.2,  mechanism: 3.77, lineDia: 0.20, lineLen: 195, ratio: "5.4:1", level: 1, saltwater: false, copperLegal: true, cost: 9.50, features: [] },
+    ]
+  },
+  {
+    model: "Libra 2", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.3,  mechanism: 4.1,  lineDia: 0.14, lineLen: 234, ratio: "5.4:1", level: 1, saltwater: false, copperLegal: true, cost: 17.80, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 3.3,  mechanism: 4.5,  lineDia: 0.20, lineLen: 195, ratio: "5.4:1", level: 1, saltwater: false, copperLegal: true, cost: 17.80, features: [] },
+    ]
+  },
+  {
+    model: "Hydra Smart 2", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.4, mechanism: 5.4, lineDia: 0.14, lineLen: 260, ratio: "5.0:1", level: 1, saltwater: false, copperLegal: true, cost: 58.50, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Lacerti NG", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 3.8, dragUpgraded: 6.5, mechanism: 5.39, lineDia: 0.20, lineLen: 245, ratio: "6.1:1", level: 3, saltwater: false, copperLegal: true, cost: 58.50, features: [] },
+    ]
+  },
+  // --- ADD MORE REEL MODELS BELOW ---
 ];
 
-const rods = [
-  // Fields: name, image, type, subtype, loadCap(kg), testMin, testMax, bonus, action, stiffness(x/10), sensitivity(x/10 — null for feeder/picker), power, level, cost
-  // --- SPINNING ---
-  { name: "Salmo Elite 602UL", image: null, type: "spinning", subtype: "ultralight", loadCap: 3, testMin: 1, testMax: 7, bonus: null, action: "Light", stiffness: "8/10", sensitivity: "9/10", power: "Light", level: 1, copperLegal: true, cost: 420 },
-  { name: "Aeros SP68MH", image: null, type: "spinning", subtype: "universal", loadCap: 12, testMin: 7, testMax: 28, bonus: null, action: "Medium", stiffness: "6/10", sensitivity: "7/10", power: "Medium", level: 15, copperLegal: false, cost: 1800 },
-  { name: "Surf Master Rondine MH", image: null, type: "spinning", subtype: "trolling", loadCap: 22, testMin: 10, testMax: 40, bonus: "Trolling +2", action: "Medium", stiffness: "5/10", sensitivity: "6/10", power: "Heavy", level: 20, copperLegal: false, cost: 2600 },
-  // --- BOTTOM ---
-  { name: "Feeder Concept X 390", image: null, type: "bottom", subtype: "feeder", loadCap: 15, testMin: 0, testMax: 120, bonus: "Feeder rig +3", action: "Medium", stiffness: "4/10", sensitivity: null, power: "Medium", level: 10, copperLegal: true, cost: 1400 },
-  { name: "Carp Master Pro 390", image: null, type: "bottom", subtype: "carp", loadCap: 25, testMin: 0, testMax: 150, bonus: "Carp rig +4", action: "Heavy", stiffness: "3/10", sensitivity: null, power: "Heavy", level: 25, copperLegal: false, cost: 4200 },
-  // --- FLOAT ---
-  { name: "Salmo Elite Match 600", image: null, type: "float", subtype: "match", loadCap: 8, testMin: 5, testMax: 20, bonus: null, action: "Light", stiffness: "7/10", sensitivity: "8/10", power: "Light", level: 5, copperLegal: true, cost: 980 },
-  { name: "Salmo Sniper Tele 600", image: null, type: "float", subtype: "telescopic", loadCap: 5, testMin: 5, testMax: 15, bonus: null, action: "Light", stiffness: "6/10", sensitivity: "7/10", power: "Light", level: 1, copperLegal: true, cost: 320 },
-  // --- ADD MORE RODS BELOW ---
+// Spinning reel test values by size (hidden stat in-game)
+const SPINNING_TEST = { 1000: 1, 2000: 2, 3000: 3, 4000: 4, 5000: 6, 6000: 8, 8000: 12, 10000: 18, 30000: 40 };
+function getReelTest(type, size, manualTest) {
+  if (manualTest !== undefined) return manualTest;
+  if (type === 'spinning') return SPINNING_TEST[size] ?? null;
+  return null;
+}
+
+// Spool Volume Index: SVI = L × d²  (rounded to 1 decimal)
+// Store one representative line capacity pair per variant: lineDia (mm), lineLen (m)
+function calcSVI(d, l) {
+  if (!d || !l) return null;
+  return Math.round(l * d * d * 10) / 10;
+}
+const reels = reelModels.flatMap(m => m.variants.map(v => ({
+  name: `${m.model} ${v.size}`,
+  image: v.image || m.image,
+  type: m.type,
+  size: v.size,
+  drag: v.drag,
+  dragUpgraded: v.dragUpgraded || null,
+  mechanism: v.mechanism,
+  test: getReelTest(m.type, v.size, v.test),
+  lineDia: v.lineDia,
+  lineLen: v.lineLen,
+  svi: calcSVI(v.lineDia, v.lineLen),
+  ratio: v.ratio,
+  level: v.level,
+  saltwater: v.saltwater,
+  copperLegal: v.copperLegal,
+  cost: v.cost,
+})));
+
+// ============================================================
+// ROD MODELS — each model has variants per length/power
+// Fields per variant: length(cm), image, loadCap(kg), testMin, testMax, bonus, action, stiffness, sensitivity, power, level, copperLegal, cost
+// ============================================================
+const rodModels = [
+  // --- ADD MORE ROD MODELS BELOW ---
 ];
+
+// Flat list for builds/compare (auto-generated from rodModels)
+const rods = rodModels.flatMap(m => m.variants.map(v => ({
+  name: `${m.model} ${v.length}`,
+  image: v.image || m.image,
+  type: m.type,
+  subtype: m.subtype,
+  loadCap: v.loadCap,
+  testMin: v.testMin,
+  testMax: v.testMax,
+  bonus: v.bonus,
+  action: v.action,
+  stiffness: v.stiffness,
+  sensitivity: v.sensitivity,
+  power: v.power,
+  level: v.level,
+  copperLegal: v.copperLegal,
+  cost: v.cost,
+  length: v.length,
+})));
 
 const lines = [
   { name: "Mono Original 0.18mm", type: "mono", diameter: 0.18, breakingLoad: 3.2, color: "Clear", cost: 120 },
@@ -373,66 +498,18 @@ const lines = [
   // --- ADD MORE LINES BELOW ---
 ];
 
+const leaders = [
+  { name: "Fluorocarbon Leader 0.18mm", type: "fluoro", diameter: 0.18, breakingLoad: 3.2, cost: 95 },
+  { name: "Fluorocarbon Leader 0.22mm", type: "fluoro", diameter: 0.22, breakingLoad: 5.0, cost: 120 },
+  { name: "Mono Leader 0.25mm", type: "mono", diameter: 0.25, breakingLoad: 6.5, cost: 80 },
+  // --- ADD MORE LEADERS BELOW ---
+];
+
 // ============================================================
 // BUILDS — reference gear by name
 // ============================================================
 const builds = [
-  {
-    id: 1, name: "Universal Spinning Starter", type: "spinning", subtype: "spinning-universal",
-    minLevel: 20, levelLabel: "Lvl 20+",
-    rodName: "Aeros SP68MH", reelName: "Caliber HSV 80 SLC", lineName: "Mono Original 55LB",
-    tags: ["Universal", "Trolling", "Castable"], copperLegal: false, budget: true, cost: 4800,
-    fish: ["Pike", "Perch", "Asp", "Chub"],
-    description: "A solid all-round spinning setup for medium and large predators. Works well for both trolling and casting wobblers. Good price-to-performance ratio for players just hitting level 20."
-  },
-  {
-    id: 2, name: "Light Spinning — UL/L Universal", type: "spinning", subtype: "spinning-universal",
-    minLevel: 10, levelLabel: "Lvl 10+",
-    rodName: "Salmo Elite 602UL", reelName: "Ryobi Eccs 2000", lineName: "Fluorocarbon 0.18mm",
-    tags: ["Light lures", "Small predators", "Rivers"], copperLegal: false, budget: true, cost: 1200,
-    fish: ["Perch", "Ruffe", "Bleak", "Roach"],
-    description: "Entry-level ultralight setup for small predators and rivers. The UL action paired with a 2000 size reel gives great sensitivity on light lures."
-  },
-  {
-    id: 3, name: "Trolling / Kuori Setup", type: "spinning", subtype: "spinning-trolling",
-    minLevel: 25, levelLabel: "Lvl 25+",
-    rodName: "Surf Master Rondine MH", reelName: "Stinger Deep Sea 5000", lineName: "Braid PE 0.3mm",
-    tags: ["Trolling", "Kuori", "Large predators"], copperLegal: false, budget: false, cost: 7400,
-    fish: ["Pike", "Taimen", "Huchen", "Large Perch"],
-    description: "Built for trolling large lures at Kuori and similar open water maps. Braid is strongly recommended for sensitivity and thin diameter to reduce drag at depth."
-  },
-  {
-    id: 4, name: "Feeder Starter — Copper Legal", type: "bottom", subtype: "bottom-feeder",
-    minLevel: 15, levelLabel: "Lvl 15+",
-    rodName: "Feeder Concept X 390", reelName: "Shimano Catana 4000", lineName: "Mono Original 0.28mm",
-    tags: ["Feeder", "Carp", "River"], copperLegal: true, budget: true, cost: 3200,
-    fish: ["Bream", "Carp", "Tench", "Crucian Carp"],
-    description: "Reliable feeder setup that stays within Copper Lake's reel size restrictions. A smart investment since you'll use this for a long time before upgrading."
-  },
-  {
-    id: 5, name: "Carp Open Water — Intermediate", type: "bottom", subtype: "bottom-carp",
-    minLevel: 35, levelLabel: "Lvl 35+",
-    rodName: "Carp Master Pro 390", reelName: "Strega 8000", lineName: "Mono Carp 0.35mm",
-    tags: ["Carp", "Open water", "Amber Lake"], copperLegal: false, budget: false, cost: 9800,
-    fish: ["Common Carp", "Mirror Carp", "Grass Carp"],
-    description: "Proper carp rod and reel combo for open water maps like Amber Lake. The slow action handles prolonged fights much better than feeder rods."
-  },
-  {
-    id: 6, name: "Match Float — All-Round", type: "float", subtype: "float-match",
-    minLevel: 5, levelLabel: "Lvl 5+",
-    rodName: "Salmo Elite Match 600", reelName: "Ryobi Eccs 3000", lineName: "Mono Original 0.22mm",
-    tags: ["Match", "Rivers", "Lakes", "Beginner friendly"], copperLegal: true, budget: true, cost: 1800,
-    fish: ["Roach", "Bream", "Tench", "Rudd", "Chub"],
-    description: "A clean match setup that works on both rivers and lakes. Good starter float setup that won't need replacing for a long time."
-  },
-  {
-    id: 7, name: "Telescopic Float — Budget Beginner", type: "float", subtype: "float-telescopic",
-    minLevel: 1, levelLabel: "Lvl 1+",
-    rodName: "Salmo Sniper Tele 600", reelName: "Ryobi Eccs 2000", lineName: "Mono Original 0.18mm",
-    tags: ["Telescopic", "Beginner", "Budget"], copperLegal: true, budget: true, cost: 600,
-    fish: ["Roach", "Rudd", "Bleak", "Perch"],
-    description: "The cheapest viable float setup in the game. Ideal for the very first days of play."
-  }
+  // --- ADD MORE BUILDS BELOW ---
 ];
 
 // ============================================================
@@ -440,15 +517,15 @@ const builds = [
 // ============================================================
 const translations = {
   en: {
-    nav_builds: "Builds", nav_maps: "Maps", nav_geardb: "Gear DB", nav_knowledge: "Knowledge", nav_blog: "Blog", nav_compare: "Compare",
+    nav_builds: "Builds", nav_maps: "Maps", nav_geardb: "Gear DB", nav_knowledge: "Knowledge",nav_compare: "Compare",
     hero_title_gear: "Gear", hero_title_builds: "Builds",
-    filter_fishing_type: "Fishing Type", filter_all: "All Builds", filter_spinning: "Spinning", filter_bottom: "Bottom", filter_float: "Float",
+    filter_fishing_type: "Fishing Type", filter_all: "All Builds", filter_spinning: "Spinning", filter_sea: "Sea", sub_pirking: "Pirking", sub_deepsea: "Deep Sea", filter_bottom: "Bottom", filter_float: "Float",
     filter_player_level: "Player Level", sub_universal: "Universal", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
-    sub_feeder: "Feeder / Picker", sub_carp: "Carp", sub_copper: "⚡ Copper Legal",
+    sub_feeder: "Feeder / Picker", sub_carp: "Carp", sub_copper: "Copper",
     sub_telescopic: "Telescopic", sub_match: "Match", sub_bolognese: "Bolognese",
     level_all: "All Levels", level_beginner: "Beginner (1–19)", level_intermediate: "Intermediate (20–39)", level_advanced: "Advanced (40+)",
     search_placeholder: "Search builds...", search_gear: "Search gear...", no_results: "No builds found.\nMore coming soon.",
-    modal_rod: "Rod", modal_reel: "Reel", modal_line: "Line", modal_description: "Description", modal_target_fish: "Target fish",
+    modal_rod: "Rod", modal_reel: "Reel", modal_line: "Line", modal_leader: "Leader", modal_material: "Material", modal_no_leader: "No leader", modal_description: "Description", modal_target_fish: "Target fish",
     modal_test: "Test weight", modal_length: "Length", modal_action: "Action", modal_ratio: "Gear ratio", modal_drag: "Max drag",
     modal_reel_size: "Reel size", modal_diameter: "Diameter", modal_breaking: "Breaking load", modal_total: "Total",
     modal_fishing: "fishing", tag_budget: "Budget", gear_category: "Category", gear_reels: "Reels", gear_rods: "Rods", gear_lines: "Lines",
@@ -456,21 +533,21 @@ const translations = {
     stat_size: "Size", stat_ratio: "Gear ratio", stat_drag: "Max drag (kg)", stat_cost: "Cost (silver)",
     stat_test: "Test", stat_length: "Length (m)", stat_action: "Action",
     stat_type: "Type", stat_diameter: "Diameter (mm)", stat_breaking: "Breaking load (kg)",
-    stat_mechanism: "Mechanism (kg)", stat_spool_cap: "Spool capacity", stat_level: "Level", stat_saltwater: "Saltwater protection",
+    stat_mechanism: "Mechanism (kg)", stat_spool_cap: "Line Cap Index", stat_level: "Level", stat_saltwater: "Saltwater protection",
     stat_load_cap: "Load capacity", stat_bonus: "Bonus", stat_stiffness: "Stiffness", stat_sensitivity: "Sensitivity", stat_power: "Power",
 
-    copper_legal: "Copper Legal", not_copper: "Not Copper Legal",
+    copper_legal: "Copper", not_copper: "Not Copper",
   },
   ru: {
-    nav_builds: "Сборки", nav_maps: "Карты", nav_geardb: "База снаряжения", nav_knowledge: "Гайды", nav_blog: "Блог", nav_compare: "Сравнение",
+    nav_builds: "Сборки", nav_maps: "Карты", nav_geardb: "База снаряжения", nav_knowledge: "Гайды",nav_compare: "Сравнение",
     hero_title_gear: "Сборки", hero_title_builds: "снаряжения",
-    filter_fishing_type: "Тип ловли", filter_all: "Все сборки", filter_spinning: "Спиннинг", filter_bottom: "Донная", filter_float: "Поплавок",
+    filter_fishing_type: "Тип ловли", filter_all: "Все сборки", filter_spinning: "Спиннинг", filter_sea: "Море", sub_pirking: "Пилькер", sub_deepsea: "Морская глубоководная", filter_bottom: "Донная", filter_float: "Поплавок",
     filter_player_level: "Уровень игрока", sub_universal: "Универсальный", sub_trolling: "Троллинг", sub_jigging: "Джиг", sub_casting: "Кастинг",
     sub_feeder: "Фидер / Пикер", sub_carp: "Карп", sub_copper: "⚡ Медное озеро",
     sub_telescopic: "Телескоп", sub_match: "Матч", sub_bolognese: "Болонез",
     level_all: "Все уровни", level_beginner: "Новичок (1–19)", level_intermediate: "Средний (20–39)", level_advanced: "Опытный (40+)",
     search_placeholder: "Поиск сборок...", search_gear: "Поиск снаряжения...", no_results: "Сборки не найдены.\nСкоро появятся новые.",
-    modal_rod: "Удилище", modal_reel: "Катушка", modal_line: "Леска", modal_description: "Описание", modal_target_fish: "Целевая рыба",
+    modal_rod: "Удилище", modal_reel: "Катушка", modal_line: "Леска", modal_leader: "Поводок", modal_material: "Материал", modal_no_leader: "Без поводка", modal_description: "Описание", modal_target_fish: "Целевая рыба",
     modal_test: "Тест", modal_length: "Длина", modal_action: "Строй", modal_ratio: "Передаточное число", modal_drag: "Макс. тормоз",
     modal_reel_size: "Размер катушки", modal_diameter: "Диаметр", modal_breaking: "Разрывная нагрузка", modal_total: "Итого",
     modal_fishing: "ловля", tag_budget: "Бюджет", gear_category: "Категория", gear_reels: "Катушки", gear_rods: "Удилища", gear_lines: "Лески",
@@ -478,17 +555,17 @@ const translations = {
     stat_size: "Размер", stat_ratio: "Передаточное число", stat_drag: "Макс. тормоз (кг)", stat_cost: "Цена (серебро)",
     stat_test: "Тест", stat_length: "Длина (м)", stat_action: "Строй",
     stat_type: "Тип", stat_diameter: "Диаметр (мм)", stat_breaking: "Разрывная нагрузка (кг)",
-    stat_mechanism: "Механизм (кг)", stat_spool_cap: "Ёмкость шпули", stat_level: "Уровень", stat_saltwater: "Защита от соли",
+    stat_mechanism: "Механизм (кг)", stat_spool_cap: "Line Cap Index", stat_level: "Уровень", stat_saltwater: "Защита от соли",
     stat_load_cap: "Грузоподъёмность", stat_bonus: "Бонус", stat_stiffness: "Жёсткость", stat_sensitivity: "Чувствительность", stat_power: "Мощность",
 
     copper_legal: "Медное озеро", not_copper: "Не для Медного",
   },
   pl: {
-    nav_builds: "Zestawy", nav_maps: "Mapy", nav_geardb: "Baza sprzętu", nav_knowledge: "Poradniki", nav_blog: "Blog", nav_compare: "Porównaj",
+    nav_builds: "Zestawy", nav_maps: "Mapy", nav_geardb: "Baza sprzętu", nav_knowledge: "Poradniki",nav_compare: "Porównaj",
     hero_title_gear: "Zestawy", hero_title_builds: "sprzętu",
-    filter_fishing_type: "Typ połowu", filter_all: "Wszystkie zestawy", filter_spinning: "Spinning", filter_bottom: "Grunt", filter_float: "Spławik",
+    filter_fishing_type: "Typ połowu", filter_all: "Wszystkie zestawy", filter_spinning: "Spinning", filter_sea: "Sea", sub_pirking: "Pirking", sub_deepsea: "Deep Sea", filter_bottom: "Grunt", filter_float: "Spławik",
     filter_player_level: "Poziom gracza", sub_universal: "Uniwersalny", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
-    sub_feeder: "Feeder / Picker", sub_carp: "Karp", sub_copper: "⚡ Copper Legal",
+    sub_feeder: "Feeder / Picker", sub_carp: "Karp", sub_copper: "Copper",
     sub_telescopic: "Teleskop", sub_match: "Match", sub_bolognese: "Bolognese",
     level_all: "Wszystkie poziomy", level_beginner: "Początkujący (1–19)", level_intermediate: "Średni (20–39)", level_advanced: "Zaawansowany (40+)",
     search_placeholder: "Szukaj zestawów...", search_gear: "Szukaj sprzętu...", no_results: "Brak zestawów.\nWkrótce pojawią się nowe.",
@@ -500,17 +577,17 @@ const translations = {
     stat_size: "Rozmiar", stat_ratio: "Przełożenie", stat_drag: "Maks. hamulec (kg)", stat_cost: "Cena (srebro)",
     stat_test: "Test", stat_length: "Długość (m)", stat_action: "Akcja",
     stat_type: "Typ", stat_diameter: "Średnica (mm)", stat_breaking: "Wytrzymałość (kg)",
-    stat_mechanism: "Mechanizm (kg)", stat_spool_cap: "Pojemność szpuli", stat_level: "Poziom", stat_saltwater: "Ochrona słona woda",
+    stat_mechanism: "Mechanizm (kg)", stat_spool_cap: "Line Cap Index", stat_level: "Poziom", stat_saltwater: "Ochrona słona woda",
     stat_load_cap: "Nośność", stat_bonus: "Bonus", stat_stiffness: "Sztywność", stat_sensitivity: "Czułość", stat_power: "Moc",
 
-    copper_legal: "Copper Legal", not_copper: "Nie Copper Legal",
+    copper_legal: "Copper", not_copper: "Nie Copper Legal",
   },
   fr: {
-    nav_builds: "Montages", nav_maps: "Cartes", nav_geardb: "Base équipement", nav_knowledge: "Guides", nav_blog: "Blog", nav_compare: "Comparer",
+    nav_builds: "Montages", nav_maps: "Cartes", nav_geardb: "Base équipement", nav_knowledge: "Guides",nav_compare: "Comparer",
     hero_title_gear: "Montages", hero_title_builds: "d'équipement",
-    filter_fishing_type: "Type de pêche", filter_all: "Tous les montages", filter_spinning: "Spinning", filter_bottom: "Fond", filter_float: "Flotteur",
+    filter_fishing_type: "Type de pêche", filter_all: "Tous les montages", filter_spinning: "Spinning", filter_sea: "Sea", sub_pirking: "Pirking", sub_deepsea: "Deep Sea", filter_bottom: "Fond", filter_float: "Flotteur",
     filter_player_level: "Niveau du joueur", sub_universal: "Universel", sub_trolling: "Trolling", sub_jigging: "Jigging", sub_casting: "Casting",
-    sub_feeder: "Feeder / Picker", sub_carp: "Carpe", sub_copper: "⚡ Copper Légal",
+    sub_feeder: "Feeder / Picker", sub_carp: "Carpe", sub_copper: "Copper Légal",
     sub_telescopic: "Télescopique", sub_match: "Match", sub_bolognese: "Bolognaise",
     level_all: "Tous niveaux", level_beginner: "Débutant (1–19)", level_intermediate: "Intermédiaire (20–39)", level_advanced: "Avancé (40+)",
     search_placeholder: "Rechercher...", search_gear: "Rechercher équipement...", no_results: "Aucun montage trouvé.\nD'autres arrivent bientôt.",
@@ -520,12 +597,12 @@ const translations = {
     modal_fishing: "pêche", tag_budget: "Budget", gear_category: "Catégorie", gear_reels: "Moulinets", gear_rods: "Cannes", gear_lines: "Fils",
     compare_select_reel: "Sélectionner un moulinet", compare_select_rod: "Sélectionner une canne",
 
-    copper_legal: "Copper Légal", not_copper: "Non Copper Légal",
+    copper_legal: "Copper", not_copper: "Non Copper",
   },
   zh: {
-    nav_builds: "装备配置", nav_maps: "地图", nav_geardb: "装备库", nav_knowledge: "攻略", nav_blog: "博客", nav_compare: "对比",
+    nav_builds: "装备配置", nav_maps: "地图", nav_geardb: "装备库", nav_knowledge: "攻略",nav_compare: "对比",
     hero_title_gear: "装备", hero_title_builds: "配置方案",
-    filter_fishing_type: "钓鱼类型", filter_all: "全部配置", filter_spinning: "路亚", filter_bottom: "底钓", filter_float: "浮漂",
+    filter_fishing_type: "钓鱼类型", filter_all: "全部配置", filter_spinning: "路亚", filter_sea: "海钓", sub_pirking: "铁板", sub_deepsea: "深海", filter_bottom: "底钓", filter_float: "浮漂",
     filter_player_level: "玩家等级", sub_universal: "通用", sub_trolling: "拖钓", sub_jigging: "铁板", sub_casting: "抛竿",
     sub_feeder: "喂食器 / 短竿", sub_carp: "鲤鱼", sub_copper: "⚡ 铜湖合规",
     sub_telescopic: "伸缩竿", sub_match: "比赛竿", sub_bolognese: "博洛尼亚竿",
@@ -539,7 +616,7 @@ const translations = {
     stat_size: "型号", stat_ratio: "传动比", stat_drag: "最大曳力 (kg)", stat_cost: "价格 (银币)",
     stat_test: "测试重量", stat_length: "长度 (m)", stat_action: "调性",
     stat_type: "类型", stat_diameter: "直径 (mm)", stat_breaking: "断裂负荷 (kg)",
-    stat_mechanism: "制动机构 (kg)", stat_spool_cap: "线轴容量", stat_level: "等级", stat_saltwater: "防盐水保护",
+    stat_mechanism: "制动机构 (kg)", stat_spool_cap: "Line Cap Index", stat_level: "等级", stat_saltwater: "防盐水保护",
     stat_load_cap: "负载能力", stat_bonus: "加成", stat_stiffness: "硬度", stat_sensitivity: "灵敏度", stat_power: "强度",
 
     copper_legal: "铜湖合规", not_copper: "不适用铜湖",
@@ -633,12 +710,17 @@ function renderBuilds() {
       <div class="card-gear"><strong>${t('modal_rod')}:</strong> ${b.rodName} &nbsp;·&nbsp; <strong>${t('modal_reel')}:</strong> ${b.reelName}</div>
       <div class="card-tags">
         ${b.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-        ${b.copperLegal ? '<span class="tag copper">⚡ Copper Legal</span>' : ''}
+        ${b.copperLegal ? '<span class="tag copper-yes">Copper ✓</span>' : '<span class="tag copper-no">Copper ✗</span>'}
         ${b.budget ? `<span class="tag budget">${t('tag_budget')}</span>` : ''}
         <span class="tag cost">~${b.cost.toLocaleString()} silver</span>
       </div>
     </div>
   `).join('');
+}
+
+function gearImg(imgSrc, emoji) {
+  if (imgSrc) return `<div class="gear-card-img"><img src="${imgSrc}" alt="" onerror="this.parentElement.innerHTML='<span class=\'no-img\'>${emoji}</span>'"></div>`;
+  return `<div class="gear-card-img"><span class="no-img">${emoji}</span></div>`;
 }
 
 function openBuildModal(id) {
@@ -647,6 +729,7 @@ function openBuildModal(id) {
   const rod = rods.find(r => r.name === b.rodName) || {};
   const reel = reels.find(r => r.name === b.reelName) || {};
   const line = lines.find(l => l.name === b.lineName) || {};
+  const leader = b.leaderName ? (leaders.find(l => l.name === b.leaderName) || {}) : null;
   renderBuilds();
   document.getElementById('modalContent').innerHTML = `
     <button class="modal-close" onclick="closeBuildModal()">✕</button>
@@ -654,24 +737,36 @@ function openBuildModal(id) {
     <div class="modal-sub">
       <span class="modal-badge">${b.levelLabel}</span>
       <span class="modal-badge">${b.type} ${t('modal_fishing')}</span>
-      ${b.copperLegal ? '<span class="modal-badge" style="border-color:#b45309;color:#f59e0b;background:#1c1508;">⚡ Copper Legal</span>' : ''}
+      ${b.copperLegal ? '<span class="modal-badge" style="border-color:#166534;color:#4ade80;background:#0a1f10;">Copper ✓</span>' : '<span class="modal-badge" style="border-color:#7f1d1d;color:#f87171;background:#1a0a0a;">Copper ✗</span>'}
       ${b.budget ? `<span class="modal-badge" style="border-color:#8a6830;color:#c9a96e;background:#1c1608;">${t('tag_budget')}</span>` : ''}
     </div>
     <div class="gear-cards">
       <div class="gear-card">
         <div class="gear-card-label">${t('modal_rod')}</div>
+        ${gearImg(rod.image, '🎣')}
         <div class="gear-card-name">${b.rodName}</div>
-        ${rod.testMin !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_test')}</span><span class="gear-stat-val">${rod.testMin}–${rod.testMax}g</span></div>` : ''}
-        ${rod.length ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_length')}</span><span class="gear-stat-val">${rod.length}m</span></div>` : ''}
+        ${rod.loadCap !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_load_cap')}</span><span class="gear-stat-val">${rod.loadCap} kg</span></div>` : ''}
+        ${rod.testMin !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_test')}</span><span class="gear-stat-val">${rod.testMin}–${rod.testMax}g</span></div>` : ''}
+        ${rod.bonus ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_bonus')}</span><span class="gear-stat-val">${rod.bonus}</span></div>` : ''}
         ${rod.action ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_action')}</span><span class="gear-stat-val">${rod.action}</span></div>` : ''}
+        ${rod.stiffness ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_stiffness')}</span><span class="gear-stat-val">${rod.stiffness}</span></div>` : ''}
+        ${rod.sensitivity != null ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_sensitivity')}</span><span class="gear-stat-val">${rod.sensitivity}</span></div>` : ''}
+        ${rod.power ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_power')}</span><span class="gear-stat-val">${rod.power}</span></div>` : ''}
+        ${rod.level !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_level')}</span><span class="gear-stat-val">${rod.level}</span></div>` : ''}
         ${rod.cost ? `<div class="gear-card-cost">~${rod.cost.toLocaleString()} silver</div>` : ''}
       </div>
       <div class="gear-card">
         <div class="gear-card-label">${t('modal_reel')}</div>
+        ${gearImg(reel.image, '⚙️')}
         <div class="gear-card-name">${b.reelName}</div>
-        ${reel.ratio ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_ratio')}</span><span class="gear-stat-val">${reel.ratio}</span></div>` : ''}
-        ${reel.drag ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_drag')}</span><span class="gear-stat-val">${reel.drag}kg</span></div>` : ''}
-        ${reel.size ? `<div class="gear-stat"><span class="gear-stat-label">${t('modal_reel_size')}</span><span class="gear-stat-val">${reel.size}</span></div>` : ''}
+        ${reel.size !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_size')}</span><span class="gear-stat-val">${reel.size}</span></div>` : ''}
+        ${reel.drag !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_drag')}</span><span class="gear-stat-val">${reel.drag} kg</span></div>` : ''}
+        ${reel.mechanism !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_mechanism')}</span><span class="gear-stat-val">${reel.mechanism} kg</span></div>` : ''}
+        ${reel.test ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_test')}</span><span class="gear-stat-val">${reel.test}g</span></div>` : ''}
+        ${reel.spoolCap !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_spool_cap')}</span><span class="gear-stat-val">${reel.spoolCap}m</span></div>` : ''}
+        ${reel.ratio ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_ratio')}</span><span class="gear-stat-val">${reel.ratio}</span></div>` : ''}
+        ${reel.level !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_level')}</span><span class="gear-stat-val">${reel.level}</span></div>` : ''}
+        ${reel.saltwater !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_saltwater')}</span><span class="gear-stat-val">${reel.saltwater ? '✔️' : '✖️'}</span></div>` : ''}
         ${reel.cost ? `<div class="gear-card-cost">~${reel.cost.toLocaleString()} silver</div>` : ''}
       </div>
     </div>
@@ -690,7 +785,7 @@ function openBuildModal(id) {
     </div>
     <div class="modal-footer">
       <span class="total-cost">${t('modal_total')}: ~${b.cost.toLocaleString()} silver</span>
-      ${b.copperLegal ? '<span class="copper-badge">⚡ Copper Legal</span>' : ''}
+      ${b.copperLegal ? '<span class="copper-badge-yes">Copper ✓</span>' : '<span class="copper-badge-no">Copper ✗</span>'}
     </div>
   `;
   document.getElementById('modalOverlay').classList.add('open');
@@ -720,50 +815,179 @@ function renderGearDB() {
   const search = (document.getElementById('gearSearch')?.value || '').toLowerCase();
   const grid = document.getElementById('gearGrid');
   if (!grid) return;
-  let items = [...(currentGearType === 'reels' ? reels : currentGearType === 'rods' ? rods : lines)];
-  if (search) items = items.filter(i => i.name.toLowerCase().includes(search));
-  items.sort((a, b) => (a.cost || 0) - (b.cost || 0));
+  const dash = '—';
+  const v = (val, suffix='') => (val !== undefined && val !== null && val !== '') ? val + suffix : dash;
 
   if (currentGearType === 'reels') {
-    grid.innerHTML = items.map(r => `
-      <div class="gear-item-card">
-        <div class="gear-item-name">${r.name}</div>
-        <div class="gear-item-stats">
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_size')}</span><span class="gear-item-stat-val">${r.size}</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_ratio')}</span><span class="gear-item-stat-val">${r.ratio}</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_drag')}</span><span class="gear-item-stat-val">${r.drag} kg</span></div>
-          ${r.copperLegal ? '<div class="gear-item-stat"><span class="gear-item-stat-val" style="color:#f59e0b;">⚡ Copper Legal</span></div>' : ''}
+    let models = reelModels;
+    if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.variants.some(v => v.features?.some(f => f.toLowerCase().includes(search))));
+    grid.innerHTML = models.map((m, mi) => {
+      const minLevel = Math.min(...m.variants.map(v => v.level));
+      const sizesLabel = m.variants.map(v => v.size).join(', ');
+      const dragRange = m.variants.length > 1
+        ? [...new Set(m.variants.map(v => v.drag))].join('–') + ' kg'
+        : m.variants[0].drag + ' kg';
+      const anyCopperLegal = m.variants.some(v => v.copperLegal);
+      const allCopperLegal = m.variants.every(v => v.copperLegal);
+      const copperTag = allCopperLegal
+        ? `<span class="model-card-tag copper">Copper ✓</span>`
+        : anyCopperLegal
+          ? `<span class="model-card-tag copper">Copper (some)</span>`
+          : `<span class="model-card-tag no-copper">Copper ✗</span>`;
+      const img = m.image
+        ? `<img src="${m.image}" alt="${m.model}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>⚙️</span>'">`
+        : `<span class="no-img">⚙️</span>`;
+      const minCost = Math.min(...m.variants.map(v => v.cost || Infinity));
+      const costStr = isFinite(minCost) ? (m.variants.length > 1 ? 'from ' : '') + minCost.toLocaleString() + ' silver' : '—';
+      const anyUpgradeable = m.variants.some(v => v.dragUpgraded);
+      return `<div class="model-card" onclick="openGearModal('reels',${mi})">
+        <div class="model-card-img">${img}</div>
+        <div class="model-card-body">
+          <div class="model-card-name">${m.model}</div>
+          ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
+          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${m.type.charAt(0).toUpperCase()+m.type.slice(1)}</div>
+          <div class="model-card-meta">
+            <span class="model-card-tag">Lvl ${minLevel}+</span>
+            ${copperTag}
+            ${anyUpgradeable ? `<span class="model-card-tag upgradeable">Upgradeable</span>` : ''}
+          </div>
+          <div class="model-card-variants">${m.variants.length} size${m.variants.length > 1 ? 's' : ''}: ${sizesLabel} · Drag ${dragRange}</div>
+          <div class="model-card-footer">${costStr}</div>
         </div>
-        ${r.cost ? `<div class="gear-item-cost">~${r.cost.toLocaleString()} silver</div>` : ''}
-      </div>
-    `).join('');
+      </div>`;
+    }).join('') || `<div class="no-results">No reels found.</div>`;
+
   } else if (currentGearType === 'rods') {
-    grid.innerHTML = items.map(r => `
-      <div class="gear-item-card">
-        <div class="gear-item-name">${r.name}</div>
-        <div class="gear-item-stats">
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_test')}</span><span class="gear-item-stat-val">${r.testMin}–${r.testMax}g</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_length')}</span><span class="gear-item-stat-val">${r.length}m</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_action')}</span><span class="gear-item-stat-val">${r.action}</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_sections')}</span><span class="gear-item-stat-val">${r.sections}</span></div>
-          ${r.copperLegal ? '<div class="gear-item-stat"><span class="gear-item-stat-val" style="color:#f59e0b;">⚡ Copper Legal</span></div>' : ''}
+    let models = rodModels;
+    if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.subtype?.toLowerCase().includes(search));
+    grid.innerHTML = models.map((m, mi) => {
+      const minLevel = Math.min(...m.variants.map(v => v.level));
+      const lengths = m.variants.map(v => v.length).join(', ');
+      const anyCopperLegal = m.variants.some(v => v.copperLegal);
+      const allCopperLegal = m.variants.every(v => v.copperLegal);
+      const copperTag = allCopperLegal
+        ? `<span class="model-card-tag copper">Copper ✓</span>`
+        : anyCopperLegal
+          ? `<span class="model-card-tag copper">Copper (some)</span>`
+          : `<span class="model-card-tag no-copper">Copper ✗</span>`;
+      const img = m.image
+        ? `<img src="${m.image}" alt="${m.model}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>🎣</span>'">`
+        : `<span class="no-img">🎣</span>`;
+      const minCost = Math.min(...m.variants.map(v => v.cost || Infinity));
+      const costStr = isFinite(minCost) ? (m.variants.length > 1 ? 'from ' : '') + minCost.toLocaleString() + ' silver' : '—';
+      const action = [...new Set(m.variants.map(v => v.action))].join(' / ');
+      return `<div class="model-card" onclick="openGearModal('rods',${mi})">
+        <div class="model-card-img">${img}</div>
+        <div class="model-card-body">
+          <div class="model-card-name">${m.model}</div>
+          ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
+          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${((m.subtype||m.type).charAt(0).toUpperCase()+(m.subtype||m.type).slice(1))}</div>
+          <div class="model-card-meta">
+            <span class="model-card-tag">Lvl ${minLevel}+</span>
+            ${copperTag}
+          </div>
+          <div class="model-card-variants">${m.variants.length} variant${m.variants.length > 1 ? 's' : ''}: ${lengths} · ${action}</div>
+          <div class="model-card-footer">${costStr}</div>
         </div>
-        ${r.cost ? `<div class="gear-item-cost">~${r.cost.toLocaleString()} silver</div>` : ''}
-      </div>
-    `).join('');
+      </div>`;
+    }).join('') || `<div class="no-results">No rods found.</div>`;
+
   } else {
+    let items = [...lines];
+    if (search) items = items.filter(i => i.name.toLowerCase().includes(search));
+    items.sort((a, b) => (a.cost || 0) - (b.cost || 0));
     grid.innerHTML = items.map(l => `
-      <div class="gear-item-card">
-        <div class="gear-item-name">${l.name}</div>
-        <div class="gear-item-stats">
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_type')}</span><span class="gear-item-stat-val">${l.type}</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_diameter')}</span><span class="gear-item-stat-val">${l.diameter}mm</span></div>
-          <div class="gear-item-stat"><span class="gear-item-stat-label">${t('stat_breaking')}</span><span class="gear-item-stat-val">${l.breakingLoad}kg</span></div>
+      <div class="model-card" style="cursor:default;">
+        <div class="model-card-img"><span class="no-img">〰️</span></div>
+        <div class="model-card-body">
+          <div class="model-card-name">${l.name}</div>
+          <div class="model-card-meta">
+            <span class="model-card-tag">${l.type}</span>
+            <span class="model-card-tag">${l.diameter}mm</span>
+          </div>
+          <div class="model-card-variants">Breaking load: ${l.breakingLoad} kg${l.color ? ' · ' + l.color : ''}</div>
+          <div class="model-card-footer">${l.cost ? l.cost.toLocaleString() + ' silver' : '—'}</div>
         </div>
-        ${l.cost ? `<div class="gear-item-cost">~${l.cost.toLocaleString()} silver</div>` : ''}
       </div>
-    `).join('');
+    `).join('') || `<div class="no-results">No lines found.</div>`;
   }
+}
+
+function openGearModal(type, modelIndex) {
+  const m = type === 'reels' ? reelModels[modelIndex] : rodModels[modelIndex];
+  const dash = '—';
+  const v = (val, suffix='') => (val !== undefined && val !== null && val !== '') ? val + suffix : dash;
+
+  let variantsHtml = '';
+  if (type === 'reels') {
+    variantsHtml = m.variants.map(variant => {
+      const img = (variant.image || m.image)
+        ? `<img src="${variant.image || m.image}" alt="Size ${variant.size}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>⚙️</span>'">`
+        : `<span class="no-img">⚙️</span>`;
+      const features = variant.features?.length
+        ? `<div class="variant-features">${variant.features.map(f => `<span class="variant-feature">${f}</span>`).join('')}</div>`
+        : '';
+      return `<div class="variant-card">
+        <div class="variant-card-img">${img}</div>
+        <div class="variant-card-body">
+          <div class="variant-card-title">Size ${variant.size}</div>
+          <div class="variant-stat"><span class="variant-stat-label">Max drag</span><span class="variant-stat-val">${variant.dragUpgraded ? `${variant.drag} kg → <span style="color:#4ade80;">${variant.dragUpgraded} kg ▲</span>` : v(variant.drag, ' kg')}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Mechanism</span><span class="variant-stat-val">${v(variant.mechanism, ' kg')}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Test</span><span class="variant-stat-val">${getReelTest(m.type, variant.size, variant.test) !== null ? getReelTest(m.type, variant.size, variant.test) + 'g' : '—'}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Line Cap Index</span><span class="variant-stat-val">${calcSVI(variant.lineDia, variant.lineLen) ?? '—'}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Gear ratio</span><span class="variant-stat-val">${v(variant.ratio)}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Level</span><span class="variant-stat-val">${v(variant.level)}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Saltwater</span><span class="variant-stat-val">${variant.saltwater ? '✔️' : '✖️'}</span></div>
+        </div>
+        <div class="variant-card-footer">
+          <span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>
+          <span class="variant-cost">${variant.cost ? variant.cost.toLocaleString() + ' silver' : '—'}</span>
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    variantsHtml = m.variants.map(variant => {
+      const img = (variant.image || m.image)
+        ? `<img src="${variant.image || m.image}" alt="${variant.length}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>🎣</span>'">`
+        : `<span class="no-img">🎣</span>`;
+      return `<div class="variant-card">
+        <div class="variant-card-img">${img}</div>
+        <div class="variant-card-body">
+          <div class="variant-card-title">${variant.length}</div>
+          <div class="variant-stat"><span class="variant-stat-label">Load cap</span><span class="variant-stat-val">${v(variant.loadCap, ' kg')}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Test</span><span class="variant-stat-val">${variant.testMin !== undefined ? variant.testMin+'–'+variant.testMax+'g' : dash}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Action</span><span class="variant-stat-val">${v(variant.action)}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Stiffness</span><span class="variant-stat-val">${v(variant.stiffness)}</span></div>
+          ${variant.sensitivity !== null && variant.sensitivity !== undefined ? `<div class="variant-stat"><span class="variant-stat-label">Sensitivity</span><span class="variant-stat-val">${variant.sensitivity}</span></div>` : ''}
+          <div class="variant-stat"><span class="variant-stat-label">Power</span><span class="variant-stat-val">${v(variant.power)}</span></div>
+          ${variant.bonus ? `<div class="variant-stat"><span class="variant-stat-label">Bonus</span><span class="variant-stat-val">${variant.bonus}</span></div>` : ''}
+          <div class="variant-stat"><span class="variant-stat-label">Level</span><span class="variant-stat-val">${v(variant.level)}</span></div>
+        </div>
+        <div class="variant-card-footer">
+          <span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>
+          <span class="variant-cost">${variant.cost ? variant.cost.toLocaleString() + ' silver' : '—'}</span>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('gearModalContent').innerHTML = `
+    <button class="modal-close" onclick="closeGearModal()">✕</button>
+    <div class="gear-modal-header">
+      <div class="gear-modal-title">${m.model}</div>
+      ${m.manufacturer ? `<div class="gear-modal-manufacturer">${m.manufacturer}</div>` : ''}
+      <div class="gear-modal-type">${((type === 'reels' ? m.type : (m.subtype || m.type))).charAt(0).toUpperCase() + ((type === 'reels' ? m.type : (m.subtype || m.type))).slice(1)}</div>
+    </div>
+    <div class="variants-grid">${variantsHtml}</div>
+  `;
+  document.getElementById('gearModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGearModal(e) {
+  if (e && e.target !== document.getElementById('gearModalOverlay')) return;
+  document.getElementById('gearModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ============================================================
@@ -807,15 +1031,15 @@ function renderCompareTable(type) {
 
   const stats = type === 'reels'
     ? [
-    ['stat_size',      r => r.size,             null],
-    ['stat_drag',      r => r.drag + ' kg',     'higher'],
-    ['stat_mechanism', r => r.mechanism + ' kg','higher'],
-    ['stat_test',      r => r.test + 'g',       null],
-    ['stat_spool_cap', r => r.spoolCap,         'higher'],
-    ['stat_ratio',     r => r.ratio,            null],
-    ['stat_level',     r => r.level,            'lower'],
+    ['stat_size',      r => r.size,                    null],
+    ['stat_drag',      r => r.dragUpgraded || r.drag,  'higher'],
+    ['stat_mechanism', r => r.mechanism,               'higher'],
+    ['stat_test',      r => r.test,                    'lower'],
+    ['stat_spool_cap', r => r.svi ?? '—',              'higher'],
+    ['stat_ratio',     r => r.ratio,                   null],
+    ['stat_level',     r => r.level,                   'lower'],
     ['stat_saltwater', r => r.saltwater ? '✔️' : '✖️', null],
-    ['stat_cost',      r => r.cost ? r.cost.toLocaleString() + ' silver' : '—', 'lower'],
+    ['stat_cost',      r => r.cost ?? null,            'lower'],
   ]
     : [
     ['stat_load_cap',    r => r.loadCap + ' kg',  'higher'],
@@ -829,17 +1053,32 @@ function renderCompareTable(type) {
     ['stat_cost',        r => r.cost ? r.cost.toLocaleString() + ' silver' : '—', 'lower'],
   ];
 
-  const rows = stats.map(([key, prop, higherBetter]) => {
-    const va = a[prop], vb = b[prop];
-    let ca = 'equal', cb = 'equal';
-    if (typeof va === 'number' && typeof vb === 'number' && va !== vb) {
-      if (higherBetter) { ca = va > vb ? 'better' : 'worse'; cb = vb > va ? 'better' : 'worse'; }
-      else { ca = va < vb ? 'better' : 'worse'; cb = vb < va ? 'better' : 'worse'; }
+  const formatVal = (r, key) => {
+    if (key === 'stat_drag') {
+      const base = r.drag, up = r.dragUpgraded;
+      return up ? `${base} kg → <span style="color:#4ade80;">${up} kg ▲</span>` : `${base} kg`;
     }
+    if (key === 'stat_test') return r.test !== null && r.test !== undefined ? r.test + 'g' : '—';
+    if (key === 'stat_cost') return r.cost ? r.cost.toLocaleString() + ' silver' : '—';
+    if (key === 'stat_load_cap') return r.loadCap ? r.loadCap + ' kg' : '—';
+    if (key === 'stat_test') return (r.testMin !== undefined) ? `${r.testMin}–${r.testMax}g` : '—';
+    const raw = stats.find(s => s[0] === key)?.[1](r);
+    return raw ?? '—';
+  };
+
+  const rows = stats.map(([key, prop, higherBetter]) => {
+    const na = prop(a), nb = prop(b);
+    let ca = '', cb = '';
+    if (typeof na === 'number' && typeof nb === 'number' && na !== nb && higherBetter) {
+      if (higherBetter === 'higher') { ca = na > nb ? 'better' : 'worse'; cb = nb > na ? 'better' : 'worse'; }
+      else { ca = na < nb ? 'better' : 'worse'; cb = nb < na ? 'better' : 'worse'; }
+    }
+    const bgA = ca === 'better' ? 'background:rgba(74,222,128,0.08);' : ca === 'worse' ? 'background:rgba(248,113,113,0.06);' : '';
+    const bgB = cb === 'better' ? 'background:rgba(74,222,128,0.08);' : cb === 'worse' ? 'background:rgba(248,113,113,0.06);' : '';
     return `<tr>
       <td class="stat-label">${t(key)}</td>
-      <td class="${ca}">${va ?? '—'}</td>
-      <td class="${cb}">${vb ?? '—'}</td>
+      <td class="${ca}" style="${bgA}">${formatVal(a, key)}</td>
+      <td class="${cb}" style="${bgB}">${formatVal(b, key)}</td>
     </tr>`;
   }).join('');
 
@@ -865,7 +1104,7 @@ function renderPickerList() {
   document.getElementById('pickerList').innerHTML = filtered.map(item => `
     <div class="picker-item" onclick="selectPickerItem('${item.name.replace(/'/g,"\\'")}')">
       <div class="picker-item-name">${item.name}</div>
-      <div class="picker-item-sub">${pickerContext.type === 'reels' ? 'Size ' + item.size + ' · ' + item.ratio + ' · ' + item.drag + 'kg drag' : item.length + 'm · ' + item.action + ' · ' + item.testMin + '–' + item.testMax + 'g'}</div>
+      <div class="picker-item-sub">${pickerContext.type === 'reels' ? 'Size ' + item.size + ' · ' + item.ratio + ' · ' + item.drag + 'kg drag' : item.length + ' · ' + item.action + ' · ' + item.testMin + '–' + item.testMax + 'g'}</div>
     </div>
   `).join('');
 }
@@ -892,7 +1131,7 @@ function closePicker(e) {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeBuildModal(); closePicker(); }
+  if (e.key === 'Escape') { closeBuildModal(); closePicker(); closeGearModal(); }
 });
 
 // ============================================================

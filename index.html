@@ -132,7 +132,7 @@
   .gear-type-btn.active { background: var(--surface2); color: var(--accent); }
   .gear-type-btn .gear-icon { font-size: 16px; width: 20px; text-align: center; }
   .gear-main { padding: 1.25rem; }
-  .gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
   .gear-search { margin-bottom: 1.25rem; }
   .gear-search input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.15s; }
   .gear-search input::placeholder { color: var(--muted); }
@@ -150,9 +150,14 @@
   .model-card-tag { font-size: 11px; padding: 2px 7px; border-radius: 8px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
   .model-card-tag.copper { border-color: #166534; color: #4ade80; background: #0a1f10; }
   .model-card-tag.no-copper { border-color: #7f1d1d; color: #f87171; background: #1a0a0a; }
-  .model-card-tag.upgradeable { border-color: #92400e; color: #fb923c; background: #1c0f00; }
+  .model-card-tag.upgradeable    { border-color: #a16207; color: #fde047; background: #1c1500; }
+  .model-card-tag.indicator-warning  { border-color: #7f1d1d; color: #f87171; background: #1a0a0a; }
+  .model-card-tag.indicator-subpar   { border-color: #92400e; color: #fb923c; background: #1c0f00; }
+  .model-card-tag.indicator-positive { border-color: #166534; color: #4ade80; background: #0a1f10; }
+  .model-card-tag.indicator-neutral  { border-color: #1e3a5f; color: #7dd3fc; background: #0a1520; }
+  .model-card-tag.indicator-vintage  { border-color: #6b3fa0; color: #d8b4fe; background: #1a0a2e; }
   .model-card-variants { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .model-card-footer { font-size: 13px; color: var(--text); font-weight: 700; padding-top: 8px; margin-top: auto; border-top: 1px solid var(--border); }
+  .model-card-footer { font-size: 13px; color: var(--text); font-weight: 700; padding-top: 8px; margin-top: auto; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 
   /* GEAR VARIANT MODAL */
   .gear-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 960px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; animation: modalIn 0.2s ease; }
@@ -172,8 +177,8 @@
   .variant-stat:last-of-type { border-bottom: none; }
   .variant-stat-label { color: var(--muted); }
   .variant-stat-val { font-weight: 500; color: var(--text); }
-  .variant-card-footer { padding: 0.6rem 0.85rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
-  .variant-cost { font-weight: 700; color: var(--text); font-size: 14px; }
+  .variant-card-footer { padding: 0.6rem 0.85rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; gap: 6px; flex-wrap: wrap; }
+  .variant-cost { font-weight: 700; color: var(--text); font-size: 13px; word-break: break-word; }
   .variant-copper { font-size: 11px; padding: 2px 7px; border-radius: 8px; }
   .variant-copper.yes { border: 1px solid #166534; color: #4ade80; background: #0a1f10; }
   .variant-copper.no  { border: 1px solid #7f1d1d; color: #f87171; background: #1a0a0a; }
@@ -181,29 +186,33 @@
   .variant-feature { font-size: 11px; padding: 2px 7px; border-radius: 8px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); }
 
   /* COMPARE PAGE */
-  .compare-page { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
-  .compare-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .compare-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-  .compare-section-title span { color: var(--accent); }
-  .slot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
-  .slot { background: var(--surface); border: 2px dashed var(--border); border-radius: 12px; padding: 1rem; min-height: 80px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; position: relative; min-width: 0; }
-  .slot:hover { border-color: var(--accent); }
-  .slot.filled { border-style: solid; border-color: var(--border); background: var(--surface2); align-items: flex-start; flex-direction: column; justify-content: flex-start; }
-  .slot-img { width: 100%; height: 110px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
-  .slot-img img { max-height: 100px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
-  .slot-img .no-img { font-size: 40px; opacity: 0.15; }
-  .slot.filled:hover { border-color: var(--accent); }
-  .slot-placeholder { font-size: 13px; color: var(--muted); text-align: center; }
-  .slot-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .slot-sub { font-size: 12px; color: var(--muted); }
-  .slot-clear { position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; background: var(--border); border: none; border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
-  .slot-clear:hover { background: var(--red); color: white; }
-  .compare-table { width: 100%; border-collapse: collapse; }
-  .compare-table th { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-  .compare-table th.gear-col { color: var(--accent); font-size: 14px; text-transform: none; letter-spacing: 0; }
-  .compare-table td { font-size: 14px; padding: 9px 12px; border-bottom: 1px solid var(--surface2); }
+  .compare-page { padding: 1.5rem 2rem; display: flex; flex-direction: column; align-items: center; }
+  .compare-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; align-self: flex-start; }
+  .compare-tab { padding: 8px 24px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .compare-tab:hover { background: var(--surface2); color: var(--text); }
+  .compare-tab.active { background: var(--surface2); color: var(--accent); border-color: var(--accent); }
+  .compare-panel { display: none; width: 100%; }
+  .compare-panel.active { display: flex; justify-content: center; }
+  .compare-table { border-collapse: collapse; table-layout: fixed; }
+  .compare-table th { padding: 0; text-align: left; border-bottom: 2px solid var(--border); vertical-align: bottom; }
+  .compare-table th.stat-header { width: 140px; padding: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); vertical-align: bottom; }
+  .compare-table th.gear-col { width: 180px; padding: 0; }
+  .compare-col-header { display: flex; flex-direction: column; align-items: center; padding: 12px 10px 10px; gap: 6px; position: relative; }
+  .compare-col-img { width: 130px; height: 130px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .compare-col-img img { max-width: 116px; max-height: 116px; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.7)); }
+  .compare-col-img .no-img { font-size: 36px; opacity: 0.1; }
+  .compare-col-add { width: 130px; height: 130px; background: var(--surface); border: 2px dashed var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.18s; font-size: 32px; color: var(--muted); }
+  .compare-col-add:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); }
+  .compare-col-name { font-size: 13px; font-weight: 700; color: var(--text); text-align: center; line-height: 1.3; }
+  .compare-col-brand { font-size: 11px; color: var(--muted); text-align: center; }
+  .compare-col-remove { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; background: var(--border); border: none; border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .compare-col-remove:hover { background: var(--red); color: white; }
+  .compare-table td { font-size: 13px; padding: 8px 12px; border-bottom: 1px solid var(--surface2); text-align: center; width: 180px; }
+  .compare-table td.stat-label { color: var(--muted); font-size: 12px; text-align: left; padding-left: 12px; white-space: nowrap; width: 140px; border-right: 1px solid var(--border); }
   .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table td.stat-label { color: var(--muted); }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table tr:hover td.better { background: rgba(74,222,128,0.12); }
+  .compare-table tr:hover td.worse { background: rgba(248,113,113,0.1); }
   .compare-table td.better { color: var(--green); font-weight: 600; }
   .compare-table td.worse { color: var(--muted); font-weight: 600; }
   .compare-table td.equal { color: var(--text); }
@@ -226,8 +235,8 @@
   @media (max-width: 900px) {
     .layout, .gear-db-layout { grid-template-columns: 1fr; }
     .sidebar, .gear-db-sidebar { position: static; height: auto; }
-    .compare-sections { grid-template-columns: 1fr; }
-    .slot-row { grid-template-columns: 1fr; }
+    /* compare-sections removed */
+    .slot-row { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -319,6 +328,16 @@
         <button class="gear-type-btn" onclick="setGearType('rods',this)"><span class="gear-icon">🎣</span><span data-i18n="gear_rods">Rods</span></button>
         <button class="gear-type-btn" onclick="setGearType('lines',this)"><span class="gear-icon">〰️</span><span data-i18n="gear_lines">Lines</span></button>
       </div>
+      <div id="reel-type-filters" style="margin-top:1rem;">
+        <div class="sidebar-label">Reel Type</div>
+        <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px;">
+          <button class="gear-type-btn active" onclick="setReelTypeFilter('all',this)"><span class="gear-icon">🔍</span>All</button>
+          <button class="gear-type-btn" onclick="setReelTypeFilter('spinning',this)"><span class="gear-icon" style="color:var(--spinning);">●</span>Spinning</button>
+          <button class="gear-type-btn" onclick="setReelTypeFilter('Low-Profile baitcasting',this)"><span class="gear-icon" style="color:#c9a96e;">●</span>Low-Profile</button>
+          <button class="gear-type-btn" onclick="setReelTypeFilter('Conventional baitcasting',this)"><span class="gear-icon" style="color:#a87c50;">●</span>Conventional</button>
+          <button class="gear-type-btn" onclick="setReelTypeFilter('Classic baitcasting',this)"><span class="gear-icon" style="color:#8a6030;">●</span>Classic</button>
+        </div>
+      </div>
     </aside>
     <main class="gear-main">
       <div class="gear-search"><input type="text" id="gearSearch" placeholder="Search gear..." data-i18n-placeholder="search_gear" oninput="renderGearDB()" /></div>
@@ -331,36 +350,15 @@
 <div class="page" id="page-compare">
   <div class="hero"><h1><span data-i18n="nav_compare">Compare</span></h1></div>
   <div class="compare-page">
-    <div class="compare-sections">
-
-      <!-- REELS COMPARE -->
-      <div>
-        <div class="compare-section-title">⚙️ <span data-i18n="gear_reels">Reels</span></div>
-        <div class="slot-row">
-          <div class="slot" id="reel-slot-0" onclick="openPicker('reels',0)">
-            <div class="slot-placeholder" data-i18n="compare_select_reel">Click to select a reel</div>
-          </div>
-          <div class="slot" id="reel-slot-1" onclick="openPicker('reels',1)">
-            <div class="slot-placeholder" data-i18n="compare_select_reel">Click to select a reel</div>
-          </div>
-        </div>
-        <div id="reels-compare-table"></div>
-      </div>
-
-      <!-- RODS COMPARE -->
-      <div>
-        <div class="compare-section-title">🎣 <span data-i18n="gear_rods">Rods</span></div>
-        <div class="slot-row">
-          <div class="slot" id="rod-slot-0" onclick="openPicker('rods',0)">
-            <div class="slot-placeholder" data-i18n="compare_select_rod">Click to select a rod</div>
-          </div>
-          <div class="slot" id="rod-slot-1" onclick="openPicker('rods',1)">
-            <div class="slot-placeholder" data-i18n="compare_select_rod">Click to select a rod</div>
-          </div>
-        </div>
-        <div id="rods-compare-table"></div>
-      </div>
-
+    <div class="compare-tabs">
+      <button class="compare-tab active" onclick="switchCompareTab('reels',this)">⚙️ Reels</button>
+      <button class="compare-tab" onclick="switchCompareTab('rods',this)">🎣 Rods</button>
+    </div>
+    <div class="compare-panel active" id="compare-panel-reels">
+      <div id="reels-compare-table"></div>
+    </div>
+    <div class="compare-panel" id="compare-panel-rods">
+      <div id="rods-compare-table"></div>
     </div>
   </div>
 </div>
@@ -422,6 +420,1291 @@ const reelModels = [
       { size: 4000, image: null, drag: 3.8, dragUpgraded: 6.5, mechanism: 5.39, lineDia: 0.20, lineLen: 245, ratio: "6.1:1", level: 3, saltwater: false, copperLegal: true, cost: 58.50, features: [] },
     ]
   },
+  {
+    model: "Lagoon", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 1.8, mechanism: 3.8,  lineDia: 0.11, lineLen: 232, ratio: "6.1:1", level: 5,  saltwater: false, copperLegal: true,  cost: 89.95,  features: ["Ultra-light fishing"] },
+      { size: 3000, image: null, drag: 5.4, mechanism: 5.44, lineDia: 0.20, lineLen: 173, ratio: "6.1:1", level: 5,  saltwater: false, copperLegal: true,  cost: 178.00, features: [] },
+    ]
+  },
+  {
+    model: "Lagoon-HP 2", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.5, mechanism: 5.0,  lineDia: 0.14, lineLen: 247, ratio: "5.6:1", level: 5,  saltwater: false, copperLegal: true,  cost: 69.50,  features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 5.4, mechanism: 8.04, lineDia: 0.20, lineLen: 223, ratio: "5.2:1", level: 6,  saltwater: false, copperLegal: true,  cost: 228.50, features: [] },
+    ]
+  },
+  {
+    model: "Lacerti-SX NG", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 4.2, mechanism: 5.39, lineDia: 0.20, lineLen: 216, ratio: "5.7:1", level: 5,  saltwater: false, copperLegal: true,  cost: 118.00, features: [] },
+    ]
+  },
+  {
+    model: "Element", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 2.0,  mechanism: 4.04, lineDia: 0.11, lineLen: 232, ratio: "5.4:1", level: 6,  saltwater: false, copperLegal: true,  cost: 129.00, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 3.6,  mechanism: 5.79, lineDia: 0.14, lineLen: 208, ratio: "5.4:1", level: 6,  saltwater: false, copperLegal: true,  cost: 129.00, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 5.4,  mechanism: 7.96, lineDia: 0.20, lineLen: 144, ratio: "5.4:1", level: 6,  saltwater: false, copperLegal: true,  cost: 249.00, features: [] },
+      { size: 4000, image: null, drag: 5.4,  mechanism: 9.53, lineDia: 0.20, lineLen: 195, ratio: "5.2:1", level: 6,  saltwater: false, copperLegal: true,  cost: 249.00, features: [] },
+    ]
+  },
+  {
+    model: "Element PRO", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 2.0,  mechanism: 4.92, lineDia: 0.11, lineLen: 232, ratio: "5.4:1", level: 8,  saltwater: false, copperLegal: true,  cost: 151.80, costGold: 1.45, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 3.6,  dragUpgraded: 4.2, mechanism: 7.48, lineDia: 0.14, lineLen: 208, ratio: "5.4:1", level: 8,  saltwater: false, copperLegal: true,  cost: 191.80, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 5.4,  mechanism: 9.34, lineDia: 0.20, lineLen: 144, ratio: "5.4:1", level: 8,  saltwater: false, copperLegal: true,  cost: 349.80, features: [] },
+      { size: 4000, image: null, drag: 6.4,  mechanism: 11.05, lineDia: 0.20, lineLen: 195, ratio: "5.2:1", level: 8,  saltwater: false, copperLegal: true,  cost: 379.90, features: [] },
+    ]
+  },
+  {
+    model: "Hydra G2", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 3000, image: null, drag: 5.2, mechanism: 5.88, lineDia: 0.20, lineLen: 173, ratio: "5.0:1", level: 5,  saltwater: false, copperLegal: true,  cost: 184.20, features: [] },
+    ]
+  },
+  {
+    model: "Adriatica", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 3000, image: null, drag: 5.4, dragUpgraded: 6.5, mechanism: 6.87,  lineDia: 0.20, lineLen: 173, ratio: "6.1:1", level: 6,  saltwater: false, copperLegal: true,  cost: 249.00, features: [] },
+      { size: 6000, image: null, drag: 7.5, dragUpgraded: 9.0, mechanism: 14.0,  lineDia: 0.28, lineLen: 241, ratio: "5.4:1", level: 11, saltwater: false, copperLegal: true, cost: 449.80, features: [] },
+    ]
+  },
+  {
+    model: "Pegasus", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 2.3,               mechanism: 4.97, lineDia: 0.11, lineLen: 213, ratio: "5.0:1", level: 10, saltwater: false, copperLegal: true,  cost: 258.80, features: ["Ultra-light fishing"] },
+      { size: 3000, image: null, drag: 5.8, dragUpgraded: 7.8, mechanism: 8.81, lineDia: 0.20, lineLen: 158, ratio: "5.0:1", level: 10, saltwater: false, copperLegal: true,  cost: 398.80, features: [] },
+    ]
+  },
+  {
+    model: "Pride", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 4.0,               mechanism: 4.41,  lineDia: 0.14, lineLen: 221, ratio: "5.6:1", level: 9,  saltwater: false, copperLegal: true,  cost: 298.50, features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 7.5, dragUpgraded: 9.0, mechanism: 9.43,  lineDia: 0.20, lineLen: 187, ratio: "5.2:1", level: 12, saltwater: false, copperLegal: true,  cost: 479.80, features: [] },
+      { size: 6000, image: null, drag: 7.5, dragUpgraded: 9.0, mechanism: 17.26, lineDia: 0.28, lineLen: 260, ratio: "5.0:1", level: 12, saltwater: false, copperLegal: true, cost: 532.80, features: [] },
+    ]
+  },
+  {
+    model: "Dragon", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 3000, image: null, drag: 5.8, dragUpgraded: 7.8, mechanism: 6.72, lineDia: 0.20, lineLen: 166, ratio: "5.0:1", level: 8,  saltwater: false, copperLegal: true,  cost: 362.80, features: [] },
+      { size: 4000, image: null, drag: 5.8, dragUpgraded: 7.8, mechanism: 9.02, lineDia: 0.20, lineLen: 216, ratio: "5.0:1", level: 8,  saltwater: false, copperLegal: true,  cost: 362.80, features: [] },
+    ]
+  },
+  {
+    model: "Proton", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.6, dragUpgraded: 4.2, mechanism: 9.55,  lineDia: 0.14, lineLen: 221, ratio: "5.2:1", level: 12, saltwater: false, copperLegal: true,  cost: 395.00, features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 7.2, dragUpgraded: 8.9, mechanism: 13.81, lineDia: 0.20, lineLen: 202, ratio: "5.1:1", level: 12, saltwater: false, copperLegal: true,  cost: 529.00, features: [] },
+      { size: 6000, image: null, drag: 8.1, dragUpgraded: 8.9, mechanism: 17.26, lineDia: 0.28, lineLen: 260, ratio: "4.8:1", level: 12, saltwater: false, copperLegal: true, cost: 629.80, features: [] },
+    ]
+  },
+  {
+    model: "EasySpin", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 3.2, mechanism: 5.12, lineDia: 0.11, lineLen: 213, ratio: "5.2:1", level: 12, saltwater: false, copperLegal: true,  cost: 399.00, features: ["Ultra-light fishing"] },
+    ]
+  },
+  {
+    model: "Sirius", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.6, dragUpgraded: 4.5, mechanism: 8.15, lineDia: 0.14, lineLen: 234, ratio: "5.4:1", level: 12, saltwater: false, copperLegal: true,  cost: 418.00, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Hercules G2", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.7,               mechanism: 6.94,  lineDia: 0.14, lineLen: 221, ratio: "5.0:1", level: 12, saltwater: false, copperLegal: true,  cost: 459.50, features: [] },
+      { size: 4000, image: null, drag: 6.8, dragUpgraded: 7.8, mechanism: 10.15, lineDia: 0.20, lineLen: 173, ratio: "5.0:1", level: 12, saltwater: false, copperLegal: true,  cost: 459.50, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Bird 2 GS", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 3.4, mechanism: 5.52,  lineDia: 0.11, lineLen: 213, ratio: "5.2:1", level: 15, saltwater: false, copperLegal: true,  cost: 559.80,  features: ["Ultra-light fishing"] },
+      { size: 3000, image: null, drag: 8.2, mechanism: 18.5,  lineDia: 0.20, lineLen: 166, ratio: "5.1:1", level: 15, saltwater: false, copperLegal: true,  cost: 869.80,  features: [] },
+    ]
+  },
+  {
+    model: "Super Cast", manufacturer: "Express Fishing", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 8.2, dragUpgraded: 9.0, mechanism: 15.79, lineDia: 0.28, lineLen: 347, ratio: "4.8:1", level: 13, saltwater: false, copperLegal: true,  cost: 598.00, features: ["Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Pulsar", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.8, dragUpgraded: 4.2,  mechanism: 11.05, lineDia: 0.14, lineLen: 221, ratio: "5.8:1", level: 13, saltwater: false, copperLegal: true,  cost: 599.50,  features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 8.6, dragUpgraded: 10.4, mechanism: 15.21, lineDia: 0.20, lineLen: 202, ratio: "5.8:1", level: 14, saltwater: false, copperLegal: true,  cost: 745.00,  features: [] },
+      { size: 6000, image: null, drag: 9.5, dragUpgraded: 10.4, mechanism: 24.16, lineDia: 0.28, lineLen: 260, ratio: "5.4:1", level: 16, saltwater: false, copperLegal: true,  cost: 1249.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Alfa", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 3.6, dragUpgraded: 4.2, mechanism: 5.77,  lineDia: 0.11, lineLen: 232, ratio: "5.8:1", level: 14, saltwater: false, copperLegal: true,  cost: 650.80,  features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 4.0,                    mechanism: 11.87, lineDia: 0.14, lineLen: 221, ratio: "5.8:1", level: 15, saltwater: false, copperLegal: true,  cost: 1050.80, features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 9.0,                    mechanism: 16.96, lineDia: 0.20, lineLen: 202, ratio: "5.8:1", level: 16, saltwater: false, copperLegal: true,  cost: 1200.85, features: [] },
+      { size: 6000, image: null, drag: 13.5,                   mechanism: 31.56, lineDia: 0.28, lineLen: 260, ratio: "5.4:1", level: 17, saltwater: false, copperLegal: true,  cost: 1887.74, features: ["Power fishing"] },
+      { size: 8000, image: null, drag: 14.5,                   mechanism: 37.73, lineDia: 0.32, lineLen: 393, ratio: "5.2:1", level: 19, saltwater: false, copperLegal: false, cost: 2390.36, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Meteor", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 3000, image: null, drag: 7.7, dragUpgraded: 10.0, mechanism: 16.0, lineDia: 0.20, lineLen: 187, ratio: "6.0:1", level: 13, saltwater: false, copperLegal: true,  cost: 698.00, features: [] },
+    ]
+  },
+  {
+    model: "Sabre", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 9.0,  mechanism: 13.02, lineDia: 0.20, lineLen: 216, ratio: "5.0:1", level: 14, saltwater: false, copperLegal: true,  cost: 786.90,  features: [] },
+      { size: 6000, image: null, drag: 9.9,  mechanism: 21.68, lineDia: 0.28, lineLen: 241, ratio: "4.8:1", level: 16, saltwater: false, copperLegal: true,  cost: 1159.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Bird 2 GSX", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 4.0, mechanism: 5.91,  lineDia: 0.11, lineLen: 213, ratio: "5.2:1", level: 15, saltwater: false, copperLegal: true,  cost: 852.80,  features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 5.0, mechanism: 13.13, lineDia: 0.14, lineLen: 247, ratio: "5.2:1", level: 15, saltwater: false, copperLegal: true,  cost: 1500.70, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 8.6, mechanism: 16.57, lineDia: 0.20, lineLen: 166, ratio: "5.1:1", level: 15, saltwater: false, copperLegal: true,  cost: 1098.80, features: [] },
+      { size: 4000, image: null, drag: 9.5, mechanism: 17.94, lineDia: 0.20, lineLen: 216, ratio: "5.1:1", level: 16, saltwater: false, copperLegal: true,  cost: 1373.89, features: [] },
+    ]
+  },
+  {
+    model: "Bird 2 S", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 3.6, mechanism: 13.24, lineDia: 0.14, lineLen: 247, ratio: "5.1:1", level: 14, saltwater: false, copperLegal: true, cost: 798.40, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Gold", manufacturer: "Syberia", image: null, type: "spinning",
+    tags: [{ type: "warning", label: "Low durability" }],
+    variants: [
+      { size: 3000, image: null, drag: 8.0,  dragUpgraded: 10.0, mechanism: 16.82, lineDia: 0.20, lineLen: 180, ratio: "6.2:1", level: 15, saltwater: false, copperLegal: true,  cost: 995.00,  features: [] },
+      { size: 6000, image: null, drag: 14.0,                     mechanism: 28.35, lineDia: 0.28, lineLen: 260, ratio: "5.7:1", level: 17, saltwater: false, copperLegal: true,  cost: 1846.80, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 14.0,                     mechanism: 34.58, lineDia: 0.32, lineLen: 375, ratio: "5.7:1", level: 18, saltwater: false, copperLegal: false, cost: 2185.73, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Horizon III", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 4.6,  mechanism: null, lineDia: 0.11, lineLen: 232, ratio: "5.9:1", level: 15, saltwater: false, copperLegal: true,  cost: 1099.60, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 5.4,  mechanism: null, lineDia: 0.14, lineLen: 234, ratio: "5.9:1", level: 15, saltwater: false, copperLegal: true,  cost: 1299.80, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 12.0, mechanism: null, lineDia: 0.20, lineLen: 187, ratio: "5.7:1", level: 17, saltwater: false, copperLegal: true,  cost: 1699.80, features: [] },
+      { size: 6000, image: null, drag: 15.6, mechanism: null, lineDia: 0.28, lineLen: 289, ratio: "4.6:1", level: 20, saltwater: false, copperLegal: true,  cost: 3998.80, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Corsair S", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 4.8,                       mechanism: 7.29,  lineDia: 0.11, lineLen: 213, ratio: "6.2:1", level: 16, saltwater: false, copperLegal: true,  cost: 1498.50, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 6.1,                       mechanism: 17.62, lineDia: 0.14, lineLen: 208, ratio: "6.2:1", level: 18, saltwater: false, copperLegal: true,  cost: 2098.50, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 10.8, dragUpgraded: 11.9,  mechanism: 22.04, lineDia: 0.20, lineLen: 158, ratio: "6.2:1", level: 17, saltwater: false, copperLegal: true,  cost: 1919.64, features: [] },
+    ]
+  },
+  {
+    model: "Commandor 2", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 6.0,                       mechanism: 9.7,   lineDia: 0.14, lineLen: 247, ratio: "5.8:1", level: 18, saltwater: false, copperLegal: true,  cost: 1980.80, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 10.8, dragUpgraded: 11.9,  mechanism: 18.6,  lineDia: 0.20, lineLen: 166, ratio: "5.8:1", level: 16, saltwater: false, copperLegal: true,  cost: 1498.80, features: [] },
+      { size: 4000, image: null, drag: 12.0, dragUpgraded: 13.9,  mechanism: 21.02, lineDia: 0.20, lineLen: 216, ratio: "5.8:1", level: 17, saltwater: false, copperLegal: true,  cost: 1698.80, features: [] },
+      { size: 6000, image: null, drag: 13.4,                      mechanism: 30.12, lineDia: 0.28, lineLen: 289, ratio: "4.8:1", level: 18, saltwater: false, copperLegal: true,  cost: 1949.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Narga", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 2000, image: null, drag: 5.5,  dragUpgraded: 5.9,  mechanism: 16.66, lineDia: 0.14, lineLen: 208, ratio: "5.6:1", level: 17, saltwater: false, copperLegal: true,  cost: 1620.90, features: ["Light fishing"] },
+      { size: 4000, image: null, drag: 11.7, dragUpgraded: 13.9, mechanism: 27.33, lineDia: 0.20, lineLen: 202, ratio: "5.2:1", level: 17, saltwater: false, copperLegal: true,  cost: 1620.90, features: [] },
+      { size: 6000, image: null, drag: 13.6,                     mechanism: 35.86, lineDia: 0.28, lineLen: 285, ratio: "4.6:1", level: 18, saltwater: false, copperLegal: true,  cost: 1984.63, features: ["Power fishing"] },
+      { size: 8000, image: null, drag: 14.5,                     mechanism: 42.38, lineDia: 0.32, lineLen: 425, ratio: "4.3:1", level: 20, saltwater: false, copperLegal: false, cost: 3490.80, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Velara", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 4.8,                      mechanism: 7.74,  lineDia: 0.11, lineLen: 213, ratio: "5.8:1", level: 16, saltwater: false, copperLegal: true,  cost: 1749.80, features: ["Ultra-light fishing"] },
+      { size: 3000, image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 30.55, lineDia: 0.20, lineLen: 195, ratio: "5.9:1", level: 18, saltwater: false, copperLegal: true,  cost: 1949.80, features: ["Long cast"] },
+      { size: 6000, image: null, drag: 14.5,                     mechanism: 38.98, lineDia: 0.28, lineLen: 294, ratio: "5.1:1", level: 19, saltwater: false, copperLegal: true,  cost: 2549.80, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 17.5,                     mechanism: 41.78, lineDia: 0.32, lineLen: 466, ratio: "4.6:1", level: 21, saltwater: false, copperLegal: false, cost: 5498.80, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  // --- NEW REELS ---
+  {
+    model: "Titan", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 12.7, mechanism: 27.66, lineDia: 0.32, lineLen: 622, ratio: "4.3:1", level: 17, saltwater: false, copperLegal: false, cost: 1795.80, features: ["Carp fishing", "Long cast", "Great pull"] },
+    ]
+  },
+  {
+    model: "Natora", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 1000, image: null, drag: 5.0,                      mechanism: 5.8,   lineDia: 0.11, lineLen: 213, ratio: "5.2:1", level: 17, saltwater: false, copperLegal: true,  cost: 1948.50, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 6.3, dragUpgraded: 6.9,   mechanism: 16.24, lineDia: 0.14, lineLen: 234, ratio: "6.2:1", level: 19, saltwater: false, copperLegal: true,  cost: 2348.50, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 11.3,                     mechanism: 28.58, lineDia: 0.20, lineLen: 144, ratio: "6.2:1", level: 19, saltwater: false, copperLegal: true,  cost: 2348.50, features: [] },
+      { size: 4000, image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 35.49, lineDia: 0.20, lineLen: 195, ratio: "6.2:1", level: 19, saltwater: false, copperLegal: true,  cost: 2498.50, features: [] },
+      { size: 6000, image: null, drag: 15.0, dragUpgraded: 16.5, mechanism: 37.43, lineDia: 0.28, lineLen: 251, ratio: "5.6:1", level: 20, saltwater: false, copperLegal: true,  cost: 3115.80, features: ["Power fishing"] },
+      { size: 8000, image: null, drag: 18.1, dragUpgraded: 19.6, mechanism: 43.76, lineDia: 0.32, lineLen: 352, ratio: "5.3:1", level: 22, saltwater: false, copperLegal: false, cost: 7084.70, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Overlord 3", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 5.0,  mechanism: 8.51,  lineDia: 0.11, lineLen: 232, ratio: "5.3:1", level: 19, saltwater: false, copperLegal: true, cost: 2499.80, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 6.4,  mechanism: 18.66, lineDia: 0.14, lineLen: 247, ratio: "5.1:1", level: 19, saltwater: false, copperLegal: true, cost: 2799.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Commandor GS", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 12.7, dragUpgraded: 13.9, mechanism: 23.71, lineDia: 0.20, lineLen: 216, ratio: "4.0:1", level: 19, saltwater: true, copperLegal: true,  cost: 2610.80, features: ["Great pull"] },
+      { size: 6000, image: null, drag: 14.5,                     mechanism: 36.31, lineDia: 0.28, lineLen: 289, ratio: "4.8:1", level: 20, saltwater: true, copperLegal: true,  cost: 3198.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Caliber HSV 80 SLC", manufacturer: "Syberia", image: null, type: "spinning",
+    tags: [{ type: "subpar", label: "Subpar durability" }],
+    variants: [
+      { size: 8000, image: null, drag: 15.4, dragUpgraded: 17.0, mechanism: 30.24, lineDia: 0.32, lineLen: 503, ratio: "4.7:1", level: 20, saltwater: false, copperLegal: false, cost: 2884.78, features: ["Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Hunter", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 14.2, mechanism: null, lineDia: 0.20, lineLen: 231, ratio: "6.8:1", level: 20, saltwater: true, copperLegal: true,  cost: 2998.60, features: ["High speed"] },
+      { size: 6000, image: null, drag: 16.0, mechanism: null, lineDia: 0.28, lineLen: 299, ratio: "4.8:1", level: 20, saltwater: true, copperLegal: true,  cost: 4498.60, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 18.5, mechanism: null, lineDia: 0.32, lineLen: 444, ratio: "4.7:1", level: 22, saltwater: true, copperLegal: false, cost: 7499.60, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Overlord 3B", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 5.5,  mechanism: 8.49,  lineDia: 0.11, lineLen: 232, ratio: "5.7:1", level: 19, saltwater: false, copperLegal: true, cost: 2999.80, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 7.0,  mechanism: 19.6,  lineDia: 0.14, lineLen: 247, ratio: "5.3:1", level: 20, saltwater: false, copperLegal: true, cost: 3499.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Everest III", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 4000, image: null, drag: 14.5, mechanism: null, lineDia: 0.20, lineLen: 231, ratio: "5.1:1", level: 20, saltwater: true, copperLegal: true,  cost: 3298.90,  features: [] },
+      { size: 6000, image: null, drag: 17.0, mechanism: null, lineDia: 0.28, lineLen: 309, ratio: "4.7:1", level: 21, saltwater: true, copperLegal: true,  cost: 4998.90,  features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 22.0, mechanism: null, lineDia: 0.32, lineLen: 457, ratio: "4.4:1", level: 25, saltwater: true, copperLegal: false, cost: 11298.90, features: ["Power fishing", "Carp fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Z-Series 2", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 6.0,                      mechanism: 7.88,  lineDia: 0.11, lineLen: 213, ratio: "5.2:1", level: 19, saltwater: false, copperLegal: true,  cost: 3597.46, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 8.2,                      mechanism: 16.45, lineDia: 0.14, lineLen: 234, ratio: "5.1:1", level: 21, saltwater: false, copperLegal: true,  cost: 3897.80, features: ["Light fishing"] },
+      { size: 3000, image: null, drag: 15.7,                     mechanism: 22.97, lineDia: 0.20, lineLen: 158, ratio: "5.8:1", level: 20, saltwater: false, copperLegal: true,  cost: 3897.80, features: [] },
+      { size: 4000, image: null, drag: 15.7,                     mechanism: 28.18, lineDia: 0.20, lineLen: 202, ratio: "5.1:1", level: 21, saltwater: false, copperLegal: true,  cost: 3997.80, features: [] },
+      { size: 6000, image: null, drag: 17.7, dragUpgraded: 19.4, mechanism: 45.1,  lineDia: 0.28, lineLen: 270, ratio: "4.3:1", level: 24, saltwater: true,  copperLegal: true,  cost: 5697.80, features: ["Power fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Mayor III", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 7.5,  dragUpgraded: 7.7,  mechanism: 9.65,  lineDia: 0.11, lineLen: 251, ratio: "6.8:1", level: 20, saltwater: true, copperLegal: true, cost: 5795.80, features: ["Ultra-light fishing", "High speed"] },
+      { size: 2000, image: null, drag: 9.3,                       mechanism: 19.7,  lineDia: 0.14, lineLen: 247, ratio: "6.6:1", level: 21, saltwater: true, copperLegal: true, cost: 7595.80, features: ["Light fishing", "High speed"] },
+      { size: 3000, image: null, drag: 15.9, dragUpgraded: 17.7, mechanism: 35.0,  lineDia: 0.20, lineLen: 173, ratio: "6.1:1", level: 23, saltwater: true, copperLegal: true, cost: 4195.80, features: ["Long cast"] },
+    ]
+  },
+  {
+    model: "Olaf SP", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 6.7,  mechanism: null, lineDia: 0.11, lineLen: 251, ratio: "6.4:1", level: 19, saltwater: false, copperLegal: true,  cost: 4498.90, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+      { size: 2000, image: null, drag: 8.9,  mechanism: null, lineDia: 0.14, lineLen: 247, ratio: "6.2:1", level: 22, saltwater: false, copperLegal: true,  cost: 5698.90, features: ["Light fishing", "Long cast", "High speed"] },
+      { size: 3000, image: null, drag: 17.6, mechanism: null, lineDia: 0.20, lineLen: 202, ratio: "6.2:1", level: 24, saltwater: false, copperLegal: true,  cost: 7398.90, features: ["Long cast", "High speed"] },
+      { size: 6000, image: null, drag: 18.6, mechanism: null, lineDia: 0.28, lineLen: 289, ratio: "5.1:1", level: 26, saltwater: true,  copperLegal: true,  cost: 7899.80, features: ["Power fishing", "Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Overlord 3E", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 6.4,  mechanism: 8.49,  lineDia: 0.11, lineLen: 251, ratio: "5.9:1", level: 20, saltwater: false, copperLegal: true, cost: 4499.80, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 8.4,  mechanism: 20.36, lineDia: 0.14, lineLen: 247, ratio: "5.3:1", level: 22, saltwater: false, copperLegal: true, cost: 5199.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Azimut", manufacturer: "SAT", image: null, type: "spinning",
+    variants: [
+      { size: 4000,  image: null, drag: 15.4, mechanism: 37.56, lineDia: 0.20, lineLen: 317, ratio: "5.8:1", level: 22, saltwater: true, copperLegal: true,  cost: 4698.80,  features: [] },
+      { size: 6000,  image: null, drag: 19.0, mechanism: 43.68, lineDia: 0.28, lineLen: 372, ratio: "5.4:1", level: 24, saltwater: true, copperLegal: true,  cost: 6899.80,  features: ["Power fishing"] },
+      { size: 8000,  image: null, drag: 23.6, mechanism: 49.63, lineDia: 0.32, lineLen: 576, ratio: "5.4:1", level: 26, saltwater: true, copperLegal: false, cost: 15899.80, features: ["Power fishing"] },
+      { size: 10000, image: null, drag: 27.2, mechanism: 55.0,  lineDia: 0.42, lineLen: 674, ratio: "5.4:1", level: 26, saltwater: true, copperLegal: false, cost: 21599.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Azimut Blue", manufacturer: "SAT", image: null, type: "spinning",
+    variants: [
+      { size: 4000,  image: null, drag: 15.4, mechanism: 37.56, lineDia: 0.20, lineLen: 317, ratio: "5.8:1", level: 22, saltwater: true, copperLegal: true,  cost: 4698.80,  features: [] },
+      { size: 6000,  image: null, drag: 19.0, mechanism: 43.68, lineDia: 0.28, lineLen: 372, ratio: "5.4:1", level: 24, saltwater: true, copperLegal: true,  cost: 6899.80,  features: ["Power fishing"] },
+      { size: 8000,  image: null, drag: 23.6, mechanism: 49.63, lineDia: 0.32, lineLen: 576, ratio: "5.4:1", level: 26, saltwater: true, copperLegal: false, cost: 15899.80, features: ["Power fishing"] },
+      { size: 10000, image: null, drag: 27.2, mechanism: 55.0,  lineDia: 0.42, lineLen: 674, ratio: "5.4:1", level: 26, saltwater: true, copperLegal: false, cost: 21599.80, features: ["Power fishing"] },
+    ]
+  },
+  {
+    model: "Tagara II", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 3000,  image: null, drag: 16.3,                      mechanism: 39.76, lineDia: 0.20, lineLen: 202, ratio: "6.8:1", level: 22, saltwater: true, copperLegal: true,  cost: 4998.90,  features: ["High speed"] },
+      { size: 6000,  image: null, drag: 18.1, dragUpgraded: 20.4,  mechanism: 45.89, lineDia: 0.28, lineLen: 299, ratio: "5.4:1", level: 24, saltwater: true, copperLegal: true,  cost: 6299.81,  features: ["Power fishing", "Carp fishing"] },
+      { size: 8000,  image: null, drag: 22.6, dragUpgraded: 23.7,  mechanism: 57.06, lineDia: 0.32, lineLen: 453, ratio: "4.5:1", level: 25, saltwater: true, copperLegal: false, cost: 14655.30, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 26.3,                      mechanism: 62.45, lineDia: 0.42, lineLen: 574, ratio: "4.3:1", level: 26, saltwater: true, copperLegal: false, cost: 21871.90, features: ["Power fishing", "Carp fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Evia", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "subpar", label: "Subpar durability" }],
+    variants: [
+      { size: 6000, image: null, drag: 17.2,                     mechanism: 38.3,  lineDia: 0.28, lineLen: 570, ratio: "4.9:1", level: 22, saltwater: false, copperLegal: true,  cost: 5198.95, features: ["Carp fishing", "Long cast"] },
+      { size: 8000, image: null, drag: 18.1, dragUpgraded: 19.6, mechanism: 41.7,  lineDia: 0.32, lineLen: 805, ratio: "4.7:1", level: 24, saltwater: false, copperLegal: false, cost: 8474.55, features: ["Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Caliber 80 SLC", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 17.2, dragUpgraded: 19.0, mechanism: 37.74, lineDia: 0.32, lineLen: 503, ratio: "4.2:1", level: 23, saltwater: false, copperLegal: false, cost: 5312.42, features: ["Carp fishing", "Long cast", "Great pull"] },
+    ]
+  },
+  {
+    model: "Overlord 3BS", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 7.3, mechanism: 9.55,  lineDia: 0.11, lineLen: 251, ratio: "5.9:1", level: 20, saltwater: false, copperLegal: true, cost: 5599.80, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 9.1, mechanism: 20.95, lineDia: 0.14, lineLen: 247, ratio: "5.7:1", level: 23, saltwater: false, copperLegal: true, cost: 6499.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Admiral II", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 4000,  image: null, drag: 17.7,                     mechanism: 43.16, lineDia: 0.20, lineLen: 231, ratio: "6.1:1", level: 24, saltwater: true, copperLegal: true,  cost: 5649.80,  features: ["Long cast"] },
+      { size: 6000,  image: null, drag: 21.1, dragUpgraded: 22.0, mechanism: 57.45, lineDia: 0.28, lineLen: 285, ratio: "5.2:1", level: 26, saltwater: true, copperLegal: true,  cost: 12098.80, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000,  image: null, drag: 23.6,                     mechanism: 66.95, lineDia: 0.32, lineLen: 430, ratio: "4.8:1", level: 26, saltwater: true, copperLegal: false, cost: 15098.80, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 29.0,                     mechanism: 76.42, lineDia: 0.42, lineLen: 605, ratio: "4.1:1", level: 29, saltwater: true, copperLegal: false, cost: 25195.80, features: ["Power fishing", "Carp fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "JSX S", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 7.7, mechanism: 9.0,   lineDia: 0.11, lineLen: 251, ratio: "6.2:1", level: 24, saltwater: false, copperLegal: true, cost: 6143.75, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 9.5, mechanism: 20.84, lineDia: 0.14, lineLen: 247, ratio: "6.2:1", level: 24, saltwater: false, copperLegal: true, cost: 9119.25, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Overlord 3GS", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 7.7, mechanism: 10.02, lineDia: 0.11, lineLen: 251, ratio: "5.7:1", level: 25, saltwater: false, copperLegal: true, cost: 6499.80, features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 9.5, mechanism: 23.06, lineDia: 0.14, lineLen: 247, ratio: "5.1:1", level: 25, saltwater: false, copperLegal: true, cost: 9599.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "JSX Inferno S", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 8.2,  mechanism: 11.04, lineDia: 0.11, lineLen: 251, ratio: "6.2:1", level: 25, saltwater: false, copperLegal: true, cost: 6723.01,  features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 10.0, mechanism: 22.45, lineDia: 0.14, lineLen: 247, ratio: "6.2:1", level: 26, saltwater: false, copperLegal: true, cost: 11556.40, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Overlord 3RS", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 8.2,  mechanism: 12.02, lineDia: 0.11, lineLen: 251, ratio: "5.9:1", level: 25, saltwater: false, copperLegal: true, cost: 7499.80,  features: ["Ultra-light fishing"] },
+      { size: 2000, image: null, drag: 10.0, mechanism: 25.95, lineDia: 0.14, lineLen: 247, ratio: "5.1:1", level: 26, saltwater: false, copperLegal: true, cost: 11998.80, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Bestia II", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 8.6,  mechanism: 11.41, lineDia: 0.11, lineLen: 251, ratio: "7.1:1", level: 24, saltwater: true, copperLegal: true,  cost: 7899.80,  features: ["Ultra-light fishing", "High speed"] },
+      { size: 2000, image: null, drag: 10.8, mechanism: 24.25, lineDia: 0.14, lineLen: 260, ratio: "7.1:1", level: 25, saltwater: true, copperLegal: true,  cost: 13499.80, features: ["Light fishing", "High speed"] },
+      { size: 3000, image: null, drag: 17.2, mechanism: 43.84, lineDia: 0.20, lineLen: 173, ratio: "7.0:1", level: 25, saltwater: true, copperLegal: true,  cost: 7998.60,  features: ["High speed"] },
+      { size: 6000, image: null, drag: 19.9, dragUpgraded: 21.7, mechanism: 54.6,  lineDia: 0.28, lineLen: 265, ratio: "6.8:1", level: 26, saltwater: true, copperLegal: true,  cost: 9488.90,  features: ["Power fishing", "High speed"] },
+      { size: 8000, image: null, drag: 24.5, mechanism: 66.7,  lineDia: 0.32, lineLen: 375, ratio: "6.4:1", level: 26, saltwater: true, copperLegal: false, cost: 16603.80, features: ["Power fishing", "Carp fishing", "High speed"] },
+    ]
+  },
+  {
+    model: "SG8000 Ultra Power", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 19.5, dragUpgraded: 20.2, mechanism: 51.14, lineDia: 0.32, lineLen: 494, ratio: "5.7:1", level: 25, saltwater: true, copperLegal: false, cost: 9987.50, costGold: 68.31, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "SG8000 Ultra Power Emerald", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 19.5, dragUpgraded: 20.2, mechanism: 51.14, lineDia: 0.32, lineLen: 494, ratio: "5.7:1", level: 25, saltwater: true, copperLegal: false, costGold: 68.31, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Chronica II", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 20.4, mechanism: 72.63, lineDia: 0.28, lineLen: 285, ratio: "4.2:1", level: 25, saltwater: true, copperLegal: true, cost: 10899.80, costGold: 73.01, features: ["Power fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Chronica II 6000 LE-B", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 20.4, mechanism: 72.63, lineDia: 0.28, lineLen: 285, ratio: "4.2:1", level: 25, saltwater: true, copperLegal: true, features: ["Power fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Chronica II 6000 LE-G", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 20.4, mechanism: 72.63, lineDia: 0.28, lineLen: 285, ratio: "4.2:1", level: 25, saltwater: true, copperLegal: true, features: ["Power fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Aviator SP", manufacturer: "Reef", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 9.1,  mechanism: null, lineDia: 0.11, lineLen: 271, ratio: "7.3:1", level: 26, saltwater: true, copperLegal: true, cost: 11899.60, costGold: 77.94, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+      { size: 2000, image: null, drag: 11.3, mechanism: null, lineDia: 0.14, lineLen: 260, ratio: "7.2:1", level: 26, saltwater: true, copperLegal: true, cost: 14899.60, costGold: 91.48, features: ["Light fishing", "Long cast", "High speed"] },
+      { size: 3000, image: null, drag: 18.2, mechanism: null, lineDia: 0.20, lineLen: 202, ratio: "7.1:1", level: 26, saltwater: true, copperLegal: true, cost: 11899.60, costGold: 77.94, features: ["Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Aviator SP 9-Years", manufacturer: "Reef", image: null, type: "spinning",
+    variants: [
+      { size: 1000, image: null, drag: 9.5, mechanism: null, lineDia: 0.11, lineLen: 290, ratio: "7.5:1", level: 25, saltwater: true, copperLegal: true, costGold: 77.94, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Olaf Stark SP-SWG", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 10000, image: null, drag: 28.2, mechanism: null, lineDia: 0.42, lineLen: 586, ratio: "4.9:1", level: 27, saltwater: true, copperLegal: false, cost: 23898.90, costGold: 122.15, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Horizon III 9-Anniversary", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 3000, image: null, drag: 12.0, mechanism: null, lineDia: 0.20, lineLen: 195, ratio: "5.9:1", level: 15, saltwater: false, copperLegal: true, costGold: 14.78, features: [] },
+    ]
+  },
+  {
+    model: "Hunter 9-Years", manufacturer: "Zeiman", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 16.0, mechanism: null, lineDia: 0.28, lineLen: 299, ratio: "4.8:1", level: 20, saltwater: true, copperLegal: true,  costGold: 35.44, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 18.5, mechanism: null, lineDia: 0.32, lineLen: 444, ratio: "4.7:1", level: 20, saltwater: true, copperLegal: false, costGold: 54.45, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Venga Classic", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 6000,  image: null, drag: 22.6, dragUpgraded: 23.7, mechanism: 69.66, lineDia: 0.28, lineLen: 289, ratio: "5.5:1", level: 28, saltwater: true, copperLegal: true,  cost: 18791.00, costGold: 106.45, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 31.7,                      mechanism: 99.0,  lineDia: 0.42, lineLen: 574, ratio: "5.1:1", level: 30, saltwater: true, copperLegal: false, cost: 32721.60, costGold: 158.00, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Venga II", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 6000,  image: null, drag: 22.7, dragUpgraded: 23.7, mechanism: 71.2,   lineDia: 0.28, lineLen: 294, ratio: "5.7:1", level: 28, saltwater: true, copperLegal: true,  cost: 18899.80, costGold: 106.83, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000,  image: null, drag: 30.0, dragUpgraded: 31.7, mechanism: 80.25,  lineDia: 0.32, lineLen: 457, ratio: "6.1:1", level: 28, saltwater: true, copperLegal: false, cost: 26899.80, costGold: 134.49, features: ["Power fishing", "High speed"] },
+      { size: 10000, image: null, drag: 32.7,                      mechanism: 108.31, lineDia: 0.42, lineLen: 586, ratio: "5.0:1", level: 30, saltwater: true, copperLegal: false, cost: 34499.80, costGold: 162.95, features: ["Power fishing", "Carp fishing"] },
+      { size: 30000, image: null, drag: 34.9,                      mechanism: 144.12, lineDia: 0.42, lineLen: 1379, ratio: "5.1:1", level: 32, saltwater: true, copperLegal: false, cost: 48499.80, costGold: 198.12, features: ["Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Venga II Super 9", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 10000, image: null, drag: 32.7, mechanism: 108.31, lineDia: 0.42, lineLen: 586,  ratio: "5.0:1", level: 30, saltwater: true, copperLegal: false, features: ["Power fishing", "Carp fishing"] },
+      { size: 30000, image: null, drag: 34.9, mechanism: 144.12, lineDia: 0.42, lineLen: 1379, ratio: "5.1:1", level: 32, saltwater: true, copperLegal: false, features: ["Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Venga II First Edition", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 30000, image: null, drag: 34.9, mechanism: 144.12, lineDia: 0.42, lineLen: 1379, ratio: "5.1:1", level: 32, saltwater: true, copperLegal: false, features: ["Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Venga Black", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 6000,  image: null, drag: 22.6, dragUpgraded: 23.7, mechanism: 69.66, lineDia: 0.28, lineLen: 289, ratio: "5.5:1", level: 28, saltwater: true, copperLegal: true,  costGold: 106.45, features: ["Power fishing"] },
+      { size: 8000,  image: null, drag: 27.2,                      mechanism: 83.98, lineDia: 0.32, lineLen: 448, ratio: "6.0:1", level: 28, saltwater: true, copperLegal: false, costGold: 119.70, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 31.7,                      mechanism: 99.0,  lineDia: 0.42, lineLen: 574, ratio: "5.1:1", level: 30, saltwater: true, copperLegal: false, costGold: 158.00, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Venga Platinum", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 6000,  image: null, drag: 22.6, dragUpgraded: 23.7, mechanism: 69.66, lineDia: 0.28, lineLen: 289, ratio: "5.5:1", level: 28, saltwater: true, copperLegal: true,  costGold: 106.45, features: ["Power fishing"] },
+      { size: 8000,  image: null, drag: 27.2,                      mechanism: 83.98, lineDia: 0.32, lineLen: 448, ratio: "6.0:1", level: 28, saltwater: true, copperLegal: false, costGold: 119.70, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 31.7,                      mechanism: 99.0,  lineDia: 0.42, lineLen: 574, ratio: "5.1:1", level: 30, saltwater: true, copperLegal: false, costGold: 158.00, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Venga MMXXV", manufacturer: "Beluga", image: null, type: "spinning",
+    tags: [{ type: "positive", label: "Solid durability" }],
+    variants: [
+      { size: 10000, image: null, drag: 31.7, mechanism: 99.0, lineDia: 0.42, lineLen: 574, ratio: "5.1:1", level: 30, saltwater: true, copperLegal: false, costGold: 158.00, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Megara 8000", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 25.4, mechanism: 71.76, lineDia: 0.32, lineLen: 805, ratio: "4.7:1", level: 28, saltwater: false, copperLegal: false, cost: 22472.00, costGold: 118.19, features: ["Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Velara Mystique", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 14.5, mechanism: 38.98, lineDia: 0.28, lineLen: 294, ratio: "5.1:1", level: 18, saltwater: false, copperLegal: true,  costGold: 21.42, features: ["Power fishing", "Carp fishing"] },
+      { size: 8000, image: null, drag: 17.5, mechanism: 41.78, lineDia: 0.32, lineLen: 466, ratio: "4.6:1", level: 20, saltwater: false, copperLegal: false, costGold: 42.09, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Natora Supercarp", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 6000, image: null, drag: 15.0, dragUpgraded: 16.5, mechanism: 36.96, lineDia: 0.28, lineLen: 289, ratio: "5.6:1", level: 20, saltwater: false, copperLegal: true, costGold: 25.90, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Alfa Celestia", manufacturer: "Sputnik", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 14.5, mechanism: 38.0, lineDia: 0.32, lineLen: 393, ratio: "5.2:1", level: 19, saltwater: false, copperLegal: false, costGold: 20.20, features: ["Power fishing", "Carp fishing"] },
+    ]
+  },
+  {
+    model: "Caliber HSV 80 SLC Raven", manufacturer: "Syberia", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 15.9, dragUpgraded: 17.0, mechanism: 32.0, lineDia: 0.32, lineLen: 503, ratio: "4.5:1", level: 20, saltwater: false, copperLegal: false, costGold: 23.94, features: ["Carp fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Admiral II Superior", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 6000,  image: null, drag: 22.0, mechanism: 59.23, lineDia: 0.28, lineLen: 304, ratio: "5.3:1", level: 24, saltwater: true, copperLegal: true,  costGold: 78.90,  features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, image: null, drag: 30.0, mechanism: 79.87, lineDia: 0.42, lineLen: 613, ratio: "4.6:1", level: 29, saltwater: true, copperLegal: false, costGold: 125.97, features: ["Power fishing", "Carp fishing", "Great pull"] },
+    ]
+  },
+  {
+    model: "Goliaf", manufacturer: "SAT", image: null, type: "spinning",
+    tags: [{ type: "subpar", label: "Subpar durability" }],
+    variants: [
+      { size: 10000, image: null, drag: 30.8, mechanism: 112.0, lineDia: 0.42, lineLen: 593,  ratio: "4.9:1", level: 30, saltwater: true, copperLegal: false, cost: 31499.80, costGold: 154.52, features: ["Power fishing", "Carp fishing"] },
+      { size: 20000, image: null, drag: 31.8, mechanism: 106.0, lineDia: 0.42, lineLen: 881,  ratio: "5.8:1", level: 32, saltwater: true, copperLegal: false, cost: 33198.80, costGold: 159.34, features: ["Sea trophy fishing"] },
+      { size: 30000, image: null, drag: 33.6, mechanism: 120.0, lineDia: 0.42, lineLen: 1486, ratio: "5.8:1", level: 32, saltwater: true, copperLegal: false, cost: 39798.80, costGold: 177.02, features: ["Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Turion SW", manufacturer: "Reef", image: null, type: "spinning",
+    tags: [{ type: "neutral", label: "Great durability" }],
+    variants: [
+      { size: 8000,  image: null, drag: 30.8, mechanism: 110.68, lineDia: 0.32, lineLen: 498,  ratio: "5.6:1", level: 30, saltwater: true, copperLegal: false, cost: 32499.80, costGold: 157.37, features: ["Power fishing"] },
+      { size: 10000, image: null, drag: 34.5, mechanism: 114.29, lineDia: 0.42, lineLen: 563,  ratio: "4.9:1", level: 32, saltwater: true, copperLegal: false, cost: 45799.80, costGold: 191.82, features: ["Power fishing"] },
+      { size: 20000, image: null, drag: 35.4, mechanism: 120.19, lineDia: 0.42, lineLen: 858,  ratio: "4.4:1", level: 32, saltwater: true, copperLegal: false, cost: 49798.90, costGold: 201.08, features: ["Power fishing", "Sea trophy fishing"] },
+      { size: 30000, image: null, drag: 36.3, mechanism: 127.94, lineDia: 0.42, lineLen: 1364, ratio: "4.4:1", level: 32, saltwater: true, copperLegal: false, cost: 56798.90, costGold: 216.28, features: ["Power fishing", "Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Furia", manufacturer: "Beluga", image: null, type: "spinning",
+    variants: [
+      { size: 10000, image: null, drag: 34.9, mechanism: 118.27, lineDia: 0.42, lineLen: 574,  ratio: "4.6:1", level: 32, saltwater: true, copperLegal: false, cost: 40999.50, costGold: 180.07, features: ["Power fishing", "Carp fishing"] },
+      { size: 10000, label: "Size 10000 SHS", image: null, drag: 34.0, mechanism: 104.74, lineDia: 0.42, lineLen: 452, ratio: "6.2:1", level: 32, saltwater: true, copperLegal: false, cost: 37498.50, costGold: 171.03, features: ["Power fishing", "Carp fishing", "High speed"] },
+      { size: 20000, image: null, drag: 36.7, mechanism: 128.53, lineDia: 0.42, lineLen: 881,  ratio: "4.9:1", level: 32, saltwater: true, copperLegal: false, cost: 51498.50, costGold: 204.88, features: ["Sea trophy fishing"] },
+      { size: 30000, image: null, drag: 38.6, mechanism: 132.79, lineDia: 0.42, lineLen: 1417, ratio: "4.6:1", level: 32, saltwater: true, copperLegal: false, cost: 66988.50, costGold: 236.50, features: ["Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Everest-24", manufacturer: "Trident", image: null, type: "spinning",
+    variants: [
+      { size: 8000, image: null, drag: 22.7, mechanism: 52.0, lineDia: 0.32, lineLen: 466, ratio: "4.7:1", level: 26, saltwater: true, copperLegal: false, cost: 11320.40, costGold: 75.11, features: ["Power fishing", "Carp fishing", "Great pull"] },
+    ]
+  },
+  // --- LP BAITCASTING REELS ---
+  {
+    model: "Profisher", manufacturer: "Express Fishing", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 3.2, mechanism: 8.03, lineDia: 0.22, lineLen: 166, ratio: "6.2:1", test: 6.5, testUpgraded: 4.9, level: 4, saltwater: true, copperLegal: true, cost: 139.90, costGold: 1.34, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Optimus", manufacturer: "Express Fishing", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 3.6, mechanism: 6.16, lineDia: 0.22, lineLen: 160, ratio: "6.2:1", test: 6, testUpgraded: 4.4, level: 7, saltwater: true, copperLegal: true, cost: 181.60, costGold: 1.73, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Winner NG LP-HS", manufacturer: "Express Fishing", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 4.5, mechanism: 13.56, lineDia: 0.22, lineLen: 166, ratio: "6.3:1", test: 5.5, level: 9, saltwater: true, copperLegal: true, cost: 299.50, costGold: 2.83, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Energy", manufacturer: "Syberia", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 4.1, mechanism: 12.29, lineDia: 0.22, lineLen: 172, ratio: "6.2:1", test: 6, testUpgraded: 4.4, level: 8, saltwater: true, copperLegal: true, cost: 769.80, costGold: 7.02, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Riva 2", manufacturer: "Syberia", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 4.8, mechanism: 19.51, lineDia: 0.22, lineLen: 160, ratio: "6.6:1", test: 4.9, testUpgraded: 3.9, level: 10, saltwater: true, copperLegal: true, cost: 1049.50, costGold: 9.41, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Black Bird 2", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 5.0, mechanism: 25.81, lineDia: 0.22, lineLen: 185, ratio: "6.4:1", test: 5.5, testUpgraded: 4.4, level: 12, saltwater: true, copperLegal: true, cost: 1297.50, costGold: 11.49, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "SportPro X2", manufacturer: "Syberia", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 5.2, mechanism: 23.02, lineDia: 0.22, lineLen: 160, ratio: "6.6:1", test: 4.9, testUpgraded: 3.9, level: 14, saltwater: true, copperLegal: true, cost: 1298.50, costGold: 11.50, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Silver Bird 2", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.3, dragUpgraded: 8.1, mechanism: 26.68, lineDia: 0.22, lineLen: 179, ratio: "6.4:1", test: 4.7, testUpgraded: 3.9, level: 14, saltwater: true, copperLegal: true, cost: 2595.70, costGold: 21.77, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Thunderbolt SSP", manufacturer: "Syberia", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 5.4, mechanism: 21.76, lineDia: 0.22, lineLen: 154, ratio: "7.3:1", test: 3.6, testUpgraded: 2.6, level: 17, saltwater: true, copperLegal: true, cost: 1699.70, costGold: 14.78, features: ["Light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Nitro 2", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 5.7, mechanism: 21.49, lineDia: 0.22, lineLen: 179, ratio: "6.4:1", test: 3.9, testUpgraded: 3.2, level: 16, saltwater: true, copperLegal: true, cost: 1798.80, costGold: 15.57, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "T-Tech STT", manufacturer: "Syberia", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 6.3, dragUpgraded: 7.0, mechanism: 29.68, lineDia: 0.22, lineLen: 179, ratio: "5.4:1", test: 3.9, testUpgraded: 3.2, level: 18, saltwater: true, copperLegal: true, cost: 1998.60, costGold: 17.16, features: ["Ultra-light fishing", "Long cast", "Great pull"] },
+      { size: "LP", label: "STT-HSR", image: null, drag: 6.3, dragUpgraded: 7.0, mechanism: 30.21, lineDia: 0.22, lineLen: 179, ratio: "7.3:1", test: 3.9, testUpgraded: 3.2, level: 18, saltwater: true, copperLegal: true, cost: 2098.60, costGold: 17.94, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Charger 2", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 6.8, mechanism: 28.93, lineDia: 0.22, lineLen: 179, ratio: "7.1:1", test: 4.6, testUpgraded: 3.7, level: 18, saltwater: true, copperLegal: true, cost: 2498.80, costGold: 21.03, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Spectrum TSH", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.3, dragUpgraded: 8.0, mechanism: 31.93, lineDia: 0.22, lineLen: 148, ratio: "7.1:1", test: 3.8, testUpgraded: 3.2, level: 20, saltwater: true, copperLegal: true, cost: 2998.50, costGold: 24.79, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Pro Bird 2", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.7, dragUpgraded: 8.4, mechanism: 34.54, lineDia: 0.22, lineLen: 179, ratio: "7.1:1", test: 4.5, testUpgraded: 3.7, level: 16, saltwater: true, copperLegal: true, cost: 3108.70, costGold: 25.60, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Alfa Pro LP", manufacturer: "Sputnik", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.8, dragUpgraded: 8.3, mechanism: 33.49, lineDia: 0.22, lineLen: 166, ratio: "6.6:1", ratioUpgraded: "8.1:1", test: 3.8, testUpgraded: 2.3, level: 18, saltwater: true, copperLegal: true, cost: 3295.80, costGold: 26.97, features: ["Light fishing", "Long cast"] },
+      { size: "LP", label: "Acid", image: null, drag: 8.3, mechanism: 33.49, lineDia: 0.22, lineLen: 166, ratio: "6.6:1", ratioUpgraded: "8.1:1", test: 3.8, testUpgraded: 2.3, level: 18, saltwater: true, copperLegal: true, costGold: 26.97, features: ["Light fishing", "Long cast"] },
+      { size: "LP", label: "Orange", image: null, drag: 7.8, dragUpgraded: 8.3, mechanism: 33.49, lineDia: 0.22, lineLen: 166, ratio: "6.6:1", ratioUpgraded: "8.1:1", test: 3.8, testUpgraded: 2.3, level: 18, saltwater: true, copperLegal: true, costGold: 26.97, features: ["Light fishing", "Long cast"] },
+      { size: "LP", label: "Red", image: null, drag: 7.8, dragUpgraded: 8.3, mechanism: 33.49, lineDia: 0.22, lineLen: 166, ratio: "6.6:1", ratioUpgraded: "8.1:1", test: 3.8, testUpgraded: 2.3, level: 18, saltwater: true, copperLegal: true, costGold: 26.97, features: ["Light fishing", "Long cast"] },
+      { size: "LP", label: "White", image: null, drag: 7.8, dragUpgraded: 8.3, mechanism: 33.49, lineDia: 0.22, lineLen: 166, ratio: "6.6:1", ratioUpgraded: "8.1:1", test: 3.8, testUpgraded: 2.3, level: 18, saltwater: true, copperLegal: true, costGold: 26.97, features: ["Light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Mayor LP 2", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.3, dragUpgraded: 8.0, mechanism: 27.9, lineDia: 0.22, lineLen: 135, ratio: "6.4:1", ratioUpgraded: "8.1:1", test: 3.1, testUpgraded: 2.3, level: 21, saltwater: true, copperLegal: true, cost: 3809.50, costGold: 30.64, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Jet-Series JS", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.3, dragUpgraded: 8.1, mechanism: 38.72, lineDia: 0.22, lineLen: 160, ratio: "6.4:1", ratioUpgraded: "8.0:1", test: 3.4, testUpgraded: 2.1, level: 21, saltwater: true, copperLegal: true, cost: 3590.70, costGold: 29.10, features: ["Ultra-light fishing"] },
+    ]
+  },
+  {
+    model: "Jet-Series JS-R Belaya", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.4, mechanism: null, lineDia: 0.22, lineLen: 160, ratio: "6.4:1", test: 3.4, level: 21, saltwater: true, copperLegal: true, cost: 7795.42, costGold: 54.43, features: ["Ultra-light fishing"] },
+    ]
+  },
+  {
+    model: "Zero 2 Z", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 7.7, dragUpgraded: 8.4, mechanism: 43.41, lineDia: 0.22, lineLen: 172, ratio: "6.4:1", test: 3.7, testUpgraded: 3.2, level: 20, saltwater: true, copperLegal: true, cost: 3489.50, costGold: 28.37, features: ["Ultra-light fishing"] },
+      { size: "LP", label: "ZHS-R", image: null, drag: 7.7, dragUpgraded: 8.4, mechanism: 44.59, lineDia: 0.22, lineLen: 172, ratio: "7.1:1", test: 3.7, testUpgraded: 3.2, level: 20, saltwater: true, copperLegal: true, cost: 3589.50, costGold: 29.09, features: ["Ultra-light fishing"] },
+    ]
+  },
+  {
+    model: "Pillar LP 2", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", label: "TPC-R", image: null, drag: 8.2, dragUpgraded: 8.6, mechanism: 38.9, lineDia: 0.22, lineLen: 160, ratio: "7.1:1", test: 2.7, testUpgraded: 1.8, level: 23, saltwater: true, copperLegal: true, cost: 4849.74, costGold: 37.81, features: ["Ultra-light fishing", "Long cast"] },
+      { size: "LP", label: "TPC-R-HS", image: null, drag: 8.2, dragUpgraded: 8.6, mechanism: 36.74, lineDia: 0.22, lineLen: 160, ratio: "7.8:1", test: 2.7, testUpgraded: 1.8, level: 23, saltwater: true, copperLegal: true, cost: 4848.74, costGold: 37.81, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Zero GS", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 9.0, mechanism: 56.56, lineDia: 0.22, lineLen: 166, ratio: "7.1:1", test: 4.5, testUpgraded: 3.8, level: 22, saltwater: true, copperLegal: true, cost: 4377.11, costGold: 34.61, features: ["Light fishing"] },
+    ]
+  },
+  {
+    model: "Jet-Series JSG", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", label: "JSG-R", image: null, drag: 8.6, mechanism: 34.56, lineDia: 0.22, lineLen: 160, ratio: "6.4:1", test: 2.8, testUpgraded: 2.1, level: 24, saltwater: true, copperLegal: true, cost: 5886.74, costGold: 44.58, features: ["Ultra-light fishing", "Long cast"] },
+      { size: "LP", label: "JSGHS-R", image: null, drag: 8.6, mechanism: 34.92, lineDia: 0.22, lineLen: 160, ratio: "7.1:1", test: 2.8, testUpgraded: 2.1, level: 24, saltwater: true, copperLegal: true, cost: 5886.74, costGold: 44.58, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Jet-Bullet LP", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 8.2, dragUpgraded: 8.7, mechanism: 36.07, lineDia: 0.22, lineLen: 154, ratio: "10.1:1", test: 2.7, testUpgraded: 2.1, level: 25, saltwater: true, copperLegal: true, cost: 7543.24, costGold: 54.71, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Skipper LP-R", manufacturer: "Trident", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 9.0, mechanism: 43.0, lineDia: 0.22, lineLen: 160, ratio: "7.8:1", ratioUpgraded: "6.8:1", test: 2.8, testUpgraded: 2.2, level: 26, saltwater: true, copperLegal: true, cost: 9497.80, costGold: 55.80, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Jet-Series JSX", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", label: "JSX-R", image: null, drag: 9.0, mechanism: 36.69, lineDia: 0.22, lineLen: 148, ratio: "7.1:1", test: 1.9, testUpgraded: 1.5, level: 26, saltwater: true, copperLegal: true, cost: 10939.50, costGold: 72.90, features: ["Ultra-light fishing", "Long cast"] },
+      { size: "LP", label: "JSXHS-R", image: null, drag: 9.0, mechanism: 34.92, lineDia: 0.22, lineLen: 148, ratio: "7.9:1", test: 1.9, testUpgraded: 1.5, level: 26, saltwater: true, copperLegal: true, cost: 10939.50, costGold: 72.90, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "JSX Inferno LP", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 9.5, mechanism: 31.38, lineDia: 0.22, lineLen: 142, ratio: "8.1:1", test: 1.7, testUpgraded: 1.6, level: 28, saltwater: true, copperLegal: true, cost: 17878.90, costGold: 103.19, features: ["Ultra-light fishing", "Long cast", "High speed"] },
+    ]
+  },
+  {
+    model: "Jet-Series ULX LP", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 9.5, mechanism: 36.59, lineDia: 0.22, lineLen: 135, ratio: "7.1:1", test: 1.6, level: 28, saltwater: true, copperLegal: true, features: [] },
+    ]
+  },
+  {
+    model: "Polestar ELT", manufacturer: "Zeiman", image: null, type: "Low-Profile baitcasting",
+    variants: [
+      { size: "LP", image: null, drag: 8.6, mechanism: 40.51, lineDia: 0.22, lineLen: 166, ratio: "7.1:1", test: 2.6, level: 25, saltwater: true, copperLegal: true, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  // --- CLASSIC BAITCASTING REELS ---
+  {
+    model: "Winner Round II", manufacturer: "Express Fishing", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, image: null, drag: 5.5, dragUpgraded: 6.9, mechanism: 10.2, lineDia: 0.25, lineLen: 200, ratio: "5.1:1", test: 17, testUpgraded: 13, level: 5, saltwater: true, copperLegal: false, cost: 249.00, costGold: 2.36, features: ["Jerking"] },
+    ]
+  },
+  {
+    model: "Magellan", manufacturer: "Syberia", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 4000, image: null, drag: 6.3, dragUpgraded: 7.0, mechanism: 13.84, lineDia: 0.25, lineLen: 145, ratio: "5.2:1", ratioUpgraded: "4.3:1", test: 14, testUpgraded: 11, level: 10, saltwater: true, copperLegal: false, cost: 399.00, costGold: 3.73, features: ["Jerking"] },
+    ]
+  },
+  {
+    model: "Spider R2", manufacturer: "Syberia", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 4000, image: null, drag: 7.5, dragUpgraded: 9.0, mechanism: 17.51, lineDia: 0.25, lineLen: 150, ratio: "5.1:1", ratioUpgraded: "4.3:1", test: 13, testUpgraded: 10, level: 12, saltwater: true, copperLegal: false, cost: 499.00, costGold: 4.63, features: ["Jerking"] },
+    ]
+  },
+  {
+    model: "Zodiac R2", manufacturer: "Syberia", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, image: null, drag: 8.0, dragUpgraded: 9.2, mechanism: 29.25, lineDia: 0.25, lineLen: 209, ratio: "5.1:1", ratioUpgraded: "6.2:1", test: 15.5, testUpgraded: 2.4, level: 12, saltwater: true, copperLegal: false, cost: 799.00, costGold: 7.27, features: ["Power fishing", "Jerking"] },
+      { size: 5000, label: "500-R2 L-CTR", image: null, drag: 8.0, dragUpgraded: 9.2, mechanism: 29.25, lineDia: 0.25, lineLen: 209, ratio: "5.1:1", ratioUpgraded: "6.2:1", test: 15.5, testUpgraded: 2.4, level: 12, saltwater: true, copperLegal: false, cost: 869.00, costGold: 7.87, features: ["Power fishing", "Jerking", "Trolling"] },
+    ]
+  },
+  {
+    model: "Compact", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 4000, image: null, drag: 8.6, mechanism: 30.67, lineDia: 0.25, lineLen: 150, ratio: "5.3:1", test: 9.5, testUpgraded: 8, level: 15, saltwater: true, copperLegal: false, cost: 899.00, costGold: 8.13, features: ["Power fishing", "Jerking"] },
+      { size: 5000, image: null, drag: 8.6, mechanism: 33.42, lineDia: 0.25, lineLen: 200, ratio: "5.3:1", test: 13.5, testUpgraded: 11.5, level: 16, saltwater: true, copperLegal: false, cost: 949.00, costGold: 8.56, features: ["Power fishing", "Jerking"] },
+      { size: 6000, image: null, drag: 9.0, mechanism: 35.08, lineDia: 0.25, lineLen: 280, ratio: "5.3:1", test: 23.5, testUpgraded: 19.5, level: 16, saltwater: true, copperLegal: false, cost: 1124.26, costGold: 10.05, features: ["Power fishing", "Jerking"] },
+    ]
+  },
+  {
+    model: "Black Box", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, image: null, drag: 9.0, mechanism: 37.14, lineDia: 0.25, lineLen: 209, ratio: "5.9:1", ratioUpgraded: "4.8:1", test: 11.5, testUpgraded: 3.7, level: 16, saltwater: true, copperLegal: false, cost: 1159.80, costGold: 10.34, features: ["Power fishing", "Jerking"] },
+      { size: 6000, image: null, drag: 11.0, dragUpgraded: 12.6, mechanism: 40.0, lineDia: 0.25, lineLen: 290, ratio: "5.9:1", ratioUpgraded: "4.8:1", test: 18, testUpgraded: 6.5, level: 17, saltwater: true, copperLegal: false, cost: 1570.46, costGold: 13.73, features: ["Power fishing", "Jerking"] },
+      { size: 6000, label: "ZBB60 LCTR", image: null, drag: 11.0, dragUpgraded: 12.6, mechanism: 40.0, lineDia: 0.25, lineLen: 290, ratio: "5.9:1", ratioUpgraded: "4.8:1", test: 18, testUpgraded: 6.5, level: 17, saltwater: true, copperLegal: false, cost: 1690.68, costGold: 14.70, features: ["Jerking", "Trolling"] },
+    ]
+  },
+  {
+    model: "Minister 2000", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    tags: [{ type: "vintage", label: "Vintage" }],
+    variants: [
+      { size: 2000, image: null, drag: 8.6, mechanism: 54.54, lineDia: 0.25, lineLen: 140, ratio: "4.5:1", ratioUpgraded: "6.0:1", test: 5.5, level: 16, saltwater: true, copperLegal: false, cost: 2125.82, costGold: 18.15, features: ["Light fishing", "Long cast"] },
+    ]
+  },
+  {
+    model: "Billionaire", manufacturer: "Trident", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, image: null, drag: 11.0, dragUpgraded: 12.6, mechanism: 56.82, lineDia: 0.25, lineLen: 220, ratio: "5.1:1", ratioUpgraded: "4.6:1", test: 12, testUpgraded: 3.2, level: 18, saltwater: true, copperLegal: false, cost: 2298.50, costGold: 19.50, features: ["Power fishing", "Jerking"] },
+      { size: 6000, image: null, drag: 13.6, dragUpgraded: 15.0, mechanism: 71.05, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", ratioUpgraded: "4.6:1", test: 17.5, testUpgraded: 6.5, level: 21, saltwater: true, copperLegal: false, cost: 3796.60, costGold: 30.56, features: ["Power fishing", "Jerking"] },
+    ]
+  },
+  {
+    model: "SteelHead", manufacturer: "Syberia", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, image: null, drag: 12.5, dragUpgraded: 13.7, mechanism: 39.75, lineDia: 0.25, lineLen: 220, ratio: "5.1:1", test: 15.5, testUpgraded: 12, level: 19, saltwater: true, copperLegal: false, cost: 2357.60, costGold: 19.95, features: ["Power fishing", "Trolling"] },
+      { size: 6000, image: null, drag: 16.0, dragUpgraded: 16.8, mechanism: 53.0, lineDia: 0.25, lineLen: 280, ratio: "5.1:1", test: 25.5, testUpgraded: 20, level: 22, saltwater: true, copperLegal: false, cost: 4710.90, costGold: 36.88, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "ZM-3", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 4000, image: null, drag: 11.0, dragUpgraded: 12.6, mechanism: 49.58, lineDia: 0.25, lineLen: 150, ratio: "5.3:1", ratioUpgraded: "5.1:1", test: 7.5, testUpgraded: 1.9, level: 19, saltwater: true, copperLegal: false, cost: 2498.80, costGold: 21.03, features: ["Power fishing", "Jerking"] },
+      { size: 5000, image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 51.97, lineDia: 0.25, lineLen: 220, ratio: "5.3:1", ratioUpgraded: "5.1:1", test: 11.5, testUpgraded: 3.1, level: 20, saltwater: true, copperLegal: false, cost: 2988.50, costGold: 24.71, features: ["Power fishing", "Jerking"] },
+      { size: 6000, image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 56.19, lineDia: 0.25, lineLen: 290, ratio: "5.3:1", ratioUpgraded: "5.1:1", test: 17, testUpgraded: 7, level: 20, saltwater: true, copperLegal: false, cost: 3407.70, costGold: 27.78, features: ["Power fishing", "Jerking"] },
+    ]
+  },
+  {
+    model: "Castmaster LGR1973", manufacturer: "Aquatica", image: null, type: "Classic baitcasting",
+    tags: [{ type: "vintage", label: "Vintage" }],
+    variants: [
+      { size: 5000, label: "ME", image: null, drag: 15.4, mechanism: 75.42, lineDia: 0.25, lineLen: 235, ratio: "3.2:1", test: 12.5, testUpgraded: 11.5, level: 22, saltwater: true, copperLegal: false, cost: 4198.80, costGold: 33.38, features: ["Power fishing", "Jerking", "Long cast", "Great pull"] },
+      { size: 5000, label: "MC", image: null, drag: 15.4, mechanism: 75.42, lineDia: 0.25, lineLen: 235, ratio: "3.2:1", test: 12.5, testUpgraded: 11.5, level: 22, saltwater: true, copperLegal: false, cost: 4198.80, costGold: 33.38, features: ["Power fishing", "Jerking", "Long cast", "Great pull"] },
+    ]
+  },
+  {
+    model: "ZM Ranger", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 6000, label: "Z60", image: null, drag: 15.9, mechanism: 78.01, lineDia: 0.25, lineLen: 290, ratio: "5.3:1", test: 13, level: 21, saltwater: true, copperLegal: false, cost: 6298.50, costGold: 47.17, features: [] },
+      { size: 7000, label: "Z70", image: null, drag: 18.1, mechanism: 88.19, lineDia: 0.28, lineLen: 405, ratio: "4.1:1", test: 29, level: 25, saltwater: true, copperLegal: false, cost: 9976.50, costGold: 68.25, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Billionaire HV", manufacturer: "Trident", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 6000, label: "H-Version 60R", image: null, drag: 18.0, dragUpgraded: 19.0, mechanism: 77.0, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 18.5, testUpgraded: 15, level: 25, saltwater: true, copperLegal: false, cost: 7509.50, costGold: 54.51, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "H-Version 60R LCTR", image: null, drag: 18.0, dragUpgraded: 19.0, mechanism: 77.0, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 18.5, testUpgraded: 15, level: 25, saltwater: true, copperLegal: false, cost: 7804.80, costGold: 56.24, features: ["Power fishing", "Jerking", "Trolling", "Long cast"] },
+      { size: 6000, label: "H-Version 60R NYE", image: null, drag: 18.0, dragUpgraded: 19.0, mechanism: 77.0, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 18.5, testUpgraded: 15, level: 25, saltwater: true, copperLegal: false, features: ["Power fishing", "Jerking", "Long cast"] },
+    ]
+  },
+  {
+    model: "ZM-Steelness", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, label: "ZMS50", image: null, drag: 17.2, dragUpgraded: 18.0, mechanism: 82.99, lineDia: 0.25, lineLen: 220, ratio: "6.8:1", test: 10.5, testUpgraded: 3.1, level: 23, saltwater: true, copperLegal: false, cost: 7784.90, costGold: 56.12, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "ZM60", image: null, drag: 17.2, dragUpgraded: 18.0, mechanism: 91.84, lineDia: 0.25, lineLen: 290, ratio: "5.3:1", test: 15.5, testUpgraded: 7, level: 25, saltwater: true, copperLegal: false, cost: 8499.70, costGold: 60.21, features: ["Power fishing", "Jerking", "Long cast"] },
+    ]
+  },
+  {
+    model: "SAL5000", manufacturer: "Tama", image: null, type: "Classic baitcasting",
+    tags: [{ type: "vintage", label: "Vintage" }],
+    variants: [
+      { size: 5000, image: null, drag: 18.2, mechanism: 94.0, lineDia: 0.25, lineLen: 275, ratio: "5.3:1", test: 11, testUpgraded: 10.5, level: 23, saltwater: true, copperLegal: false, cost: 7998.50, costGold: 57.36, features: ["Power fishing", "Jerking"] },
+    ]
+  },
+  {
+    model: "Imperial R605", manufacturer: "Beluga", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 6000, image: null, drag: 16.3, dragUpgraded: 18.1, mechanism: 99.41, lineDia: 0.25, lineLen: 339, ratio: "4.4:1", test: 15, level: 26, saltwater: true, copperLegal: false, cost: 9116.82, costGold: 63.64, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 6000, label: "Electrum", image: null, drag: 18.1, mechanism: 105.35, lineDia: 0.25, lineLen: 380, ratio: "4.3:1", test: 13, level: 25, saltwater: true, copperLegal: false, costGold: 69.90, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 6000, label: "Magnesium", image: null, drag: 18.1, mechanism: 105.35, lineDia: 0.25, lineLen: 380, ratio: "4.3:1", test: 13, level: 25, saltwater: true, copperLegal: false, costGold: 69.90, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 6000, label: "Rose gold", image: null, drag: 18.1, mechanism: 105.35, lineDia: 0.25, lineLen: 380, ratio: "4.3:1", test: 13, level: 25, saltwater: true, copperLegal: false, costGold: 69.90, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Minister CS", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 6000, label: "CS 60", image: null, drag: 17.2, dragUpgraded: 18.0, mechanism: 99.68, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15.5, testUpgraded: 7, level: 26, saltwater: true, copperLegal: false, cost: 9699.80, costGold: 66.78, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS 60 NY26", image: null, drag: 17.2, dragUpgraded: 18.0, mechanism: 99.68, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15.5, testUpgraded: 7, level: 26, saltwater: true, copperLegal: false, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS 60 6 Years", image: null, drag: 17.2, dragUpgraded: 18.0, mechanism: 99.68, lineDia: 0.25, lineLen: 360, ratio: "5.3:1", test: 13, testUpgraded: 7, level: 26, saltwater: true, copperLegal: false, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS SG60 Purple", image: null, drag: 18.1, mechanism: 110.97, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15.5, testUpgraded: 7, level: 26, saltwater: true, copperLegal: false, cost: 11999.80, costGold: 78.42, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS SG60 Red", image: null, drag: 18.1, mechanism: 110.97, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15.5, testUpgraded: 7, level: 26, saltwater: true, copperLegal: false, cost: 11999.80, costGold: 78.42, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS SR60 Green", image: null, drag: 19.0, dragUpgraded: 19.9, mechanism: 103.5, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15.5, testUpgraded: 7, level: 27, saltwater: true, copperLegal: false, cost: 12799.80, costGold: 82.20, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS PG60 Orange", image: null, drag: 19.0, dragUpgraded: 19.9, mechanism: 116.64, lineDia: 0.25, lineLen: 290, ratio: "3.8:1", test: 15.5, testUpgraded: 7, level: 27, saltwater: true, copperLegal: false, cost: 13998.80, costGold: 87.61, features: ["Power fishing", "Jerking", "Long cast", "Great pull"] },
+      { size: 6000, label: "CS LD60 Blue", image: null, drag: 20.0, dragUpgraded: 21.0, mechanism: 116.46, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 13, testUpgraded: 7, level: 27, saltwater: true, copperLegal: false, cost: 14998.80, costGold: 91.90, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS ES60 Pearl", image: null, drag: 26.3, mechanism: 143.56, lineDia: 0.25, lineLen: 290, ratio: "4.7:1", test: 11.5, testUpgraded: 7, level: 30, saltwater: true, copperLegal: false, cost: 26998.80, costGold: 134.99, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "CS ES60 Yellow", image: null, drag: 26.3, mechanism: 143.56, lineDia: 0.25, lineLen: 290, ratio: "4.7:1", test: 11.5, testUpgraded: 7, level: 30, saltwater: true, copperLegal: false, cost: 26998.80, costGold: 134.99, features: [] },
+    ]
+  },
+  {
+    model: "ZM-3 Spear", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 7000, label: "SG70", image: null, drag: 19.0, dragUpgraded: 19.9, mechanism: 97.45, lineDia: 0.28, lineLen: 405, ratio: "4.1:1", test: 29, testUpgraded: 24, level: 26, saltwater: true, copperLegal: false, cost: 11432.80, costGold: 75.67, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Minister NGT", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 5000, label: "LD50", image: null, drag: 19.0, dragUpgraded: 19.9, mechanism: 91.01, lineDia: 0.25, lineLen: 220, ratio: "5.3:1", test: 10, testUpgraded: 3.1, level: 26, saltwater: true, copperLegal: false, cost: 11498.50, costGold: 75.99, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "LD60", image: null, drag: 20.0, dragUpgraded: 21.0, mechanism: 97.75, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 15, testUpgraded: 7, level: 27, saltwater: true, copperLegal: false, cost: 13424.80, costGold: 85.05, features: ["Power fishing", "Jerking", "Long cast"] },
+    ]
+  },
+  {
+    model: "ZM Monster", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 6000, label: "LD60", image: null, drag: 20.9, dragUpgraded: 21.9, mechanism: null, lineDia: 0.25, lineLen: 265, ratio: "5.1:1", test: 11, testUpgraded: 10, level: 27, saltwater: true, copperLegal: false, cost: 15318.20, costGold: 93.22, features: ["Power fishing", "Jerking", "Long cast"] },
+    ]
+  },
+  {
+    model: "ZM-4", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 4000, label: "Z40", image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 63.34, lineDia: 0.25, lineLen: 150, ratio: "6.3:1", ratioUpgraded: "5.1:1", test: 6.5, testUpgraded: 1.9, level: 22, saltwater: true, copperLegal: false, cost: 4096.80, costGold: 32.67, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 5000, label: "Z50", image: null, drag: 15.0, dragUpgraded: 15.6, mechanism: 68.95, lineDia: 0.25, lineLen: 220, ratio: "6.3:1", ratioUpgraded: "5.1:1", test: 10.5, testUpgraded: 3.1, level: 22, saltwater: true, copperLegal: false, cost: 4598.60, costGold: 36.12, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "Z60", image: null, drag: 15.0, dragUpgraded: 15.6, mechanism: 74.19, lineDia: 0.25, lineLen: 290, ratio: "6.3:1", ratioUpgraded: "5.1:1", test: 13.5, testUpgraded: 7, level: 24, saltwater: true, copperLegal: false, cost: 5536.60, costGold: 42.33, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 4000, label: "40 8-Years", image: null, drag: 12.7, dragUpgraded: 14.0, mechanism: 63.34, lineDia: 0.25, lineLen: 150, ratio: "7.1:1", test: 6.5, testUpgraded: 1.9, level: 20, saltwater: true, copperLegal: false, costGold: 32.67, features: ["Power fishing", "Jerking", "Long cast"] },
+      { size: 6000, label: "60 8-Years", image: null, drag: 15.0, dragUpgraded: 15.6, mechanism: 74.19, lineDia: 0.25, lineLen: 290, ratio: "6.1:1", test: 13.5, testUpgraded: 7, level: 24, saltwater: true, copperLegal: false, costGold: 42.33, features: ["Power fishing", "Jerking", "Long cast"] },
+    ]
+  },
+  {
+    model: "Centauri", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 7000, label: "ZC70", image: null, drag: 20.4, dragUpgraded: 21.9, mechanism: 117.4, lineDia: 0.28, lineLen: 386, ratio: "4.7:1", test: 27.5, testUpgraded: 23, level: 27, saltwater: true, copperLegal: false, cost: 15998.50, costGold: 95.99, features: ["Power fishing", "Trolling"] },
+      { size: 8000, label: "ZC80", image: null, drag: 23.5, dragUpgraded: 24.3, mechanism: 125.85, lineDia: 0.32, lineLen: 567, ratio: "4.7:1", test: 35, testUpgraded: 29, level: 28, saltwater: true, copperLegal: false, cost: 20947.80, costGold: 113.60, features: ["Power fishing", "Trolling"] },
+      { size: 8000, label: "ZC80 LCTR", image: null, drag: 23.5, dragUpgraded: 24.3, mechanism: 125.85, lineDia: 0.32, lineLen: 567, ratio: "4.7:1", test: 35, testUpgraded: 29, level: 28, saltwater: true, copperLegal: false, cost: 21674.10, costGold: 115.83, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Classic SG", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 7000, label: "SG70", image: null, drag: 23.5, dragUpgraded: 24.3, mechanism: 114.77, lineDia: 0.28, lineLen: 405, ratio: "4.1:1", test: 27.5, level: 27, saltwater: true, copperLegal: false, cost: 16594.20, costGold: 98.34, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Rocket Jet SG", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 7000, label: "SG70", image: null, drag: 27.2, mechanism: 136.0, lineDia: 0.28, lineLen: 434, ratio: "4.2:1", ratioUpgraded: "5.1:1", test: 18, testUpgraded: 15.5, level: 28, saltwater: true, copperLegal: false, cost: 23998.40, costGold: 122.42, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 8000, label: "SG80", image: null, drag: 30.8, mechanism: 147.5, lineDia: 0.32, lineLen: 622, ratio: "3.9:1", ratioUpgraded: "5.1:1", test: 31.5, testUpgraded: 23.5, level: 28, saltwater: true, copperLegal: false, cost: 31989.40, costGold: 155.92, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 8000, label: "SG80 Desert Sand", image: null, drag: 30.8, mechanism: 147.5, lineDia: 0.32, lineLen: 622, ratio: "3.9:1", ratioUpgraded: "5.1:1", test: 31.5, testUpgraded: 23.5, level: 28, saltwater: true, copperLegal: false, costGold: 155.92, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 8000, label: "SG80 7-Years", image: null, drag: 30.8, mechanism: 147.5, lineDia: 0.32, lineLen: 622, ratio: "3.9:1", ratioUpgraded: "5.1:1", test: 31.5, testUpgraded: 23.5, level: 28, saltwater: true, copperLegal: false, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Phantom Super LWC", manufacturer: "Zeiman", image: null, type: "Classic baitcasting",
+    variants: [
+      { size: 2000, label: "LWC20", image: null, drag: 11.0, mechanism: 63.7, lineDia: 0.25, lineLen: 135, ratio: "8.1:1", ratioUpgraded: "10.1:1", test: 3.2, testUpgraded: 1.9, level: 28, saltwater: true, copperLegal: false, cost: 24445.40, costGold: 123.59, features: ["Ultra-light fishing", "Long cast"] },
+    ]
+  },
+  // --- CONVENTIONAL BAITCASTING REELS ---
+  {
+    model: "Winner Trolling", manufacturer: "Express Fishing", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 5.5, mechanism: 10.84, lineDia: 0.25, lineLen: 250, ratio: "5.1:1", test: 28.5, level: 12, saltwater: true, copperLegal: false, cost: 349.80, costGold: 3.29, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 6.4, mechanism: 12.52, lineDia: 0.25, lineLen: 335, ratio: "5.1:1", test: 36.5, level: 12, saltwater: true, copperLegal: false, cost: 589.50, costGold: 5.44, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 7.3, mechanism: 16.6, lineDia: 0.25, lineLen: 580, ratio: "4.3:1", test: 58, level: 12, saltwater: true, copperLegal: false, cost: 778.90, costGold: 7.10, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, label: "30LC", image: null, drag: 7.3, mechanism: 15.46, lineDia: 0.25, lineLen: 580, ratio: "4.3:1", test: 58, level: 12, saltwater: true, copperLegal: false, cost: 857.90, costGold: 7.78, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Zodiac C", manufacturer: "Syberia", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 8.0, mechanism: 26.7, lineDia: 0.25, lineLen: 280, ratio: "5.1:1", test: 19, level: 18, saltwater: true, copperLegal: false, cost: 1098.50, costGold: 9.83, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 9.0, mechanism: 25.32, lineDia: 0.25, lineLen: 454, ratio: "5.1:1", test: 31.5, level: 18, saltwater: true, copperLegal: false, cost: 1289.50, costGold: 11.43, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Simplex", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 8.2, mechanism: 28.77, lineDia: 0.25, lineLen: 450, ratio: "5.1:1", test: 28, level: 20, saltwater: true, copperLegal: false, cost: 1188.80, costGold: 10.59, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 9.0, mechanism: 31.98, lineDia: 0.25, lineLen: 860, ratio: "3.8:1", test: 46, level: 20, saltwater: true, copperLegal: false, cost: 1388.65, costGold: 12.25, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, label: "300LC", image: null, drag: 9.0, mechanism: 31.65, lineDia: 0.25, lineLen: 860, ratio: "3.8:1", test: 46, level: 20, saltwater: true, copperLegal: false, cost: 1578.00, costGold: 13.80, features: [] },
+      { size: 40, image: null, drag: 10.0, mechanism: 33.75, lineDia: 0.25, lineLen: 1240, ratio: "3.8:1", test: 63.5, level: 20, saltwater: true, copperLegal: false, cost: 1989.90, costGold: 17.09, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Narga C-LW", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 8.2, mechanism: 27.65, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 17.5, level: 22, saltwater: true, copperLegal: false, cost: 1189.60, costGold: 10.59, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 9.0, mechanism: 29.6, lineDia: 0.25, lineLen: 435, ratio: "5.1:1", test: 29, level: 22, saltwater: true, copperLegal: false, cost: 1347.60, costGold: 11.91, features: [] },
+      { size: 30, image: null, drag: 10.0, mechanism: 33.22, lineDia: 0.25, lineLen: 644, ratio: "3.9:1", test: 48, level: 22, saltwater: true, copperLegal: false, cost: 1889.90, costGold: 16.30, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Seagull", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 10.0, mechanism: 36.54, lineDia: 0.25, lineLen: 515, ratio: "6.2:1", test: 29, level: 22, saltwater: true, copperLegal: false, cost: 1998.80, costGold: 17.08, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 11.8, mechanism: 37.22, lineDia: 0.25, lineLen: 650, ratio: "6.2:1", test: 45, level: 22, saltwater: true, copperLegal: false, cost: 2689.90, costGold: 22.48, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Hamra C-LW", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 10.9, mechanism: 38.75, lineDia: 0.25, lineLen: 295, ratio: "3.4:1", test: 17.5, level: 22, saltwater: true, copperLegal: false, cost: 2498.80, costGold: 21.03, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 20, image: null, drag: 11.8, mechanism: 45.93, lineDia: 0.25, lineLen: 445, ratio: "3.2:1", test: 29, level: 22, saltwater: true, copperLegal: false, cost: 3098.70, costGold: 25.53, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 20, label: "20LC", image: null, drag: 11.8, mechanism: 45.93, lineDia: 0.25, lineLen: 445, ratio: "3.2:1", test: 29, level: 22, saltwater: true, copperLegal: false, cost: 3398.90, costGold: 27.72, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, image: null, drag: 12.7, mechanism: 52.0, lineDia: 0.25, lineLen: 720, ratio: "2.8:1", test: 48, level: 23, saltwater: true, copperLegal: false, cost: 4198.60, costGold: 33.38, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Altitude", manufacturer: "Zeiman", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, label: "10 DLC", image: null, drag: 11.0, mechanism: 46.12, lineDia: 0.25, lineLen: 275, ratio: "5.1:1", test: 17, level: 22, saltwater: true, copperLegal: false, cost: 3189.50, costGold: 26.19, features: ["Power fishing", "Trolling"] },
+      { size: 20, label: "20 DLC", image: null, drag: 12.7, mechanism: 53.37, lineDia: 0.25, lineLen: 445, ratio: "4.7:1", test: 30, level: 22, saltwater: true, copperLegal: false, cost: 4387.70, costGold: 34.68, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Isinga C-LW", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 11.8, mechanism: 48.11, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 17, level: 22, saltwater: true, copperLegal: false, cost: 3385.30, costGold: 27.62, features: ["Power fishing", "Trolling"] },
+      { size: 10, label: "10LC", image: null, drag: 11.8, mechanism: 48.11, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 17, level: 22, saltwater: true, copperLegal: false, cost: 3594.60, costGold: 29.13, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 12.7, mechanism: 55.0, lineDia: 0.25, lineLen: 485, ratio: "5.1:1", test: 28, level: 22, saltwater: true, copperLegal: false, cost: 4193.40, costGold: 33.34, features: ["Power fishing", "Trolling"] },
+      { size: 20, label: "20LC", image: null, drag: 12.7, mechanism: 55.0, lineDia: 0.25, lineLen: 485, ratio: "5.1:1", test: 28, level: 22, saltwater: true, copperLegal: false, cost: 4496.70, costGold: 35.43, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 14.5, mechanism: 68.83, lineDia: 0.25, lineLen: 795, ratio: "3.9:1", test: 47, level: 24, saltwater: true, copperLegal: false, cost: 5994.50, costGold: 45.26, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, label: "30LC", image: null, drag: 14.5, mechanism: 68.83, lineDia: 0.25, lineLen: 795, ratio: "3.9:1", test: 47, level: 24, saltwater: true, copperLegal: false, cost: 6297.50, costGold: 47.17, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Halibut", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 12.7, mechanism: 41.59, lineDia: 0.25, lineLen: 580, ratio: "6.4:1", test: 18.5, level: 24, saltwater: true, copperLegal: false, cost: 3589.70, costGold: 29.09, features: ["Power fishing", "Trolling"] },
+      { size: 20, label: "20 2S", image: null, drag: 12.7, mechanism: 40.71, lineDia: 0.25, lineLen: 580, ratio: "6.4:1", ratioAlt: "3.8:1", test: 18.5, level: 24, saltwater: true, copperLegal: false, cost: 3989.80, costGold: 31.92, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Argus", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 10.9, mechanism: 61.96, lineDia: 0.25, lineLen: 280, ratio: "4.2:1", test: 13.5, level: 22, saltwater: true, copperLegal: false, cost: 3790.50, costGold: 30.52, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 20, image: null, drag: 11.8, mechanism: 64.49, lineDia: 0.25, lineLen: 419, ratio: "4.2:1", test: 19, level: 22, saltwater: true, copperLegal: false, cost: 4590.50, costGold: 36.06, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 20, label: "20LC", image: null, drag: 11.8, mechanism: 64.49, lineDia: 0.25, lineLen: 419, ratio: "4.2:1", test: 19, level: 22, saltwater: true, copperLegal: false, cost: 4858.50, costGold: 37.87, features: [] },
+      { size: 30, image: null, drag: 12.7, mechanism: 64.97, lineDia: 0.25, lineLen: 690, ratio: "4.2:1", test: 39, level: 22, saltwater: true, copperLegal: false, cost: 5189.50, costGold: 40.07, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "SteelHead C", manufacturer: "Syberia", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 14.5, mechanism: 47.42, lineDia: 0.25, lineLen: 280, ratio: "4.8:1", test: 19, level: 24, saltwater: true, copperLegal: false, cost: 5389.50, costGold: 41.38, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 16.0, mechanism: 49.67, lineDia: 0.25, lineLen: 550, ratio: "4.8:1", test: 30.5, level: 24, saltwater: true, copperLegal: false, cost: 6279.80, costGold: 47.06, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 17.2, mechanism: 54.12, lineDia: 0.25, lineLen: 890, ratio: "4.8:1", test: 50.5, level: 26, saltwater: true, copperLegal: false, cost: 8979.80, costGold: 62.88, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Oriental", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 14.5, mechanism: 87.13, lineDia: 0.25, lineLen: 580, ratio: "5.2:1", test: 19, level: 24, saltwater: true, copperLegal: false, cost: 8188.70, costGold: 58.45, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 15.9, mechanism: 87.1, lineDia: 0.25, lineLen: 830, ratio: "5.2:1", test: 40.5, level: 24, saltwater: true, copperLegal: false, cost: 9388.70, costGold: 65.11, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Rigal", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, label: "20 2S", image: null, drag: 16.3, mechanism: 74.33, lineDia: 0.25, lineLen: 580, ratio: "6.4:1", ratioAlt: "3.8:1", test: 17, level: 26, saltwater: true, copperLegal: false, cost: 8798.90, costGold: 61.88, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Taiga C", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 15.4, mechanism: 94.44, lineDia: 0.25, lineLen: 575, ratio: "4.0:1", test: 32.5, level: 24, saltwater: true, copperLegal: false, cost: 9693.40, costGold: 66.75, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, image: null, drag: 15.4, mechanism: 109.46, lineDia: 0.25, lineLen: 895, ratio: "3.3:1", test: 54, level: 24, saltwater: true, copperLegal: false, cost: 10494.30, costGold: 70.94, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 40, image: null, drag: 17.2, mechanism: 136.13, lineDia: 0.25, lineLen: 1320, ratio: "2.9:1", test: 77, level: 26, saltwater: true, copperLegal: false, cost: 15589.70, costGold: 94.34, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Billionaire CNV", manufacturer: "Trident", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 18.0, mechanism: 78.86, lineDia: 0.25, lineLen: 290, ratio: "5.1:1", test: 24, level: 26, saltwater: true, copperLegal: false, cost: 10879.50, costGold: 72.90, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 20.0, mechanism: 79.54, lineDia: 0.25, lineLen: 525, ratio: "5.1:1", test: 32, level: 26, saltwater: true, copperLegal: false, cost: 14949.80, costGold: 91.69, features: ["Power fishing", "Trolling"] },
+      { size: 30, label: "30 MS", image: null, drag: 21.7, mechanism: 86.51, lineDia: 0.25, lineLen: 970, ratio: "4.2:1", ratioAlt: "2.1:1", test: 52.5, level: 28, saltwater: true, copperLegal: false, cost: 19978.50, costGold: 110.48, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  {
+    model: "Tera C-LW", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 18.1, mechanism: 104.76, lineDia: 0.25, lineLen: 565, ratio: "4.9:1", test: 31, level: 25, saltwater: true, copperLegal: false, cost: 12978.70, costGold: 83.02, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 19.0, mechanism: 132.06, lineDia: 0.25, lineLen: 935, ratio: "4.9:1", test: 53, level: 26, saltwater: true, copperLegal: false, cost: 17498.90, costGold: 101.78, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 30, label: "30LC", image: null, drag: 19.0, mechanism: 131.78, lineDia: 0.25, lineLen: 935, ratio: "4.9:1", test: 53, level: 26, saltwater: true, copperLegal: false, cost: 17998.90, costGold: 103.62, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 40, image: null, drag: 20.9, mechanism: 147.61, lineDia: 0.25, lineLen: 1350, ratio: "4.0:1", test: 73, level: 26, saltwater: true, copperLegal: false, cost: 24997.50, costGold: 124.99, features: ["Trolling", "Sea trophy fishing"] },
+    ]
+  },
+  {
+    model: "Palomar", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 17.2, mechanism: 122.37, lineDia: 0.25, lineLen: 360, ratio: "6.2:1", test: 13, level: 26, saltwater: true, copperLegal: false, cost: 13987.50, costGold: 87.56, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 18.1, mechanism: 133.33, lineDia: 0.25, lineLen: 570, ratio: "6.2:1", test: 18.5, level: 26, saltwater: true, copperLegal: false, cost: 16785.30, costGold: 99.08, features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 19.0, mechanism: 133.6, lineDia: 0.25, lineLen: 890, ratio: "6.2:1", test: 38, level: 26, saltwater: true, copperLegal: false, cost: 18484.70, costGold: 105.37, features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  {
+    model: "Cardinal", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 20.0, mechanism: 104.39, lineDia: 0.25, lineLen: 620, ratio: "6.0:1", test: 16.5, level: 28, saltwater: true, copperLegal: false, cost: 16478.90, costGold: 97.89, features: ["Power fishing", "Trolling"] },
+      { size: 20, image: null, drag: 21.8, mechanism: 133.84, lineDia: 0.25, lineLen: 839, ratio: "3.5:1", test: 27, level: 28, saltwater: true, copperLegal: false, cost: 24587.60, costGold: 123.95, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 20, label: "20 2S", image: null, drag: 21.8, mechanism: 130.23, lineDia: 0.25, lineLen: 839, ratio: "3.8:1", ratioAlt: "1.7:1", test: 27, level: 28, saltwater: true, copperLegal: false, cost: 25289.50, costGold: 126.44, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, image: null, drag: 22.7, mechanism: 167.89, lineDia: 0.25, lineLen: 1550, ratio: "3.5:1", test: 56, level: 30, saltwater: true, copperLegal: false, cost: 31084.70, costGold: 153.32, features: ["Power fishing", "Trolling", "Great pull"] },
+      { size: 30, label: "30 2S", image: null, drag: 22.7, mechanism: 152.5, lineDia: 0.25, lineLen: 1550, ratio: "3.8:1", ratioAlt: "1.7:1", test: 56, level: 30, saltwater: true, copperLegal: false, cost: 31084.70, costGold: 153.32, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TERA L-LD ---
+  {
+    model: "Tera L-LD", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 19.0, mechanism: 121.9,  lineDia: 0.28, lineLen: 594, ratio: "6.1:1", test: 29.5, level: 22, saltwater: true, copperLegal: false, cost: 16983.30, costGold: 99.84,  features: ["Power fishing", "Trolling"] },
+      { size: 30, image: null, drag: 20.9, mechanism: 142.77, lineDia: 0.28, lineLen: 990, ratio: "5.1:1", test: 49.5, level: 24, saltwater: true, copperLegal: false, cost: 23984.30, costGold: 122.38, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 40, image: null, drag: 21.8, mechanism: 157.72, lineDia: 0.28, lineLen: 1372, ratio: "4.3:1", test: 70,   level: 26, saltwater: true, copperLegal: false, cost: 29987.70, costGold: 149.93, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TAIGA LTD C 2S ---
+  {
+    model: "Taiga LTD C 2S", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 22.7, mechanism: null,   lineDia: 0.28, lineLen: 637, ratio: "4.3:1", ratioAlt: "1.8:1", test: 32.5, level: 26, saltwater: true, copperLegal: false, cost: 38983.40, costGold: 174.92, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 24.5, mechanism: 274.0,  lineDia: 0.28, lineLen: 1439, ratio: "4.3:1", ratioAlt: "1.8:1", test: 77,  level: 28, saltwater: true, copperLegal: false, cost: 42986.60, costGold: 185.02, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- VENGA C 2S ---
+  {
+    model: "Venga C 2S", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 29.0, mechanism: null,   lineDia: 0.28, lineLen: 661,  ratio: "6.0:1", ratioAlt: "2.3:1", test: 30,   level: 26, saltwater: true, copperLegal: false, cost: 44486.20, costGold: 188.67, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 30, image: null, drag: 29.0, mechanism: null,   lineDia: 0.28, lineLen: 980,  ratio: "5.3:1", ratioAlt: "1.6:1", test: 49.5, level: 28, saltwater: true, copperLegal: false, cost: 49783.30, costGold: 201.04, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 30.8, mechanism: null,   lineDia: 0.28, lineLen: 1333, ratio: "4.8:1", ratioAlt: "1.6:1", test: 70.5, level: 30, saltwater: true, copperLegal: false, cost: 57680.10, costGold: 218.11, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ALBACORE ---
+  {
+    model: "Albacore", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 23.6, mechanism: null,   lineDia: 0.28, lineLen: 666,  ratio: "5.7:1",              test: 17.5, level: 24, saltwater: true, copperLegal: false, cost: 44479.20, costGold: 188.66, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 40, label: "40 DS", image: null, drag: 30.8, mechanism: null, lineDia: 0.28, lineLen: 1343, ratio: "5.2:1", ratioAlt: "2.3:1", test: 53.5, level: 28, saltwater: true, copperLegal: false, cost: 61982.50, costGold: 226.82, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- BOREALICA DS ---
+  {
+    model: "Borealica DS", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 30.8, mechanism: null,   lineDia: 0.28, lineLen: 739,  ratio: "5.0:1", ratioAlt: "1.7:1", test: 20,   level: 26, saltwater: true, copperLegal: false, cost: 68998.50, costGold: 240.26, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 30, image: null, drag: 34.0, mechanism: 450.0,  lineDia: 0.28, lineLen: 1348, ratio: "4.0:1", ratioAlt: "1.7:1", test: 49.5, level: 28, saltwater: true, copperLegal: false, cost: 78998.50, costGold: 248.08, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 35.4, mechanism: null,   lineDia: 0.28, lineLen: 1633, ratio: "4.0:1", ratioAlt: "1.6:1", test: 84,   level: 30, saltwater: true, copperLegal: false, cost: 86988.50, costGold: 271.42, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TONGAR 2GEN ---
+  {
+    model: "Tongar 2Gen", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null,           drag: 19.0, mechanism: 163.24, lineDia: 0.28, lineLen: 661,  ratio: "6.4:1",              test: 27,   level: 14, saltwater: true, copperLegal: false, cost: 25984.20, costGold: 103.94, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 20, label: "20 DS", image: null, drag: 19.0, mechanism: 166.25, lineDia: 0.28, lineLen: 661, ratio: "5.7:1", ratioAlt: "2.6:1", test: 27, level: 16, saltwater: true, copperLegal: false, cost: 27982.40, costGold: 118.92, features: ["Trolling", "Sea trophy fishing"] },
+      { size: 30, label: "30 DS", image: null, drag: 21.8, mechanism: null,   lineDia: 0.28, lineLen: 1270, ratio: "5.4:1", ratioAlt: "2.4:1", test: 47, level: 18, saltwater: true, copperLegal: false, cost: 37985.30, costGold: 163.69, features: ["Trolling", "Sea trophy fishing"] },
+    ]
+  },
+  // --- TRIUMPH 2S ---
+  {
+    model: "Triumph 2S", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 30.8, mechanism: null,   lineDia: 0.25, lineLen: 599,  ratio: "4.7:1", ratioAlt: "2.1:1", test: 15,   level: 22, saltwater: true, copperLegal: false, cost: 53588.60, costGold: 209.46, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 20, image: null, drag: 31.8, mechanism: null,   lineDia: 0.25, lineLen: 811,  ratio: "3.8:1", ratioAlt: "1.7:1", test: 25.5, level: 24, saltwater: true, copperLegal: false, cost: 62679.40, costGold: 228.19, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 30, image: null, drag: 33.6, mechanism: 400.0,  lineDia: 0.25, lineLen: 1497, ratio: "3.8:1", ratioAlt: "1.7:1", test: 51.5, level: 26, saltwater: true, copperLegal: false, cost: 69986.90, costGold: 242.08, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TRIUMPH SILVER 2S ---
+  {
+    model: "Triumph Silver 2S", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 10, image: null, drag: 30.8, mechanism: null,   lineDia: 0.25, lineLen: 599,  ratio: "4.7:1", ratioAlt: "2.1:1", test: 15,   level: 22, saltwater: true, copperLegal: false, cost: 53588.60, costGold: 209.46, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 20, image: null, drag: 31.8, mechanism: null,   lineDia: 0.25, lineLen: 811,  ratio: "3.8:1", ratioAlt: "1.7:1", test: 25.5, level: 24, saltwater: true, copperLegal: false, cost: 62679.40, costGold: 228.19, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 30, image: null, drag: 33.6, mechanism: 400.0,  lineDia: 0.25, lineLen: 1497, ratio: "3.8:1", ratioAlt: "1.7:1", test: 51.5, level: 26, saltwater: true, copperLegal: false, cost: 69986.90, costGold: 242.08, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TRIUMPH 2S 8-ANNIVERSARY ---
+  {
+    model: "Triumph 2S 8-Anniversary", manufacturer: "SAT", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 30, image: null, drag: 33.6, mechanism: 400.0, lineDia: 0.25, lineLen: 1497, ratio: "4.0:1", ratioAlt: "1.8:1", test: 51.5, level: 26, saltwater: true, copperLegal: false, costGold: 242.08, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- TAIGA C 2S 7-ANNIVERSARY ---
+  {
+    model: "Taiga C 2S 7-Anniversary", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 30, image: null, drag: 15.4, mechanism: 109.5, lineDia: 0.28, lineLen: 864, ratio: "4.2:1", ratioAlt: "2.0:1", test: 54, level: 24, saltwater: true, copperLegal: false, costGold: 70.94, features: ["Power fishing", "Trolling", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR ---
+  {
+    model: "Electro Raptor", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, cost: 71988.60, costGold: 245.75, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, cost: 119871.00, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR FT ---
+  {
+    model: "Electro Raptor FT", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR EMPEROR ---
+  {
+    model: "Electro Raptor Emperor", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR EMERALD ---
+  {
+    model: "Electro Raptor Emerald", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR DRAGON EDITION ---
+  {
+    model: "Electro Raptor Dragon Edition", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR AMETHYST ---
+  {
+    model: "Electro Raptor Amethyst", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR 7-YEARS ---
+  {
+    model: "Electro Raptor 7-Years", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ORIENTAL NOBLE ---
+  {
+    model: "Oriental Noble", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, label: "F20", image: null, drag: 15.9, mechanism: 90.38,  lineDia: 0.28, lineLen: 652,  ratio: "7.1:1", test: 20,   level: 10, saltwater: true, copperLegal: false, costGold: 58.45,  features: ["Power fishing", "Trolling"] },
+      { size: 30, label: "F30", image: null, drag: 17.2, mechanism: 100.81, lineDia: 0.28, lineLen: 908,  ratio: "4.9:1", test: 42.5, level: 12, saltwater: true, copperLegal: false, costGold: 65.11,  features: ["Power fishing", "Trolling"] },
+    ]
+  },
+  // --- IMPERIAL C 40 2S ---
+  {
+    model: "Imperial C 2S", manufacturer: "Beluga", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 40, label: "40 2S", image: null, drag: 32.6, mechanism: null, lineDia: 0.28, lineLen: 1401, ratio: "4.6:1", ratioAlt: "1.6:1", test: 80.5, level: 28, saltwater: true, copperLegal: false, cost: 74993.70, costGold: 251.11, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- CALIFORNIA 40 ---
+  {
+    model: "California", manufacturer: "Trident", image: null, type: "Conventional baitcasting",
+    tags: [{ type: "vintage", label: "Vintage" }],
+    variants: [
+      { size: 40, image: null, drag: 26.3, mechanism: 290.0, lineDia: 0.28, lineLen: 1724, ratio: "2.4:1", test: 120, level: 22, saltwater: true, copperLegal: false, cost: 39950.80, costGold: 177.41, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
+  // --- ELECTRO RAPTOR GOLD ---
+  {
+    model: "Electro Raptor Gold", manufacturer: "Reef", image: null, type: "Conventional baitcasting",
+    variants: [
+      { size: 20, image: null, drag: 31.7, mechanism: 362.0, lineDia: 0.28, lineLen: 860, ratio: "3.2:1", test: 40.5, level: 26, saltwater: true, copperLegal: false, costGold: 245.74, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+      { size: 40, image: null, drag: 38.1, mechanism: 395.0, lineDia: 0.28, lineLen: 1594, ratio: "2.4:1", test: 126.5, level: 28, saltwater: true, copperLegal: false, costGold: 321.14, features: ["Trolling", "Sea trophy fishing", "Great pull"] },
+    ]
+  },
   // --- ADD MORE REEL MODELS BELOW ---
 ];
 
@@ -440,7 +1723,7 @@ function calcSVI(d, l) {
   return Math.round(l * d * d * 10) / 10;
 }
 const reels = reelModels.flatMap(m => m.variants.map(v => ({
-  name: `${m.model} ${v.size}`,
+  name: v.label ? `${m.model} ${v.label.replace('Size ', '')}` : `${m.model} ${v.size}`,
   image: v.image || m.image,
   type: m.type,
   size: v.size,
@@ -448,14 +1731,18 @@ const reels = reelModels.flatMap(m => m.variants.map(v => ({
   dragUpgraded: v.dragUpgraded || null,
   mechanism: v.mechanism,
   test: getReelTest(m.type, v.size, v.test),
+  testUpgraded: v.testUpgraded || null,
   lineDia: v.lineDia,
   lineLen: v.lineLen,
   svi: calcSVI(v.lineDia, v.lineLen),
   ratio: v.ratio,
+  ratioUpgraded: v.ratioUpgraded || null,
+  ratioAlt: v.ratioAlt || null,
   level: v.level,
   saltwater: v.saltwater,
   copperLegal: v.copperLegal,
   cost: v.cost,
+  costGold: v.costGold || null,
 })));
 
 // ============================================================
@@ -530,7 +1817,7 @@ const translations = {
     modal_reel_size: "Reel size", modal_diameter: "Diameter", modal_breaking: "Breaking load", modal_total: "Total",
     modal_fishing: "fishing", tag_budget: "Budget", gear_category: "Category", gear_reels: "Reels", gear_rods: "Rods", gear_lines: "Lines",
     compare_select_reel: "Click to select a reel", compare_select_rod: "Click to select a rod",
-    stat_size: "Size", stat_ratio: "Gear ratio", stat_drag: "Max drag (kg)", stat_cost: "Cost (silver)",
+    stat_size: "Size", stat_ratio: "Gear ratio", stat_drag: "Max drag (kg)", stat_cost: "Cost",
     stat_test: "Test", stat_length: "Length (m)", stat_action: "Action",
     stat_type: "Type", stat_diameter: "Diameter (mm)", stat_breaking: "Breaking load (kg)",
     stat_mechanism: "Mechanism (kg)", stat_spool_cap: "Line Cap Index", stat_level: "Level", stat_saltwater: "Saltwater protection",
@@ -804,9 +2091,24 @@ function closeBuildModal(e) {
 // GEAR DB PAGE
 // ============================================================
 let currentGearType = 'reels';
+let currentReelTypeFilter = 'all';
+
 function setGearType(type, btn) {
   currentGearType = type;
   document.querySelectorAll('.gear-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // show reel type filters only when viewing reels
+  const reelFilters = document.getElementById('reel-type-filters');
+  if (reelFilters) reelFilters.style.display = type === 'reels' ? '' : 'none';
+  // re-activate the All reel type btn
+  const allReelBtn = document.querySelector('#reel-type-filters .gear-type-btn');
+  if (allReelBtn && type === 'reels') { allReelBtn.classList.add('active'); currentReelTypeFilter = 'all'; }
+  renderGearDB();
+}
+
+function setReelTypeFilter(reelType, btn) {
+  currentReelTypeFilter = reelType;
+  document.querySelectorAll('#reel-type-filters .gear-type-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderGearDB();
 }
@@ -820,8 +2122,10 @@ function renderGearDB() {
 
   if (currentGearType === 'reels') {
     let models = reelModels;
+    if (currentReelTypeFilter !== 'all') models = models.filter(m => m.type === currentReelTypeFilter);
     if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.variants.some(v => v.features?.some(f => f.toLowerCase().includes(search))));
-    grid.innerHTML = models.map((m, mi) => {
+    grid.innerHTML = models.map((m) => {
+      const mi = reelModels.indexOf(m);
       const minLevel = Math.min(...m.variants.map(v => v.level));
       const sizesLabel = m.variants.map(v => v.size).join(', ');
       const dragRange = m.variants.length > 1
@@ -834,22 +2138,32 @@ function renderGearDB() {
         : anyCopperLegal
           ? `<span class="model-card-tag copper">Copper (some)</span>`
           : `<span class="model-card-tag no-copper">Copper ✗</span>`;
-      const img = m.image
-        ? `<img src="${m.image}" alt="${m.model}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>⚙️</span>'">`
+      const cardImg = m.image || m.variants.find(v => v.image)?.image || null;
+      const img = cardImg
+        ? `<img src="${cardImg}" alt="${m.model}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>⚙️</span>'">`
         : `<span class="no-img">⚙️</span>`;
-      const minCost = Math.min(...m.variants.map(v => v.cost || Infinity));
-      const costStr = isFinite(minCost) ? (m.variants.length > 1 ? 'from ' : '') + minCost.toLocaleString() + ' silver' : '—';
-      const anyUpgradeable = m.variants.some(v => v.dragUpgraded);
+      const minCostVariant = m.variants.reduce((a, b) => (a.cost||Infinity) < (b.cost||Infinity) ? a : b);
+      const minCost = minCostVariant.cost;
+      const minGold = minCostVariant.costGold;
+      const prefix = m.variants.length > 1 ? 'from ' : '';
+      const silverPart = minCost ? `${prefix}${minCost.toLocaleString()} silver` : null;
+      const goldPart = minGold ? `<span style="color:#f0bc2e;font-weight:600;">${minGold} gold</span>` : null;
+      const costStr = silverPart && goldPart ? `${silverPart} <span style="color:var(--muted);">/</span> ${goldPart}` : silverPart || (goldPart ?? '—');
+      const anyUpgradeable = m.variants.some(v => v.dragUpgraded || v.ratioUpgraded || v.testUpgraded);
+      const indicatorTags = (m.tags || []).map(tag => {
+        const style = tag.type === 'warning' ? 'warning' : tag.type === 'subpar' ? 'subpar' : tag.type === 'positive' ? 'positive' : tag.type === 'vintage' ? 'vintage' : 'neutral';
+        return `<span class="model-card-tag indicator-${style}">${tag.label}</span>`;
+      }).join('');
       return `<div class="model-card" onclick="openGearModal('reels',${mi})">
         <div class="model-card-img">${img}</div>
         <div class="model-card-body">
           <div class="model-card-name">${m.model}</div>
           ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
-          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${m.type.charAt(0).toUpperCase()+m.type.slice(1)}</div>
+          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${m.type}</div>
           <div class="model-card-meta">
             <span class="model-card-tag">Lvl ${minLevel}+</span>
-            ${copperTag}
             ${anyUpgradeable ? `<span class="model-card-tag upgradeable">Upgradeable</span>` : ''}
+            ${indicatorTags}
           </div>
           <div class="model-card-variants">${m.variants.length} size${m.variants.length > 1 ? 's' : ''}: ${sizesLabel} · Drag ${dragRange}</div>
           <div class="model-card-footer">${costStr}</div>
@@ -860,9 +2174,9 @@ function renderGearDB() {
   } else if (currentGearType === 'rods') {
     let models = rodModels;
     if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.subtype?.toLowerCase().includes(search));
-    grid.innerHTML = models.map((m, mi) => {
+    grid.innerHTML = models.map((m) => {
+      const mi = rodModels.indexOf(m);
       const minLevel = Math.min(...m.variants.map(v => v.level));
-      const lengths = m.variants.map(v => v.length).join(', ');
       const anyCopperLegal = m.variants.some(v => v.copperLegal);
       const allCopperLegal = m.variants.every(v => v.copperLegal);
       const copperTag = allCopperLegal
@@ -884,7 +2198,6 @@ function renderGearDB() {
           <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${((m.subtype||m.type).charAt(0).toUpperCase()+(m.subtype||m.type).slice(1))}</div>
           <div class="model-card-meta">
             <span class="model-card-tag">Lvl ${minLevel}+</span>
-            ${copperTag}
           </div>
           <div class="model-card-variants">${m.variants.length} variant${m.variants.length > 1 ? 's' : ''}: ${lengths} · ${action}</div>
           <div class="model-card-footer">${costStr}</div>
@@ -930,18 +2243,23 @@ function openGearModal(type, modelIndex) {
       return `<div class="variant-card">
         <div class="variant-card-img">${img}</div>
         <div class="variant-card-body">
-          <div class="variant-card-title">Size ${variant.size}</div>
+          <div class="variant-card-title">${variant.label || 'Size ' + variant.size}</div>
           <div class="variant-stat"><span class="variant-stat-label">Max drag</span><span class="variant-stat-val">${variant.dragUpgraded ? `${variant.drag} kg → <span style="color:#4ade80;">${variant.dragUpgraded} kg ▲</span>` : v(variant.drag, ' kg')}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Mechanism</span><span class="variant-stat-val">${v(variant.mechanism, ' kg')}</span></div>
-          <div class="variant-stat"><span class="variant-stat-label">Test</span><span class="variant-stat-val">${getReelTest(m.type, variant.size, variant.test) !== null ? getReelTest(m.type, variant.size, variant.test) + 'g' : '—'}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Test</span><span class="variant-stat-val">${(() => { const t = getReelTest(m.type, variant.size, variant.test); const tu = variant.testUpgraded; return t !== null ? (tu ? `${t}g → <span style="color:#4ade80;">${tu}g ▲</span>` : t + 'g') : '—'; })()}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Line Cap Index</span><span class="variant-stat-val">${calcSVI(variant.lineDia, variant.lineLen) ?? '—'}</span></div>
-          <div class="variant-stat"><span class="variant-stat-label">Gear ratio</span><span class="variant-stat-val">${v(variant.ratio)}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Gear ratio</span><span class="variant-stat-val">${variant.ratioUpgraded ? `${variant.ratio} → <span style="color:#4ade80;">${variant.ratioUpgraded} ▲</span>` : variant.ratioAlt ? `${variant.ratio} <span style="color:#7dd3fc;">↔ ${variant.ratioAlt}</span>` : v(variant.ratio)}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Level</span><span class="variant-stat-val">${v(variant.level)}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Saltwater</span><span class="variant-stat-val">${variant.saltwater ? '✔️' : '✖️'}</span></div>
         </div>
         <div class="variant-card-footer">
-          <span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>
-          <span class="variant-cost">${variant.cost ? variant.cost.toLocaleString() + ' silver' : '—'}</span>
+          ${m.type.includes('baitcasting') ? '' : `<span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>`}
+          <span class="variant-cost">${
+            variant.cost && variant.costGold ? `${variant.cost.toLocaleString()} silver <span style="color:var(--muted);">/</span> <span style="color:#f0bc2e;font-weight:600;">${variant.costGold} gold</span>`
+            : variant.cost ? variant.cost.toLocaleString() + ' silver'
+            : variant.costGold ? `<span style="color:#f0bc2e;font-weight:600;">${variant.costGold} gold</span>`
+            : '—'
+          }</span>
         </div>
       </div>`;
     }).join('');
@@ -976,7 +2294,10 @@ function openGearModal(type, modelIndex) {
     <div class="gear-modal-header">
       <div class="gear-modal-title">${m.model}</div>
       ${m.manufacturer ? `<div class="gear-modal-manufacturer">${m.manufacturer}</div>` : ''}
-      <div class="gear-modal-type">${((type === 'reels' ? m.type : (m.subtype || m.type))).charAt(0).toUpperCase() + ((type === 'reels' ? m.type : (m.subtype || m.type))).slice(1)}</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <div class="gear-modal-type">${(type === 'reels' ? m.type : (m.subtype || m.type))}</div>
+      </div>
+      ${(m.tags||[]).length ? `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">${(m.tags||[]).map(tag=>`<span class="model-card-tag indicator-${tag.type}" style="font-size:11px;">${tag.label}</span>`).join('')}</div>` : ''}
     </div>
     <div class="variants-grid">${variantsHtml}</div>
   `;
@@ -993,100 +2314,157 @@ function closeGearModal(e) {
 // ============================================================
 // COMPARE PAGE
 // ============================================================
-let compareSlots = { reels: [null, null], rods: [null, null] };
+let compareSlots = { reels: [null, null, null, null], rods: [null, null, null, null] };
 let pickerContext = { type: null, slot: null };
 
 function renderCompare() {
-  renderCompareSlots('reels');
-  renderCompareSlots('rods');
   renderCompareTable('reels');
   renderCompareTable('rods');
 }
 
-function renderCompareSlots(type) {
-  compareSlots[type].forEach((item, i) => {
-    const slot = document.getElementById(`${type.slice(0,-1)}-slot-${i}`);
-    if (!slot) return;
-    if (item) {
-      slot.className = 'slot filled';
-      slot.onclick = null;
-      slot.innerHTML = `
-        <button class="slot-clear" onclick="clearSlot('${type}',${i})">×</button>
-        <div class="slot-name">${item.name}</div>
-        <div class="slot-sub">${type === 'reels' ? 'Size ' + item.size + ' · ' + item.ratio : item.length + 'm · ' + item.action}</div>
-      `;
-    } else {
-      slot.className = 'slot';
-      slot.onclick = () => openPicker(type, i);
-      slot.innerHTML = `<div class="slot-placeholder">${t(type === 'reels' ? 'compare_select_reel' : 'compare_select_rod')}</div>`;
-    }
-  });
+function clearSlot(type, idx) {
+  compareSlots[type][idx] = null;
+  renderCompareTable(type);
 }
 
 function renderCompareTable(type) {
   const container = document.getElementById(`${type}-compare-table`);
-  const [a, b] = compareSlots[type];
-  if (!a && !b) { container.innerHTML = ''; return; }
-  if (!a || !b) { container.innerHTML = `<div class="compare-empty">Select both items to compare</div>`; return; }
+  if (!container) return;
+  const items = compareSlots[type]; // always 4 slots, some may be null
+  const modelList = type === 'reels' ? reelModels : rodModels;
+
+  const getManufacturer = (item) => {
+    if (!item) return '';
+    const model = modelList.find(m => m.variants.some(v => `${m.model} ${type === 'reels' ? v.size : v.length}` === item.name));
+    return model?.manufacturer || '';
+  };
+  const getModelTags = (item) => {
+    if (!item) return [];
+    const model = modelList.find(m => m.variants.some(v => `${m.model} ${type === 'reels' ? v.size : v.length}` === item.name));
+    return model?.tags || [];
+  };
+
+  // Build header columns - filled = image+name+brand+remove, empty = + button
+  const headers = items.map((item, i) => {
+    if (item) {
+      const manufacturer = getManufacturer(item);
+      const imgSrc = item.image;
+      const imgHtml = imgSrc
+        ? `<img src="${imgSrc}" alt="${item.name}" onerror="this.parentElement.innerHTML='<span class=\\'no-img\\'>${type==='reels'?'⚙️':'🎣'}</span>'">`
+        : `<span class="no-img">${type==='reels'?'⚙️':'🎣'}</span>`;
+      return `<th class="gear-col">
+        <div class="compare-col-header">
+          <button class="compare-col-remove" onclick="clearSlot('${type}',${i})">×</button>
+          <div class="compare-col-img">${imgHtml}</div>
+          <div class="compare-col-name">${item.name}</div>
+          <div class="compare-col-brand">${manufacturer}</div>
+        </div>
+      </th>`;
+    } else {
+      return `<th class="gear-col">
+        <div class="compare-col-header">
+          <div class="compare-col-add" onclick="openPicker('${type}',${i})">+</div>
+        </div>
+      </th>`;
+    }
+  }).join('');
+
+  // Always render the full table — even if no slots are filled
 
   const stats = type === 'reels'
     ? [
-    ['stat_size',      r => r.size,                    null],
-    ['stat_drag',      r => r.dragUpgraded || r.drag,  'higher'],
-    ['stat_mechanism', r => r.mechanism,               'higher'],
-    ['stat_test',      r => r.test,                    'lower'],
-    ['stat_spool_cap', r => r.svi ?? '—',              'higher'],
-    ['stat_ratio',     r => r.ratio,                   null],
-    ['stat_level',     r => r.level,                   'lower'],
-    ['stat_saltwater', r => r.saltwater ? '✔️' : '✖️', null],
-    ['stat_cost',      r => r.cost ?? null,            'lower'],
-  ]
+      ['stat_size',      r => r.size,                   null],
+      ['stat_drag',      r => r.dragUpgraded || r.drag, 'higher'],
+      ['stat_mechanism', r => r.mechanism,              'higher'],
+      ['stat_test',      r => r.test,                   'lower'],
+      ['stat_spool_cap', r => r.svi ?? null,            'higher'],
+      ['stat_ratio',     r => r.ratio,                  null],
+      ['stat_level',     r => r.level,                  null],
+      ['stat_saltwater', r => r.saltwater,              null],
+      ['stat_cost',      r => r.cost ?? null,           'lower'],
+    ]
     : [
-    ['stat_load_cap',    r => r.loadCap + ' kg',  'higher'],
-    ['stat_test',        r => r.testMin + '–' + r.testMax + 'g', null],
-    ['stat_bonus',       r => r.bonus || '—',     null],
-    ['stat_action',      r => r.action,           null],
-    ['stat_stiffness',   r => r.stiffness,        null],
-    ['stat_sensitivity', r => r.sensitivity !== null && r.sensitivity !== undefined ? r.sensitivity : '—', null],
-    ['stat_power',       r => r.power,            null],
-    ['stat_level',       r => r.level,            'lower'],
-    ['stat_cost',        r => r.cost ? r.cost.toLocaleString() + ' silver' : '—', 'lower'],
-  ];
+      ['stat_load_cap',    r => r.loadCap,              'higher'],
+      ['stat_test',        r => r.testMin !== undefined ? `${r.testMin}–${r.testMax}` : null, null],
+      ['stat_bonus',       r => r.bonus || null,        null],
+      ['stat_action',      r => r.action,               null],
+      ['stat_stiffness',   r => r.stiffness,            null],
+      ['stat_sensitivity', r => r.sensitivity ?? null,  null],
+      ['stat_power',       r => r.power,                null],
+      ['stat_level',       r => r.level,                null],
+      ['stat_cost',        r => r.cost ?? null,         'lower'],
+    ];
 
   const formatVal = (r, key) => {
+    if (!r) return '';
     if (key === 'stat_drag') {
       const base = r.drag, up = r.dragUpgraded;
       return up ? `${base} kg → <span style="color:#4ade80;">${up} kg ▲</span>` : `${base} kg`;
     }
-    if (key === 'stat_test') return r.test !== null && r.test !== undefined ? r.test + 'g' : '—';
-    if (key === 'stat_cost') return r.cost ? r.cost.toLocaleString() + ' silver' : '—';
+    if (key === 'stat_mechanism') return r.mechanism ? r.mechanism + ' kg' : '—';
+    if (key === 'stat_test') return r.test !== null && r.test !== undefined ? r.test + 'g' : (r.testMin !== undefined ? `${r.testMin}–${r.testMax}g` : '—');
+    if (key === 'stat_cost') {
+      if (!r.cost && !r.costGold) return '—';
+      const s = r.cost ? `<span style="color:var(--text);font-weight:700;">${r.cost.toLocaleString()} silver</span>` : null;
+      const g = r.costGold ? `<span style="color:#f0bc2e;font-weight:600;">${r.costGold} gold</span>` : null;
+      return s && g ? `${s} <span style="color:var(--muted);">/</span> ${g}` : s || g;
+    }
     if (key === 'stat_load_cap') return r.loadCap ? r.loadCap + ' kg' : '—';
-    if (key === 'stat_test') return (r.testMin !== undefined) ? `${r.testMin}–${r.testMax}g` : '—';
+    if (key === 'stat_spool_cap') return r.svi !== null && r.svi !== undefined ? r.svi : '—';
+    if (key === 'stat_saltwater') return r.saltwater ? '<span style="color:#4ade80;font-weight:700;">✓</span>' : '<span style="color:#f87171;font-weight:700;">✗</span>';
     const raw = stats.find(s => s[0] === key)?.[1](r);
     return raw ?? '—';
   };
 
   const rows = stats.map(([key, prop, higherBetter]) => {
-    const na = prop(a), nb = prop(b);
-    let ca = '', cb = '';
-    if (typeof na === 'number' && typeof nb === 'number' && na !== nb && higherBetter) {
-      if (higherBetter === 'higher') { ca = na > nb ? 'better' : 'worse'; cb = nb > na ? 'better' : 'worse'; }
-      else { ca = na < nb ? 'better' : 'worse'; cb = nb < na ? 'better' : 'worse'; }
+    const vals = items.map(item => item ? prop(item) : null);
+    const nums = vals.map(v => typeof v === 'number' ? v : null);
+    const filledNums = nums.filter(n => n !== null);
+    const classes = vals.map(() => '');
+    const bgs = vals.map(() => '');
+    if (filledNums.length > 1 && higherBetter) {
+      const best = higherBetter === 'higher' ? Math.max(...filledNums) : Math.min(...filledNums);
+      const allSame = filledNums.every(n => n === best);
+      nums.forEach((n, i) => {
+        if (n === null || allSame) return;
+        if (n === best) { classes[i] = 'better'; bgs[i] = 'background:rgba(74,222,128,0.08);'; }
+        else { classes[i] = 'worse'; bgs[i] = 'background:rgba(248,113,113,0.06);'; }
+      });
     }
-    const bgA = ca === 'better' ? 'background:rgba(74,222,128,0.08);' : ca === 'worse' ? 'background:rgba(248,113,113,0.06);' : '';
-    const bgB = cb === 'better' ? 'background:rgba(74,222,128,0.08);' : cb === 'worse' ? 'background:rgba(248,113,113,0.06);' : '';
-    return `<tr>
-      <td class="stat-label">${t(key)}</td>
-      <td class="${ca}" style="${bgA}">${formatVal(a, key)}</td>
-      <td class="${cb}" style="${bgB}">${formatVal(b, key)}</td>
-    </tr>`;
+    const cells = items.map((item, i) => item
+      ? `<td class="${classes[i]}" style="${bgs[i]}">${formatVal(item, key)}</td>`
+      : `<td style="color:var(--muted);opacity:0.3;">—</td>`
+    ).join('');
+    return `<tr><td class="stat-label">${t(key)}</td>${cells}</tr>`;
   }).join('');
 
+  // Durability row
+  const tagCells = items.map(item => {
+    if (!item) return `<td style="color:var(--muted);opacity:0.3;">—</td>`;
+    const tags = getModelTags(item);
+    if (!tags.length) return `<td style="color:var(--muted)">—</td>`;
+    return `<td>${tags.map(tag => `<span class="model-card-tag indicator-${tag.type}" style="font-size:11px;">${tag.label}</span>`).join(' ')}</td>`;
+  }).join('');
+  const tagsRow = `<tr><td class="stat-label">Durability</td>${tagCells}</tr>`;
+
   container.innerHTML = `<table class="compare-table">
-    <thead><tr><th></th><th class="gear-col">${a.name}</th><th class="gear-col">${b.name}</th></tr></thead>
-    <tbody>${rows}</tbody>
+    <thead><tr><th class="stat-header"></th>${headers}</tr></thead>
+    <tbody>${tagsRow}${rows}</tbody>
   </table>`;
 }
+
+function switchCompareTab(type, btn) {
+  document.querySelectorAll('.compare-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.compare-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`compare-panel-${type}`).classList.add('active');
+}
+const DURABILITY_TIERS = {
+  'low':    { type: 'warning',  label: 'Low durability' },
+  'subpar': { type: 'warning',  label: 'Subpar durability', color: '#fb923c', bg: '#1c0f00', border: '#92400e' },
+  'solid':  { type: 'positive', label: 'Solid durability' },
+  'great':  { type: 'neutral',  label: 'Great durability', color: '#7dd3fc', bg: '#0a1520', border: '#1e3a5f' },
+};
 
 function openPicker(type, slot) {
   pickerContext = { type, slot };
@@ -1114,13 +2492,11 @@ function selectPickerItem(name) {
   const items = type === 'reels' ? reels : rods;
   compareSlots[type][slot] = items.find(i => i.name === name);
   closePicker();
-  renderCompareSlots(type);
   renderCompareTable(type);
 }
 
 function clearSlot(type, slot) {
   compareSlots[type][slot] = null;
-  renderCompareSlots(type);
   renderCompareTable(type);
 }
 

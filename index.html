@@ -338,6 +338,39 @@
           <button class="gear-type-btn" onclick="setReelTypeFilter('Classic baitcasting',this)"><span class="gear-icon" style="color:#8a6030;">●</span>Classic</button>
         </div>
       </div>
+      <div id="rod-type-filters" style="margin-top:1rem;display:none;">
+        <div class="sidebar-label">Rod Category</div>
+        <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px;">
+          <button class="gear-type-btn rod-filter-btn active" onclick="setRodTypeFilter('all',this)"><span class="gear-icon">🔍</span>All</button>
+          <!-- Spinning group -->
+          <button class="gear-type-btn rod-filter-btn rod-group-btn" onclick="toggleRodGroup('grp-spinning',this,'_spinning')" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="gear-icon" style="color:#7ec8f0;">●</span>Spinning</span><span id="grp-spinning-arrow" style="font-size:10px;transition:transform .2s;">▶</span></button>
+          <div id="grp-spinning" style="display:none;flex-direction:column;gap:2px;padding-left:16px;">
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('spinning',this)">Spinning</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('casting',this)">Casting</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('jerkbait',this)">Jerkbait</button>
+          </div>
+          <!-- Float group -->
+          <button class="gear-type-btn rod-filter-btn rod-group-btn" onclick="toggleRodGroup('grp-float',this,'_float')" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="gear-icon" style="color:#80d0a0;">●</span>Float</span><span id="grp-float-arrow" style="font-size:10px;transition:transform .2s;">▶</span></button>
+          <div id="grp-float" style="display:none;flex-direction:column;gap:2px;padding-left:16px;">
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('telescopic',this)">Telescopic</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('bolognese',this)">Bolognese</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('match',this)">Match</button>
+          </div>
+          <!-- Bottom group -->
+          <button class="gear-type-btn rod-filter-btn rod-group-btn" onclick="toggleRodGroup('grp-bottom',this,'_bottom')" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="gear-icon" style="color:#c9a96e;">●</span>Bottom</span><span id="grp-bottom-arrow" style="font-size:10px;transition:transform .2s;">▶</span></button>
+          <div id="grp-bottom" style="display:none;flex-direction:column;gap:2px;padding-left:16px;">
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('carp',this)">Carp</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('feeder',this)">Feeder</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('picker',this)">Picker</button>
+          </div>
+          <!-- Sea group -->
+          <button class="gear-type-btn rod-filter-btn rod-group-btn" onclick="toggleRodGroup('grp-sea',this,'_sea')" style="display:flex;justify-content:space-between;align-items:center;"><span><span class="gear-icon" style="color:#a87c50;">●</span>Sea</span><span id="grp-sea-arrow" style="font-size:10px;transition:transform .2s;">▶</span></button>
+          <div id="grp-sea" style="display:none;flex-direction:column;gap:2px;padding-left:16px;">
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('pilker',this)">Pilker</button>
+            <button class="gear-type-btn rod-filter-btn" style="font-size:13px;" onclick="setRodTypeFilter('deep sea',this)">Deep Sea / Trolling</button>
+          </div>
+        </div>
+      </div>
     </aside>
     <main class="gear-main">
       <div class="gear-search"><input type="text" id="gearSearch" placeholder="Search gear..." data-i18n-placeholder="search_gear" oninput="renderGearDB()" /></div>
@@ -2361,7 +2394,7 @@ const reelModels = [
         "mechanism": 9.65,
         "lineDia": 0.11,
         "lineLen": 251,
-        "ratio": "6.8:1",
+        "ratio": "6.1:1",
         "level": 20,
         "saltwater": true,
         "copperLegal": true,
@@ -9158,6 +9191,48 @@ const reelModels = [
         ]
       }
     ]
+  },
+  {
+    "model": "Overlord 6 56", "manufacturer": "Zeiman", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 6000, "image": null, "drag": 17.7, "mechanism": null, "lineDia": 0.28, "lineLen": 299, "ratio": "5.6:1", "level": 8, "saltwater": true, "copperLegal": false, "features": ["High speed"] }
+    ]
+  },
+  {
+    "model": "Full Metal 60", "manufacturer": "Trident", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 6000, "image": null, "drag": 16.0, "mechanism": null, "lineDia": 0.28, "lineLen": 299, "ratio": "5.2:1", "ratioAlt": "3.8:1", "level": 8, "saltwater": true, "copperLegal": false, "features": [] }
+    ]
+  },
+  {
+    "model": "Silver 80", "manufacturer": "Tama", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 8000, "image": null, "drag": 19.5, "mechanism": null, "lineDia": 0.32, "lineLen": 453, "ratio": "5.2:1", "level": 12, "saltwater": true, "copperLegal": false, "features": [] }
+    ]
+  },
+  {
+    "model": "Model 827", "manufacturer": "Trident", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 8000, "image": null, "drag": 22.0, "mechanism": null, "lineDia": 0.32, "lineLen": 453, "ratio": "4.8:1", "level": 12, "saltwater": true, "copperLegal": false, "features": [] }
+    ]
+  },
+  {
+    "model": "Fisher MT10", "manufacturer": "Tama", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 1000, "image": null, "drag": 8.2, "mechanism": null, "lineDia": 0.11, "lineLen": 251, "ratio": "6.6:1", "level": 1, "saltwater": true, "copperLegal": true, "features": [] }
+    ]
+  },
+  {
+    "model": "Model De Luxe 430S", "manufacturer": "Marshall", "image": null, "type": "spinning",
+    "tags": [{ "type": "vintage", "label": "Christmas" }],
+    "variants": [
+      { "size": 4000, "image": null, "drag": 14.5, "mechanism": null, "lineDia": 0.2, "lineLen": 216, "ratio": "5.8:1", "level": 4, "saltwater": true, "copperLegal": true, "features": [] }
+    ]
   }
 ];
 // Spinning reel test values by size (hidden stat in-game)
@@ -9202,6 +9277,1973 @@ const reels = reelModels.flatMap(m => m.variants.map(v => ({
 // Fields per variant: length(cm), image, loadCap(kg), testMin, testMax, bonus, action, stiffness, sensitivity, power, level, copperLegal, cost
 // ============================================================
 const rodModels = [
+  {
+    model: "Ultima", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 142, testMin: 15, testMax: 70, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 10, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 24861 },
+      { length: 2.7, image: null, loadCap: 136, testMin: 12, testMax: 50, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 9, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 22958 },
+      { length: 2.6, image: null, loadCap: 125, testMin: 7, testMax: 30, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 9, sensitivity: 9, power: "H", level: 32, copperLegal: false, cost: 21802 },
+      { length: 2.35, image: null, loadCap: 38, testMin: 2, testMax: 12, bonus: "+2-3 Lures, +50% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 9, power: "L", level: 32, copperLegal: false, cost: 20808 },
+      { length: 2.25, image: null, loadCap: 62, testMin: 3, testMax: 18, bonus: "+2-3 Lures, +25% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 9, power: "ML", level: 32, copperLegal: false, cost: 18808 },
+      { length: 1.8, image: null, loadCap: 36, testMin: 2, testMax: 8, bonus: "+2-3 Lures, +50% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 9, power: "L", level: 32, copperLegal: false, cost: 18773 },
+      { length: 2.0, image: null, loadCap: 60, testMin: 3, testMax: 12, bonus: "+2-3 Lures, +25% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 9, power: "ML", level: 32, copperLegal: false, cost: 17773 },
+      { length: 1.8, image: null, loadCap: 14, testMin: 1, testMax: 5, bonus: "+2-3 Lures, +100% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 10, power: "UL", level: 32, copperLegal: false, cost: 17773 },
+    ]
+  },
+  {
+    model: "Trout Master", type: "spinning", image: null,
+    variants: [
+      { length: 2.5, image: null, loadCap: 80, testMin: 5, testMax: 20, bonus: "+2 Wobbler, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 7, power: "M", level: 30, copperLegal: false, cost: 14442 },
+      { length: 2.15, image: null, loadCap: 50, testMin: 3, testMax: 18, bonus: "+2 Wobbler, +25% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 8, power: "ML", level: 30, copperLegal: false, cost: 13937 },
+      { length: 2.0, image: null, loadCap: 25, testMin: 2, testMax: 10, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 13310 },
+      { length: 1.8, image: null, loadCap: 21, testMin: 1, testMax: 8, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 12560 },
+    ]
+  },
+  {
+    model: "Aquilon", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 13, testMin: 0.5, testMax: 5, bonus: "+2 Wobbler, +100% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "UL", level: 30, copperLegal: false, cost: 12805 },
+      { length: 2.1, image: null, loadCap: 20, testMin: 1, testMax: 7, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 11563 },
+      { length: 2.0, image: null, loadCap: 12, testMin: 0.5, testMax: 4, bonus: "+2 Wobbler, +100% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "UL", level: 30, copperLegal: false, cost: 11563 },
+    ]
+  },
+  {
+    model: "Vexillar", type: "spinning", image: null,
+    variants: [
+      { length: 2.0, image: null, loadCap: 17.1, testMin: 1.75, testMax: 8.75, bonus: "+3 Jigging, +50% Cast", action: "Fast", stiffness: 7, sensitivity: 9, power: "L", level: 28, copperLegal: false, cost: 9118 },
+      { length: 2.0, image: null, loadCap: 40, testMin: 7, testMax: 28, bonus: "+3 Jigging", action: "Fast", stiffness: 9, sensitivity: 8, power: "MH", level: 28, copperLegal: false, cost: 9118 },
+      { length: 2.1, image: null, loadCap: 10, testMin: 1, testMax: 4, bonus: "+3 Jigging, +100% Cast", action: "Fast", stiffness: 7, sensitivity: 9, power: "UL", level: 28, copperLegal: false, cost: 9118 },
+    ]
+  },
+  {
+    model: "Barracuda", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 96.6, testMin: 7, testMax: 45, bonus: null, action: "Slow", stiffness: 2, sensitivity: 1, power: "MH", level: 26, copperLegal: false, cost: 8199 },
+      { length: 2.7, image: null, loadCap: 95, testMin: 15, testMax: 80, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "H", level: 26, copperLegal: false, cost: 7999 },
+      { length: 2.7, image: null, loadCap: 78.8, testMin: 5, testMax: 25, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "M", level: 26, copperLegal: false, cost: 6398 },
+      { length: 2.4, image: null, loadCap: 79, testMin: 4, testMax: 18, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "M", level: 26, copperLegal: false, cost: 6299 },
+      { length: 2.1, image: null, loadCap: 78.8, testMin: 5, testMax: 25, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "M", level: 26, copperLegal: false, cost: 5998 },
+    ]
+  },
+  {
+    model: "Black Edition", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 51.3, testMin: 14, testMax: 42, bonus: "+2 Wobbler", action: "Fast", stiffness: 8, sensitivity: 3, power: "XH", level: 28, copperLegal: false, cost: 7305 },
+      { length: 2.4, image: null, loadCap: 50.8, testMin: 7, testMax: 28, bonus: "+15% Skill", action: "Moderate", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 7305 },
+      { length: 2.1, image: null, loadCap: 43.7, testMin: 12, testMax: 28, bonus: "+2 Wobbler", action: "Extra-Fast", stiffness: 8, sensitivity: 3, power: "H", level: 28, copperLegal: false, cost: 6948 },
+      { length: 2.1, image: null, loadCap: 40.7, testMin: 7, testMax: 16, bonus: "+7% Skill", action: "Moderate", stiffness: 7, sensitivity: 3, power: "M", level: 28, copperLegal: false, cost: 6948 },
+      { length: 2.1, image: null, loadCap: 50.8, testMin: 7, testMax: 28, bonus: "+7% Skill", action: "Moderate", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 6948 },
+      { length: 1.8, image: null, loadCap: 43.7, testMin: 12, testMax: 28, bonus: "+2 Wobbler", action: "Extra-Fast", stiffness: 8, sensitivity: 3, power: "H", level: 28, copperLegal: false, cost: 6646 },
+      { length: 1.8, image: null, loadCap: 45, testMin: 7, testMax: 21, bonus: "+7% Skill", action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 6487 },
+      { length: 1.8, image: null, loadCap: 30.3, testMin: 3, testMax: 12, bonus: "+25% Cast, +7% Skill", action: "Moderate", stiffness: 5, sensitivity: 4, power: "ML", level: 28, copperLegal: false, cost: 6487 },
+    ]
+  },
+  {
+    model: "Armada", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 22.8, testMin: 7, testMax: 21, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 28, copperLegal: false, cost: 5846 },
+      { length: 2.1, image: null, loadCap: 21.9, testMin: 12, testMax: 28, bonus: "+3 Jigging", action: "Extra-Fast", stiffness: 9, sensitivity: 7, power: "H", level: 28, copperLegal: false, cost: 5770 },
+      { length: 2.1, image: null, loadCap: 25.7, testMin: 14, testMax: 48, bonus: "+2 Jigging", action: "Fast", stiffness: 10, sensitivity: 7, power: "XH", level: 28, copperLegal: false, cost: 5770 },
+      { length: 2.1, image: null, loadCap: 13.8, testMin: 4, testMax: 10, bonus: "+3 Jigging", action: "Extra-Fast", stiffness: 7, sensitivity: 8, power: "M", level: 28, copperLegal: false, cost: 5700 },
+      { length: 1.8, image: null, loadCap: 16.8, testMin: 5, testMax: 14, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 8, power: "M", level: 28, copperLegal: false, cost: 5542 },
+      { length: 1.8, image: null, loadCap: 22.8, testMin: 7, testMax: 21, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 28, copperLegal: false, cost: 5536 },
+    ]
+  },
+  {
+    model: "Legend", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 29, testMin: 3.5, testMax: 12, bonus: "+1 Wobbler, +25% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 28, copperLegal: false, cost: 5441 },
+      { length: 2.4, image: null, loadCap: 42.5, testMin: 12, testMax: 45, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 28, copperLegal: false, cost: 5441 },
+      { length: 2.1, image: null, loadCap: 39.5, testMin: 5, testMax: 17.5, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "M", level: 28, copperLegal: false, cost: 5383 },
+      { length: 2.1, image: null, loadCap: 42.1, testMin: 7, testMax: 21, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 28, copperLegal: false, cost: 5383 },
+      { length: 2.4, image: null, loadCap: 41.5, testMin: 10.5, testMax: 28, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 8, sensitivity: 5, power: "H", level: 28, copperLegal: false, cost: 5383 },
+      { length: 1.8, image: null, loadCap: 39.5, testMin: 5, testMax: 17.5, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "M", level: 28, copperLegal: false, cost: 5313 },
+      { length: 2.0, image: null, loadCap: 29, testMin: 3.5, testMax: 12, bonus: "+1 Wobbler, +25% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 28, copperLegal: false, cost: 5313 },
+      { length: 1.8, image: null, loadCap: 10.1, testMin: 1, testMax: 5, bonus: "+1 Wobbler, +100% Cast, +5% Skill", action: "Fast", stiffness: 5, sensitivity: 6, power: "UL", level: 28, copperLegal: false, cost: 5313 },
+      { length: 1.8, image: null, loadCap: 16, testMin: 2, testMax: 8, bonus: "+1 Wobbler, +50% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 6, power: "L", level: 28, copperLegal: false, cost: 5081 },
+    ]
+  },
+  {
+    model: "Advent", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 53, testMin: 21, testMax: 70, bonus: null, action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 26, copperLegal: false, cost: 4995 },
+      { length: 2.9, image: null, loadCap: 45, testMin: 8, testMax: 42, bonus: null, action: "Fast", stiffness: 8, sensitivity: 7, power: "H", level: 26, copperLegal: false, cost: 4929 },
+      { length: 2.8, image: null, loadCap: 50, testMin: 5, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 7, power: "MH", level: 26, copperLegal: false, cost: 4859 },
+      { length: 2.6, image: null, loadCap: 50, testMin: 10, testMax: 56, bonus: null, action: "Fast", stiffness: 9, sensitivity: 7, power: "XH", level: 26, copperLegal: false, cost: 4813 },
+      { length: 2.1, image: null, loadCap: 53, testMin: 21, testMax: 70, bonus: null, action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 26, copperLegal: false, cost: 4709 },
+      { length: 2.1, image: null, loadCap: 50, testMin: 10, testMax: 56, bonus: null, action: "Fast", stiffness: 9, sensitivity: 7, power: "XH", level: 26, copperLegal: false, cost: 4605 },
+      { length: 2.0, image: null, loadCap: 23.1, testMin: 3, testMax: 9, bonus: "+50% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "L", level: 26, copperLegal: false, cost: 4383 },
+      { length: 2.1, image: null, loadCap: 45, testMin: 8, testMax: 42, bonus: null, action: "Fast", stiffness: 8, sensitivity: 7, power: "H", level: 26, copperLegal: false, cost: 4298 },
+      { length: 2.0, image: null, loadCap: 31.3, testMin: 4, testMax: 12, bonus: "+25% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "ML", level: 26, copperLegal: false, cost: 3550 },
+    ]
+  },
+  {
+    model: "Palmera UL", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 31.7, testMin: 2, testMax: 9, bonus: "+50% Cast", action: "Moderate", stiffness: 3, sensitivity: 3, power: "L", level: 26, copperLegal: false, cost: 4920 },
+      { length: 2.1, image: null, loadCap: 10.8, testMin: 1, testMax: 4, bonus: "+100% Cast", action: "Moderate", stiffness: 3, sensitivity: 3, power: "UL", level: 26, copperLegal: false, cost: 4113 },
+    ]
+  },
+  {
+    model: "Pulse", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 26.2, testMin: 7, testMax: 21, bonus: "+1 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 24, copperLegal: false, cost: 3986 },
+      { length: 2.4, image: null, loadCap: 28, testMin: 7, testMax: 28, bonus: "+1 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "H", level: 24, copperLegal: false, cost: 3986 },
+      { length: 2.1, image: null, loadCap: 26.1, testMin: 7, testMax: 17.5, bonus: "+3 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 7, power: "M", level: 24, copperLegal: false, cost: 3929 },
+      { length: 2.0, image: null, loadCap: 15, testMin: 2.5, testMax: 9, bonus: "+1 Jigging, +50% Cast", action: "Fast", stiffness: 7, sensitivity: 8, power: "L", level: 24, copperLegal: false, cost: 3815 },
+      { length: 2.0, image: null, loadCap: 25.4, testMin: 4, testMax: 14, bonus: "+1 Jigging, +25% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "ML", level: 24, copperLegal: false, cost: 3815 },
+      { length: 1.8, image: null, loadCap: 9, testMin: 1.5, testMax: 5, bonus: "+1 Jigging, +100% Cast", action: "Fast", stiffness: 6, sensitivity: 6, power: "UL", level: 24, copperLegal: false, cost: 3815 },
+    ]
+  },
+  {
+    model: "Evora", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 39.4, testMin: 10, testMax: 42, bonus: "+10% Skill", action: "Moderate", stiffness: 7, sensitivity: 5, power: "H", level: 24, copperLegal: false, cost: 3669 },
+      { length: 2.7, image: null, loadCap: 38.7, testMin: 8, testMax: 40, bonus: null, action: "Slow", stiffness: 6, sensitivity: 5, power: "MH", level: 24, copperLegal: false, cost: 3464 },
+      { length: 2.4, image: null, loadCap: 32.9, testMin: 5, testMax: 20, bonus: "+25% Cast, +10% Skill", action: "Moderate", stiffness: 6, sensitivity: 5, power: "ML", level: 24, copperLegal: false, cost: 3238 },
+    ]
+  },
+  {
+    model: "Versa", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 8.5, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "UL", level: 22, copperLegal: false, cost: 3135 },
+      { length: 2.1, image: null, loadCap: 21, testMin: 2.5, testMax: 12, bonus: "+50% Cast", action: "Moderate", stiffness: 5, sensitivity: 5, power: "L", level: 22, copperLegal: false, cost: 3135 },
+      { length: 2.0, image: null, loadCap: 28.1, testMin: 4, testMax: 14, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 6, power: "ML", level: 22, copperLegal: false, cost: 3022 },
+      { length: 2.7, image: null, loadCap: 35.5, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 6, power: "H", level: 22, copperLegal: false, cost: 2799 },
+      { length: 2.4, image: null, loadCap: 35, testMin: 12, testMax: 42, bonus: null, action: "Fast", stiffness: 8, sensitivity: 6, power: "XH", level: 22, copperLegal: false, cost: 2650 },
+      { length: 2.7, image: null, loadCap: 33.1, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 7, sensitivity: 6, power: "MH", level: 22, copperLegal: false, cost: 2500 },
+    ]
+  },
+  {
+    model: "Cardena", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 26.1, testMin: 3, testMax: 14, bonus: "+25% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "ML", level: 20, copperLegal: false, cost: 2715 },
+      { length: 2.1, image: null, loadCap: 8, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "UL", level: 20, copperLegal: false, cost: 2626 },
+      { length: 2.1, image: null, loadCap: 20, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "L", level: 20, copperLegal: false, cost: 2614 },
+      { length: 1.8, image: null, loadCap: 16, testMin: 2, testMax: 8, bonus: "+50% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "L", level: 20, copperLegal: false, cost: 2100 },
+    ]
+  },
+  {
+    model: "Ethnic", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 36.1, testMin: 12, testMax: 36, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 16, copperLegal: false, cost: 2699 },
+      { length: 2.4, image: null, loadCap: 36.1, testMin: 12, testMax: 36, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 16, copperLegal: false, cost: 2500 },
+      { length: 2.1, image: null, loadCap: 36.1, testMin: 12, testMax: 36, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 16, copperLegal: false, cost: 2350 },
+      { length: 2.1, image: null, loadCap: 30.2, testMin: 7, testMax: 25, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 4, power: "MH", level: 16, copperLegal: false, cost: 2200 },
+    ]
+  },
+  {
+    model: "Integra", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 32.2, testMin: 5, testMax: 17.5, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 20, copperLegal: false, cost: 1999 },
+      { length: 2.1, image: null, loadCap: 33.3, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "MH", level: 20, copperLegal: false, cost: 1940 },
+      { length: 2.0, image: null, loadCap: 31.1, testMin: 6, testMax: 16, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 20, copperLegal: false, cost: 1780 },
+    ]
+  },
+  {
+    model: "Ventura", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 34.5, testMin: 14, testMax: 70, bonus: null, action: "Moderate", stiffness: 6, sensitivity: 3, power: "H", level: 18, copperLegal: false, cost: 1999 },
+      { length: 2.0, image: null, loadCap: 22, testMin: 3.5, testMax: 14, bonus: "+25% Cast", action: "Fast", stiffness: 5, sensitivity: 3, power: "ML", level: 18, copperLegal: false, cost: 1799 },
+      { length: 2.0, image: null, loadCap: 31.5, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "MH", level: 18, copperLegal: false, cost: 1699 },
+      { length: 2.1, image: null, loadCap: 30, testMin: 10.5, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 3, power: "MH", level: 18, copperLegal: false, cost: 1656 },
+      { length: 2.1, image: null, loadCap: 26, testMin: 7, testMax: 17.5, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 3, power: "M", level: 18, copperLegal: false, cost: 1590 },
+    ]
+  },
+  {
+    model: "Aeros", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 27.6, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 6, sensitivity: 4, power: "MH", level: 20, copperLegal: false, cost: 1549 },
+      { length: 1.8, image: null, loadCap: 32.1, testMin: 10, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 20, copperLegal: false, cost: 1549 },
+    ]
+  },
+  {
+    model: "Aurora", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 28, testMin: 12, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 5, power: "H", level: 14, copperLegal: false, cost: 1699 },
+      { length: 2.4, image: null, loadCap: 21, testMin: 7, testMax: 19, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 14, copperLegal: false, cost: 1188 },
+      { length: 2.4, image: null, loadCap: 20, testMin: 6, testMax: 21, bonus: null, action: "Fast", stiffness: 7, sensitivity: 6, power: "M", level: 14, copperLegal: false, cost: 996 },
+    ]
+  },
+  {
+    model: "Super Duty", type: "spinning", image: null,
+    variants: [
+      { length: 2.6, image: null, loadCap: 30.5, testMin: 25, testMax: 100, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "XH", level: 14, copperLegal: false, cost: 1670 },
+      { length: 2.4, image: null, loadCap: 24.3, testMin: 14, testMax: 70, bonus: null, action: "Moderate", stiffness: 7, sensitivity: 4, power: "H", level: 14, copperLegal: false, cost: 1398 },
+      { length: 1.8, image: null, loadCap: 24, testMin: 15, testMax: 45, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 4, power: "MH", level: 14, copperLegal: false, cost: 1328 },
+    ]
+  },
+  {
+    model: "Model One", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 35.4, testMin: 15, testMax: 50, bonus: null, action: "Fast", stiffness: 6, sensitivity: 2, power: "H", level: 18, copperLegal: false, cost: 2150 },
+      { length: 2.4, image: null, loadCap: 15.7, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Fast", stiffness: 5, sensitivity: 3, power: "L", level: 18, copperLegal: false, cost: 1471 },
+      { length: 2.4, image: null, loadCap: 23, testMin: 5, testMax: 30, bonus: null, action: "Moderate", stiffness: 4, sensitivity: 2, power: "M", level: 18, copperLegal: false, cost: 1437 },
+      { length: 2.1, image: null, loadCap: 21, testMin: 10, testMax: 25, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 18, copperLegal: false, cost: 1145 },
+      { length: 2.1, image: null, loadCap: 14.2, testMin: 5, testMax: 15, bonus: "+25% Cast", action: "Fast", stiffness: 7, sensitivity: 6, power: "ML", level: 18, copperLegal: false, cost: 1099 },
+    ]
+  },
+  {
+    model: "Mechta", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 23, testMin: 25, testMax: 90, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 14, copperLegal: false, cost: 1299 },
+      { length: 2.0, image: null, loadCap: 17, testMin: 4, testMax: 17, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 14, copperLegal: false, cost: 1199 },
+      { length: 2.7, image: null, loadCap: 21, testMin: 15, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 5, power: "H", level: 14, copperLegal: false, cost: 1090 },
+      { length: 3.0, image: null, loadCap: 17, testMin: 7, testMax: 35, bonus: null, action: "Moderate", stiffness: 6, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 990 },
+      { length: 2.4, image: null, loadCap: 20, testMin: 7, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.4, image: null, loadCap: 19, testMin: 10, testMax: 35, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.1, image: null, loadCap: 13, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 4, sensitivity: 4, power: "L", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.1, image: null, loadCap: 5.1, testMin: 1, testMax: 7, bonus: "+100% Cast", action: "Moderate", stiffness: 4, sensitivity: 4, power: "UL", level: 14, copperLegal: false, cost: 930 },
+      { length: 1.8, image: null, loadCap: 20, testMin: 7, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 920 },
+    ]
+  },
+  {
+    model: "Inspiration", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 12.1, testMin: 3, testMax: 12, bonus: "+50% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "L", level: 14, copperLegal: false, cost: 814 },
+      { length: 2.4, image: null, loadCap: 14, testMin: 4, testMax: 20, bonus: "+25% Cast", action: "Moderate", stiffness: 6, sensitivity: 5, power: "ML", level: 14, copperLegal: false, cost: 814 },
+      { length: 2.1, image: null, loadCap: 12.1, testMin: 3, testMax: 12, bonus: "+50% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "L", level: 14, copperLegal: false, cost: 808 },
+      { length: 2.1, image: null, loadCap: 4.5, testMin: 1, testMax: 4, bonus: "+100% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "UL", level: 14, copperLegal: false, cost: 808 },
+      { length: 1.8, image: null, loadCap: 4.5, testMin: 1, testMax: 4, bonus: "+100% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "UL", level: 14, copperLegal: false, cost: 799 },
+    ]
+  },
+  {
+    model: "Karelia", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 16, testMin: 5, testMax: 20, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 12, copperLegal: false, cost: 749 },
+      { length: 2.1, image: null, loadCap: 12, testMin: 4, testMax: 16, bonus: "+25% Cast", action: "Moderate", stiffness: 5, sensitivity: 3, power: "ML", level: 12, copperLegal: false, cost: 746 },
+      { length: 2.0, image: null, loadCap: 10.2, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 5, sensitivity: 4, power: "L", level: 12, copperLegal: false, cost: 740 },
+    ]
+  },
+  {
+    model: "Lait", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 11.5, testMin: 3, testMax: 15, bonus: "+25% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "ML", level: 9, copperLegal: false, cost: 559 },
+      { length: 2.1, image: null, loadCap: 7.5, testMin: 2, testMax: 12, bonus: "+50% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "L", level: 9, copperLegal: false, cost: 539 },
+      { length: 1.8, image: null, loadCap: 4, testMin: 1, testMax: 7, bonus: "+100% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "UL", level: 9, copperLegal: false, cost: 519 },
+    ]
+  },
+  {
+    model: "Linear", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 15.3, testMin: 12, testMax: 45, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 544 },
+      { length: 2.7, image: null, loadCap: 15.3, testMin: 12, testMax: 45, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 508 },
+      { length: 2.4, image: null, loadCap: 15.3, testMin: 12, testMax: 45, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 504 },
+      { length: 2.4, image: null, loadCap: 13.5, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 10, copperLegal: false, cost: 498 },
+      { length: 2.1, image: null, loadCap: 11, testMin: 3, testMax: 15, bonus: "+25% Cast", action: "Moderate", stiffness: 6, sensitivity: 5, power: "ML", level: 10, copperLegal: false, cost: 445 },
+      { length: 1.8, image: null, loadCap: 7, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 6, sensitivity: 6, power: "L", level: 10, copperLegal: false, cost: 439 },
+    ]
+  },
+  {
+    model: "Belmor", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 16, testMin: 20, testMax: 60, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 4, power: "XH", level: 10, copperLegal: false, cost: 498 },
+      { length: 2.7, image: null, loadCap: 14, testMin: 12, testMax: 48, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 449 },
+      { length: 2.4, image: null, loadCap: 13, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 419 },
+      { length: 2.4, image: null, loadCap: 12, testMin: 5, testMax: 20, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 10, copperLegal: false, cost: 398 },
+    ]
+  },
+  {
+    model: "Fortuna", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 14.5, testMin: 7, testMax: 28, bonus: "+1 Jigging", action: "Fast", stiffness: 6, sensitivity: 4, power: "MH", level: 13, copperLegal: false, cost: 459 },
+      { length: 2.0, image: null, loadCap: 13.5, testMin: 7, testMax: 21, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 13, copperLegal: false, cost: 419 },
+      { length: 1.8, image: null, loadCap: 14, testMin: 12, testMax: 28, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "H", level: 13, copperLegal: false, cost: 419 },
+      { length: 1.8, image: null, loadCap: 13.5, testMin: 7, testMax: 21, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 13, copperLegal: false, cost: 389 },
+    ]
+  },
+  {
+    model: "Heavy", type: "spinning", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 15.4, testMin: 40, testMax: 120, bonus: null, action: "Fast", stiffness: 9, sensitivity: 0, power: "XH", level: 7, copperLegal: false, cost: 448 },
+      { length: 2.1, image: null, loadCap: 13.1, testMin: 25, testMax: 80, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 0, power: "XH", level: 7, copperLegal: false, cost: 388 },
+      { length: 2.1, image: null, loadCap: 11, testMin: 18, testMax: 40, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 2, power: "H", level: 7, copperLegal: false, cost: 210 },
+    ]
+  },
+  {
+    model: "Comfort", type: "spinning", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 13, testMin: 40, testMax: 100, bonus: null, action: "Fast", stiffness: 10, sensitivity: 2, power: "XH", level: 6, copperLegal: false, cost: 397 },
+      { length: 2.7, image: null, loadCap: 13, testMin: 40, testMax: 100, bonus: null, action: "Fast", stiffness: 10, sensitivity: 2, power: "XH", level: 6, copperLegal: false, cost: 387 },
+      { length: 2.1, image: null, loadCap: 13, testMin: 40, testMax: 100, bonus: null, action: "Fast", stiffness: 10, sensitivity: 2, power: "XH", level: 6, copperLegal: false, cost: 370 },
+      { length: 3.0, image: null, loadCap: 11, testMin: 20, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 2, power: "H", level: 6, copperLegal: false, cost: 227 },
+      { length: 2.7, image: null, loadCap: 10, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "MH", level: 6, copperLegal: false, cost: 217 },
+      { length: 2.7, image: null, loadCap: 11, testMin: 20, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 2, power: "H", level: 6, copperLegal: false, cost: 217 },
+      { length: 2.4, image: null, loadCap: 9, testMin: 5, testMax: 25, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 6, copperLegal: false, cost: 204 },
+      { length: 2.4, image: null, loadCap: 11, testMin: 20, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 2, power: "H", level: 6, copperLegal: false, cost: 204 },
+      { length: 2.1, image: null, loadCap: 10, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "MH", level: 6, copperLegal: false, cost: 196 },
+      { length: 2.0, image: null, loadCap: 11, testMin: 20, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 2, power: "H", level: 6, copperLegal: false, cost: 190 },
+      { length: 1.8, image: null, loadCap: 10, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "MH", level: 6, copperLegal: false, cost: 182 },
+    ]
+  },
+  {
+    model: "Premium Stick", type: "spinning", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 348 },
+      { length: 2.4, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 322 },
+      { length: 2.1, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 315 },
+      { length: 2.1, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 315 },
+      { length: 2.0, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 309 },
+      { length: 1.8, image: null, loadCap: 11.7, testMin: 5, testMax: 15, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 10, copperLegal: false, cost: 299 },
+      { length: 1.8, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 299 },
+      { length: 1.8, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 299 },
+    ]
+  },
+  {
+    model: "Arrow", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 7, testMin: 4, testMax: 16, bonus: null, action: "Moderate", stiffness: 7, sensitivity: 4, power: "M", level: 5, copperLegal: false, cost: 174 },
+      { length: 1.8, image: null, loadCap: 3, testMin: 1, testMax: 7, bonus: "+100% Cast", action: "Fast", stiffness: 5, sensitivity: 4, power: "UL", level: 5, copperLegal: false, cost: 170 },
+      { length: 2.0, image: null, loadCap: 7, testMin: 6, testMax: 20, bonus: null, action: "Fast", stiffness: 6, sensitivity: 3, power: "M", level: 5, copperLegal: false, cost: 169 },
+      { length: 1.8, image: null, loadCap: 5, testMin: 3, testMax: 10.5, bonus: "+50% Cast", action: "Moderate", stiffness: 6, sensitivity: 3, power: "L", level: 5, copperLegal: false, cost: 162 },
+    ]
+  },
+  {
+    model: "Dynamic", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 5.9, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 3, copperLegal: false, cost: 103 },
+      { length: 2.0, image: null, loadCap: 6.5, testMin: 15, testMax: 45, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 2, power: "H", level: 3, copperLegal: false, cost: 91 },
+      { length: 1.8, image: null, loadCap: 5.9, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 3, copperLegal: false, cost: 86 },
+    ]
+  },
+  {
+    model: "Corona", type: "spinning", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 5.4, testMin: 15, testMax: 60, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "H", level: 1, copperLegal: false, cost: 35.5 },
+      { length: 2.0, image: null, loadCap: 5.4, testMin: 15, testMax: 60, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "H", level: 1, copperLegal: false, cost: 34 },
+      { length: 2.0, image: null, loadCap: 4.2, testMin: 10, testMax: 30, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 1, copperLegal: false, cost: 23.5 },
+      { length: 1.8, image: null, loadCap: 4.2, testMin: 10, testMax: 30, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 1, copperLegal: false, cost: 19.5 },
+      { length: 1.8, image: null, loadCap: 3.9, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 3, sensitivity: 2, power: "L", level: 1, copperLegal: false, cost: 18.5 },
+    ]
+  },
+  {
+    model: "Ultima", type: "casting", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 142, testMin: 15, testMax: 70, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 10, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 24861 },
+      { length: 2.7, image: null, loadCap: 136, testMin: 12, testMax: 50, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 9, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 22958 },
+      { length: 2.6, image: null, loadCap: 125, testMin: 7, testMax: 30, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 9, sensitivity: 9, power: "H", level: 32, copperLegal: false, cost: 21802 },
+      { length: 2.4, image: null, loadCap: 106, testMin: 5, testMax: 25, bonus: "+2-3 Artificial Lures, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 9, power: "M", level: 32, copperLegal: false, cost: 19197 },
+      { length: 1.8, image: null, loadCap: 36, testMin: 2, testMax: 8, bonus: "+2-3 Lures, +50% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 9, power: "L", level: 32, copperLegal: false, cost: 18973 },
+      { length: 2.25, image: null, loadCap: 62, testMin: 3, testMax: 18, bonus: "+2-3 Lures, +25% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 9, power: "ML", level: 32, copperLegal: false, cost: 18808 },
+      { length: 2.0, image: null, loadCap: 60, testMin: 3, testMax: 12, bonus: "+2-3 Lures, +25% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 9, power: "ML", level: 32, copperLegal: false, cost: 17773 },
+      { length: 1.8, image: null, loadCap: 14, testMin: 1, testMax: 5, bonus: "+2-3 Lures, +100% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 10, power: "UL", level: 32, copperLegal: false, cost: 17773 },
+    ]
+  },
+  {
+    model: "Trout Master", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 100, testMin: 7, testMax: 35, bonus: "+2 Wobbler, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 7, power: "MH", level: 30, copperLegal: false, cost: 16220 },
+      { length: 2.5, image: null, loadCap: 80, testMin: 5, testMax: 20, bonus: "+2 Wobbler, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 7, power: "M", level: 30, copperLegal: false, cost: 14442 },
+      { length: 2.15, image: null, loadCap: 50, testMin: 3, testMax: 18, bonus: "+2 Wobbler, +25% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 8, power: "ML", level: 30, copperLegal: false, cost: 13937 },
+      { length: 2.0, image: null, loadCap: 25, testMin: 2, testMax: 10, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 7, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 13310 },
+      { length: 1.8, image: null, loadCap: 21, testMin: 1, testMax: 8, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 12560 },
+    ]
+  },
+  {
+    model: "Aquilon", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 13, testMin: 0.5, testMax: 5, bonus: "+2 Wobbler, +100% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 6, power: "UL", level: 30, copperLegal: false, cost: 12805 },
+      { length: 2.1, image: null, loadCap: 20, testMin: 1, testMax: 7, bonus: "+2 Wobbler, +50% Cast, +10% XP", action: "Moderate", stiffness: 6, sensitivity: 8, power: "L", level: 30, copperLegal: false, cost: 11563 },
+      { length: 2.0, image: null, loadCap: 12, testMin: 0.5, testMax: 4, bonus: "+2 Wobbler, +100% Cast, +10% XP", action: "Moderate", stiffness: 8, sensitivity: 6, power: "UL", level: 30, copperLegal: false, cost: 11563 },
+    ]
+  },
+  {
+    model: "Vexillar", type: "casting", image: null,
+    variants: [
+      { length: 2.0, image: null, loadCap: 17.1, testMin: 1.75, testMax: 8.75, bonus: "+3 Jigging, +50% Cast", action: "Fast", stiffness: 7, sensitivity: 9, power: "L", level: 28, copperLegal: false, cost: 9118 },
+      { length: 2.0, image: null, loadCap: 40, testMin: 7, testMax: 28, bonus: "+3 Jigging", action: "Fast", stiffness: 9, sensitivity: 8, power: "MH", level: 28, copperLegal: false, cost: 9118 },
+      { length: 2.1, image: null, loadCap: 42, testMin: 12, testMax: 42, bonus: "+3 Jigging", action: "Fast", stiffness: 9, sensitivity: 8, power: "H", level: 28, copperLegal: false, cost: 9118 },
+      { length: 2.1, image: null, loadCap: 10, testMin: 1, testMax: 4, bonus: "+3 Jigging, +100% Cast", action: "Fast", stiffness: 7, sensitivity: 9, power: "UL", level: 28, copperLegal: false, cost: 9118 },
+    ]
+  },
+  {
+    model: "Barracuda CST", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 96.6, testMin: 7, testMax: 45, bonus: null, action: "Slow", stiffness: 2, sensitivity: 1, power: "MH", level: 26, copperLegal: false, cost: 8299 },
+      { length: 2.7, image: null, loadCap: 95, testMin: 15, testMax: 80, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "H", level: 26, copperLegal: false, cost: 7998 },
+      { length: 2.1, image: null, loadCap: 78.8, testMin: 5, testMax: 25, bonus: null, action: "Moderate", stiffness: 3, sensitivity: 1, power: "M", level: 26, copperLegal: false, cost: 5999 },
+      { length: 2.4, image: null, loadCap: 60.8, testMin: 3, testMax: 20, bonus: null, action: "Slow", stiffness: 1, sensitivity: 1, power: "M", level: 26, copperLegal: false, cost: 4899 },
+    ]
+  },
+  {
+    model: "Black Edition CST", type: "casting", image: null,
+    variants: [
+      { length: 1.8, image: null, loadCap: 45, testMin: 7, testMax: 21, bonus: "+7% Skill", action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 7789 },
+      { length: 2.1, image: null, loadCap: 51.3, testMin: 14, testMax: 42, bonus: "+2 Wobbler", action: "Fast", stiffness: 8, sensitivity: 3, power: "XH", level: 28, copperLegal: false, cost: 7598 },
+      { length: 2.1, image: null, loadCap: 42.7, testMin: 5, testMax: 15, bonus: "+7% Skill", action: "Fast", stiffness: 6, sensitivity: 3, power: "M", level: 28, copperLegal: false, cost: 7276 },
+      { length: 2.1, image: null, loadCap: 40.7, testMin: 7, testMax: 16, bonus: "+7% Skill", action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "M", level: 28, copperLegal: false, cost: 7198 },
+      { length: 2.1, image: null, loadCap: 50.8, testMin: 7, testMax: 28, bonus: "+7% Skill", action: "Moderate", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 7175 },
+      { length: 1.8, image: null, loadCap: 43.7, testMin: 12, testMax: 28, bonus: "+2 Wobbler", action: "Extra-Fast", stiffness: 8, sensitivity: 3, power: "H", level: 28, copperLegal: false, cost: 6991 },
+      { length: 2.4, image: null, loadCap: 45, testMin: 7, testMax: 21, bonus: "+7% Skill", action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 28, copperLegal: false, cost: 6961 },
+    ]
+  },
+  {
+    model: "Rocket", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 89.9, testMin: 17.5, testMax: 80, bonus: "+10% Skill", action: "Moderate", stiffness: 4, sensitivity: 1, power: "XH", level: 26, copperLegal: false, cost: 7299 },
+      { length: 2.7, image: null, loadCap: 86.2, testMin: 10.5, testMax: 45.5, bonus: "+10% Skill", action: "Moderate", stiffness: 3, sensitivity: 2, power: "H", level: 26, copperLegal: false, cost: 6999 },
+      { length: 2.7, image: null, loadCap: 84, testMin: 7, testMax: 35, bonus: "+10% Skill", action: "Moderate", stiffness: 3, sensitivity: 2, power: "MH", level: 26, copperLegal: false, cost: 6799 },
+      { length: 2.4, image: null, loadCap: 78.6, testMin: 5, testMax: 20, bonus: "+10% Skill", action: "Moderate", stiffness: 3, sensitivity: 2, power: "M", level: 26, copperLegal: false, cost: 6298 },
+    ]
+  },
+  {
+    model: "Armada CST", type: "casting", image: null,
+    variants: [
+      { length: 1.8, image: null, loadCap: 22.8, testMin: 7, testMax: 21, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 28, copperLegal: false, cost: 6239 },
+      { length: 2.1, image: null, loadCap: 25.7, testMin: 14, testMax: 48, bonus: "+2 Jigging", action: "Fast", stiffness: 10, sensitivity: 7, power: "XH", level: 28, copperLegal: false, cost: 6239 },
+      { length: 2.1, image: null, loadCap: 13.8, testMin: 4, testMax: 10, bonus: "+2 Jigging", action: "Extra-Fast", stiffness: 7, sensitivity: 8, power: "M", level: 28, copperLegal: false, cost: 6227 },
+      { length: 1.8, image: null, loadCap: 16.8, testMin: 5, testMax: 14, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 8, power: "M", level: 28, copperLegal: false, cost: 6133 },
+      { length: 1.8, image: null, loadCap: 21.9, testMin: 12, testMax: 28, bonus: "+2 Jigging", action: "Extra-Fast", stiffness: 9, sensitivity: 7, power: "H", level: 28, copperLegal: false, cost: 6098 },
+      { length: 1.8, image: null, loadCap: 5.1, testMin: 2, testMax: 4, bonus: "+2 Jigging, +100% Cast", action: "Extra-Fast", stiffness: 7, sensitivity: 8, power: "UL", level: 28, copperLegal: false, cost: 6098 },
+      { length: 2.1, image: null, loadCap: 22.8, testMin: 7, testMax: 21, bonus: "+2 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 28, copperLegal: false, cost: 5992 },
+    ]
+  },
+  {
+    model: "Legend", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 29, testMin: 3.5, testMax: 12, bonus: "+1 Wobbler, +25% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 28, copperLegal: false, cost: 5441 },
+      { length: 2.1, image: null, loadCap: 39.5, testMin: 5, testMax: 17.5, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "M", level: 28, copperLegal: false, cost: 5383 },
+      { length: 2.1, image: null, loadCap: 41.5, testMin: 10.5, testMax: 28, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 8, sensitivity: 5, power: "MH", level: 28, copperLegal: false, cost: 5383 },
+      { length: 2.4, image: null, loadCap: 42, testMin: 14, testMax: 42, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 9, sensitivity: 5, power: "H", level: 28, copperLegal: false, cost: 5383 },
+      { length: 1.8, image: null, loadCap: 39.5, testMin: 5, testMax: 17.5, bonus: "+1 Wobbler, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "M", level: 28, copperLegal: false, cost: 5313 },
+      { length: 2.0, image: null, loadCap: 29, testMin: 3.5, testMax: 12, bonus: "+1 Wobbler, +25% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 28, copperLegal: false, cost: 5313 },
+      { length: 1.8, image: null, loadCap: 10.1, testMin: 1, testMax: 5, bonus: "+1 Wobbler, +100% Cast, +5% Skill", action: "Fast", stiffness: 5, sensitivity: 6, power: "UL", level: 28, copperLegal: false, cost: 5313 },
+      { length: 1.8, image: null, loadCap: 16, testMin: 2, testMax: 8, bonus: "+1 Wobbler, +50% Cast, +5% Skill", action: "Fast", stiffness: 6, sensitivity: 6, power: "L", level: 28, copperLegal: false, cost: 5081 },
+    ]
+  },
+  {
+    model: "Advent", type: "casting", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 53, testMin: 21, testMax: 70, bonus: null, action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 26, copperLegal: false, cost: 4995 },
+      { length: 2.9, image: null, loadCap: 45, testMin: 8, testMax: 42, bonus: null, action: "Fast", stiffness: 8, sensitivity: 7, power: "H", level: 26, copperLegal: false, cost: 4929 },
+      { length: 2.8, image: null, loadCap: 50, testMin: 5, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 7, power: "MH", level: 26, copperLegal: false, cost: 4859 },
+      { length: 2.6, image: null, loadCap: 50, testMin: 10, testMax: 56, bonus: null, action: "Fast", stiffness: 9, sensitivity: 7, power: "XH", level: 26, copperLegal: false, cost: 4813 },
+      { length: 2.1, image: null, loadCap: 53, testMin: 21, testMax: 70, bonus: null, action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 26, copperLegal: false, cost: 4709 },
+      { length: 2.1, image: null, loadCap: 50, testMin: 10, testMax: 56, bonus: null, action: "Fast", stiffness: 9, sensitivity: 7, power: "XH", level: 26, copperLegal: false, cost: 4605 },
+      { length: 2.0, image: null, loadCap: 23.1, testMin: 3, testMax: 9, bonus: "+50% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "L", level: 26, copperLegal: false, cost: 4383 },
+      { length: 2.1, image: null, loadCap: 45, testMin: 8, testMax: 42, bonus: null, action: "Fast", stiffness: 8, sensitivity: 7, power: "H", level: 26, copperLegal: false, cost: 4298 },
+      { length: 2.0, image: null, loadCap: 28, testMin: 4, testMax: 12, bonus: "+25% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "ML", level: 26, copperLegal: false, cost: 3550 },
+    ]
+  },
+  {
+    model: "Evora CST", type: "casting", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 49.4, testMin: 12, testMax: 60, bonus: "+10% Skill", action: "Slow", stiffness: 7, sensitivity: 5, power: "H", level: 24, copperLegal: false, cost: 4499 },
+      { length: 2.4, image: null, loadCap: 38.7, testMin: 8, testMax: 40, bonus: "+10% Skill", action: "Slow", stiffness: 6, sensitivity: 5, power: "MH", level: 24, copperLegal: false, cost: 3100 },
+    ]
+  },
+  {
+    model: "Pulse", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 28, testMin: 7, testMax: 28, bonus: "+1 Jigging", action: "Fast", stiffness: 8, sensitivity: 7, power: "MH", level: 24, copperLegal: false, cost: 3929 },
+      { length: 2.1, image: null, loadCap: 28.1, testMin: 14, testMax: 52, bonus: "+1 Jigging", action: "Fast", stiffness: 9, sensitivity: 7, power: "H", level: 24, copperLegal: false, cost: 3929 },
+      { length: 2.1, image: null, loadCap: 28.6, testMin: 21, testMax: 77, bonus: "+1 Jigging", action: "Fast", stiffness: 10, sensitivity: 7, power: "XH", level: 24, copperLegal: false, cost: 3929 },
+      { length: 2.1, image: null, loadCap: 26.1, testMin: 7, testMax: 17.5, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 7, power: "M", level: 24, copperLegal: false, cost: 3929 },
+      { length: 2.0, image: null, loadCap: 15, testMin: 2.5, testMax: 9, bonus: "+1 Jigging, +50% Cast", action: "Fast", stiffness: 7, sensitivity: 8, power: "L", level: 24, copperLegal: false, cost: 3815 },
+      { length: 2.0, image: null, loadCap: 25.4, testMin: 4, testMax: 14, bonus: "+1 Jigging, +25% Cast", action: "Fast", stiffness: 7, sensitivity: 7, power: "ML", level: 24, copperLegal: false, cost: 3815 },
+      { length: 1.8, image: null, loadCap: 9, testMin: 1.5, testMax: 5, bonus: "+1 Jigging, +100% Cast", action: "Fast", stiffness: 6, sensitivity: 6, power: "UL", level: 24, copperLegal: false, cost: 3815 },
+    ]
+  },
+  {
+    model: "Cardena CST", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 37.5, testMin: 4, testMax: 16, bonus: "+25% Cast", action: "Moderate", stiffness: 5, sensitivity: 3, power: "ML", level: 22, copperLegal: false, cost: 3499 },
+      { length: 2.1, image: null, loadCap: 8, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "UL", level: 22, copperLegal: false, cost: 2799 },
+      { length: 1.8, image: null, loadCap: 16, testMin: 2, testMax: 7, bonus: "+50% Cast", action: "Fast", stiffness: 5, sensitivity: 3, power: "L", level: 22, copperLegal: false, cost: 2150 },
+    ]
+  },
+  {
+    model: "Versa", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 8.5, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Fast", stiffness: 5, sensitivity: 5, power: "UL", level: 22, copperLegal: false, cost: 3135 },
+      { length: 2.1, image: null, loadCap: 21, testMin: 2.5, testMax: 12, bonus: "+50% Cast", action: "Moderate", stiffness: 5, sensitivity: 5, power: "L", level: 22, copperLegal: false, cost: 3135 },
+      { length: 2.0, image: null, loadCap: 28.1, testMin: 4, testMax: 14, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 6, power: "ML", level: 22, copperLegal: false, cost: 2650 },
+      { length: 2.5, image: null, loadCap: 35, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 6, power: "MH", level: 22, copperLegal: false, cost: 2550 },
+      { length: 2.5, image: null, loadCap: 35, testMin: 14, testMax: 70, bonus: null, action: "Moderate", stiffness: 8, sensitivity: 6, power: "H", level: 22, copperLegal: false, cost: 2550 },
+      { length: 2.4, image: null, loadCap: 35, testMin: 4.5, testMax: 17.5, bonus: null, action: "Fast", stiffness: 6, sensitivity: 6, power: "M", level: 22, copperLegal: false, cost: 2500 },
+    ]
+  },
+  {
+    model: "Alfa Caster", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 8.3, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Fast", stiffness: 6, sensitivity: 5, power: "UL", level: 18, copperLegal: false, cost: 2600 },
+      { length: 2.1, image: null, loadCap: 18, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Fast", stiffness: 6, sensitivity: 5, power: "L", level: 18, copperLegal: false, cost: 2000 },
+      { length: 2.4, image: null, loadCap: 24, testMin: 3, testMax: 15, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 18, copperLegal: false, cost: 2000 },
+    ]
+  },
+  {
+    model: "Ethnic", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 36, testMin: 12, testMax: 48, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 16, copperLegal: false, cost: 2350 },
+      { length: 2.4, image: null, loadCap: 36.1, testMin: 12, testMax: 36, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 16, copperLegal: false, cost: 2250 },
+      { length: 2.7, image: null, loadCap: 35, testMin: 20, testMax: 60, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "XH", level: 16, copperLegal: false, cost: 2199 },
+      { length: 2.4, image: null, loadCap: 17, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 4, sensitivity: 3, power: "L", level: 16, copperLegal: false, cost: 1974 },
+      { length: 2.1, image: null, loadCap: 7, testMin: 1, testMax: 5, bonus: "+100% Cast", action: "Moderate", stiffness: 3, sensitivity: 3, power: "UL", level: 16, copperLegal: false, cost: 1899 },
+      { length: 2.4, image: null, loadCap: 20, testMin: 4, testMax: 16, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 6, power: "ML", level: 16, copperLegal: false, cost: 1853 },
+      { length: 2.7, image: null, loadCap: 27, testMin: 7, testMax: 28, bonus: null, action: "Moderate", stiffness: 5, sensitivity: 3, power: "MH", level: 16, copperLegal: false, cost: 1660 },
+      { length: 2.0, image: null, loadCap: 26, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 16, copperLegal: false, cost: 1499 },
+    ]
+  },
+  {
+    model: "Model One CST", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 35.4, testMin: 15, testMax: 50, bonus: null, action: "Fast", stiffness: 6, sensitivity: 2, power: "H", level: 18, copperLegal: false, cost: 2150 },
+      { length: 2.4, image: null, loadCap: 15.7, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Fast", stiffness: 5, sensitivity: 3, power: "L", level: 18, copperLegal: false, cost: 1471 },
+      { length: 2.4, image: null, loadCap: 23, testMin: 5, testMax: 30, bonus: null, action: "Moderate", stiffness: 4, sensitivity: 2, power: "M", level: 18, copperLegal: false, cost: 1437 },
+      { length: 2.1, image: null, loadCap: 21, testMin: 10, testMax: 25, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 18, copperLegal: false, cost: 1145 },
+      { length: 2.1, image: null, loadCap: 14.2, testMin: 5, testMax: 15, bonus: "+25% Cast", action: "Fast", stiffness: 7, sensitivity: 6, power: "ML", level: 18, copperLegal: false, cost: 1099 },
+    ]
+  },
+  {
+    model: "Ventura", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 34.5, testMin: 14, testMax: 70, bonus: null, action: "Moderate", stiffness: 6, sensitivity: 3, power: "H", level: 18, copperLegal: false, cost: 1999 },
+      { length: 2.0, image: null, loadCap: 22, testMin: 3.5, testMax: 14, bonus: "+25% Cast", action: "Fast", stiffness: 5, sensitivity: 3, power: "ML", level: 18, copperLegal: false, cost: 1799 },
+      { length: 2.0, image: null, loadCap: 31.5, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "MH", level: 18, copperLegal: false, cost: 1699 },
+      { length: 2.1, image: null, loadCap: 30, testMin: 10.5, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 3, power: "MH", level: 18, copperLegal: false, cost: 1656 },
+      { length: 2.1, image: null, loadCap: 26, testMin: 7, testMax: 17.5, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 3, power: "M", level: 18, copperLegal: false, cost: 1590 },
+    ]
+  },
+  {
+    model: "Integra", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 32.2, testMin: 5, testMax: 17.5, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 20, copperLegal: false, cost: 1949 },
+      { length: 2.1, image: null, loadCap: 33.3, testMin: 7, testMax: 21, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "MH", level: 20, copperLegal: false, cost: 1940 },
+      { length: 2.0, image: null, loadCap: 31.1, testMin: 6, testMax: 16, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 20, copperLegal: false, cost: 1730 },
+    ]
+  },
+  {
+    model: "Aeros CST", type: "casting", image: null,
+    variants: [
+      { length: 1.8, image: null, loadCap: 32.1, testMin: 10, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "H", level: 20, copperLegal: false, cost: 1800 },
+      { length: 2.1, image: null, loadCap: 27.6, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 6, sensitivity: 4, power: "MH", level: 20, copperLegal: false, cost: 1549 },
+    ]
+  },
+  {
+    model: "Aurora", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 28, testMin: 12, testMax: 28, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 5, power: "H", level: 14, copperLegal: false, cost: 1699 },
+      { length: 2.4, image: null, loadCap: 21, testMin: 7, testMax: 19, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 14, copperLegal: false, cost: 1188 },
+      { length: 2.4, image: null, loadCap: 20, testMin: 6, testMax: 21, bonus: null, action: "Fast", stiffness: 7, sensitivity: 6, power: "M", level: 14, copperLegal: false, cost: 996 },
+    ]
+  },
+  {
+    model: "Super Duty", type: "casting", image: null,
+    variants: [
+      { length: 2.6, image: null, loadCap: 30.5, testMin: 25, testMax: 100, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "XH", level: 14, copperLegal: false, cost: 1670 },
+      { length: 2.4, image: null, loadCap: 24.3, testMin: 14, testMax: 70, bonus: null, action: "Moderate", stiffness: 7, sensitivity: 4, power: "H", level: 14, copperLegal: false, cost: 1398 },
+      { length: 1.8, image: null, loadCap: 24, testMin: 15, testMax: 45, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 4, power: "MH", level: 14, copperLegal: false, cost: 1328 },
+    ]
+  },
+  {
+    model: "Mechta", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 23, testMin: 25, testMax: 90, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 14, copperLegal: false, cost: 1299 },
+      { length: 2.0, image: null, loadCap: 17, testMin: 4, testMax: 17, bonus: "+25% Cast", action: "Fast", stiffness: 6, sensitivity: 5, power: "ML", level: 14, copperLegal: false, cost: 1199 },
+      { length: 2.7, image: null, loadCap: 21, testMin: 15, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 5, power: "H", level: 14, copperLegal: false, cost: 1090 },
+      { length: 3.0, image: null, loadCap: 17, testMin: 7, testMax: 35, bonus: null, action: "Moderate", stiffness: 6, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 990 },
+      { length: 2.4, image: null, loadCap: 20, testMin: 7, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.4, image: null, loadCap: 19, testMin: 10, testMax: 35, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.1, image: null, loadCap: 13, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 4, sensitivity: 4, power: "L", level: 14, copperLegal: false, cost: 930 },
+      { length: 2.1, image: null, loadCap: 5.1, testMin: 1, testMax: 7, bonus: "+100% Cast", action: "Moderate", stiffness: 4, sensitivity: 4, power: "UL", level: 14, copperLegal: false, cost: 930 },
+      { length: 1.8, image: null, loadCap: 20, testMin: 7, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 5, power: "MH", level: 14, copperLegal: false, cost: 920 },
+    ]
+  },
+  {
+    model: "Karelia", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 18, testMin: 10, testMax: 40, bonus: null, action: "Fast", stiffness: 6, sensitivity: 3, power: "MH", level: 12, copperLegal: false, cost: 849 },
+      { length: 2.4, image: null, loadCap: 12, testMin: 4, testMax: 16, bonus: "+25% Cast", action: "Moderate", stiffness: 5, sensitivity: 3, power: "ML", level: 12, copperLegal: false, cost: 749 },
+      { length: 2.1, image: null, loadCap: 10.2, testMin: 2, testMax: 10, bonus: "+50% Cast", action: "Moderate", stiffness: 5, sensitivity: 4, power: "L", level: 12, copperLegal: false, cost: 744 },
+      { length: 2.4, image: null, loadCap: 16, testMin: 5, testMax: 20, bonus: null, action: "Fast", stiffness: 5, sensitivity: 3, power: "M", level: 12, copperLegal: false, cost: 679 },
+    ]
+  },
+  {
+    model: "Belmor", type: "casting", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 16, testMin: 20, testMax: 60, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 4, power: "XH", level: 10, copperLegal: false, cost: 698 },
+      { length: 2.7, image: null, loadCap: 14, testMin: 12, testMax: 48, bonus: null, action: "Fast", stiffness: 8, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 599 },
+      { length: 2.4, image: null, loadCap: 13, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 419 },
+      { length: 2.4, image: null, loadCap: 12, testMin: 5, testMax: 20, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 10, copperLegal: false, cost: 398 },
+    ]
+  },
+  {
+    model: "Linear CST", type: "casting", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 15.3, testMin: 12, testMax: 45, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 677 },
+      { length: 2.4, image: null, loadCap: 13.5, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 10, copperLegal: false, cost: 497 },
+    ]
+  },
+  {
+    model: "Heavy CST", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 15.4, testMin: 40, testMax: 120, bonus: null, action: "Fast", stiffness: 10, sensitivity: 0, power: "XH", level: 7, copperLegal: false, cost: 653 },
+      { length: 2.1, image: null, loadCap: 13.1, testMin: 25, testMax: 80, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 0, power: "XH", level: 7, copperLegal: false, cost: 388 },
+      { length: 2.0, image: null, loadCap: 11, testMin: 18, testMax: 40, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 2, power: "H", level: 7, copperLegal: false, cost: 289 },
+    ]
+  },
+  {
+    model: "Fortuna CST", type: "casting", image: null,
+    variants: [
+      { length: 2.0, image: null, loadCap: 14.5, testMin: 7, testMax: 28, bonus: "+1 Jigging", action: "Fast", stiffness: 6, sensitivity: 4, power: "MH", level: 16, copperLegal: false, cost: 598 },
+      { length: 2.1, image: null, loadCap: 13.5, testMin: 7, testMax: 21, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 16, copperLegal: false, cost: 519 },
+      { length: 1.8, image: null, loadCap: 13.5, testMin: 7, testMax: 21, bonus: "+1 Jigging", action: "Extra-Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 16, copperLegal: false, cost: 419 },
+    ]
+  },
+  {
+    model: "Lait", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 11.5, testMin: 3, testMax: 15, bonus: "+25% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "ML", level: 9, copperLegal: false, cost: 559 },
+      { length: 2.1, image: null, loadCap: 7.5, testMin: 2, testMax: 12, bonus: "+50% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "L", level: 9, copperLegal: false, cost: 539 },
+      { length: 1.8, image: null, loadCap: 4, testMin: 1, testMax: 7, bonus: "+100% Cast", action: "Slow", stiffness: 4, sensitivity: 2, power: "UL", level: 9, copperLegal: false, cost: 529 },
+    ]
+  },
+  {
+    model: "Linear", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 11, testMin: 3, testMax: 15, bonus: "+25% Cast", action: "Moderate", stiffness: 6, sensitivity: 5, power: "ML", level: 10, copperLegal: false, cost: 478 },
+    ]
+  },
+  {
+    model: "Premium Stick CST", type: "casting", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 11.7, testMin: 5, testMax: 15, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 10, copperLegal: false, cost: 322 },
+      { length: 2.4, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 321 },
+      { length: 2.1, image: null, loadCap: 11.7, testMin: 5, testMax: 15, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "M", level: 10, copperLegal: false, cost: 319 },
+      { length: 2.1, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 319 },
+      { length: 2.0, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 318 },
+      { length: 1.8, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 315 },
+      { length: 2.0, image: null, loadCap: 12, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 4, power: "MH", level: 10, copperLegal: false, cost: 314 },
+      { length: 2.1, image: null, loadCap: 12.1, testMin: 7, testMax: 28, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 10, copperLegal: false, cost: 310 },
+    ]
+  },
+  {
+    model: "Vision CST", type: "casting", image: null,
+    variants: [
+      { length: 2.0, image: null, loadCap: 9.9, testMin: 5, testMax: 30, bonus: null, action: "Moderate", stiffness: 5, sensitivity: 3, power: "MH", level: 4, copperLegal: false, cost: 249 },
+    ]
+  },
+  {
+    model: "Arrow CST", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 7, testMin: 5, testMax: 20, bonus: null, action: "Moderate", stiffness: 7, sensitivity: 4, power: "M", level: 5, copperLegal: false, cost: 174 },
+      { length: 1.8, image: null, loadCap: 7, testMin: 5, testMax: 20, bonus: null, action: "Moderate", stiffness: 7, sensitivity: 4, power: "M", level: 5, copperLegal: false, cost: 155 },
+    ]
+  },
+  {
+    model: "Dynamic CST", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 6.5, testMin: 7, testMax: 21, bonus: null, action: "Extra-Fast", stiffness: 6, sensitivity: 3, power: "M", level: 3, copperLegal: false, cost: 113 },
+      { length: 2.0, image: null, loadCap: 5.9, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 3, copperLegal: false, cost: 95 },
+      { length: 1.8, image: null, loadCap: 5.9, testMin: 10, testMax: 30, bonus: null, action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 3, copperLegal: false, cost: 86 },
+      { length: 1.8, image: null, loadCap: 6.5, testMin: 15, testMax: 45, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 2, power: "H", level: 3, copperLegal: false, cost: 79 },
+    ]
+  },
+  {
+    model: "Corona CST", type: "casting", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 5.4, testMin: 15, testMax: 60, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "H", level: 1, copperLegal: false, cost: 35.5 },
+      { length: 2.0, image: null, loadCap: 5.4, testMin: 15, testMax: 60, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "H", level: 1, copperLegal: false, cost: 34 },
+      { length: 2.0, image: null, loadCap: 4.2, testMin: 10, testMax: 30, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 1, copperLegal: false, cost: 34 },
+      { length: 1.8, image: null, loadCap: 4.2, testMin: 10, testMax: 30, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 1, copperLegal: false, cost: 30 },
+    ]
+  },
+  {
+    model: "Ultima", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 88, testMin: 40, testMax: 125, bonus: "+2 Jerkbait", action: "Fast", stiffness: 10, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 20110 },
+      { length: 2.1, image: null, loadCap: 84, testMin: 25, testMax: 75, bonus: "+2 Jerkbait", action: "Fast", stiffness: 10, sensitivity: 8, power: "XH", level: 32, copperLegal: false, cost: 19197 },
+      { length: 2.1, image: null, loadCap: 77, testMin: 15, testMax: 45, bonus: "+2 Jerkbait", action: "Fast", stiffness: 10, sensitivity: 8, power: "H", level: 32, copperLegal: false, cost: 18549 },
+      { length: 2.0, image: null, loadCap: 72, testMin: 10, testMax: 30, bonus: "+2 Jerkbait", action: "Fast", stiffness: 9, sensitivity: 8, power: "MH", level: 32, copperLegal: false, cost: 17773 },
+    ]
+  },
+  {
+    model: "Advent", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 54, testMin: 35, testMax: 112, bonus: "+1 Jerkbait", action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 28, copperLegal: false, cost: 8164 },
+      { length: 2.0, image: null, loadCap: 52, testMin: 21, testMax: 70, bonus: "+1 Jerkbait", action: "Fast", stiffness: 10, sensitivity: 6, power: "XH", level: 28, copperLegal: false, cost: 7924 },
+      { length: 2.0, image: null, loadCap: 50, testMin: 12, testMax: 42, bonus: "+1 Jerkbait", action: "Fast", stiffness: 9, sensitivity: 7, power: "H", level: 28, copperLegal: false, cost: 7804 },
+    ]
+  },
+  {
+    model: "Muskie Strike", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 48.2, testMin: 35, testMax: 90, bonus: "+1 Rod Skill", action: "Extra-Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 28, copperLegal: false, cost: 8142 },
+      { length: 1.8, image: null, loadCap: 49.7, testMin: 16, testMax: 54, bonus: "+1 Rod Skill", action: "Fast", stiffness: 8, sensitivity: 5, power: "H", level: 28, copperLegal: false, cost: 7782 },
+      { length: 1.8, image: null, loadCap: 54.1, testMin: 35, testMax: 110, bonus: "+1 Rod Skill", action: "Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 28, copperLegal: false, cost: 7782 },
+    ]
+  },
+  {
+    model: "Barracuda JB", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 61.9, testMin: 30, testMax: 95, bonus: null, action: "Fast", stiffness: 8, sensitivity: 2, power: "H", level: 26, copperLegal: false, cost: 5898 },
+      { length: 2.1, image: null, loadCap: 62.4, testMin: 45, testMax: 140, bonus: null, action: "Fast", stiffness: 8, sensitivity: 2, power: "XH", level: 26, copperLegal: false, cost: 5898 },
+      { length: 1.8, image: null, loadCap: 60.8, testMin: 20, testMax: 60, bonus: null, action: "Fast", stiffness: 7, sensitivity: 3, power: "MH", level: 26, copperLegal: false, cost: 5431 },
+    ]
+  },
+  {
+    model: "Legend", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 46, testMin: 25, testMax: 60, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 5, power: "H", level: 26, copperLegal: false, cost: 5383 },
+      { length: 2.1, image: null, loadCap: 49.3, testMin: 45, testMax: 110, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 5, power: "XH", level: 26, copperLegal: false, cost: 5383 },
+    ]
+  },
+  {
+    model: "Versus", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.2, image: null, loadCap: 40.5, testMin: 30, testMax: 100, bonus: null, action: "Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 24, copperLegal: false, cost: 3141 },
+      { length: 2.1, image: null, loadCap: 38, testMin: 15, testMax: 50, bonus: null, action: "Fast", stiffness: 8, sensitivity: 6, power: "MH", level: 24, copperLegal: false, cost: 3029 },
+      { length: 2.1, image: null, loadCap: 39.5, testMin: 25, testMax: 75, bonus: null, action: "Fast", stiffness: 9, sensitivity: 5, power: "H", level: 24, copperLegal: false, cost: 3029 },
+    ]
+  },
+  {
+    model: "Ethnic Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 45.2, testMin: 40, testMax: 120, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 4, power: "XH", level: 24, copperLegal: false, cost: 2528 },
+      { length: 2.1, image: null, loadCap: 44.3, testMin: 25, testMax: 70, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 4, power: "H", level: 24, copperLegal: false, cost: 2472 },
+      { length: 2.0, image: null, loadCap: 43.1, testMin: 15, testMax: 60, bonus: null, action: "Fast", stiffness: 7, sensitivity: 4, power: "H", level: 24, copperLegal: false, cost: 2417 },
+    ]
+  },
+  {
+    model: "Model One Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 40.1, testMin: 30, testMax: 130, bonus: null, action: "Fast", stiffness: 8, sensitivity: 2, power: "XH", level: 24, copperLegal: false, cost: 1633 },
+      { length: 1.8, image: null, loadCap: 35, testMin: 18, testMax: 65, bonus: null, action: "Fast", stiffness: 7, sensitivity: 2, power: "H", level: 24, copperLegal: false, cost: 1575 },
+      { length: 1.8, image: null, loadCap: 39.4, testMin: 30, testMax: 110, bonus: null, action: "Fast", stiffness: 7, sensitivity: 2, power: "XH", level: 24, copperLegal: false, cost: 1575 },
+    ]
+  },
+  {
+    model: "Karelia Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 34.1, testMin: 40, testMax: 120, bonus: null, action: "Extra-Fast", stiffness: 8, sensitivity: 3, power: "XH", level: 22, copperLegal: false, cost: 1394 },
+      { length: 2.0, image: null, loadCap: 32.1, testMin: 15, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 7, sensitivity: 3, power: "H", level: 22, copperLegal: false, cost: 1372 },
+    ]
+  },
+  {
+    model: "Fortuna Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 1.8, image: null, loadCap: 30.5, testMin: 35, testMax: 100, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 5, power: "XH", level: 20, copperLegal: false, cost: 1244 },
+      { length: 1.8, image: null, loadCap: 23.9, testMin: 20, testMax: 50, bonus: null, action: "Extra-Fast", stiffness: 10, sensitivity: 6, power: "H", level: 20, copperLegal: false, cost: 1136 },
+    ]
+  },
+  {
+    model: "Super Duty Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 28.5, testMin: 40, testMax: 150, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "XH", level: 20, copperLegal: false, cost: 938 },
+      { length: 1.8, image: null, loadCap: 27.7, testMin: 30, testMax: 120, bonus: null, action: "Fast", stiffness: 9, sensitivity: 3, power: "XH", level: 20, copperLegal: false, cost: 895 },
+    ]
+  },
+  {
+    model: "Mechta", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 23, testMin: 25, testMax: 90, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 5, power: "XH", level: 14, copperLegal: false, cost: 739 },
+    ]
+  },
+  {
+    model: "Hevy Jerk", type: "jerkbait", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 13.1, testMin: 25, testMax: 90, bonus: null, action: "Extra-Fast", stiffness: 9, sensitivity: 0, power: "XH", level: 18, copperLegal: false, cost: 398 },
+      { length: 2.1, image: null, loadCap: 15.4, testMin: 40, testMax: 120, bonus: null, action: "Fast", stiffness: 10, sensitivity: 0, power: "XH", level: 18, copperLegal: false, cost: 372 },
+    ]
+  },
+  {
+    model: "Monster Match", type: "match", image: null,
+    variants: [
+      { length: 4.4, image: null, loadCap: 65.0, testMin: 12, testMax: 60, bonus: "Match & Hair Rig +3", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 15900 },
+      { length: 4.0, image: null, loadCap: 58.0, testMin: 7, testMax: 49, bonus: "Match & Hair Rig +3", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 14065 },
+      { length: 3.6, image: null, loadCap: 50.0, testMin: 6, testMax: 42, bonus: "Match & Hair Rig +3", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 11568 },
+      { length: 3.2, image: null, loadCap: 31.5, testMin: 4.5, testMax: 28, bonus: "+25%, Match & Hair Rig +3", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 11197 },
+    ]
+  },
+  {
+    model: "Plasma Match", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 54.0, testMin: 8, testMax: 56, bonus: "+5%, Match & Hair Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7994 },
+      { length: 3.8, image: null, loadCap: 46.0, testMin: 5, testMax: 45, bonus: "+5%, Match & Hair Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7684 },
+      { length: 3.4, image: null, loadCap: 34.0, testMin: 4, testMax: 28, bonus: "+25%, Match & Hair Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 7326 },
+      { length: 3.2, image: null, loadCap: 22.0, testMin: 3, testMax: 21, bonus: "+50%, Match & Hair Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7326 },
+    ]
+  },
+  {
+    model: "Shooting Match", type: "match", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 58.0, testMin: 30, testMax: 250, bonus: "+10%", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 6601 },
+      { length: 4.2, image: null, loadCap: 52.0, testMin: 5, testMax: 50, bonus: "+10%", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 6247 },
+    ]
+  },
+  {
+    model: "Raven Match", type: "match", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 40.0, testMin: 12, testMax: 54, bonus: "+5%, Float Rod Skill +2", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5557 },
+      { length: 3.4, image: null, loadCap: 36.0, testMin: 5, testMax: 35, bonus: "+5%, Float Rod Skill +2", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5557 },
+      { length: 3.2, image: null, loadCap: 18.0, testMin: 2, testMax: 8, bonus: "+50%, Float Rod Skill +2", action: "Medium", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 5440 },
+    ]
+  },
+  {
+    model: "Rebellion Match", type: "match", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 35.0, testMin: 8, testMax: 42, bonus: "+10%, Match & Hair Rig +2", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5987 },
+      { length: 4.2, image: null, loadCap: 41.0, testMin: 12, testMax: 60, bonus: "+5%, Match & Hair Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5395 },
+      { length: 3.9, image: null, loadCap: 41.2, testMin: 12, testMax: 60, bonus: "+5%, Match & Hair Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5198 },
+    ]
+  },
+  {
+    model: "Falcon Match", type: "match", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 44.1, testMin: 30, testMax: 250, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4597 },
+      { length: 3.6, image: null, loadCap: 42.6, testMin: 10, testMax: 55, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4263 },
+      { length: 3.9, image: null, loadCap: 42.6, testMin: 10, testMax: 55, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4489 },
+    ]
+  },
+  {
+    model: "Borray Match", type: "match", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 23.9, testMin: 7, testMax: 49, bonus: "Float Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3975 },
+      { length: 4.2, image: null, loadCap: 23.9, testMin: 7, testMax: 49, bonus: "Float Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3692 },
+      { length: 3.6, image: null, loadCap: 14.2, testMin: 4, testMax: 21, bonus: "+25%, Float Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 3509 },
+    ]
+  },
+  {
+    model: "Inverter Match", type: "match", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 15.8, testMin: 6, testMax: 28, bonus: "+5%", action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2469 },
+      { length: 3.3, image: null, loadCap: 15.8, testMin: 6, testMax: 28, bonus: "+5%", action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2400 },
+      { length: 3.0, image: null, loadCap: 15.8, testMin: 6, testMax: 28, bonus: "+5%", action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2330 },
+    ]
+  },
+  {
+    model: "Elementary Match", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 19.5, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2025 },
+      { length: 3.9, image: null, loadCap: 19.5, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1970 },
+    ]
+  },
+  {
+    model: "Ethnic Match", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 20.0, testMin: 12, testMax: 45, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2117 },
+      { length: 3.8, image: null, loadCap: 18.0, testMin: 6, testMax: 30, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2008 },
+      { length: 3.4, image: null, loadCap: 18.0, testMin: 6, testMax: 30, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1898 },
+    ]
+  },
+  {
+    model: "Model One", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 16.9, testMin: 24, testMax: 245, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1630 },
+      { length: 4.2, image: null, loadCap: 16.2, testMin: 7, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1581 },
+    ]
+  },
+  {
+    model: "Sport Match", type: "match", image: null,
+    variants: [
+      { length: 4.4, image: null, loadCap: 14.0, testMin: 3, testMax: 14, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 1370 },
+      { length: 4.0, image: null, loadCap: 14.0, testMin: 3, testMax: 14, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 1330 },
+      { length: 3.6, image: null, loadCap: 14.0, testMin: 3, testMax: 14, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 1295 },
+      { length: 3.3, image: null, loadCap: 14.0, testMin: 3, testMax: 14, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 1261 },
+    ]
+  },
+  {
+    model: "Katapulta 4.2", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 16.0, testMin: 25, testMax: 275, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1153 },
+    ]
+  },
+  {
+    model: "Fortuna Match", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 16.7, testMin: 7, testMax: 32, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1211 },
+      { length: 3.9, image: null, loadCap: 13.0, testMin: 5, testMax: 18, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 1147 },
+    ]
+  },
+  {
+    model: "Karelia Match", type: "match", image: null,
+    variants: [
+      { length: 3.8, image: null, loadCap: 14.0, testMin: 7, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 999 },
+      { length: 3.2, image: null, loadCap: 13.0, testMin: 5, testMax: 30, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 950 },
+    ]
+  },
+  {
+    model: "Vertigo Match", type: "match", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 12.6, testMin: 10, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 917 },
+      { length: 3.9, image: null, loadCap: 12.4, testMin: 7, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 895 },
+    ]
+  },
+  {
+    model: "Genius Match", type: "match", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 8.7, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 819 },
+      { length: 3.5, image: null, loadCap: 8.7, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 778 },
+    ]
+  },
+  {
+    model: "Akkord Match", type: "match", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 9.0, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 755 },
+      { length: 3.6, image: null, loadCap: 9.0, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 715 },
+    ]
+  },
+  {
+    model: "Elite Match", type: "match", image: null,
+    variants: [
+      { length: 5.4, image: null, loadCap: 8.1, testMin: 30, testMax: 250, bonus: null, action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 695 },
+      { length: 6.0, image: null, loadCap: 7.1, testMin: 5, testMax: 25, bonus: null, action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 698 },
+      { length: 5.4, image: null, loadCap: 7.1, testMin: 5, testMax: 25, bonus: null, action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 975 },
+      { length: 4.8, image: null, loadCap: 6.8, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 640 },
+      { length: 3.6, image: null, loadCap: 6.8, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 625 },
+    ]
+  },
+  {
+    model: "Harp Match", type: "match", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 4.6, testMin: 7, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 395 },
+      { length: 4.8, image: null, loadCap: 4.6, testMin: 7, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 374 },
+      { length: 3.6, image: null, loadCap: 6.1, testMin: 15, testMax: 45, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 355 },
+    ]
+  },
+  {
+    model: "Ranger Match", type: "match", image: null,
+    variants: [
+      { length: 4.8, image: null, loadCap: 4.4, testMin: 10, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 67 },
+      { length: 3.9, image: null, loadCap: 4.4, testMin: 10, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 48 },
+    ]
+  },
+  {
+    model: "Master Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Bolognese Rig +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 13296 },
+      { length: 7.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Bolognese Rig +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 12382 },
+      { length: 6.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Bolognese Rig +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 11407 },
+      { length: 5.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Bolognese Rig +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10914 },
+    ]
+  },
+  {
+    model: "Razor Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7924 },
+      { length: 5.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7684 },
+      { length: 4.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7445 },
+    ]
+  },
+  {
+    model: "Inferno Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9280 },
+      { length: 7.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 8634 },
+      { length: 6.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7913 },
+      { length: 5.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7196 },
+    ]
+  },
+  {
+    model: "Rebellion BL", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 10.5, testMin: 3, testMax: 18, bonus: "+10%, Bolognese Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5500 },
+      { length: 6.0, image: null, loadCap: 10.5, testMin: 3, testMax: 18, bonus: "+10%, Bolognese Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5071 },
+    ]
+  },
+  {
+    model: "Crimson Star BL", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 13.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4789 },
+      { length: 7.0, image: null, loadCap: 13.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4596 },
+      { length: 6.0, image: null, loadCap: 13.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4469 },
+      { length: 5.0, image: null, loadCap: 13.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4262 },
+    ]
+  },
+  {
+    model: "Falcon BL", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 20.7, testMin: 4, testMax: 20, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4294 },
+      { length: 6.0, image: null, loadCap: 20.7, testMin: 4, testMax: 20, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3851 },
+      { length: 4.0, image: null, loadCap: 20.7, testMin: 4, testMax: 20, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3691 },
+    ]
+  },
+  {
+    model: "Spirit Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3827 },
+      { length: 6.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3782 },
+      { length: 5.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3679 },
+    ]
+  },
+  {
+    model: "Windmaster BL", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 7.9, testMin: 3, testMax: 15, bonus: "+50%, Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3194 },
+      { length: 7.0, image: null, loadCap: 7.9, testMin: 3, testMax: 15, bonus: "+50%, Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3006 },
+      { length: 5.0, image: null, loadCap: 7.9, testMin: 3, testMax: 15, bonus: "+50%, Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2899 },
+    ]
+  },
+  {
+    model: "Heritage BL", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 8.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1960 },
+      { length: 6.0, image: null, loadCap: 8.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1864 },
+      { length: 5.0, image: null, loadCap: 8.0, testMin: 4, testMax: 20, bonus: "Bolognese Rig +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1799 },
+    ]
+  },
+  {
+    model: "Ethnic Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 14.0, testMin: 4, testMax: 30, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2128 },
+      { length: 6.0, image: null, loadCap: 14.0, testMin: 4, testMax: 30, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1919 },
+      { length: 4.0, image: null, loadCap: 14.0, testMin: 4, testMax: 30, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1798 },
+    ]
+  },
+  {
+    model: "Model One Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 10.3, testMin: 4, testMax: 25, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1460 },
+      { length: 5.0, image: null, loadCap: 10.3, testMin: 4, testMax: 25, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1277 },
+    ]
+  },
+  {
+    model: "Mechta Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 10.5, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1099 },
+      { length: 6.0, image: null, loadCap: 10.5, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1077 },
+      { length: 5.0, image: null, loadCap: 10.5, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 980 },
+    ]
+  },
+  {
+    model: "Ryazanka", type: "bolognese", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 9.1, testMin: 4, testMax: 30, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 995 },
+    ]
+  },
+  {
+    model: "Fortuna Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 4.7, testMin: 3, testMax: 20, bonus: "Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 899 },
+      { length: 6.0, image: null, loadCap: 4.7, testMin: 3, testMax: 20, bonus: "Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 859 },
+      { length: 5.0, image: null, loadCap: 4.7, testMin: 3, testMax: 20, bonus: "Bolognese Rig +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 817 },
+    ]
+  },
+  {
+    model: "Genius Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 4.9, testMin: 3, testMax: 24, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 685 },
+      { length: 4.0, image: null, loadCap: 4.9, testMin: 3, testMax: 24, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 642 },
+    ]
+  },
+  {
+    model: "Linear Bolognese", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 8.1, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 511 },
+      { length: 6.0, image: null, loadCap: 8.1, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 490 },
+      { length: 5.0, image: null, loadCap: 8.1, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 475 },
+      { length: 4.0, image: null, loadCap: 8.1, testMin: 5, testMax: 35, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 455 },
+    ]
+  },
+  {
+    model: "KingMaster", type: "bolognese", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 6.2, testMin: 5, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 385 },
+      { length: 6.0, image: null, loadCap: 6.2, testMin: 5, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 370 },
+      { length: 5.0, image: null, loadCap: 6.2, testMin: 5, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 352 },
+    ]
+  },
+  {
+    model: "S-Eagle", type: "bolognese", image: null,
+    variants: [
+      { length: 7.5, image: null, loadCap: 6.2, testMin: 3, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 199 },
+      { length: 6.0, image: null, loadCap: 6.2, testMin: 3, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 187 },
+      { length: 4.5, image: null, loadCap: 6.2, testMin: 3, testMax: 35, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 175 },
+    ]
+  },
+  {
+    model: "Siren", type: "bolognese", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 5.3, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 148 },
+      { length: 4.0, image: null, loadCap: 5.3, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 133 },
+    ]
+  },
+  {
+    model: "Sensiv II", type: "bolognese", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 3.8, testMin: 5, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 71 },
+      { length: 5.0, image: null, loadCap: 3.8, testMin: 5, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 65 },
+      { length: 4.0, image: null, loadCap: 3.8, testMin: 5, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 59 },
+    ]
+  },
+  {
+    model: "Master", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Fixed & Sliding +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 12980 },
+      { length: 7.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Fixed & Sliding +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 11960 },
+      { length: 6.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Fixed & Sliding +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10868 },
+      { length: 5.0, image: null, loadCap: 17.0, testMin: 2, testMax: 18, bonus: "Fixed & Sliding +3", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10177 },
+    ]
+  },
+  {
+    model: "Razor Ultra", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 5.6, testMin: 1, testMax: 5, bonus: "+100%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 8514 },
+      { length: 7.0, image: null, loadCap: 5.6, testMin: 1, testMax: 5, bonus: "+100%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 7913 },
+      { length: 6.0, image: null, loadCap: 5.6, testMin: 1, testMax: 5, bonus: "+100%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 7435 },
+      { length: 5.0, image: null, loadCap: 5.6, testMin: 1, testMax: 5, bonus: "+100%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 7196 },
+    ]
+  },
+  {
+    model: "Razor", type: "telescopic", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7207 },
+      { length: 5.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 6851 },
+      { length: 4.0, image: null, loadCap: 10.0, testMin: 1, testMax: 10, bonus: "+50%, Fixed & Sliding +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 6614 },
+    ]
+  },
+  {
+    model: "Inferno", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 8514 },
+      { length: 7.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7793 },
+      { length: 6.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7078 },
+      { length: 5.0, image: null, loadCap: 25.0, testMin: 2, testMax: 18, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 6485 },
+    ]
+  },
+  {
+    model: "Excellent Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 7.9, image: null, loadCap: 7.1, testMin: 2, testMax: 12, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 4199 },
+      { length: 5.8, image: null, loadCap: 7.1, testMin: 2, testMax: 12, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3899 },
+      { length: 4.0, image: null, loadCap: 7.1, testMin: 2, testMax: 12, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3499 },
+    ]
+  },
+  {
+    model: "Crimson Star TL", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 13.0, testMin: 3, testMax: 18, bonus: "Fixed & Sliding +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3988 },
+      { length: 7.0, image: null, loadCap: 13.0, testMin: 3, testMax: 18, bonus: "Fixed & Sliding +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3699 },
+      { length: 6.0, image: null, loadCap: 13.0, testMin: 3, testMax: 18, bonus: "Fixed & Sliding +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3543 },
+      { length: 5.0, image: null, loadCap: 13.0, testMin: 3, testMax: 18, bonus: "Fixed & Sliding +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3464 },
+    ]
+  },
+  {
+    model: "Falcon", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 21.8, testMin: 3, testMax: 15, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3689 },
+      { length: 6.0, image: null, loadCap: 21.8, testMin: 3, testMax: 15, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3398 },
+      { length: 4.0, image: null, loadCap: 21.8, testMin: 3, testMax: 15, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3101 },
+    ]
+  },
+  {
+    model: "Spirit", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3358 },
+      { length: 6.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3145 },
+      { length: 5.0, image: null, loadCap: 18.0, testMin: 2, testMax: 18, bonus: "+5%", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3032 },
+    ]
+  },
+  {
+    model: "Expression", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 4.5, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 3250 },
+      { length: 5.0, image: null, loadCap: 4.5, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 2968 },
+    ]
+  },
+  {
+    model: "Windmaster TL", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 7.9, testMin: 2, testMax: 12, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2631 },
+      { length: 5.0, image: null, loadCap: 7.9, testMin: 2, testMax: 12, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2452 },
+    ]
+  },
+  {
+    model: "Ethnic Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 14.0, testMin: 2, testMax: 18, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1919 },
+      { length: 6.0, image: null, loadCap: 14.0, testMin: 2, testMax: 18, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1788 },
+      { length: 4.0, image: null, loadCap: 14.0, testMin: 2, testMax: 18, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1590 },
+    ]
+  },
+  {
+    model: "Heritage TL", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 8.0, testMin: 2, testMax: 8, bonus: "Fixed +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1596 },
+      { length: 6.0, image: null, loadCap: 8.0, testMin: 2, testMax: 8, bonus: "Fixed +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1500 },
+      { length: 5.0, image: null, loadCap: 8.0, testMin: 2, testMax: 8, bonus: "Fixed & Sliding +1", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1424 },
+    ]
+  },
+  {
+    model: "Soul Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 3.5, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 1482 },
+      { length: 5.0, image: null, loadCap: 3.5, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 1340 },
+    ]
+  },
+  {
+    model: "Crystal Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 6.0, testMin: 2, testMax: 10, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 1460 },
+      { length: 5.0, image: null, loadCap: 6.0, testMin: 2, testMax: 10, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 1319 },
+    ]
+  },
+  {
+    model: "Aurora Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 12.0, testMin: 3, testMax: 25, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1370 },
+      { length: 5.0, image: null, loadCap: 12.0, testMin: 3, testMax: 25, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1262 },
+    ]
+  },
+  {
+    model: "Ataman UL", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 3.1, testMin: 1, testMax: 5, bonus: "+100%", action: "Medium", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 1103 },
+      { length: 6.0, image: null, loadCap: 3.1, testMin: 1, testMax: 5, bonus: "+100%", action: "Medium", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 990 },
+      { length: 4.0, image: null, loadCap: 3.1, testMin: 1, testMax: 5, bonus: "+100%", action: "Medium", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 849 },
+    ]
+  },
+  {
+    model: "Ataman L", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 5.0, testMin: 2, testMax: 10, bonus: "+50%", action: "Medium", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 1103 },
+      { length: 6.0, image: null, loadCap: 5.0, testMin: 2, testMax: 10, bonus: "+50%", action: "Medium", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 990 },
+      { length: 4.0, image: null, loadCap: 5.0, testMin: 2, testMax: 10, bonus: "+50%", action: "Medium", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 849 },
+    ]
+  },
+  {
+    model: "Model One", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 11.2, testMin: 7, testMax: 80, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 990 },
+    ]
+  },
+  {
+    model: "Ryazanka BK", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 9.1, testMin: 2, testMax: 25, bonus: "+25%", action: "Slow", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 998 },
+      { length: 6.0, image: null, loadCap: 9.1, testMin: 2, testMax: 25, bonus: "+25%", action: "Slow", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 940 },
+      { length: 4.0, image: null, loadCap: 9.1, testMin: 2, testMax: 25, bonus: "+25%", action: "Slow", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 898 },
+    ]
+  },
+  {
+    model: "White Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 10.5, testMin: 3, testMax: 20, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 949 },
+      { length: 4.0, image: null, loadCap: 10.5, testMin: 3, testMax: 20, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 859 },
+    ]
+  },
+  {
+    model: "Mechta Tele.", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 10.5, testMin: 1, testMax: 30, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 879 },
+      { length: 6.0, image: null, loadCap: 10.5, testMin: 1, testMax: 30, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 799 },
+    ]
+  },
+  {
+    model: "Model Two", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 9.4, testMin: 8, testMax: 60, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 778 },
+      { length: 7.0, image: null, loadCap: 9.4, testMin: 8, testMax: 60, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 740 },
+      { length: 6.0, image: null, loadCap: 9.4, testMin: 8, testMax: 60, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 715 },
+      { length: 5.0, image: null, loadCap: 9.4, testMin: 8, testMax: 60, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 675 },
+    ]
+  },
+  {
+    model: "Trophy", type: "telescopic", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 2.6, testMin: 1, testMax: 6, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 589 },
+      { length: 4.0, image: null, loadCap: 2.6, testMin: 1, testMax: 6, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 539 },
+    ]
+  },
+  {
+    model: "Genius", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 4.9, testMin: 3, testMax: 24, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 489 },
+      { length: 5.0, image: null, loadCap: 4.9, testMin: 3, testMax: 24, bonus: "+25%", action: "Fast", stiffness: null, sensitivity: null, power: "ML", level: 1, copperLegal: false, cost: 454 },
+    ]
+  },
+  {
+    model: "Ultra Telescopic", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 2.2, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 429 },
+      { length: 6.0, image: null, loadCap: 2.2, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 415 },
+      { length: 5.0, image: null, loadCap: 2.2, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 400 },
+      { length: 4.0, image: null, loadCap: 2.2, testMin: 1, testMax: 5, bonus: "+100%", action: "Fast", stiffness: null, sensitivity: null, power: "UL", level: 1, copperLegal: false, cost: 389 },
+    ]
+  },
+  {
+    model: "Linear Tele.", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 8.7, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 394 },
+      { length: 6.0, image: null, loadCap: 8.7, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 375 },
+      { length: 5.0, image: null, loadCap: 8.7, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 360 },
+      { length: 4.0, image: null, loadCap: 8.7, testMin: 4, testMax: 40, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 349 },
+    ]
+  },
+  {
+    model: "Belmor Pole", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 8.6, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 369 },
+      { length: 5.0, image: null, loadCap: 8.6, testMin: 5, testMax: 25, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 339 },
+    ]
+  },
+  {
+    model: "RedStick", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 8.0, testMin: 2, testMax: 16, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 285 },
+      { length: 5.0, image: null, loadCap: 8.0, testMin: 2, testMax: 16, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 266 },
+    ]
+  },
+  {
+    model: "Kontakt Tele.", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 7.0, testMin: 2, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 219 },
+      { length: 6.0, image: null, loadCap: 7.0, testMin: 2, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 205 },
+      { length: 5.0, image: null, loadCap: 7.0, testMin: 2, testMax: 40, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 184 },
+    ]
+  },
+  {
+    model: "WalrusStick", type: "telescopic", image: null,
+    variants: [
+      { length: 8.0, image: null, loadCap: 7.4, testMin: 3, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 175 },
+      { length: 6.0, image: null, loadCap: 7.4, testMin: 3, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 168 },
+      { length: 5.0, image: null, loadCap: 7.4, testMin: 3, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 162 },
+      { length: 4.0, image: null, loadCap: 7.4, testMin: 3, testMax: 20, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 159 },
+    ]
+  },
+  {
+    model: "Hazel Fishing Rod", type: "telescopic", image: null,
+    variants: [
+      { length: 4.0, image: null, loadCap: 6.5, testMin: 3, testMax: 30, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 89.8 },
+    ]
+  },
+  {
+    model: "StarlingStick", type: "telescopic", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 6.1, testMin: 3, testMax: 25, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 68 },
+      { length: 4.0, image: null, loadCap: 6.1, testMin: 3, testMax: 25, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 58 },
+    ]
+  },
+  {
+    model: "Comfort Tele.", type: "telescopic", image: null,
+    variants: [
+      { length: 7.0, image: null, loadCap: 5.5, testMin: 1, testMax: 50, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 48.8 },
+      { length: 6.0, image: null, loadCap: 5.5, testMin: 1, testMax: 50, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 46.5 },
+      { length: 5.0, image: null, loadCap: 5.5, testMin: 1, testMax: 50, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 44.8 },
+    ]
+  },
+  {
+    model: "TeleStick", type: "telescopic", image: null,
+    variants: [
+      { length: 6.0, image: null, loadCap: 4.0, testMin: 5, testMax: 35, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 31 },
+      { length: 5.0, image: null, loadCap: 4.0, testMin: 5, testMax: 35, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 25 },
+      { length: 3.9, image: null, loadCap: 4.0, testMin: 5, testMax: 35, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 19 },
+    ]
+  },
+  {
+    model: "Poseidon Ultra", type: "deep sea", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 238.3, testMin: 400, testMax: 3000, bonus: "Marine Fishing +1, +5% Skill", action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 47999 },
+      { length: 2.1, image: null, loadCap: 232.2, testMin: 400, testMax: 3000, bonus: "Marine Fishing +1, +5% Skill", action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 43999 },
+    ]
+  },
+  {
+    model: "Poseidon", type: "deep sea", image: null,
+    variants: [
+      { length: 2.4, image: null, loadCap: 218.4, testMin: 400, testMax: 2500, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 36897 },
+      { length: 2.1, image: null, loadCap: 214.7, testMin: 400, testMax: 2500, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 33297 },
+      { length: 2.4, image: null, loadCap: 206.5, testMin: 300, testMax: 2000, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 31897 },
+      { length: 2.4, image: null, loadCap: 193.1, testMin: 200, testMax: 1400, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 29799 },
+      { length: 2.1, image: null, loadCap: 198.4, testMin: 300, testMax: 2000, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 29497 },
+      { length: 2.1, image: null, loadCap: 188.3, testMin: 200, testMax: 1400, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 27897 },
+    ]
+  },
+  {
+    model: "Polar Hunter", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 163.0, testMin: 200, testMax: 800, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 23696 },
+    ]
+  },
+  {
+    model: "Storm Rider", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 155.6, testMin: 200, testMax: 1000, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 20396 },
+      { length: 2.1, image: null, loadCap: 147.8, testMin: 200, testMax: 600, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 19797 },
+    ]
+  },
+  {
+    model: "Deep Attack", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 159.1, testMin: 500, testMax: 2000, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 19491 },
+    ]
+  },
+  {
+    model: "Arctic Special", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 125.5, testMin: 200, testMax: 600, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 16292 },
+    ]
+  },
+  {
+    model: "Tristar Deep Jig", type: "deep sea", image: null,
+    variants: [
+      { length: 2.35, image: null, loadCap: 135.6, testMin: 300, testMax: 1600, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 15898 },
+      { length: 2.0, image: null, loadCap: 128.2, testMin: 300, testMax: 1600, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 14897 },
+      { length: 2.35, image: null, loadCap: 119.3, testMin: 200, testMax: 1000, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 13897 },
+      { length: 2.0, image: null, loadCap: 115.4, testMin: 200, testMax: 1000, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 13197 },
+      { length: 2.0, image: null, loadCap: 107.5, testMin: 160, testMax: 600, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 12399 },
+    ]
+  },
+  {
+    model: "Nordmaster", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 95.0, testMin: 200, testMax: 700, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 9797 },
+    ]
+  },
+  {
+    model: "Coast Runner", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 83.1, testMin: 100, testMax: 500, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 8699 },
+      { length: 2.1, image: null, loadCap: 78.3, testMin: 60, testMax: 350, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 8296 },
+      { length: 2.1, image: null, loadCap: 76.0, testMin: 40, testMax: 240, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7897 },
+    ]
+  },
+  {
+    model: "Dual Strike", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 62.0, testMin: 30, testMax: 400, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 6799 },
+      { length: 1.85, image: null, loadCap: 59.2, testMin: 30, testMax: 400, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 6299 },
+      { length: 2.1, image: null, loadCap: 57.0, testMin: 30, testMax: 300, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 6199 },
+      { length: 2.1, image: null, loadCap: 55.0, testMin: 30, testMax: 200, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 5897 },
+    ]
+  },
+  {
+    model: "Fjordmaster", type: "deep sea", image: null,
+    variants: [
+      { length: 2.1, image: null, loadCap: 48.0, testMin: 80, testMax: 440, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 4699 },
+      { length: 2.1, image: null, loadCap: 46.1, testMin: 60, testMax: 320, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 4499 },
+      { length: 2.1, image: null, loadCap: 43.6, testMin: 50, testMax: 240, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 4194 },
+      { length: 2.1, image: null, loadCap: 40.2, testMin: 30, testMax: 160, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3899 },
+    ]
+  },
+  {
+    model: "Poseidon Mega Jig", type: "pilker", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 88.4, testMin: 60, testMax: 260, bonus: "Jig Rig +2, +7% Marine Skill", action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 16900 },
+    ]
+  },
+  {
+    model: "Poseidon Mega Pirk", type: "pilker", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 88.1, testMin: 90, testMax: 340, bonus: "Pilker Rig +2, +7% Marine Skill", action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 16900 },
+    ]
+  },
+  {
+    model: "Poseidon Lig & Pilker", type: "pilker", image: null,
+    variants: [
+      { length: 2.75, image: null, loadCap: 75.3, testMin: 80, testMax: 210, bonus: "+50%, Pilker & Jig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 9898 },
+      { length: 2.75, image: null, loadCap: 56.4, testMin: 40, testMax: 190, bonus: "+50%, Pilker & Jig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 8397 },
+      { length: 2.45, image: null, loadCap: 45.5, testMin: 30, testMax: 130, bonus: "+50%, Pilker & Jig +1", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 7499 },
+    ]
+  },
+  {
+    model: "Poseidon Sensi", type: "pilker", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 63.7, testMin: 50, testMax: 190, bonus: "+50%, Pilker & Jig +1, +5% Marine Skill", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 9498 },
+      { length: 2.4, image: null, loadCap: 49.2, testMin: 20, testMax: 130, bonus: "+50%, Pilker & Jig +1, +5% Marine Skill", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 8899 },
+    ]
+  },
+  {
+    model: "Ocean Queen", type: "pilker", image: null,
+    variants: [
+      { length: 2.6, image: null, loadCap: 68.2, testMin: 160, testMax: 420, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 6696 },
+      { length: 2.6, image: null, loadCap: 61.1, testMin: 100, testMax: 300, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 6197 },
+      { length: 2.6, image: null, loadCap: 48.2, testMin: 50, testMax: 150, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 5398 },
+    ]
+  },
+  {
+    model: "7 Seas", type: "pilker", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 54.0, testMin: 120, testMax: 420, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 4898 },
+      { length: 2.4, image: null, loadCap: 52.3, testMin: 120, testMax: 420, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 4598 },
+      { length: 2.7, image: null, loadCap: 41.3, testMin: 50, testMax: 190, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 4199 },
+      { length: 2.4, image: null, loadCap: 36.3, testMin: 30, testMax: 140, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 3899 },
+    ]
+  },
+  {
+    model: "Saltmaster Offshore", type: "pilker", image: null,
+    variants: [
+      { length: 2.65, image: null, loadCap: 38.2, testMin: 90, testMax: 320, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 3499 },
+    ]
+  },
+  {
+    model: "Saltmaster Inshore", type: "pilker", image: null,
+    variants: [
+      { length: 2.75, image: null, loadCap: 33.0, testMin: 40, testMax: 185, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2899 },
+    ]
+  },
+  {
+    model: "Saltmaster Fjord", type: "pilker", image: null,
+    variants: [
+      { length: 2.65, image: null, loadCap: 28.5, testMin: 25, testMax: 130, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2600 },
+    ]
+  },
+  {
+    model: "Saltmaster Ultra", type: "pilker", image: null,
+    variants: [
+      { length: 2.65, image: null, loadCap: 25.4, testMin: 20, testMax: 110, bonus: "+50%", action: "Fast", stiffness: null, sensitivity: null, power: "L", level: 1, copperLegal: false, cost: 2400 },
+    ]
+  },
+  {
+    model: "Legacy Ti 13-4.50", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 80.2, testMin: 70, testMax: 220, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 19989 },
+    ]
+  },
+  {
+    model: "Legacy Ti 13-4.00", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 78.0, testMin: 65, testMax: 195, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 18960 },
+    ]
+  },
+  {
+    model: "Legacy 13-4.50", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 80.2, testMin: 70, testMax: 220, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 18490 },
+    ]
+  },
+  {
+    model: "Legacy Ti 12-3.75", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 76.0, testMin: 60, testMax: 180, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 18384 },
+    ]
+  },
+  {
+    model: "Legacy Ti 12-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 75.0, testMin: 55, testMax: 170, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 17795 },
+    ]
+  },
+  {
+    model: "Legacy 13-4.00", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 78.0, testMin: 65, testMax: 195, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 17473 },
+    ]
+  },
+  {
+    model: "Legacy Ti 12-3.25", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 73.3, testMin: 50, testMax: 155, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 17258 },
+    ]
+  },
+  {
+    model: "Legacy Ti 12-3.00", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 72.1, testMin: 45, testMax: 140, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 17117 },
+    ]
+  },
+  {
+    model: "Legacy 12-3.75", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 76.0, testMin: 60, testMax: 180, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 16961 },
+    ]
+  },
+  {
+    model: "Legacy Ti 12-2.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 70.2, testMin: 40, testMax: 120, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 16604 },
+    ]
+  },
+  {
+    model: "Legacy 12-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 75.0, testMin: 55, testMax: 170, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 16493 },
+    ]
+  },
+  {
+    model: "Legacy 12-3.25", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 73.3, testMin: 50, testMax: 155, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 15978 },
+    ]
+  },
+  {
+    model: "Legacy 12-3.00", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 72.1, testMin: 45, testMax: 140, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 15837 },
+    ]
+  },
+  {
+    model: "Legacy 12-2.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 70.2, testMin: 40, testMax: 120, bonus: "Carp Rod Skill +3 (+7% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 15328 },
+    ]
+  },
+  {
+    model: "Avalon 13-3.75", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 66.0, testMin: 75, testMax: 195, bonus: "Carp Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 12266 },
+    ]
+  },
+  {
+    model: "Avalon 12-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 65.2, testMin: 70, testMax: 185, bonus: "Carp Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 11889 },
+    ]
+  },
+  {
+    model: "Avalon 12-3.25", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 64.1, testMin: 65, testMax: 170, bonus: "Carp Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 11196 },
+    ]
+  },
+  {
+    model: "Avalon 12-2.75", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 62.0, testMin: 55, testMax: 140, bonus: "Carp Rod Skill +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10949 },
+    ]
+  },
+  {
+    model: "Atlas 13-5.00", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 62.0, testMin: 80, testMax: 260, bonus: "+10% Feeder Skill", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10500 },
+    ]
+  },
+  {
+    model: "Sage 13-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 60.0, testMin: 60, testMax: 165, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10162 },
+    ]
+  },
+  {
+    model: "Sage 13-3.00", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 58.0, testMin: 50, testMax: 145, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 10089 },
+    ]
+  },
+  {
+    model: "Atlas 12-4.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 59.0, testMin: 70, testMax: 210, bonus: "+10% Feeder Skill", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9991 },
+    ]
+  },
+  {
+    model: "Sage 12-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 60.0, testMin: 60, testMax: 165, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9965 },
+    ]
+  },
+  {
+    model: "Sage 12-3.25", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 59.0, testMin: 55, testMax: 155, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9895 },
+    ]
+  },
+  {
+    model: "Sage 12-3.00", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 58.0, testMin: 50, testMax: 145, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9790 },
+    ]
+  },
+  {
+    model: "Atlas 12-4.00", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 57.0, testMin: 60, testMax: 185, bonus: "+10% Feeder Skill", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9733 },
+    ]
+  },
+  {
+    model: "Sage 12-2.75", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 56.0, testMin: 40, testMax: 130, bonus: "Carp Rod Skill +1 (+5% XP)", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 9477 },
+    ]
+  },
+  {
+    model: "Carp Dominator 128XH Med", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 51.0, testMin: 55, testMax: 200, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 8593 },
+    ]
+  },
+  {
+    model: "Carp Dominator 128XH Fast", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 47.5, testMin: 65, testMax: 180, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 8193 },
+    ]
+  },
+  {
+    model: "Native 13-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 52.0, testMin: 45, testMax: 160, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 8156 },
+    ]
+  },
+  {
+    model: "Native 12-3.50", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 52.0, testMin: 45, testMax: 160, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7996 },
+    ]
+  },
+  {
+    model: "Carp Dominator", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 49.6, testMin: 30, testMax: 160, bonus: "Carp Rod Skill +1", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7903 },
+      { length: 3.6, image: null, loadCap: 45.9, testMin: 50, testMax: 140, bonus: "Carp Rod Skill +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7664 },
+    ]
+  },
+  {
+    model: "Native 12-2.75", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 50.0, testMin: 35, testMax: 130, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 7888 },
+    ]
+  },
+  {
+    model: "Fortuna Carp", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 39.0, testMin: 35, testMax: 160, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1679 },
+      { length: 3.6, image: null, loadCap: 35.5, testMin: 28, testMax: 130, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1679 },
+      { length: 3.6, image: null, loadCap: 31.2, testMin: 18, testMax: 90, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1679 },
+    ]
+  },
+  {
+    model: "Mechta Carp", type: "carp", image: null,
+    variants: [
+      { length: 3.8, image: null, loadCap: 35.0, testMin: 40, testMax: 160, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1405 },
+      { length: 3.6, image: null, loadCap: 33.0, testMin: 30, testMax: 130, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1372 },
+      { length: 3.4, image: null, loadCap: 30.0, testMin: 20, testMax: 90, bonus: null, action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1318 },
+    ]
+  },
+  {
+    model: "Classic Model", type: "carp", image: null,
+    variants: [
+      { length: 3.6, image: null, loadCap: 27.4, testMin: 40, testMax: 130, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 995 },
+      { length: 3.6, image: null, loadCap: 26.0, testMin: 25, testMax: 90, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 995 },
+    ]
+  },
+  {
+    model: "Persey", type: "carp", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 20.1, testMin: 25, testMax: 115, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 755 },
+      { length: 3.4, image: null, loadCap: 20.1, testMin: 25, testMax: 115, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 716 },
+    ]
+  },
+  {
+    model: "Legacy Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 35.0, testMin: 12, testMax: 45, bonus: "Hair Rig +2, +25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 17898 },
+      { length: 3.0, image: null, loadCap: 32.4, testMin: 10, testMax: 30, bonus: "Hair Rig +2, +25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 14898 },
+      { length: 3.0, image: null, loadCap: 32.3, testMin: 10, testMax: 30, bonus: "Hair Rig +2, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 14898 },
+    ]
+  },
+  {
+    model: "Sage Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 31.3, testMin: 12, testMax: 45, bonus: "Hair Rig +1, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 5988 },
+      { length: 3.0, image: null, loadCap: 28.1, testMin: 10, testMax: 30, bonus: "Hair Rig +1, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 5488 },
+      { length: 2.7, image: null, loadCap: 27.1, testMin: 10, testMax: 30, bonus: "Hair Rig +1, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 4988 },
+    ]
+  },
+  {
+    model: "Royal Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 29.4, testMin: 15, testMax: 55, bonus: "+10% Feeder Skill, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 5163 },
+      { length: 3.0, image: null, loadCap: 24.5, testMin: 12, testMax: 36, bonus: "+10% Feeder Skill, +25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 5024 },
+      { length: 2.7, image: null, loadCap: 29.5, testMin: 10, testMax: 40, bonus: "+10% Feeder Skill, +25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 4966 },
+    ]
+  },
+  {
+    model: "Bunessan Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 14.9, testMin: 15, testMax: 45, bonus: "Simple Bottom Rig +2, +25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "XH", level: 1, copperLegal: false, cost: 3650 },
+      { length: 2.7, image: null, loadCap: 10.4, testMin: 8, testMax: 24, bonus: "Simple Bottom Rig +2, +50% XP", action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 2799 },
+      { length: 2.7, image: null, loadCap: 13.1, testMin: 12, testMax: 28, bonus: "Simple Bottom Rig +2, +25% XP", action: "Super", stiffness: null, sensitivity: null, power: "XH", level: 1, copperLegal: false, cost: 2799 },
+    ]
+  },
+  {
+    model: "Blackwood Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 18.0, testMin: 10, testMax: 50, bonus: "+10% Feeder Skill, +25% XP", action: "Slow", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 2197 },
+    ]
+  },
+  {
+    model: "Wingate Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 26.0, testMin: 12, testMax: 45, bonus: "+25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "H", level: 1, copperLegal: false, cost: 2099 },
+    ]
+  },
+  {
+    model: "Model One Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 25.9, testMin: 9, testMax: 41, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 1894 },
+      { length: 2.7, image: null, loadCap: 22.0, testMin: 7, testMax: 35, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 1599 },
+      { length: 2.4, image: null, loadCap: 15.1, testMin: 4, testMax: 18, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 999 },
+    ]
+  },
+  {
+    model: "Mechta", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 16.0, testMin: 20, testMax: 60, bonus: "+25% XP", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1100 },
+      { length: 2.7, image: null, loadCap: 15.0, testMin: 15, testMax: 50, bonus: "+25% XP", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1000 },
+      { length: 2.4, image: null, loadCap: 14.0, testMin: 10, testMax: 40, bonus: "+25% XP", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 800 },
+    ]
+  },
+  {
+    model: "Model Two Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 11.1, testMin: 8, testMax: 32, bonus: "+5% Feeder Skill, +25% XP", action: "Fast", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 899 },
+      { length: 2.7, image: null, loadCap: 6.2, testMin: 5, testMax: 21, bonus: "+5% Feeder Skill, +50% XP", action: "Fast", stiffness: null, sensitivity: null, power: "M", level: 1, copperLegal: false, cost: 819 },
+    ]
+  },
+  {
+    model: "Impuls", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 10.0, testMin: 10, testMax: 50, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 659 },
+    ]
+  },
+  {
+    model: "Persey", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 8.8, testMin: 5, testMax: 40, bonus: "+25% XP", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 485 },
+    ]
+  },
+  {
+    model: "Fortuna Picker", type: "picker", image: null,
+    variants: [
+      { length: 3.0, image: null, loadCap: 9.9, testMin: 7, testMax: 35, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: "MH", level: 1, copperLegal: false, cost: 389 },
+    ]
+  },
+  {
+    model: "Palmar", type: "picker", image: null,
+    variants: [
+      { length: 2.7, image: null, loadCap: 6.2, testMin: 5, testMax: 35, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 288 },
+      { length: 2.4, image: null, loadCap: 6.2, testMin: 5, testMax: 35, bonus: "+25% XP", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 268 },
+    ]
+  },
+  {
+    model: "Royal", type: "feeder", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 30.7, testMin: 50, testMax: 150, bonus: "+10% Feeder Skill", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5664 },
+      { length: 3.9, image: null, loadCap: 33.8, testMin: 35, testMax: 130, bonus: "+10% Feeder Skill", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5547 },
+      { length: 3.6, image: null, loadCap: 33.2, testMin: 20, testMax: 100, bonus: "+10% Feeder Skill", action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 5302 },
+    ]
+  },
+  {
+    model: "Blackwood", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 25.5, testMin: 30, testMax: 140, bonus: "+10% Feeder Skill", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4734 },
+      { length: 3.9, image: null, loadCap: 24.1, testMin: 20, testMax: 90, bonus: "+10% Feeder Skill", action: "Slow", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 4377 },
+    ]
+  },
+  {
+    model: "Bunessan", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 14.8, testMin: 20, testMax: 60, bonus: "Simple Bottom Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3193 },
+      { length: 3.9, image: null, loadCap: 16.0, testMin: 30, testMax: 95, bonus: "Simple Bottom Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3125 },
+      { length: 3.6, image: null, loadCap: 14.8, testMin: 20, testMax: 60, bonus: "Simple Bottom Rig +2", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3013 },
+      { length: 3.6, image: null, loadCap: 14.5, testMin: 25, testMax: 60, bonus: "Simple Bottom Rig +2", action: "Super", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 3013 },
+    ]
+  },
+  {
+    model: "Coldstream", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 35.8, testMin: 25, testMax: 120, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2732 },
+      { length: 3.9, image: null, loadCap: 35.8, testMin: 25, testMax: 120, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2553 },
+      { length: 3.6, image: null, loadCap: 33.3, testMin: 16, testMax: 80, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2453 },
+    ]
+  },
+  {
+    model: "Wingate", type: "feeder", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 33.7, testMin: 40, testMax: 160, bonus: "Feeder Rod Skill +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 2031 },
+      { length: 3.6, image: null, loadCap: 33.0, testMin: 30, testMax: 120, bonus: "Feeder Rod Skill +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1196 },
+      { length: 3.3, image: null, loadCap: 32.3, testMin: 25, testMax: 100, bonus: "Feeder Rod Skill +1", action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1911 },
+    ]
+  },
+  {
+    model: "Model One", type: "feeder", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 29.7, testMin: 30, testMax: 140, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1459 },
+      { length: 4.2, image: null, loadCap: 29.3, testMin: 25, testMax: 115, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1389 },
+      { length: 3.9, image: null, loadCap: 27.9, testMin: 18, testMax: 85, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1343 },
+      { length: 3.6, image: null, loadCap: 27.5, testMin: 14, testMax: 65, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 1298 },
+    ]
+  },
+  {
+    model: "Model Two", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 26.2, testMin: 30, testMax: 150, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 918 },
+      { length: 3.9, image: null, loadCap: 26.0, testMin: 30, testMax: 120, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 884 },
+      { length: 3.6, image: null, loadCap: 25.9, testMin: 18, testMax: 95, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 868 },
+      { length: 3.6, image: null, loadCap: 23.9, testMin: 15, testMax: 70, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 835 },
+    ]
+  },
+  {
+    model: "Mechta", type: "feeder", image: null,
+    variants: [
+      { length: 4.4, image: null, loadCap: 25.0, testMin: 45, testMax: 160, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 849 },
+      { length: 4.2, image: null, loadCap: 25.0, testMin: 35, testMax: 120, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 839 },
+      { length: 3.9, image: null, loadCap: 25.0, testMin: 30, testMax: 100, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 819 },
+      { length: 3.6, image: null, loadCap: 25.0, testMin: 25, testMax: 90, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 799 },
+    ]
+  },
+  {
+    model: "Ryazanka SKF", type: "feeder", image: null,
+    variants: [
+      { length: 3.8, image: null, loadCap: 26.1, testMin: 25, testMax: 100, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 800 },
+    ]
+  },
+  {
+    model: "Sentense", type: "feeder", image: null,
+    variants: [
+      { length: 3.4, image: null, loadCap: 24.7, testMin: 15, testMax: 80, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 757 },
+    ]
+  },
+  {
+    model: "Impuls", type: "feeder", image: null,
+    variants: [
+      { length: 4.5, image: null, loadCap: 21.0, testMin: 30, testMax: 140, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 639 },
+      { length: 3.9, image: null, loadCap: 21.0, testMin: 25, testMax: 120, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 619 },
+      { length: 3.6, image: null, loadCap: 21.0, testMin: 20, testMax: 90, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 599 },
+    ]
+  },
+  {
+    model: "Fortuna Feeder", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 19.0, testMin: 35, testMax: 120, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 478 },
+      { length: 3.9, image: null, loadCap: 17.7, testMin: 20, testMax: 100, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 449 },
+    ]
+  },
+  {
+    model: "Persey", type: "feeder", image: null,
+    variants: [
+      { length: 4.4, image: null, loadCap: 16.0, testMin: 20, testMax: 110, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 398 },
+      { length: 3.6, image: null, loadCap: 16.0, testMin: 20, testMax: 110, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 380 },
+    ]
+  },
+  {
+    model: "Fantazia", type: "feeder", image: null,
+    variants: [
+      { length: 4.1, image: null, loadCap: 14.0, testMin: 45, testMax: 180, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 329 },
+      { length: 3.9, image: null, loadCap: 14.0, testMin: 40, testMax: 140, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 319 },
+      { length: 3.7, image: null, loadCap: 14.0, testMin: 30, testMax: 120, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 309 },
+      { length: 3.5, image: null, loadCap: 14.0, testMin: 20, testMax: 90, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 299 },
+    ]
+  },
+  {
+    model: "Palmar", type: "feeder", image: null,
+    variants: [
+      { length: 4.6, image: null, loadCap: 12.5, testMin: 25, testMax: 90, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 263 },
+      { length: 3.8, image: null, loadCap: 12.5, testMin: 25, testMax: 90, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 248 },
+    ]
+  },
+  {
+    model: "Asteria", type: "feeder", image: null,
+    variants: [
+      { length: 4.0, image: null, loadCap: 7.8, testMin: 10, testMax: 80, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 149 },
+      { length: 3.4, image: null, loadCap: 7.8, testMin: 10, testMax: 80, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 139 },
+    ]
+  },
+  {
+    model: "Comfort", type: "feeder", image: null,
+    variants: [
+      { length: 3.9, image: null, loadCap: 6.0, testMin: 30, testMax: 120, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 90 },
+      { length: 3.6, image: null, loadCap: 6.0, testMin: 20, testMax: 100, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 84 },
+      { length: 3.3, image: null, loadCap: 6.0, testMin: 15, testMax: 80, bonus: null, action: "Fast", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 80 },
+    ]
+  },
+  {
+    model: "Sorento", type: "feeder", image: null,
+    variants: [
+      { length: 4.2, image: null, loadCap: 4.6, testMin: 20, testMax: 100, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 42 },
+      { length: 3.8, image: null, loadCap: 4.6, testMin: 20, testMax: 100, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 40 },
+      { length: 3.2, image: null, loadCap: 4.6, testMin: 20, testMax: 100, bonus: null, action: "Medium", stiffness: null, sensitivity: null, power: null, level: 1, copperLegal: false, cost: 38 },
+    ]
+  },
   // --- ADD MORE ROD MODELS BELOW ---
 ];
 
@@ -9544,17 +11586,22 @@ function closeBuildModal(e) {
 // ============================================================
 let currentGearType = 'reels';
 let currentReelTypeFilter = 'all';
+let currentRodTypeFilter = 'all';
 
 function setGearType(type, btn) {
   currentGearType = type;
   document.querySelectorAll('.gear-type-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  // show reel type filters only when viewing reels
+  // show reel/rod type filters based on current type
   const reelFilters = document.getElementById('reel-type-filters');
+  const rodFilters = document.getElementById('rod-type-filters');
   if (reelFilters) reelFilters.style.display = type === 'reels' ? '' : 'none';
-  // re-activate the All reel type btn
+  if (rodFilters) rodFilters.style.display = type === 'rods' ? '' : 'none';
+  // re-activate the All btn for the relevant panel
   const allReelBtn = document.querySelector('#reel-type-filters .gear-type-btn');
   if (allReelBtn && type === 'reels') { allReelBtn.classList.add('active'); currentReelTypeFilter = 'all'; }
+  const allRodBtn = document.querySelector('#rod-type-filters .gear-type-btn');
+  if (allRodBtn && type === 'rods') { allRodBtn.classList.add('active'); currentRodTypeFilter = 'all'; }
   renderGearDB();
 }
 
@@ -9563,6 +11610,38 @@ function setReelTypeFilter(reelType, btn) {
   document.querySelectorAll('#reel-type-filters .gear-type-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderGearDB();
+}
+
+function setRodTypeFilter(rodType, btn) {
+  currentRodTypeFilter = rodType;
+  document.querySelectorAll('#rod-type-filters .gear-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGearDB();
+}
+
+function toggleRodGroup(grpId, btn, filterKey) {
+  const grp = document.getElementById(grpId);
+  const arrow = document.getElementById(grpId + '-arrow');
+  const isOpen = grp.style.display !== 'none';
+  // Close all groups first
+  ['grp-spinning','grp-float','grp-bottom','grp-sea'].forEach(id => {
+    const g = document.getElementById(id);
+    const a = document.getElementById(id + '-arrow');
+    if (g) g.style.display = 'none';
+    if (a) { a.style.transform = ''; }
+  });
+  if (!isOpen) {
+    grp.style.display = 'flex';
+    if (arrow) arrow.style.transform = 'rotate(90deg)';
+    // Also set the category filter
+    setRodTypeFilter(filterKey, btn);
+  } else {
+    // Clicking open group again collapses and resets to All
+    const allBtn = document.querySelector('#rod-type-filters .gear-type-btn');
+    setRodTypeFilter('all', allBtn);
+    document.querySelectorAll('#rod-type-filters .gear-type-btn').forEach(b => b.classList.remove('active'));
+    if (allBtn) allBtn.classList.add('active');
+  }
 }
 
 function renderGearDB() {
@@ -9611,7 +11690,7 @@ function renderGearDB() {
         <div class="model-card-body">
           <div class="model-card-name">${m.model}</div>
           ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
-          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${m.type}</div>
+          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${{ "spinning": "Spinning", "Low-Profile baitcasting": "Low-Profile Baitcasting", "Classic baitcasting": "Classic Baitcasting", "Conventional baitcasting": "Conventional Baitcasting" }[m.type] || m.type}</div>
           <div class="model-card-meta">
             <span class="model-card-tag">Lvl ${minLevel}+</span>
             ${anyUpgradeable ? `<span class="model-card-tag upgradeable">Upgradeable</span>` : ''}
@@ -9624,8 +11703,22 @@ function renderGearDB() {
     }).join('') || `<div class="no-results">No reels found.</div>`;
 
   } else if (currentGearType === 'rods') {
-    let models = rodModels;
+    let models = [...rodModels];
+    // filter by rod type — category keys start with _ (e.g. _spinning filters all spinning subtypes)
+    if (currentRodTypeFilter !== 'all') {
+      const spinningTypes = ['spinning','casting','jerkbait'];
+      const floatTypes = ['telescopic','bolognese','match'];
+      const bottomTypes = ['carp','feeder','picker'];
+      const seaTypes = ['pilker','deep sea'];
+      if (currentRodTypeFilter === '_spinning') models = models.filter(m => spinningTypes.includes(m.type));
+      else if (currentRodTypeFilter === '_float') models = models.filter(m => floatTypes.includes(m.type));
+      else if (currentRodTypeFilter === '_bottom') models = models.filter(m => bottomTypes.includes(m.type));
+      else if (currentRodTypeFilter === '_sea') models = models.filter(m => seaTypes.includes(m.type));
+      else models = models.filter(m => m.type === currentRodTypeFilter);
+    }
     if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.subtype?.toLowerCase().includes(search));
+    models = models.map(m => ({ ...m, variants: [...m.variants].sort((a,b) => (a.cost||0) - (b.cost||0)) }));
+    models.sort((a,b) => (Math.min(...a.variants.map(v=>v.cost||0))) - (Math.min(...b.variants.map(v=>v.cost||0))));
     grid.innerHTML = models.map((m) => {
       const mi = rodModels.indexOf(m);
       const minLevel = Math.min(...m.variants.map(v => v.level));
@@ -9642,12 +11735,13 @@ function renderGearDB() {
       const minCost = Math.min(...m.variants.map(v => v.cost || Infinity));
       const costStr = isFinite(minCost) ? (m.variants.length > 1 ? 'from ' : '') + minCost.toLocaleString() + ' silver' : '—';
       const action = [...new Set(m.variants.map(v => v.action))].join(' / ');
+      const lengths = [...new Set(m.variants.map(v => v.length + 'm'))].join(', ');
       return `<div class="model-card" onclick="openGearModal('rods',${mi})">
         <div class="model-card-img">${img}</div>
         <div class="model-card-body">
           <div class="model-card-name">${m.model}</div>
           ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
-          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${((m.subtype||m.type).charAt(0).toUpperCase()+(m.subtype||m.type).slice(1))}</div>
+          <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${({"spinning":"Spinning","casting":"Casting","jerkbait":"Jerkbait","telescopic":"Telescopic","bolognese":"Bolognese","match":"Match","carp":"Carp","feeder":"Feeder","picker":"Picker","pilker":"Pilker","deep sea":"Deep Sea / Trolling","deep sea":"Deep Sea / Trolling"}[m.type] || m.type)}</div>
           <div class="model-card-meta">
             <span class="model-card-tag">Lvl ${minLevel}+</span>
           </div>
@@ -9747,7 +11841,7 @@ function openGearModal(type, modelIndex) {
       <div class="gear-modal-title">${m.model}</div>
       ${m.manufacturer ? `<div class="gear-modal-manufacturer">${m.manufacturer}</div>` : ''}
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px;">
-        <div class="gear-modal-type">${(type === 'reels' ? m.type : (m.subtype || m.type))}</div>
+        <div class="gear-modal-type">${(type === 'reels' ? ({"spinning":"Spinning","Low-Profile baitcasting":"Low-Profile Baitcasting","Classic baitcasting":"Classic Baitcasting","Conventional baitcasting":"Conventional Baitcasting"}[m.type] || m.type) : ({"spinning":"Spinning","casting":"Casting","jerkbait":"Jerkbait","telescopic":"Telescopic","bolognese":"Bolognese","match":"Match","carp":"Carp","feeder":"Feeder","picker":"Picker","pilker":"Pilker","deep sea":"Deep Sea / Trolling"}[m.subtype||m.type] || m.subtype || m.type))}</div>
       </div>
       ${(m.tags||[]).length ? `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;">${(m.tags||[]).map(tag=>`<span class="model-card-tag indicator-${tag.type}" style="font-size:11px;">${tag.label}</span>`).join('')}</div>` : ''}
     </div>

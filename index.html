@@ -11968,11 +11968,17 @@ function renderGearDB() {
       else if (currentRodTypeFilter === '_sea') models = models.filter(m => seaTypes.includes(m.type));
       else models = models.filter(m => m.type === currentRodTypeFilter);
     }
-    if (search) models = models.filter(m => m.model.toLowerCase().includes(search) || m.subtype?.toLowerCase().includes(search));
+    if (search) models = models.filter(m => 
+      m.model.toLowerCase().includes(search) ||
+      m.manufacturer?.toLowerCase().includes(search) ||
+      m.subtype?.toLowerCase().includes(search) ||
+      m.variants.some(v => v.model?.toLowerCase().includes(search) || v.features?.some(f => f.toLowerCase().includes(search)))
+    );
+    const rodIndexMap = new Map(models.map(m => [m.model + '||' + m.manufacturer, rodModels.findIndex(r => r.model === m.model && r.manufacturer === m.manufacturer)]));
     models = models.map(m => ({ ...m, variants: [...m.variants].sort((a,b) => (a.cost||0) - (b.cost||0)) }));
     models.sort((a,b) => (Math.min(...a.variants.map(v=>v.cost||0))) - (Math.min(...b.variants.map(v=>v.cost||0))));
     grid.innerHTML = models.map((m) => {
-      const mi = rodModels.indexOf(m);
+      const mi = rodIndexMap.get(m.model + '||' + m.manufacturer) ?? -1;
       const minLevel = Math.min(...m.variants.map(v => v.level));
       const anyCopperLegal = m.variants.some(v => v.copperLegal);
       const allCopperLegal = m.variants.every(v => v.copperLegal);
@@ -11991,8 +11997,8 @@ function renderGearDB() {
       return `<div class="model-card" onclick="openGearModal('rods',${mi})">
         <div class="model-card-img">${img}</div>
         <div class="model-card-body">
-          <div class="model-card-name">${m.model}</div>
-          ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : ''}
+          <div class="model-card-name">${m.displayName || m.model}</div>
+          ${m.manufacturer ? `<div style="font-size:12px;color:var(--muted);margin-top:1px;">${m.manufacturer}</div>` : '<div style="font-size:12px;color:var(--muted);margin-top:1px;">Unknown</div>'}
           <div style="font-size:12px;color:#7a8fa6;font-weight:500;margin-top:2px;margin-bottom:6px;">${({"spinning":"Spinning","casting":"Casting","jerkbait":"Jerkbait","telescopic":"Telescopic","bolognese":"Bolognese","match":"Match","carp":"Carp","feeder":"Feeder","picker":"Picker","pilker":"Pilker","deep sea":"Deep Sea / Trolling","deep sea":"Deep Sea / Trolling"}[m.type] || m.type)}</div>
           <div class="model-card-meta">
             <span class="model-card-tag">Lvl ${minLevel}+</span>

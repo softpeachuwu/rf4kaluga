@@ -1401,7 +1401,7 @@ const reelModels = [
       {
         "size": 3000,
         "label": "Size 3000 (30s)",
-        "image": null,
+        "image": "images/reels/meteor30s.png",
         "drag": 7.7,
         "dragUpgraded": 10,
         "mechanism": 15.98,
@@ -3070,7 +3070,7 @@ const reelModels = [
     "variants": [
       {
         "size": 8000,
-        "image": null,
+        "image": "images/reels/syberiacaliber_80_slc.png",
         "drag": 17.2,
         "dragUpgraded": 19,
         "mechanism": 37.74,
@@ -3229,7 +3229,7 @@ const reelModels = [
       {
         "size": 1000,
         "label": "Size 1000 (10S)",
-        "image": null,
+        "image": "images/reels/zeimanjsx_10s.png",
         "drag": 7.7,
         "mechanism": 9,
         "lineDia": 0.11,
@@ -3247,7 +3247,7 @@ const reelModels = [
       {
         "size": 2000,
         "label": "Size 2000 (20S)",
-        "image": null,
+        "image": "images/reels/zeimanjsx_20s.png",
         "drag": 9.5,
         "mechanism": 20.84,
         "lineDia": 0.14,
@@ -3318,7 +3318,7 @@ const reelModels = [
       {
         "size": 1000,
         "label": "Size 1000 (10S)",
-        "image": null,
+        "image": "images/reels/zeimanjsx_inferno_10s.png",
         "drag": 8.2,
         "mechanism": 11.04,
         "lineDia": 0.11,
@@ -3336,7 +3336,7 @@ const reelModels = [
       {
         "size": 2000,
         "label": "Size 2000 (20S)",
-        "image": null,
+        "image": "images/reels/zeimanjsx_inferno_20s.png",
         "drag": 10,
         "mechanism": 22.45,
         "lineDia": 0.14,
@@ -3583,7 +3583,7 @@ const reelModels = [
       {
         "size": 6000,
         "label": "Size 6000 (LE-B)",
-        "image": null,
+        "image": "images/reels/belugachronica_il_6000_leb.png",
         "drag": 20.4,
         "mechanism": 72.63,
         "lineDia": 0.28,
@@ -3601,7 +3601,7 @@ const reelModels = [
       {
         "size": 6000,
         "label": "Size 6000 (LE-G)",
-        "image": null,
+        "image": "images/reels/belugachronica_il_6000_leg.png",
         "drag": 20.4,
         "mechanism": 72.63,
         "lineDia": 0.28,
@@ -11818,7 +11818,7 @@ function openBuildModal(id) {
         ${reel.spoolCap !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_spool_cap')}</span><span class="gear-stat-val">${reel.spoolCap}m</span></div>` : ''}
         ${reel.ratio ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_ratio')}</span><span class="gear-stat-val">${reel.ratio}</span></div>` : ''}
         ${reel.level !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_level')}</span><span class="gear-stat-val">${reel.level}</span></div>` : ''}
-        ${reel.saltwater !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_saltwater')}</span><span class="gear-stat-val">${reel.saltwater ? '✔️' : '✖️'}</span></div>` : ''}
+        ${reel.saltwater !== undefined ? `<div class="gear-stat"><span class="gear-stat-label">${t('stat_saltwater')}</span><span class="gear-stat-val">${reel.saltwater ? '<span style="color:#4ade80;font-weight:700;">✓</span>' : '<span style="color:#f87171;font-weight:700;">✗</span>'}</span></div>` : ''}
         ${reel.cost ? `<div class="gear-card-cost">~${reel.cost.toLocaleString()} silver</div>` : ''}
       </div>
     </div>
@@ -11836,8 +11836,8 @@ function openBuildModal(id) {
       <div class="fish-tags">${b.fish.map(f => `<span class="fish-tag">${f}</span>`).join('')}</div>
     </div>
     <div class="modal-footer">
-      <span class="total-cost">${t('modal_total')}: ~${b.cost.toLocaleString()} silver</span>
       ${b.copperLegal ? '<span class="copper-badge-yes">Copper ✓</span>' : '<span class="copper-badge-no">Copper ✗</span>'}
+      <span class="total-cost">${t('modal_total')}: ~${b.cost.toLocaleString()} silver</span>
     </div>
   `;
   document.getElementById('modalOverlay').classList.add('open');
@@ -12085,7 +12085,7 @@ function openGearModal(type, modelIndex) {
           <div class="variant-stat"><span class="variant-stat-label">Line Cap Index</span><span class="variant-stat-val">${calcSVI(variant.lineDia, variant.lineLen) ?? '—'}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Gear ratio</span><span class="variant-stat-val">${variant.ratioUpgraded ? `${variant.ratio} → <span style="color:#4ade80;">${variant.ratioUpgraded} ▲</span>` : variant.ratioAlt ? `${variant.ratio} <span style="color:#7dd3fc;">↔ ${variant.ratioAlt}</span>` : v(variant.ratio)}</span></div>
           <div class="variant-stat"><span class="variant-stat-label">Level</span><span class="variant-stat-val">${v(variant.level)}</span></div>
-          <div class="variant-stat"><span class="variant-stat-label">Saltwater</span><span class="variant-stat-val">${variant.saltwater ? '✔️' : '✖️'}</span></div>
+          <div class="variant-stat"><span class="variant-stat-label">Saltwater</span><span class="variant-stat-val">${variant.saltwater ? '<span style="color:#4ade80;font-weight:700;">✓</span>' : '<span style="color:#f87171;font-weight:700;">✗</span>'}</span></div>
         </div>
         <div class="variant-card-footer">
           ${m.type.includes('baitcasting') ? '' : `<span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>`}

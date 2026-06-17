@@ -179,7 +179,7 @@
   .variant-stat-val { font-weight: 500; color: var(--text); }
   .variant-card-footer { padding: 0.6rem 0.85rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; gap: 6px; flex-wrap: wrap; }
   .variant-cost { font-weight: 700; color: var(--text); font-size: 13px; word-break: break-word; }
-  .variant-copper { font-size: 11px; padding: 2px 7px; border-radius: 8px; }
+  .variant-copper { font-size: 11px; padding: 2px 7px; border-radius: 8px; margin-left: -2px; }
   .variant-copper.yes { border: 1px solid #166534; color: #4ade80; background: #0a1f10; }
   .variant-copper.no  { border: 1px solid #7f1d1d; color: #f87171; background: #1a0a0a; }
   .variant-features { display: flex; gap: 5px; flex-wrap: wrap; padding: 0 0.85rem 0.7rem; }
@@ -5694,10 +5694,8 @@ const reelModels = [
     "variants": [
       {
         "size": 5000,
-        "image": null,
+        "image": "images/reels/syberiazodiac_500r2.png",
         "drag": 8,
-        "dragUpgraded": 9.2,
-        "mechanism": 29.25,
         "lineDia": 0.25,
         "lineLen": 209,
         "ratio": "5.1:1",
@@ -5717,7 +5715,7 @@ const reelModels = [
       {
         "size": 5000,
         "label": "500-R2 L-CTR",
-        "image": null,
+        "image": "images/reels/syberiazodiac_500r2_lctr.png",
         "drag": 8,
         "dragUpgraded": 9.2,
         "mechanism": 29.25,
@@ -6033,7 +6031,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 150,
         "ratio": "5.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 7.5,
         "testUpgraded": 1.9,
         "level": 19,
@@ -6055,7 +6053,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 220,
         "ratio": "5.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 11.5,
         "testUpgraded": 3.1,
         "level": 20,
@@ -6077,7 +6075,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 290,
         "ratio": "5.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 17,
         "testUpgraded": 7,
         "level": 20,
@@ -6810,7 +6808,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 150,
         "ratio": "6.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 6.5,
         "testUpgraded": 1.9,
         "level": 22,
@@ -6834,7 +6832,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 220,
         "ratio": "6.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 10.5,
         "testUpgraded": 3.1,
         "level": 22,
@@ -6858,7 +6856,7 @@ const reelModels = [
         "lineDia": 0.25,
         "lineLen": 290,
         "ratio": "6.3:1",
-        "ratioUpgraded": "5.1:1",
+        "ratioUpgraded": "7.1:1",
         "test": 13.5,
         "testUpgraded": 7,
         "level": 24,
@@ -12089,13 +12087,13 @@ function openGearModal(type, modelIndex) {
         </div>
         <div class="variant-card-footer">
           ${m.type.includes('baitcasting') ? '' : `<span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>`}
-          <span class="variant-cost">${
+        </div>
+        <div style="padding: 0 0.85rem 0.6rem; font-size: 13px; font-weight: 700; color: var(--text);">${
             variant.cost && variant.costGold ? `${variant.cost.toLocaleString()} silver <span style="color:var(--muted);">/</span> <span style="color:#f0bc2e;font-weight:600;">${variant.costGold} gold</span>`
             : variant.cost ? variant.cost.toLocaleString() + ' silver'
             : variant.costGold ? `<span style="color:#f0bc2e;font-weight:600;">${variant.costGold} gold</span>`
             : '—'
-          }</span>
-        </div>
+        }</div>
       </div>`;
     }).join('');
   } else {
@@ -12118,8 +12116,8 @@ function openGearModal(type, modelIndex) {
         </div>
         <div class="variant-card-footer">
           <span class="variant-copper ${variant.copperLegal ? 'yes' : 'no'}">${variant.copperLegal ? 'Copper ✓' : 'Copper ✗'}</span>
-          <span class="variant-cost">${variant.cost ? variant.cost.toLocaleString() + ' silver' : '—'}</span>
         </div>
+        <div style="padding: 0 0.85rem 0.6rem; font-size: 13px; font-weight: 700; color: var(--text);">${variant.cost ? variant.cost.toLocaleString() + ' silver' : '—'}</div>
       </div>`;
     }).join('');
   }
@@ -12168,16 +12166,17 @@ function renderCompareTable(type) {
   const items = compareSlots[type]; // always 4 slots, some may be null
   const modelList = type === 'reels' ? reelModels : rodModels;
 
-  const getManufacturer = (item) => {
-    if (!item) return '';
-    const model = modelList.find(m => m.variants.some(v => `${m.model} ${type === 'reels' ? v.size : v.length}` === item.name));
-    return model?.manufacturer || '';
+  const getModelForItem = (item) => {
+    if (!item) return null;
+    return modelList.find(m => m.variants.some(v => {
+      const vName = type === 'reels'
+        ? (v.label ? `${m.model} ${v.label.replace(/Size \d+\s*\(([^)]+)\)/, '$1')}` : `${m.model} ${v.size}`)
+        : `${m.model} ${v.length}`;
+      return vName === item.name;
+    }));
   };
-  const getModelTags = (item) => {
-    if (!item) return [];
-    const model = modelList.find(m => m.variants.some(v => `${m.model} ${type === 'reels' ? v.size : v.length}` === item.name));
-    return model?.tags || [];
-  };
+  const getManufacturer = (item) => getModelForItem(item)?.manufacturer || '';
+  const getModelTags = (item) => getModelForItem(item)?.tags || [];
 
   // Build header columns - filled = image+name+brand+remove, empty = + button
   const headers = items.map((item, i) => {
